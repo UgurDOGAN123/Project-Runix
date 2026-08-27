@@ -1,0 +1,112 @@
+using System.Collections.Generic;
+using Runix.Card;
+using UnityEngine;
+
+namespace Runix.Managers
+{
+    public class DeckManagers : MonoBehaviour
+    {
+        [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck, OnHandDeck;
+        [SerializeField] OnHandCardManager onHandCardManager;
+
+
+        public Character.CharacterSO character;
+
+        List<CardSO> MainDeck
+        {
+            get
+            {
+                return character.Decks;
+            }
+        }
+
+
+
+        public void Awake()
+        {
+            if (character == null)
+            {
+                Debug.LogError("Chrahter is empty pleas select a character");
+            }
+
+            OnPickableDeckAddCards(MainDeck);
+
+        }
+
+
+        private void Start()
+        {
+            PickTheHand(6);
+
+
+        }
+
+        public void PickTheHand(int number)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                if (character.MaxHandCardCount <= OnHandDeck.Count)
+                {
+                    print("Hand Full");
+                    break;
+                }
+                if (OnPickableDeck.Count <= 0)
+                {
+                    print("deck Empty");
+                    ReplaceToTrashcan();
+                }
+                OnHandDeck.Add(OnPickableDeck[0]);
+                onHandCardManager.CardOnScreen(OnPickableDeck[0]);
+                OnPickableDeck.RemoveAt(0);
+            }
+        }
+
+        public void PickTheHand(CardSO card)
+        {
+            OnHandDeck.Add(card);
+            onHandCardManager.CardOnScreen(card);
+
+        }
+
+
+        public void ReplaceToTrashcan()
+        {
+            OnPickableDeckAddCards(TrashDeck);
+            TrashDeck.Clear();
+        }
+
+        public void MoveToTrash(CardSO card)
+        {
+            TrashDeck.Add(card);
+        }
+
+        
+
+
+        #region // OnPickableDeck support fonktions
+        void OnPickableDeckAddCards (List<CardSO> cards)
+        {
+            for (int i = 0; i < cards.Count; i++)
+            {
+                OnPickableDeck.Add(cards[i]);
+            }
+            ShuffelDeck(OnPickableDeck);
+        }
+
+        void ShuffelDeck(List<CardSO> cards)
+        {
+            int randomNumber;
+            CardSO temp;
+            for(int i = 0;i < cards.Count;i++)
+            {
+                randomNumber = Random.Range(0, cards.Count);
+                temp = cards[i];
+                cards[i] = cards[randomNumber];
+                cards[randomNumber] = temp;
+            }
+        }
+        #endregion
+
+    }
+    
+}

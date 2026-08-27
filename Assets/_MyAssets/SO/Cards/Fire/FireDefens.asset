@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116a721b5a9397b4a87535abe078d3e3, type: 3}
+  m_Name: FireDefens
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Defens
+  CardUI: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  cardName: FireDefens
+  cardDescription: Usa a fire shild
+  element: 2
+  defensValue: 10
