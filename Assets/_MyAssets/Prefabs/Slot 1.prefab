@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -9027992717229799962}
   - component: {fileID: 5229363499082099537}
   - component: {fileID: 8623715808621221589}
+  - component: {fileID: 6951329935542492087}
   m_Layer: 0
   m_Name: Slot 1
   m_TagString: Untagged
@@ -170,6 +171,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Slots.UI.SlotUI
   image: {fileID: 6117422395419916368}
+--- !u!114 &6951329935542492087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440436008836145526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26db1e7cded1b9541a5ae9e9a281ae50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.UI.StageUiHandler
+  isShow: 1
+  turnEnum: 2
+  whichPlayer: 0
+  spriteRenderer: {fileID: 2485967675315494085}
+  spriteRenderer2: {fileID: 6117422395419916368}
 --- !u!1 &7637966590556738044
 GameObject:
   m_ObjectHideFlags: 0

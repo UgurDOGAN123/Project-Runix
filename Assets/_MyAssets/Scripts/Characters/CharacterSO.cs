@@ -9,6 +9,7 @@ namespace Runix.Character
         public string characterName;
         public string description;
         public int MaxHandCardCount;
+        public int StartCardCount;
 
         public List<CardSO> Decks;
 

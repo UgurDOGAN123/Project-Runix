@@ -20,7 +20,24 @@ namespace Runix.Managers
             }
         }
 
+        #region // Turn System Event Connect
+        private void OnEnable()
+        {
+            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
+        }
+        private void OnDisable()
+        {
+            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
 
+        }
+        private void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        {
+            if (arg1 == TurnEnum.BattleStart)
+            {
+                PickTheHand(character.StartCardCount);
+            }
+        }
+        #endregion
 
         public void Awake()
         {
@@ -33,13 +50,6 @@ namespace Runix.Managers
 
         }
 
-
-        private void Start()
-        {
-            PickTheHand(6);
-
-
-        }
 
         public void PickTheHand(int number)
         {
@@ -80,11 +90,12 @@ namespace Runix.Managers
             TrashDeck.Add(card);
         }
 
-        
+
+
 
 
         #region // OnPickableDeck support fonktions
-        void OnPickableDeckAddCards (List<CardSO> cards)
+        void OnPickableDeckAddCards(List<CardSO> cards)
         {
             for (int i = 0; i < cards.Count; i++)
             {
@@ -97,7 +108,7 @@ namespace Runix.Managers
         {
             int randomNumber;
             CardSO temp;
-            for(int i = 0;i < cards.Count;i++)
+            for (int i = 0; i < cards.Count; i++)
             {
                 randomNumber = Random.Range(0, cards.Count);
                 temp = cards[i];
@@ -108,5 +119,5 @@ namespace Runix.Managers
         #endregion
 
     }
-    
+
 }

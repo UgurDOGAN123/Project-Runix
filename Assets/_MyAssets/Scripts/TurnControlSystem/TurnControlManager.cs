@@ -5,7 +5,7 @@ namespace Runix.TurnControlSystem
 {
     public class TurnControlManager : MonoBehaviour
     {
-        public static TurnControlManager instance;
+
 
         [SerializeField] int playerCount;
         [SerializeField] int currentPlayer;
@@ -14,13 +14,31 @@ namespace Runix.TurnControlSystem
         public Action ChanceTurnStage;
         public Action<TurnEnum, int> NewTurn;
 
+        public static TurnControlManager instance;
+
+
+
         private void Awake()
         {
-            if (instance != null)
+            if (instance == null)
             {
-                Destroy(gameObject);
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(this);
             }
         }
+
+        //Şimdilik Start Burada İlerde belki değişir
+        private void Start()
+        {
+            ChanceTurnStage?.Invoke();
+        }
+
+
+
+
         private void OnEnable()
         {
             ChanceTurnStage += ChanceStage;
@@ -29,20 +47,15 @@ namespace Runix.TurnControlSystem
         {
             ChanceTurnStage -= ChanceStage;
         }
+        public void EndBattle()
+        {
+            currentStage = TurnEnum.BattleEnd;
+            NewTurn?.Invoke(currentStage, currentPlayer);
+        }
 
         private void ChanceStage()
         {
-            /*
-             * 1. savaş balşadı
-             * 2. player 1 in sırası
-             * 3. hasar hesaplandı
-             * 4. player 2 in sırası
-             * 5. hasar hesaplandı
-             * 6. player sayısı bitene kadar devam
-             * 7. tur bitti
-             * 8. Savaş bitene kadar 2. aşamadan devam
-             * 9. savaş bitti
-             */
+
             if (currentStage == TurnEnum.None)
             {
                 WarStarter();
@@ -62,16 +75,13 @@ namespace Runix.TurnControlSystem
 
         }
 
-        public void EndBattle()
-        {
-            currentStage = TurnEnum.BattleEnd;
-            NewTurn?.Invoke(currentStage, currentPlayer);
-        }
+        #region //Chance Fonktion Supporters
 
         void WarStarter()
         {
             currentStage = TurnEnum.BattleStart;
             NewTurn?.Invoke(currentStage, currentPlayer);
+            ChanceTurnStage?.Invoke();
         }
 
         void PlayerTurn()
@@ -85,6 +95,7 @@ namespace Runix.TurnControlSystem
             currentStage = TurnEnum.TurnDamage;
             NewTurn?.Invoke(currentStage, currentPlayer);
             currentPlayer++;
+            ChanceTurnStage?.Invoke();
 
         }
         void EndTurn()
@@ -94,7 +105,7 @@ namespace Runix.TurnControlSystem
             NewTurn?.Invoke(currentStage, currentPlayer);
         }
 
-
+        #endregion
 
     }
 }
