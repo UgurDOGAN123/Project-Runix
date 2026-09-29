@@ -56,7 +56,6 @@ namespace Runix.TurnControlSystem
 
         async void RequestNextStageAsync()
         {
-            print(currentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage));
             if ((currentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage)) && isTurnFinish)
             {
                 isTurnFinish = false;
@@ -78,7 +77,6 @@ namespace Runix.TurnControlSystem
             else if (currentPlayer < playerCount && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage))
             {
 
-                print(currentPlayer);
                 PlayerTurn();
             }
             else if (currentStage == TurnEnum.PlayTurn && currentPlayer < playerCount)

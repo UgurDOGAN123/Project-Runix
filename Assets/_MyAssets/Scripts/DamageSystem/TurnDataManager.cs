@@ -44,6 +44,8 @@ namespace Runix.Turn
         {
             playerHpManager.AddData(enemyTurnDataHolder.AttackValues, enemyTurnDataHolder.MultiplerValues, playerTurnDataHolder.DefensValues, playerTurnDataHolder.HealValues);
             enemyHpManager.AddData(playerTurnDataHolder.AttackValues, playerTurnDataHolder.MultiplerValues, enemyTurnDataHolder.DefensValues, enemyTurnDataHolder.HealValues);
+            playerTurnDataHolder.ClearMulipler();
+            enemyTurnDataHolder.ClearMulipler();
         }
 
 

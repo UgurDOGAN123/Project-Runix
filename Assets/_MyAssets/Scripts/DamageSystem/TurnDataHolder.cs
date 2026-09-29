@@ -24,6 +24,11 @@ namespace Runix
             AddFonk(HealValues, element, healValue);
         }
 
+        public void ClearMulipler()
+        {
+            MultiplerValues.Clear();
+        }
+
         void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)
         {
             fonkValues.TryGetValue(element, out int a);
@@ -31,7 +36,7 @@ namespace Runix
             AddMultipler(element);
             if (fonkValues.TryAdd(element, a))
             {
-                fonkValues[element] = a;
+                fonkValues[element] += a;
             }
         }
 

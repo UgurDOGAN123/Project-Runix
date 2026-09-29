@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runix.UI;
 using UnityEngine;
 
 namespace Runix.Damage
@@ -7,11 +8,12 @@ namespace Runix.Damage
     {
         [SerializeField] int hp, maxDefens, maxHp;
         [SerializeField] Element[] healable;
+        [SerializeField] HpSlider hpSlider;
         Dictionary<Element, int> defensValues = new();
 
         public float HpPercent
         {
-            get { return hp / maxHp; }
+            get { return (float)hp / maxHp; }
         }
 
         public void AddData(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue, Dictionary<Element, int> defansValue, Dictionary<Element, int> healValue)
@@ -22,6 +24,8 @@ namespace Runix.Damage
             AddDefens(defansValue);
             //attack yapılacak
             TakeDamage(attackValue, multiplerValue);
+            print(hp / maxHp);
+            hpSlider.ChaneSlider(HpPercent);
 
 
         }

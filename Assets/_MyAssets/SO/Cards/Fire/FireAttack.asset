@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Fire Attack
   cardDescription: Attack with fire
   element: 2
-  attackValue: 10
+  cardType: 0
+  attackValue: 1
