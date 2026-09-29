@@ -23,13 +23,11 @@ namespace Runix.UI
         {
             if (arg1 == turnEnum && arg2 == whichPlayer)
             {
-                print("Olması lazım " + arg1 + " " + arg2);
                 spriteRenderer.enabled = isShow;
                 spriteRenderer2.enabled = isShow;
             }
             else
             {
-                print("Daha değil" + arg1 + " " + arg2);
                 spriteRenderer.enabled = !isShow;
                 spriteRenderer2.enabled = !isShow;
 

@@ -1,34 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Runix
 {
     [Serializable]
-    public class TurnDataHolder 
+    public class TurnDataHolder
     {
         public Dictionary<Element, int> AttackValues = new();
         public Dictionary<Element, int> DefensValues = new();
         public Dictionary<Element, int> HealValues = new();
+        public Dictionary<Element, int> MultiplerValues = new();
 
-        public void AddAttack(Element element,int attackValue)
+        public void AddAttack(Element element, int attackValue)
         {
-            AttackValues.TryGetValue(element, out int a);
-            a += attackValue;
-            AttackValues.Add(element, a);
+            AddFonk(AttackValues, element, attackValue);
         }
         public void AddDefens(Element element, int defensvalue)
         {
-            DefensValues.TryGetValue(element, out int a);
-            a += defensvalue;
-            DefensValues.Add(element, a);
+            AddFonk(DefensValues, element, defensvalue);
         }
         public void AddHeal(Element element, int healValue)
         {
-            
-            HealValues.TryGetValue(element, out int a);
-            a += healValue;
-            HealValues.Add(element, a);
+            AddFonk(HealValues, element, healValue);
+        }
+
+        void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)
+        {
+            fonkValues.TryGetValue(element, out int a);
+            a += value;
+            AddMultipler(element);
+            if (fonkValues.TryAdd(element, a))
+            {
+                fonkValues[element] = a;
+            }
+        }
+
+
+        void AddMultipler(Element element)
+        {
+            MultiplerValues.TryGetValue(element, out int a);
+            a += 1;
+            MultiplerValues[element] = a;
         }
     }
 }

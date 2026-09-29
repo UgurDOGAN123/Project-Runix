@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897bd63fa4f444a44b0ea8e400b3988d, type: 3}
+  m_Name: Adaptive Profile
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.AdaptiveEnemyProfileSO
+  maxPlaySlots: 4
+  healthTiers:
+  - minHpPercent: 0.7
+    prioritizedPatterns:
+    - {fileID: 11400000, guid: 16e26be139978ed449281c874164b54f, type: 2}
+    - {fileID: 11400000, guid: 9cee2852164895847a9a105c101afea3, type: 2}
+    - {fileID: 11400000, guid: 676ea150b883a7944b5172397fd73d62, type: 2}
+    - {fileID: 11400000, guid: e0fa0f87c9ca5314d8a864ff5e238b48, type: 2}
+  - minHpPercent: 0.3
+    prioritizedPatterns:
+    - {fileID: 11400000, guid: e893977d837face47bb343edd68eb02b, type: 2}
+    - {fileID: 11400000, guid: be8aa70b6968cab448d0cce63a46d623, type: 2}
+    - {fileID: 11400000, guid: 0ca68b5d802020648af4d321f29e263e, type: 2}
+    - {fileID: 11400000, guid: b8fbb9c0df477f543b37c2e5a7ec3686, type: 2}
+    - {fileID: 11400000, guid: ab69b9ef5f618754cbc72eb6cff6a59e, type: 2}
+  - minHpPercent: 0
+    prioritizedPatterns:
+    - {fileID: 11400000, guid: b37448d8a68c2e340b3dd1f1a56c5fc4, type: 2}
+    - {fileID: 11400000, guid: cf3375b86c7c48c468b12013b06f4ce2, type: 2}
+    - {fileID: 11400000, guid: a1ef758be015f95478aeed6516f43ba1, type: 2}
+    - {fileID: 11400000, guid: ca40f7983a3e64145a259d1cd74db304, type: 2}
+    - {fileID: 11400000, guid: a33ceab7dedbbba4fbf7a41c77d98eda, type: 2}
+    - {fileID: 11400000, guid: f70e5c64e6264024a9157a225209cbd0, type: 2}
+    - {fileID: 11400000, guid: 8b7697b70be468d4eac5e0cb4fb07558, type: 2}
+    - {fileID: 11400000, guid: c35fb8568fe41e142baa0b8ddacab04c, type: 2}

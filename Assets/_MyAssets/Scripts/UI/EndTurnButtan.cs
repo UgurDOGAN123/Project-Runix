@@ -32,13 +32,11 @@ namespace Runix.Scripts.UI
         {
             if (arg1 == turnEnum && arg2 == whichPlayer)
             {
-                print("Olması lazım " + arg1 + " " + arg2);
                 uiImage.enabled = isShow;
                 Text.SetActive(isShow);
             }
             else
             {
-                print("Daha değil" + arg1 + " " + arg2);
                 uiImage.enabled = !isShow;
                 Text.SetActive(!isShow);
             }
@@ -48,6 +46,7 @@ namespace Runix.Scripts.UI
 
         public void PlayerTurnEnd()
         {
+
             TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
         }
     }

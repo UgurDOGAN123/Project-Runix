@@ -6,8 +6,10 @@ namespace Runix.Managers
 {
     public class DeckManagers : MonoBehaviour
     {
-        [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck, OnHandDeck;
+        public List<CardSO> OnHandDeck;
+        [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck;
         [SerializeField] OnHandCardManager onHandCardManager;
+        [SerializeField] int EveryTurnAddCardCount;
 
 
         public Character.CharacterSO character;
@@ -35,6 +37,11 @@ namespace Runix.Managers
             if (arg1 == TurnEnum.BattleStart)
             {
                 PickTheHand(character.StartCardCount);
+            }
+            else if (arg1 == TurnEnum.TurnEnd)
+            {
+                PickTheHand(EveryTurnAddCardCount);
+                TurnControlSystem.TurnControlManager.instance.ChanceTurnStage?.Invoke();
             }
         }
         #endregion
@@ -66,7 +73,7 @@ namespace Runix.Managers
                     ReplaceToTrashcan();
                 }
                 OnHandDeck.Add(OnPickableDeck[0]);
-                onHandCardManager.CardOnScreen(OnPickableDeck[0]);
+                onHandCardManager?.CardOnScreen(OnPickableDeck[0]);
                 OnPickableDeck.RemoveAt(0);
             }
         }
@@ -87,6 +94,7 @@ namespace Runix.Managers
 
         public void MoveToTrash(CardSO card)
         {
+            OnHandDeck.Remove(card);
             TrashDeck.Add(card);
         }
 

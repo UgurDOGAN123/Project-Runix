@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Runix.Card
 {
@@ -18,4 +17,5 @@ namespace Runix.Card
             }
         }
     }
+
 }

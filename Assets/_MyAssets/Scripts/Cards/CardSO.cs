@@ -1,3 +1,4 @@
+using Runix.Managers;
 using UnityEngine;
 
 namespace Runix.Card
@@ -9,7 +10,11 @@ namespace Runix.Card
         public string cardName;
         public string cardDescription;
         public Element element;
+        public CardType cardType;
 
-        public abstract void UseCard(TurnDataHolder turnDataHolder);
+        public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
+        {
+            deckManagers.MoveToTrash(this);
+        }
     }
 }

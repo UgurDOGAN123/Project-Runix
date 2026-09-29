@@ -1,7 +1,7 @@
 ﻿namespace Runix
 {
-  public enum Element
-  {
+    public enum Element
+    {
         None,
         Physically,
         Fire,
@@ -11,7 +11,14 @@
         Nature,
         Lightening,
         Ice,
-  }
+    }
+    public enum CardType
+    {
+        Attack,
+        Defans,
+        Heal,
+        Special,
+    }
 
     public enum TurnEnum
     {
@@ -24,5 +31,5 @@
 
     }
 
-   
+
 }

@@ -6,16 +6,19 @@ namespace Runix.Enviorment
 {
     public class Slot : MonoBehaviour
     {
-        [SerializeField] CardSO cardSO;
+        public CardSO cardSO;
         [SerializeField] bool islock;
-        [SerializeField]DeckManagers deckManagers;
+        [SerializeField] DeckManagers deckManagers;
         [SerializeField] SlotUI slotUI;
+
+
+
 
         public bool IsAddable
         {
             get
             {
-                return false==islock;
+                return false == islock;
             }
         }
         private void OnMouseUp()
@@ -38,5 +41,7 @@ namespace Runix.Enviorment
             cardSO = card;
             slotUI.ChaceImage(card.CardOnRun);
         }
+
+
     }
 }

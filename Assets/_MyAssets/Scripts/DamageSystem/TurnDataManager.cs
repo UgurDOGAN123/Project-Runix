@@ -30,8 +30,10 @@ namespace Runix.Turn
 
         private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
+
             if (arg1 == Runix.TurnEnum.TurnDamage)
             {
+
                 SendToDatas();
             }
         }
@@ -40,8 +42,8 @@ namespace Runix.Turn
 
         public void SendToDatas()
         {
-            playerHpManager.AddData(enemyTurnDataHolder.AttackValues, playerTurnDataHolder.DefensValues, playerTurnDataHolder.HealValues);
-            enemyHpManager.AddData(playerTurnDataHolder.AttackValues, enemyTurnDataHolder.DefensValues, enemyTurnDataHolder.HealValues);
+            playerHpManager.AddData(enemyTurnDataHolder.AttackValues, enemyTurnDataHolder.MultiplerValues, playerTurnDataHolder.DefensValues, playerTurnDataHolder.HealValues);
+            enemyHpManager.AddData(playerTurnDataHolder.AttackValues, playerTurnDataHolder.MultiplerValues, enemyTurnDataHolder.DefensValues, enemyTurnDataHolder.HealValues);
         }
 
 

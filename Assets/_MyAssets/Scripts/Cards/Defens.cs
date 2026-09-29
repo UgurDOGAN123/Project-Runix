@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Runix.Managers;
+using UnityEngine;
 
 namespace Runix.Card
 {
@@ -7,9 +8,9 @@ namespace Runix.Card
     {
         public int defensValue;
 
-        public override void UseCard(TurnDataHolder turnDataHolder)
+        public override void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
         {
-            Debug.Log(defensValue + " Defens Yapıldı");
+            base.UseCard(turnDataHolder, deckManagers);
             turnDataHolder.AddDefens(element, defensValue);
 
         }

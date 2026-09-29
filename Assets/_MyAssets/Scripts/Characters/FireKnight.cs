@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Runix.Character
 {
-    [CreateAssetMenu ( fileName = "FireKnight", menuName ="SO/Character/FireKnight")]
+    [CreateAssetMenu(fileName = "FireKnight", menuName = "SO/Character/FireKnight")]
     public class FireKnight : CharacterSO
     {
         public Element element;
         public TurnEnum turnEnum;
-        
+
 
         public override void SetData()
         {
