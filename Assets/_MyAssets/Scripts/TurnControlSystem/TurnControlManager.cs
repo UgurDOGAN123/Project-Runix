@@ -5,8 +5,6 @@ namespace Runix.TurnControlSystem
 {
     public class TurnControlManager : MonoBehaviour
     {
-
-
         [SerializeField] int playerCount;
         [SerializeField] int currentPlayer;
         [SerializeField] TurnEnum currentStage;
@@ -16,6 +14,7 @@ namespace Runix.TurnControlSystem
 
         public static TurnControlManager instance;
 
+        bool isTurnFinish = false;
 
 
         private void Awake()
@@ -52,16 +51,23 @@ namespace Runix.TurnControlSystem
             currentStage = TurnEnum.BattleEnd;
             NewTurn?.Invoke(currentStage, currentPlayer);
         }
+
+
+
         async void RequestNextStageAsync()
         {
-            if (currentStage == TurnEnum.TurnEnd)
+            print(currentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage));
+            if ((currentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage)) && isTurnFinish)
             {
+                isTurnFinish = false;
                 return;
             }
             await Awaitable.NextFrameAsync();
-
             ChanceStage();
+
         }
+
+
         private void ChanceStage()
         {
 
@@ -81,6 +87,7 @@ namespace Runix.TurnControlSystem
             }
             else if (currentStage == TurnEnum.TurnDamage && playerCount <= currentPlayer)
             {
+                isTurnFinish = true;
                 EndTurn();
             }
 

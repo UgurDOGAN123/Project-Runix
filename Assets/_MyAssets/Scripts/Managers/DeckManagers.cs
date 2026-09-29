@@ -82,6 +82,7 @@ namespace Runix.Managers
         {
             OnHandDeck.Add(card);
             onHandCardManager.CardOnScreen(card);
+            OnPickableDeck.Remove(card);
 
         }
 

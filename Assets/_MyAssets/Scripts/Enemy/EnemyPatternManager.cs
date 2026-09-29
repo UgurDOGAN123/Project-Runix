@@ -39,6 +39,10 @@ namespace Runix.Enemy
             {
                 PlayCard();
             }
+            else if (arg1 == TurnEnum.BattleStart || arg1 == TurnEnum.TurnEnd)
+            {
+                enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
+            }
         }
         #endregion
 
@@ -50,7 +54,6 @@ namespace Runix.Enemy
             for (int i = 0; i < cards.Count; i++)
             {
                 cards[i].UseCard(turnData.enemyTurnDataHolder, deckManager);
-                deckManager.MoveToTrash(cards[i]);
             }
             TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
             enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);

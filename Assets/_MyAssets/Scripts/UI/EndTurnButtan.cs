@@ -30,7 +30,7 @@ namespace Runix.Scripts.UI
 
         private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
-            if (arg1 == turnEnum && arg2 == whichPlayer)
+            if ((arg1 == turnEnum && arg2 == whichPlayer))
             {
                 uiImage.enabled = isShow;
                 Text.SetActive(isShow);

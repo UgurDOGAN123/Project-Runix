@@ -1302,6 +1302,7 @@ MonoBehaviour:
   - {fileID: 1033195539}
   - {fileID: 1693302440}
   - {fileID: 1810414659}
+  character: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
 --- !u!1 &299015869
 GameObject:
   m_ObjectHideFlags: 0

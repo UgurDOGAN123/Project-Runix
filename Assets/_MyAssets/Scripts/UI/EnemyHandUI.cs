@@ -8,17 +8,11 @@ namespace Runix.Enemy.UI
 
         [SerializeField] Character.CharacterSO character;
 
-        private void Start()
-        {
-            UpdateUI(character.StartCardCount - 1);
-        }
-
-
         public void UpdateUI(int count)
         {
             for (int i = 0; i < Cards.Length; i++)
             {
-                Cards[i].SetActive(i <= count);
+                Cards[i].SetActive(count > i);
             }
         }
     }
