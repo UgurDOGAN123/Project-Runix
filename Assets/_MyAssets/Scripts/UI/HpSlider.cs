@@ -9,7 +9,6 @@ namespace Runix.UI
 
         public void ChaneSlider(float hp)
         {
-            print(gameObject.name + " " + hp);
             slider.value = hp;
         }
     }

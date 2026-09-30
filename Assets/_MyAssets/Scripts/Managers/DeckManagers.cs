@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Runix.Card;
+using Runix.UI;
 using UnityEngine;
 
 namespace Runix.Managers
@@ -10,7 +11,7 @@ namespace Runix.Managers
         [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck;
         [SerializeField] OnHandCardManager onHandCardManager;
         [SerializeField] int EveryTurnAddCardCount;
-
+        [SerializeField] DeckUI[] deckUI;
 
         public Character.CharacterSO character;
 
@@ -46,7 +47,7 @@ namespace Runix.Managers
         }
         #endregion
 
-        public void Awake()
+        void Awake()
         {
             if (character == null)
             {
@@ -76,6 +77,7 @@ namespace Runix.Managers
                 onHandCardManager?.CardOnScreen(OnPickableDeck[0]);
                 OnPickableDeck.RemoveAt(0);
             }
+            UpdateUI();
         }
 
         public void PickTheHand(CardSO card)
@@ -83,6 +85,8 @@ namespace Runix.Managers
             OnHandDeck.Add(card);
             onHandCardManager.CardOnScreen(card);
             OnPickableDeck.Remove(card);
+            UpdateUI();
+
 
         }
 
@@ -91,12 +95,16 @@ namespace Runix.Managers
         {
             OnPickableDeckAddCards(TrashDeck);
             TrashDeck.Clear();
+            UpdateUI();
+
         }
 
         public void MoveToTrash(CardSO card)
         {
             OnHandDeck.Remove(card);
             TrashDeck.Add(card);
+            UpdateUI();
+
         }
 
 
@@ -111,6 +119,13 @@ namespace Runix.Managers
                 OnPickableDeck.Add(cards[i]);
             }
             ShuffelDeck(OnPickableDeck);
+            UpdateUI();
+        }
+
+        void UpdateUI()
+        {
+            deckUI[0].UpdateUI(OnPickableDeck.Count);
+            deckUI[1].UpdateUI(TrashDeck.Count);
         }
 
         void ShuffelDeck(List<CardSO> cards)
