@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7655d5276e94f7d4884397962aead348, type: 3}
   m_Name: FireAttack
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Attack
-  CardUI: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
-  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
   cardName: Fire Attack
   cardDescription: Attack with fire
+  BackgroundImg: {fileID: 0}
+  CardImage: {fileID: 0}
+  ElememtImg: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  CardType: {fileID: 0}
+  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  Value: 0
   element: 2
   cardType: 0
-  attackValue: 1

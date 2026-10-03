@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Runix.UI;
-using UnityEditor;
+﻿using Runix.UI;
 using UnityEngine;
 
 namespace Runix.Card
@@ -10,7 +8,7 @@ namespace Runix.Card
         [SerializeField] CardUIHandler uIHandler;
 
         private CardSO card = null;
-        
+
         public CardSO CardSO
         { get { return card; } }
 
@@ -18,7 +16,7 @@ namespace Runix.Card
         {
             gameObject.SetActive(true);
             card = cardSO;
-            uIHandler.ChaceImage(card.CardUI);
+            uIHandler.ChaceImage(card);
         }
 
         public void DistractCard()

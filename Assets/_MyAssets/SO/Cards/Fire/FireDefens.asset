@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116a721b5a9397b4a87535abe078d3e3, type: 3}
   m_Name: FireDefens
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Defens
-  CardUI: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
-  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
   cardName: FireDefens
   cardDescription: Usa a fire shild
+  BackgroundImg: {fileID: 0}
+  CardImage: {fileID: 0}
+  ElememtImg: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  CardType: {fileID: 0}
+  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  Value: 0
   element: 2
-  defensValue: 10
+  cardType: 0

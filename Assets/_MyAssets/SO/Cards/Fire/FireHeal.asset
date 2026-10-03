@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196e616b66542fe4c92f8913cfec1a96, type: 3}
   m_Name: FireHeal
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Heal
-  CardUI: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
-  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
   cardName: Fire Heal
   cardDescription: Self attack with fire
+  BackgroundImg: {fileID: 0}
+  CardImage: {fileID: 0}
+  ElememtImg: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  CardType: {fileID: 0}
+  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  Value: 0
   element: 2
-  healValue: 20
+  cardType: 0
