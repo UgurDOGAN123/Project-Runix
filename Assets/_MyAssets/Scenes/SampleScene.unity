@@ -846,7 +846,9 @@ MonoBehaviour:
   - {fileID: 345159675}
   - {fileID: 1558824790}
   turnData: {fileID: 54472551}
-  deckManager: {fileID: 1946946243}
+  deckManager:
+  - {fileID: 1946946243}
+  - {fileID: 2084102782}
 --- !u!1001 &250047255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3648,37 +3650,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3298e46095038ad478226bb566af05ee, type: 3}
---- !u!1 &1097244369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1097244370}
-  m_Layer: 0
-  m_Name: Animations
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1097244370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097244369}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106985251
 GameObject:
   m_ObjectHideFlags: 0
@@ -7221,7 +7192,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.615
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7841,4 +7812,3 @@ SceneRoots:
   - {fileID: 299015872}
   - {fileID: 1946946242}
   - {fileID: 2084102781}
-  - {fileID: 1097244370}
