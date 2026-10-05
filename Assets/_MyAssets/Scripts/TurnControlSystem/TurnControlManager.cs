@@ -16,6 +16,7 @@ namespace Runix.TurnControlSystem
 
         bool isTurnFinish = false;
 
+        public int CurrentPlayer { get => currentPlayer; set => currentPlayer = value; }
 
         private void Awake()
         {
@@ -49,19 +50,19 @@ namespace Runix.TurnControlSystem
         public void EndBattle()
         {
             currentStage = TurnEnum.BattleEnd;
-            NewTurn?.Invoke(currentStage, currentPlayer);
+            NewTurn?.Invoke(currentStage, CurrentPlayer);
         }
 
 
 
         async void RequestNextStageAsync()
         {
-            if ((currentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage)) && isTurnFinish)
+            if ((CurrentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage)) && isTurnFinish)
             {
                 isTurnFinish = false;
                 return;
             }
-            await Awaitable.NextFrameAsync();
+            await Awaitable.WaitForSecondsAsync(3);
             ChanceStage();
 
         }
@@ -74,16 +75,16 @@ namespace Runix.TurnControlSystem
             {
                 WarStarter();
             }
-            else if (currentPlayer < playerCount && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage))
+            else if (CurrentPlayer < playerCount && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage))
             {
 
                 PlayerTurn();
             }
-            else if (currentStage == TurnEnum.PlayTurn && currentPlayer < playerCount)
+            else if (currentStage == TurnEnum.PlayTurn && CurrentPlayer < playerCount)
             {
                 DamageCalculate();
             }
-            else if (currentStage == TurnEnum.TurnDamage && playerCount <= currentPlayer)
+            else if (currentStage == TurnEnum.TurnDamage && playerCount <= CurrentPlayer)
             {
                 isTurnFinish = true;
                 EndTurn();
@@ -96,29 +97,30 @@ namespace Runix.TurnControlSystem
         void WarStarter()
         {
             currentStage = TurnEnum.BattleStart;
-            NewTurn?.Invoke(currentStage, currentPlayer);
+            NewTurn?.Invoke(currentStage, CurrentPlayer);
             ChanceTurnStage?.Invoke();
         }
 
         void PlayerTurn()
         {
             currentStage = TurnEnum.PlayTurn;
-            NewTurn?.Invoke(currentStage, currentPlayer);
+            NewTurn?.Invoke(currentStage, CurrentPlayer);
         }
 
         void DamageCalculate()
         {
             currentStage = TurnEnum.TurnDamage;
-            NewTurn?.Invoke(currentStage, currentPlayer);
-            currentPlayer++;
+            NewTurn?.Invoke(currentStage, CurrentPlayer);
             ChanceTurnStage?.Invoke();
+            CurrentPlayer++;
+
 
         }
         void EndTurn()
         {
-            currentPlayer = 0;
+            CurrentPlayer = 0;
             currentStage = TurnEnum.TurnEnd;
-            NewTurn?.Invoke(currentStage, currentPlayer);
+            NewTurn?.Invoke(currentStage, CurrentPlayer);
         }
 
         #endregion

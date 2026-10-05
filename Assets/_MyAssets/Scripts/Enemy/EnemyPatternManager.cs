@@ -2,6 +2,7 @@
 using Runix.Card;
 using Runix.Damage;
 using Runix.Enemy.UI;
+using Runix.Enviorment;
 using Runix.Managers;
 using Runix.Turn;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace Runix.Enemy
         [SerializeField] DeckManagers deckManager;
         [SerializeField] TurnDataManager turnData;
         [SerializeField] EnemyHandUI enemyHandUI;
+
+        [SerializeField] Slot[] slots;
 
         List<CardSO> cards = new List<CardSO>();
 
@@ -53,10 +56,10 @@ namespace Runix.Enemy
             cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
             for (int i = 0; i < cards.Count; i++)
             {
-                cards[i].UseCard(turnData.enemyTurnDataHolder, deckManager);
+                slots[i].cardSO = cards[i];
             }
-            TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
             enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
+            TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
         }
 
 

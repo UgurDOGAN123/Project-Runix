@@ -9,7 +9,7 @@ namespace Runix.Slots
     {
         [SerializeField] Slot[] slots;
         [SerializeField] TurnDataManager turnData;
-        [SerializeField] DeckManagers deckManager;
+        [SerializeField] DeckManagers[] deckManager;
 
 
         #region // Turn System Event Connect
@@ -28,14 +28,13 @@ namespace Runix.Slots
             if (arg1 == Runix.TurnEnum.TurnDamage)
             {
 
-                CalculateData(arg2);
+                CalculateDatavoid(arg2);
             }
         }
 
 
         #endregion
-
-        private void CalculateData(int a)
+        async void CalculateDatavoid(int a)
         {
             TurnDataHolder turnDataHolder;
 
@@ -51,8 +50,8 @@ namespace Runix.Slots
             {
                 if (slot.cardSO != null)
                 {
-                    slot.cardSO.UseCard(turnDataHolder, deckManager);
-
+                    slot.cardSO.UseCard(turnDataHolder, deckManager[a]);
+                    await Awaitable.WaitForSecondsAsync(1);
                 }
             }
         }

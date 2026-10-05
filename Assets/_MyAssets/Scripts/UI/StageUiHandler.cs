@@ -5,8 +5,8 @@ namespace Runix.UI
     public class StageUiHandler : MonoBehaviour
     {
         [SerializeField] bool isShow = true;
-        [SerializeField] TurnEnum turnEnum;
-        [SerializeField] int whichPlayer;
+        [SerializeField] TurnEnum[] turnEnum;
+        [SerializeField] int[] whichPlayer;
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] SpriteRenderer spriteRenderer2;
 
@@ -21,18 +21,26 @@ namespace Runix.UI
 
         private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
-            if (arg1 == turnEnum && arg2 == whichPlayer)
-            {
-                spriteRenderer.enabled = isShow;
-                spriteRenderer2.enabled = isShow;
-            }
-            else
-            {
-                spriteRenderer.enabled = !isShow;
-                spriteRenderer2.enabled = !isShow;
 
+            for (int i = 0; i < turnEnum.Length; i++)
+            {
+                for (int j = 0; j < whichPlayer.Length; j++)
+                {
 
+                    if (arg1 == turnEnum[i] && arg2 == whichPlayer[j])
+                    {
+                        spriteRenderer.enabled = isShow;
+                        spriteRenderer2.enabled = isShow;
+                        return;
+                    }
+                    else
+                    {
+                        spriteRenderer.enabled = !isShow;
+                        spriteRenderer2.enabled = !isShow;
+                    }
+                }
             }
+
         }
     }
 }

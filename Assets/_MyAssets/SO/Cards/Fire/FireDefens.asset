@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Defens
   cardName: FireDefens
   cardDescription: Usa a fire shild
-  BackgroundImg: {fileID: 0}
+  BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
-  ElememtImg: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
-  CardType: {fileID: 0}
-  CardOnRun: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
-  Value: 0
+  ElememtImg: {fileID: -6519106895325619043, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  CardType: {fileID: 495667711, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
+  CardOnRun: {fileID: -6519106895325619043, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  Value: 10
   element: 2
   cardType: 0

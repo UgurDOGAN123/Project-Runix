@@ -11,7 +11,24 @@ namespace Runix.Enviorment
         [SerializeField] DeckManagers deckManagers;
         [SerializeField] SlotUI slotUI;
 
+        #region // Turn System Event Connect
+        private void OnEnable()
+        {
+            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
+        }
+        private void OnDisable()
+        {
+            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
 
+        }
+        private void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        {
+            if (arg1 == TurnEnum.PlayTurn)
+            {
+                RemoveCardSO();
+            }
+        }
+        #endregion
 
 
         public bool IsAddable
@@ -40,6 +57,13 @@ namespace Runix.Enviorment
             }
             cardSO = card;
             slotUI.ChaceImage(card.CardOnRun);
+        }
+
+        public void RemoveCardSO()
+        {
+            cardSO = null;
+            slotUI.ChaceImage(null);
+
         }
 
 
