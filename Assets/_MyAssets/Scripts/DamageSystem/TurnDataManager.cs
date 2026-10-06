@@ -8,7 +8,7 @@ namespace Runix.Turn
     /// -Playere verilen hasar enemyde tutuluyor-
     /// -Enemyde verilen hasar playerde tutuluyor- 
     ///</summary>
-    public class TurnDataManager : MonoBehaviour
+    public class TurnDataManager : MonoNewTurnEventConneter
     {
 
 
@@ -19,16 +19,8 @@ namespace Runix.Turn
         [SerializeField] HpManager playerHpManager, enemyHpManager;
 
         #region // Turn System Event Connect
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
-        }
 
-        private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
 
             if (arg1 == Runix.TurnEnum.TurnDamage)

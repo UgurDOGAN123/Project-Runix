@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runix.Enviorment
 {
-    public class Slot : MonoBehaviour
+    public class Slot : MonoNewTurnEventConneter
     {
         public CardSO cardSO;
         [SerializeField] bool islock;
@@ -12,16 +12,8 @@ namespace Runix.Enviorment
         [SerializeField] SlotUI slotUI;
 
         #region // Turn System Event Connect
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
 
-        }
-        private void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
             if (arg1 == TurnEnum.PlayTurn)
             {
@@ -40,7 +32,7 @@ namespace Runix.Enviorment
         }
         private void OnMouseUp()
         {
-            if (cardSO != null)
+            if (cardSO != null && TurnControlSystem.TurnControlManager.instance.CurrentPlayer == 0)
             {
                 deckManagers.PickTheHand(cardSO);
                 cardSO = null;
@@ -61,8 +53,10 @@ namespace Runix.Enviorment
 
         public void RemoveCardSO()
         {
+
             cardSO = null;
             slotUI.ChaceImage(null);
+
 
         }
 

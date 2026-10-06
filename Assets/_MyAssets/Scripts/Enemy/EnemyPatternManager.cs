@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Runix.Enemy
 {
-    public class EnemyPatternManager : MonoBehaviour
+    public class EnemyPatternManager : MonoNewTurnEventConneter
     {
         [SerializeField] AdaptiveEnemyProfileSO patterns;
         [SerializeField] HpManager hpManager;
@@ -27,16 +27,8 @@ namespace Runix.Enemy
 
 
         #region // Turn System Event Connect
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
 
-        }
-        private void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
             if (arg1 == TurnEnum.PlayTurn && arg2 == 1)
             {
@@ -51,15 +43,19 @@ namespace Runix.Enemy
 
 
 
-        void PlayCard()
+        async void PlayCard()
         {
             cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
+            enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
+
+            await Awaitable.WaitForSecondsAsync(1);
             for (int i = 0; i < cards.Count; i++)
             {
-                slots[i].cardSO = cards[i];
+                slots[i].SetCardSO(cards[i]);
+                enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count - 1 - i);
+                await Awaitable.WaitForSecondsAsync(0.5f);
             }
-            enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
-            TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
+            TurnControlSystem.TurnControlManager.instance.RequestEndTurn(1);
         }
 
 

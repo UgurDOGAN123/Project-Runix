@@ -2,7 +2,7 @@
 
 namespace Runix.UI
 {
-    public class StageUiHandler : MonoBehaviour
+    public class StageUiHandler : MonoNewTurnEventConneter
     {
         [SerializeField] bool isShow = true;
         [SerializeField] TurnEnum[] turnEnum;
@@ -10,16 +10,8 @@ namespace Runix.UI
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] SpriteRenderer spriteRenderer2;
 
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
-        }
 
-        private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
 
             for (int i = 0; i < turnEnum.Length; i++)

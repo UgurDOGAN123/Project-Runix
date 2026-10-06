@@ -1,59 +1,43 @@
-﻿using Runix.Enviorment;
+﻿using Runix;
+using Runix.Enviorment;
 using Runix.Managers;
 using Runix.Turn;
+using Runix.TurnControlSystem;
 using UnityEngine;
 
-namespace Runix.Slots
+public class SlotsManagers : MonoBehaviour
 {
-    public class SlotsManagers : MonoBehaviour
+    [SerializeField] Slot[] slots;
+    [SerializeField] TurnDataManager turnData;
+    [SerializeField] DeckManagers[] deckManager;
+
+    // Base class'ında OnEnable/OnDisable varsa override edip base'i çağır
+    void OnEnable()
     {
-        [SerializeField] Slot[] slots;
-        [SerializeField] TurnDataManager turnData;
-        [SerializeField] DeckManagers[] deckManager;
+        var tm = TurnControlManager.instance;
+        if (tm != null) tm.DamageResolver = CalculateData;
+    }
 
+    void OnDisable()
+    {
+        var tm = TurnControlManager.instance;
+        if (tm != null && tm.DamageResolver == CalculateData)
+            tm.DamageResolver = null;
+    }
 
-        #region // Turn System Event Connect
-        private void OnEnable()
+    async Awaitable CalculateData(int a)
+    {
+        var ct = destroyCancellationToken;
+        TurnDataHolder holder = (a == 0) ? turnData.playerTurnDataHolder
+                                         : turnData.enemyTurnDataHolder;
+
+        foreach (Slot slot in slots)
         {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
-        }
+            if (slot.cardSO == null) continue;
 
-        private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
-        {
+            slot.cardSO.UseCard(holder, deckManager[a]);
+            await Awaitable.WaitForSecondsAsync(1, ct);
 
-            if (arg1 == Runix.TurnEnum.TurnDamage)
-            {
-
-                CalculateDatavoid(arg2);
-            }
-        }
-
-
-        #endregion
-        async void CalculateDatavoid(int a)
-        {
-            TurnDataHolder turnDataHolder;
-
-            if (a == 0)
-            {
-                turnDataHolder = turnData.playerTurnDataHolder;
-            }
-            else
-            {
-                turnDataHolder = turnData.enemyTurnDataHolder;
-            }
-            foreach (Slot slot in slots)
-            {
-                if (slot.cardSO != null)
-                {
-                    slot.cardSO.UseCard(turnDataHolder, deckManager[a]);
-                    await Awaitable.WaitForSecondsAsync(1);
-                }
-            }
         }
     }
 }

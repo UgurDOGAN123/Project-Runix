@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Runix.Scripts.UI
 {
-    public class EndTurnButtan : MonoBehaviour
+    public class EndTurnButtan : MonoNewTurnEventConneter
     {
         [SerializeField] Button button;
         [SerializeField] GameObject Text;
@@ -19,16 +19,8 @@ namespace Runix.Scripts.UI
         [SerializeField] TurnEnum turnEnum;
         [SerializeField] int whichPlayer;
 
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
-        }
 
-        private void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
         {
             if ((arg1 == turnEnum && arg2 == whichPlayer))
             {
@@ -47,7 +39,7 @@ namespace Runix.Scripts.UI
         public void PlayerTurnEnd()
         {
 
-            TurnControlSystem.TurnControlManager.instance.ChanceTurnStage();
+            TurnControlSystem.TurnControlManager.instance.RequestEndTurn(0);
         }
     }
 }

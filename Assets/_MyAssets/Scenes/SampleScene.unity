@@ -822,10 +822,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3159249106691876826}
   - {fileID: 805871348}
   - {fileID: 345159674}
   - {fileID: 1033540931}
+  - {fileID: 285909677}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &221020680
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Slots.SlotsManagers
   slots:
-  - {fileID: 3159249106691876827}
+  - {fileID: 285909678}
   - {fileID: 805871349}
   - {fileID: 345159675}
   - {fileID: 1558824790}
@@ -1127,6 +1127,83 @@ MonoBehaviour:
   - {fileID: 705233339}
   - {fileID: 685568033}
   character: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
+--- !u!1001 &285909676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 221020679}
+    m_Modifications:
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229363499082099537, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: deckManagers
+      value: 
+      objectReference: {fileID: 1946946243}
+    - target: {fileID: 5440436008836145526, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+      propertyPath: m_Name
+      value: Slot 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+--- !u!4 &285909677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+  m_PrefabInstance: {fileID: 285909676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &285909678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5229363499082099537, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
+  m_PrefabInstance: {fileID: 285909676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7798192d84ae6fa48a14bc6961bdecc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Enviorment.Slot
 --- !u!1 &299015869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4677,7 +4754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.2784314, b: 0.34117648, a: 1}
+  m_Color: {r: 0.27450982, g: 0.007843138, b: 0.007843138, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7101,7 +7178,7 @@ MonoBehaviour:
   turnData: {fileID: 54472551}
   enemyHandUI: {fileID: 280151052}
   slots:
-  - {fileID: 3159249106691876827}
+  - {fileID: 285909678}
   - {fileID: 805871349}
   - {fileID: 345159675}
   - {fileID: 1558824790}
@@ -7269,8 +7346,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.TurnControlSystem.TurnControlManager
   playerCount: 2
-  currentPlayer: 0
+  autoStart: 1
+  startDelay: 0.5
+  turnEndDelay: 0.5
+  damageFallbackDelay: 1
   currentStage: 0
+  currentPlayer: 0
 --- !u!4 &2140309524
 Transform:
   m_ObjectHideFlags: 0
@@ -7609,83 +7690,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd5c37ace7c77f49a21780caef92370, type: 3}
---- !u!1001 &3159249106691876825
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 221020679}
-    m_Modifications:
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5229363499082099537, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: deckManagers
-      value: 
-      objectReference: {fileID: 1946946243}
-    - target: {fileID: 5440436008836145526, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-      propertyPath: m_Name
-      value: Slot 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
---- !u!4 &3159249106691876826 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2697051865959074106, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-  m_PrefabInstance: {fileID: 3159249106691876825}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3159249106691876827 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5229363499082099537, guid: 514c0d4d73c310d4b97a40eecd20170f, type: 3}
-  m_PrefabInstance: {fileID: 3159249106691876825}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7798192d84ae6fa48a14bc6961bdecc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Runix.Enviorment.Slot
 --- !u!1001 &4124714790482915963
 PrefabInstance:
   m_ObjectHideFlags: 0

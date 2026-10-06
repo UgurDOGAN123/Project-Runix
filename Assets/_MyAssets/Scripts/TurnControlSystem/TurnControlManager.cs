@@ -1,24 +1,47 @@
 ﻿using System;
+using System.Threading;
 using UnityEngine;
 
 namespace Runix.TurnControlSystem
 {
+    /// <summary>
+    /// Akış: BattleStart -> [her oyuncu için: PlayTurn -> (RequestEndTurn bekle) -> TurnDamage -> (DamageResolver bekle)]
+    ///       -> TurnEnd -> tekrar. EndBattle() çağrılınca BattleEnd ile biter.
+    /// Gereksinim: Unity 6 / 2023.2+ (Awaitable, AwaitableCompletionSource).
+    /// </summary>
     public class TurnControlManager : MonoBehaviour
     {
-        [SerializeField] int playerCount;
-        [SerializeField] int currentPlayer;
-        [SerializeField] TurnEnum currentStage;
-
-        public Action ChanceTurnStage;
-        public Action<TurnEnum, int> NewTurn;
-
         public static TurnControlManager instance;
 
-        bool isTurnFinish = false;
+        [SerializeField] int playerCount = 2;
+        [SerializeField] bool autoStart = true;
+        [SerializeField] float startDelay = 0.5f;      // BattleStart öncesi
+        [SerializeField] float turnEndDelay = 0.5f;    // TurnEnd sonrası
+        [SerializeField] float damageFallbackDelay = 1f; // DamageResolver yoksa beklenecek süre
 
-        public int CurrentPlayer { get => currentPlayer; set => currentPlayer = value; }
+        [SerializeField] TurnEnum currentStage = TurnEnum.None;
+        [SerializeField] int currentPlayer;
 
-        private void Awake()
+        /// <summary>Aşama değiştiğinde (stage, player) ile haber verir.</summary>
+        public event Action<TurnEnum, int> NewTurn;
+
+        /// <summary>
+        /// Hasar sistemi bunu doldurur. TurnDamage eventinden sonra manager,
+        /// hesap + animasyon bitene kadar bu görevi bekler. Boşsa sabit süre bekler.
+        /// </summary>
+        public Func<int, Awaitable> DamageResolver;
+
+        public TurnEnum CurrentStage => currentStage;
+        public int CurrentPlayer => currentPlayer;
+        public int PlayerCount => playerCount;
+        public bool IsBattleRunning { get; private set; }
+
+        AwaitableCompletionSource endTurnSignal;
+        bool battleOver;
+
+        #region Unity
+
+        void Awake()
         {
             if (instance == null)
             {
@@ -26,104 +49,132 @@ namespace Runix.TurnControlSystem
             }
             else if (instance != this)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
 
-        //Şimdilik Start Burada İlerde belki değişir
-        private void Start()
+        void Start()
         {
-            ChanceTurnStage?.Invoke();
+            if (autoStart) StartBattle();
         }
 
-
-
-
-        private void OnEnable()
+        void OnDestroy()
         {
-            ChanceTurnStage += RequestNextStageAsync;
-        }
-        private void OnDisable()
-        {
-            ChanceTurnStage -= RequestNextStageAsync;
-        }
-        public void EndBattle()
-        {
-            currentStage = TurnEnum.BattleEnd;
-            NewTurn?.Invoke(currentStage, CurrentPlayer);
-        }
+            if (instance == this) instance = null;
 
-
-
-        async void RequestNextStageAsync()
-        {
-            if ((CurrentPlayer == 0 && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage)) && isTurnFinish)
-            {
-                isTurnFinish = false;
-                return;
-            }
-            await Awaitable.WaitForSecondsAsync(3);
-            ChanceStage();
-
-        }
-
-
-        private void ChanceStage()
-        {
-
-            if (currentStage == TurnEnum.None)
-            {
-                WarStarter();
-            }
-            else if (CurrentPlayer < playerCount && (TurnEnum.BattleStart == currentStage || TurnEnum.TurnDamage == currentStage || TurnEnum.TurnEnd == currentStage))
-            {
-
-                PlayerTurn();
-            }
-            else if (currentStage == TurnEnum.PlayTurn && CurrentPlayer < playerCount)
-            {
-                DamageCalculate();
-            }
-            else if (currentStage == TurnEnum.TurnDamage && playerCount <= CurrentPlayer)
-            {
-                isTurnFinish = true;
-                EndTurn();
-            }
-
-        }
-
-        #region //Chance Fonktion Supporters
-
-        void WarStarter()
-        {
-            currentStage = TurnEnum.BattleStart;
-            NewTurn?.Invoke(currentStage, CurrentPlayer);
-            ChanceTurnStage?.Invoke();
-        }
-
-        void PlayerTurn()
-        {
-            currentStage = TurnEnum.PlayTurn;
-            NewTurn?.Invoke(currentStage, CurrentPlayer);
-        }
-
-        void DamageCalculate()
-        {
-            currentStage = TurnEnum.TurnDamage;
-            NewTurn?.Invoke(currentStage, CurrentPlayer);
-            ChanceTurnStage?.Invoke();
-            CurrentPlayer++;
-
-
-        }
-        void EndTurn()
-        {
-            CurrentPlayer = 0;
-            currentStage = TurnEnum.TurnEnd;
-            NewTurn?.Invoke(currentStage, CurrentPlayer);
+            // Bekleyen sinyali iptal et, döngü temiz çıksın
+            var s = endTurnSignal;
+            endTurnSignal = null;
+            s?.SetCanceled();
         }
 
         #endregion
 
+        #region Public API
+
+        public async void StartBattle()
+        {
+            if (IsBattleRunning) return;
+
+            if (playerCount <= 0)
+            {
+                Debug.LogError("[TurnControlManager] playerCount 0'dan büyük olmalı.", this);
+                return;
+            }
+
+            try
+            {
+                await RunBattle(destroyCancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                // Obje yok edildi, normal
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e, this);
+            }
+        }
+
+        /// <summary>
+        /// Oyuncu "turu bitir" dediğinde veya AI kart seçimini bitirdiğinde çağrılır.
+        /// Sırası olmayan oyuncunun çağrısı ve çift çağrı yok sayılır.
+        /// </summary>
+        public void RequestEndTurn(int player)
+        {
+            if (!IsBattleRunning || currentStage != TurnEnum.PlayTurn) return;
+            if (player != currentPlayer) return;
+
+            var s = endTurnSignal;
+            endTurnSignal = null;
+            s?.SetResult();
+        }
+
+        /// <summary>Savaşı bitirir. Oyuncu beklenirken çağrılsa da döngü takılmaz.</summary>
+        public void EndBattle()
+        {
+            battleOver = true;
+
+            var s = endTurnSignal;
+            endTurnSignal = null;
+            s?.SetResult();
+        }
+
+        #endregion
+
+        #region Battle Loop
+
+        async Awaitable RunBattle(CancellationToken ct)
+        {
+            IsBattleRunning = true;
+            battleOver = false;
+            currentPlayer = 0;
+
+            // Dinleyicilerin abone olması için bir frame bekle
+            await Awaitable.NextFrameAsync(ct);
+            if (startDelay > 0f) await Awaitable.WaitForSecondsAsync(startDelay, ct);
+
+            SetStage(TurnEnum.BattleStart, 0);
+
+            while (!battleOver)
+            {
+                for (int p = 0; p < playerCount && !battleOver; p++)
+                {
+                    currentPlayer = p;
+
+                    // ÖNCE sinyal, SONRA event: AI event içinde anında bitirse bile kaçmaz
+                    endTurnSignal = new AwaitableCompletionSource();
+                    var signal = endTurnSignal;
+
+                    SetStage(TurnEnum.PlayTurn, p);
+
+                    await signal.Awaitable;
+                    if (battleOver) break;
+
+                    SetStage(TurnEnum.TurnDamage, p);
+                    if (DamageResolver != null)
+                        await DamageResolver(p);
+                    else
+                        await Awaitable.WaitForSecondsAsync(damageFallbackDelay, ct);
+                }
+
+                if (battleOver) break;
+
+                currentPlayer = 0;
+                SetStage(TurnEnum.TurnEnd, 0);
+                await Awaitable.WaitForSecondsAsync(turnEndDelay, ct);
+            }
+
+            SetStage(TurnEnum.BattleEnd, currentPlayer);
+            IsBattleRunning = false;
+        }
+
+        void SetStage(TurnEnum stage, int player)
+        {
+            currentStage = stage;
+            NewTurn?.Invoke(stage, player);
+        }
+
+        #endregion
     }
 }

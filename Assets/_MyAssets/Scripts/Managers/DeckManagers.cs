@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Runix.Managers
 {
-    public class DeckManagers : MonoBehaviour
+    public class DeckManagers : MonoNewTurnEventConneter
     {
         public List<CardSO> OnHandDeck;
         [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck;
@@ -24,16 +24,8 @@ namespace Runix.Managers
         }
 
         #region // Turn System Event Connect
-        private void OnEnable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn += TurnManagerNewTurnStart;
-        }
-        private void OnDisable()
-        {
-            TurnControlSystem.TurnControlManager.instance.NewTurn -= TurnManagerNewTurnStart;
 
-        }
-        private void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
             if (arg1 == TurnEnum.BattleStart)
             {
@@ -42,7 +34,6 @@ namespace Runix.Managers
             else if (arg1 == TurnEnum.TurnEnd)
             {
                 PickTheHand(EveryTurnAddCardCount);
-                TurnControlSystem.TurnControlManager.instance.ChanceTurnStage?.Invoke();
             }
         }
         #endregion
