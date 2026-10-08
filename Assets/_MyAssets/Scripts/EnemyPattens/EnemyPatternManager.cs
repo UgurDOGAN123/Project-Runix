@@ -51,7 +51,7 @@ namespace Runix.Enemy
             {
                 deckManager.RemoveFormHandDeck(cards[i]);
                 slots[i].SetCardSO(cards[i]);
-                enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count - 1 - i);
+                enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
                 await Awaitable.WaitForSecondsAsync(0.5f);
             }
             TurnControlSystem.TurnControlManager.instance.RequestEndTurn(1);

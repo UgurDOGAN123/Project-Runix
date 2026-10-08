@@ -99,8 +99,8 @@ namespace Runix.Managers
         }
         public void PickTheHand(CardSO card)
         {
+            if (onHandDeck.Count >= character.MaxHandCardCount) return;
             onHandDeck.Add(card);
-            onPickableDeck.Remove(card);
             UpdateUI?.Invoke(onHandDeck);
         }
 
