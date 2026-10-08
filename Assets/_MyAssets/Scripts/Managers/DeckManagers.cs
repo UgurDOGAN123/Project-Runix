@@ -12,7 +12,10 @@ namespace Runix.Managers
         [SerializeField] OnHandCardManager onHandCardManager;
         [SerializeField] int EveryTurnAddCardCount;
         [SerializeField] DeckUI[] deckUI;
-
+        [SerializeField]
+        Vector3[] vector2s;
+        [SerializeField] byte myPlayer;
+        [SerializeField] GameObject deck;
         public Character.CharacterSO character;
 
         List<CardSO> MainDeck
@@ -25,15 +28,15 @@ namespace Runix.Managers
 
         #region // Turn System Event Connect
 
-        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
+        protected override async void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
             if (arg1 == TurnEnum.BattleStart)
             {
-                PickTheHand(character.StartCardCount);
+                await PickTheHand(character.StartCardCount);
             }
             else if (arg1 == TurnEnum.TurnEnd)
             {
-                PickTheHand(EveryTurnAddCardCount);
+                await PickTheHand(EveryTurnAddCardCount);
             }
         }
         #endregion
@@ -42,7 +45,7 @@ namespace Runix.Managers
         {
             if (character == null)
             {
-                Debug.LogError("Chrahter is empty pleas select a character");
+                Debug.LogError("Charhter is empty pleas select a character");
             }
 
             OnPickableDeckAddCards(MainDeck);
@@ -50,29 +53,44 @@ namespace Runix.Managers
         }
 
 
-        public void PickTheHand(int number)
+        bool isBusy;
+
+        public async Awaitable PickTheHand(int number)
         {
-            for (int i = 0; i < number; i++)
+            if (isBusy) return;
+            isBusy = true;
+            try
             {
-                if (character.MaxHandCardCount <= OnHandDeck.Count)
+                for (int i = 0; i < number; i++)
                 {
-                    print("Hand Full");
-                    break;
+                    if (OnHandDeck.Count >= character.MaxHandCardCount) break;
+
+                    if (OnPickableDeck.Count == 0)
+                    {
+                        if (TrashDeck.Count == 0) break;       // çekilecek kart kalmadý
+                        await ReplaceToTrashcan();
+                    }
+
+                    var card = OnPickableDeck[0];
+                    OnPickableDeck.RemoveAt(0);
+                    OnHandDeck.Add(card);                       // önce veri
+                    await AnimPlayer("MoveHand");               // sonra animasyon
+                    onHandCardManager?.CardOnScreen(card);
+                    UpdateUI();
                 }
-                if (OnPickableDeck.Count <= 0)
-                {
-                    print("deck Empty");
-                    ReplaceToTrashcan();
-                }
-                OnHandDeck.Add(OnPickableDeck[0]);
-                onHandCardManager?.CardOnScreen(OnPickableDeck[0]);
-                OnPickableDeck.RemoveAt(0);
             }
-            UpdateUI();
+            finally { isBusy = false; }
         }
 
-        public void PickTheHand(CardSO card)
+        public async Awaitable ReplaceToTrashcan()
         {
+            await AnimPlayer("MoveDeck");
+            OnPickableDeckAddCards(TrashDeck);
+            TrashDeck.Clear();
+        }
+        public async void PickTheHand(CardSO card)
+        {
+            await AnimPlayer("MoveHand");
             OnHandDeck.Add(card);
             onHandCardManager.CardOnScreen(card);
             OnPickableDeck.Remove(card);
@@ -82,16 +100,9 @@ namespace Runix.Managers
         }
 
 
-        public void ReplaceToTrashcan()
+        public async void MoveToTrash(CardSO card)
         {
-            OnPickableDeckAddCards(TrashDeck);
-            TrashDeck.Clear();
-            UpdateUI();
-
-        }
-
-        public void MoveToTrash(CardSO card)
-        {
+            await AnimPlayer("MoveTrash");
             OnHandDeck.Remove(card);
             TrashDeck.Add(card);
             UpdateUI();
@@ -133,6 +144,38 @@ namespace Runix.Managers
         }
         #endregion
 
+        async Awaitable AnimPlayer(string trigger)
+        {
+
+            GameObject _deck = Instantiate(deck, SetPos(trigger), Quaternion.identity);
+            _deck.GetComponent<DeckAnimationController>().PlayAnim(trigger, myPlayer);
+            await Awaitable.WaitForSecondsAsync(1.0f);
+
+        }
+
+
+        Vector2 SetPos(string trigger)
+        {
+            Vector2 vector2 = new(0, 0);
+
+            switch (trigger)
+            {
+
+                case "MoveHand":
+                    vector2 = vector2s[0];
+                    break;
+
+                case "MoveTrash":
+                    vector2 = vector2s[1];
+                    break;
+
+                case "MoveDeck":
+                    vector2 = vector2s[2];
+                    break;
+            }
+            return vector2;
+
+        }
     }
 
 }

@@ -9,6 +9,7 @@ namespace Runix.Card
 
         private CardSO card = null;
 
+
         public CardSO CardSO
         { get { return card; } }
 

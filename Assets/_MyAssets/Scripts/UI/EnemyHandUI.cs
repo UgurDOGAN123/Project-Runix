@@ -6,7 +6,6 @@ namespace Runix.Enemy.UI
     {
         [SerializeField] GameObject[] Cards;
 
-        [SerializeField] Character.CharacterSO character;
 
         public void UpdateUI(int count)
         {

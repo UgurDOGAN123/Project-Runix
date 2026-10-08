@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -85.6}
+  m_AnchoredPosition: {x: 0, y: -115}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5652662540491063902
@@ -147,6 +147,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9074595879387575218}
   - component: {fileID: 2928814218003773499}
+  - component: {fileID: 5134699870843712534}
+  - component: {fileID: 1860007950773736402}
   m_Layer: 5
   m_Name: DeckUI
   m_TagString: Untagged
@@ -189,6 +191,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.UI.DeckUI
   Image: {fileID: 6816855392221175454}
   UITextMeshPro: {fileID: 1838109675935909483}
+--- !u!95 &5134699870843712534
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235971527377136163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53ddf0b811b3fef45811918539fbaae0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1860007950773736402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235971527377136163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14751541f9df464439de495c1415317e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.DeckAnimationController
+  myPlayer: 0
+  myAnimator: {fileID: 5134699870843712534}
 --- !u!1 &6816855392221175454
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +262,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 120}
+  m_SizeDelta: {x: 120, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3085627796314409355
 CanvasRenderer:
