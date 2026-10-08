@@ -1,5 +1,6 @@
 
 using Runix.Enviorment;
+using Runix.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +11,8 @@ namespace Runix.Interactivity
         Transform _parentToReturnTo;
         private CanvasGroup _canvasGroup;
         [SerializeField] Card.Card card;
- 
+        [SerializeField] DeckManagers deckManagers;
+
         private void Awake()
         {
             if (!TryGetComponent<CanvasGroup>(out _canvasGroup))
@@ -50,13 +52,15 @@ namespace Runix.Interactivity
             if (hitCollider != null)
             {
                 if (hitCollider.TryGetComponent<Slot>(out Slot slot))
-                {                   
+                {
                     if (slot.IsAddable)
-                    {                    
+                    {
+
                         slot.SetCardSO(card.CardSO);
+                        deckManagers.RemoveFormHandDeck(card.CardSO);
                         placedSuccessfully = true;
                     }
-                }                
+                }
             }
             transform.SetParent(_parentToReturnTo);
             transform.localPosition = Vector3.zero;

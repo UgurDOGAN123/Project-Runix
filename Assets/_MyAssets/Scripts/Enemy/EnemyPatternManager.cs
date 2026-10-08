@@ -34,10 +34,7 @@ namespace Runix.Enemy
             {
                 PlayCard();
             }
-            else if (arg1 == TurnEnum.BattleStart || arg1 == TurnEnum.TurnEnd)
-            {
-                enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
-            }
+
         }
         #endregion
 
@@ -46,11 +43,13 @@ namespace Runix.Enemy
         async void PlayCard()
         {
             cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
+
             enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
 
             await Awaitable.WaitForSecondsAsync(1);
             for (int i = 0; i < cards.Count; i++)
             {
+                deckManager.RemoveFormHandDeck(cards[i]);
                 slots[i].SetCardSO(cards[i]);
                 enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count - 1 - i);
                 await Awaitable.WaitForSecondsAsync(0.5f);

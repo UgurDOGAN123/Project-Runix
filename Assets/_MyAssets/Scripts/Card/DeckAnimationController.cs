@@ -5,7 +5,6 @@ namespace Runix.Card
     public class DeckAnimationController : MonoBehaviour
     {
         [SerializeField] Animator myAnimator;
-        [SerializeField] Vector3[] vectors;
 
         public void PlayAnim(string trigger, byte myPlayer)
         {

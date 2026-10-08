@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 9074595879387575218}
   - component: {fileID: 2928814218003773499}
   - component: {fileID: 5134699870843712534}
-  - component: {fileID: 1860007950773736402}
   m_Layer: 5
   m_Name: DeckUI
   m_TagString: Untagged
@@ -175,7 +174,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -330, y: -128}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2928814218003773499
 MonoBehaviour:
@@ -213,20 +212,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1860007950773736402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2235971527377136163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14751541f9df464439de495c1415317e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.DeckAnimationController
-  myPlayer: 0
-  myAnimator: {fileID: 5134699870843712534}
 --- !u!1 &6816855392221175454
 GameObject:
   m_ObjectHideFlags: 0

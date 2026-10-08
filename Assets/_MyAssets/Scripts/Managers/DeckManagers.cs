@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Runix.Card;
+using Runix.Managers.Anim;
 using Runix.UI;
 using UnityEngine;
 
@@ -7,24 +9,37 @@ namespace Runix.Managers
 {
     public class DeckManagers : MonoNewTurnEventConneter
     {
-        public List<CardSO> OnHandDeck;
-        [SerializeField] private List<CardSO> OnPickableDeck, TrashDeck;
-        [SerializeField] OnHandCardManager onHandCardManager;
-        [SerializeField] int EveryTurnAddCardCount;
-        [SerializeField] DeckUI[] deckUI;
-        [SerializeField]
-        Vector3[] vector2s;
-        [SerializeField] byte myPlayer;
-        [SerializeField] GameObject deck;
-        public Character.CharacterSO character;
+        [Header("Decks")]
+        [SerializeField] private List<CardSO> onPickableDeck;
+        [SerializeField] private List<CardSO> trashDeck;
+        [SerializeField] private List<CardSO> onHandDeck;
 
-        List<CardSO> MainDeck
+
+        [Header("Veraibles")]
+        [SerializeField] byte playerID;
+
+        [Header("References")]
+        public Character.CharacterSO character;
+        [SerializeField] DeckAnimManager animManager;
+        [SerializeField] DeckUI Trash, Pickable;
+
+        public event Action<List<CardSO>> UpdateUI;  // Her iþlemden Sonra tetikle
+
+
+        List<CardSO> MainDeck => character.Decks;
+
+        public List<CardSO> OnHandDeck { get => onHandDeck; private set => onHandDeck = value; }
+
+        public int TrashDeckCount
         {
-            get
-            {
-                return character.Decks;
-            }
+            get => trashDeck.Count;
         }
+
+        public int OnPickableDeckCount
+        {
+            get => onPickableDeck.Count;
+        }
+
 
         #region // Turn System Event Connect
 
@@ -36,7 +51,7 @@ namespace Runix.Managers
             }
             else if (arg1 == TurnEnum.TurnEnd)
             {
-                await PickTheHand(EveryTurnAddCardCount);
+                await PickTheHand(character.EveryTurnAddCardCount);
             }
         }
         #endregion
@@ -49,66 +64,60 @@ namespace Runix.Managers
             }
 
             OnPickableDeckAddCards(MainDeck);
-
         }
 
 
-        bool isBusy;
-
         public async Awaitable PickTheHand(int number)
         {
-            if (isBusy) return;
-            isBusy = true;
-            try
+
+
+            for (int i = 0; i < number; i++)
             {
-                for (int i = 0; i < number; i++)
+                if (onHandDeck.Count >= character.MaxHandCardCount) break;
+
+                if (onPickableDeck.Count == 0)
                 {
-                    if (OnHandDeck.Count >= character.MaxHandCardCount) break;
-
-                    if (OnPickableDeck.Count == 0)
-                    {
-                        if (TrashDeck.Count == 0) break;       // çekilecek kart kalmadý
-                        await ReplaceToTrashcan();
-                    }
-
-                    var card = OnPickableDeck[0];
-                    OnPickableDeck.RemoveAt(0);
-                    OnHandDeck.Add(card);                       // önce veri
-                    await AnimPlayer("MoveHand");               // sonra animasyon
-                    onHandCardManager?.CardOnScreen(card);
-                    UpdateUI();
+                    await ReplaceToTrashcan();
                 }
+
+                var card = onPickableDeck[0];
+                onPickableDeck.RemoveAt(0);
+                onHandDeck.Add(card);                       // önce veri
+                await animManager.AnimPlayer("MoveHand", playerID);               // sonra animasyon
+                UpdateUI?.Invoke(onHandDeck);
+
             }
-            finally { isBusy = false; }
+
         }
 
         public async Awaitable ReplaceToTrashcan()
         {
-            await AnimPlayer("MoveDeck");
-            OnPickableDeckAddCards(TrashDeck);
-            TrashDeck.Clear();
+            OnPickableDeckAddCards(trashDeck);
+            await animManager.AnimPlayer("MoveDeck", playerID);
+            trashDeck.Clear();
+            UpdateUI?.Invoke(onHandDeck);
         }
-        public async void PickTheHand(CardSO card)
+        public void PickTheHand(CardSO card)
         {
-            await AnimPlayer("MoveHand");
-            OnHandDeck.Add(card);
-            onHandCardManager.CardOnScreen(card);
-            OnPickableDeck.Remove(card);
-            UpdateUI();
-
-
+            onHandDeck.Add(card);
+            onPickableDeck.Remove(card);
+            UpdateUI?.Invoke(onHandDeck);
         }
 
 
         public async void MoveToTrash(CardSO card)
         {
-            await AnimPlayer("MoveTrash");
-            OnHandDeck.Remove(card);
-            TrashDeck.Add(card);
-            UpdateUI();
+
+            trashDeck.Add(card);
+            await animManager.AnimPlayer("MoveTrash", playerID);
+            UpdateUI?.Invoke(onHandDeck);// tekrar bak
 
         }
 
+        public void RemoveFormHandDeck(CardSO card)
+        {
+            onHandDeck.Remove(card);
+        }
 
 
 
@@ -118,17 +127,14 @@ namespace Runix.Managers
         {
             for (int i = 0; i < cards.Count; i++)
             {
-                OnPickableDeck.Add(cards[i]);
+                onPickableDeck.Add(cards[i]);
             }
-            ShuffelDeck(OnPickableDeck);
-            UpdateUI();
+            ShuffelDeck(onPickableDeck);
+            UpdateUI?.Invoke(null);
         }
 
-        void UpdateUI()
-        {
-            deckUI[0].UpdateUI(OnPickableDeck.Count);
-            deckUI[1].UpdateUI(TrashDeck.Count);
-        }
+        // gerekirse baðlantýyý ters çevir ve o tarafdan dinle
+
 
         void ShuffelDeck(List<CardSO> cards)
         {
@@ -136,7 +142,7 @@ namespace Runix.Managers
             CardSO temp;
             for (int i = 0; i < cards.Count; i++)
             {
-                randomNumber = Random.Range(0, cards.Count);
+                randomNumber = UnityEngine.Random.Range(i, cards.Count);
                 temp = cards[i];
                 cards[i] = cards[randomNumber];
                 cards[randomNumber] = temp;
@@ -144,38 +150,6 @@ namespace Runix.Managers
         }
         #endregion
 
-        async Awaitable AnimPlayer(string trigger)
-        {
-
-            GameObject _deck = Instantiate(deck, SetPos(trigger), Quaternion.identity);
-            _deck.GetComponent<DeckAnimationController>().PlayAnim(trigger, myPlayer);
-            await Awaitable.WaitForSecondsAsync(1.0f);
-
-        }
-
-
-        Vector2 SetPos(string trigger)
-        {
-            Vector2 vector2 = new(0, 0);
-
-            switch (trigger)
-            {
-
-                case "MoveHand":
-                    vector2 = vector2s[0];
-                    break;
-
-                case "MoveTrash":
-                    vector2 = vector2s[1];
-                    break;
-
-                case "MoveDeck":
-                    vector2 = vector2s[2];
-                    break;
-            }
-            return vector2;
-
-        }
     }
 
 }

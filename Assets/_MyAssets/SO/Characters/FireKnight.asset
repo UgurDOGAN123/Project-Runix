@@ -16,6 +16,7 @@ MonoBehaviour:
   description: FireKnight
   MaxHandCardCount: 8
   StartCardCount: 6
+  EveryTurnAddCardCount: 4
   Decks:
   - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
   - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
