@@ -1,6 +1,5 @@
 ﻿using Runix.Managers;
 using UnityEngine;
-
 namespace Runix.Map
 {
     public class DeskUIManager : MonoBehaviour
@@ -27,6 +26,7 @@ namespace Runix.Map
 
         public void SetDesk()
         {
+
             if (Column != DeskManager.instance.DeskCount) return;
             DeskManager.instance.ChaneDesk.Invoke(type);
         }
