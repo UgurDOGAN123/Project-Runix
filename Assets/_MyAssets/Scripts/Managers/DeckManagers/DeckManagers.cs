@@ -15,6 +15,7 @@ namespace Runix.Managers
         [SerializeField] private List<CardSO> onHandDeck;
 
 
+
         [Header("Veraibles")]
         [SerializeField] byte playerID;
 
