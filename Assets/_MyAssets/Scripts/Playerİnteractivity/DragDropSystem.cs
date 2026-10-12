@@ -25,7 +25,7 @@ namespace Runix.Interactivity
             _parentToReturnTo = transform.parent;
 
             // Sürüklerken kartýn diðer UI elemanlarýnýn arkasýnda kalmamasý için Canvas seviyesine taþýyoruz
-            transform.SetParent(transform.root);
+            transform.SetParent(transform);
 
             // Farenin arkasýndaki objeleri (slotlarý) raycast ile tespit edebilmek için bloklamayý kapatýyoruz
             _canvasGroup.blocksRaycasts = false;
