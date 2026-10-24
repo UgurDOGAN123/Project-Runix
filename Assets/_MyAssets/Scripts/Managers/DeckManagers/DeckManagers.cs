@@ -20,14 +20,17 @@ namespace Runix.Managers
         [SerializeField] byte playerID;
 
         [Header("References")]
-        public Character.CharacterSO character;
+        public Character.CharacterSO Character
+        {
+            get; set;
+        }
         [SerializeField] DeckAnimManager animManager;
         [SerializeField] DeckUI Trash, Pickable;
 
         public event Action<List<CardSO>> UpdateUI;  // Her iþlemden Sonra tetikle
 
 
-        List<CardSO> MainDeck => character.Decks;
+        List<CardSO> MainDeck => Character.Decks;
 
         public List<CardSO> OnHandDeck { get => onHandDeck; private set => onHandDeck = value; }
 
@@ -48,23 +51,35 @@ namespace Runix.Managers
         {
             if (arg1 == TurnEnum.BattleStart)
             {
-                await PickTheHand(character.StartCardCount);
+                onPickableDeck.Clear();
+                trashDeck.Clear();
+                OnHandDeck.Clear();
+                OnPickableDeckAddCards(MainDeck);
+                UpdateUI?.Invoke(onHandDeck);
+                await PickTheHand(Character.StartCardCount);
             }
             else if (arg1 == TurnEnum.TurnEnd)
             {
-                await PickTheHand(character.EveryTurnAddCardCount);
+                await PickTheHand(Character.EveryTurnAddCardCount);
             }
         }
         #endregion
 
         void Awake()
         {
-            if (character == null)
+            if (playerID == 0)
+            {
+                Character = DeskManager.instance.Player;
+            }
+            else if (playerID == 1)
+            {
+                Character = DeskManager.instance.Enemy;
+            }
+            if (Character == null)
             {
                 Debug.LogError("Charhter is empty pleas select a character");
             }
 
-            OnPickableDeckAddCards(MainDeck);
         }
 
 
@@ -74,7 +89,7 @@ namespace Runix.Managers
 
             for (int i = 0; i < number; i++)
             {
-                if (onHandDeck.Count >= character.MaxHandCardCount) break;
+                if (onHandDeck.Count >= Character.MaxHandCardCount) break;
 
                 if (onPickableDeck.Count == 0)
                 {
@@ -100,7 +115,7 @@ namespace Runix.Managers
         }
         public void PickTheHand(CardSO card)
         {
-            if (onHandDeck.Count >= character.MaxHandCardCount) return;
+            if (onHandDeck.Count >= Character.MaxHandCardCount) return;
             onHandDeck.Add(card);
             UpdateUI?.Invoke(onHandDeck);
         }
@@ -111,7 +126,7 @@ namespace Runix.Managers
 
             trashDeck.Add(card);
             await animManager.AnimPlayer("MoveTrash", playerID);
-            UpdateUI?.Invoke(onHandDeck);// tekrar bak
+            UpdateUI?.Invoke(onHandDeck);
 
         }
 

@@ -7,14 +7,14 @@ namespace Runix.UI.Reward
     public class RewardUIManager : MonoBehaviour
     {
         [SerializeField] Button[] cards;
-
-        [SerializeField] Character.CharacterSO characterSO;
+        Character.CharacterSO CharacterSO { get; set; }
 
         private void Start()
         {
+            CharacterSO = DeskManager.instance.Player;
             foreach (var card in cards)
             {
-                card.GetComponent<Card.Card>().SetCard(characterSO.Decks[Random.Range(0, characterSO.Decks.Count)]);
+                card.GetComponent<Card.Card>().SetCard(CharacterSO.Decks[Random.Range(0, CharacterSO.Decks.Count)]);
 
             }
         }
@@ -22,7 +22,7 @@ namespace Runix.UI.Reward
 
         public void AddCard(Card.Card card)
         {
-            characterSO.Decks.Add(card.CardSO);
+            CharacterSO.Decks.Add(card.CardSO);
             print(card.CardSO.name + " eklendi");
 
             // belki anim ardından set deske 

@@ -73,9 +73,9 @@ namespace Runix.TurnControlSystem
 
         public async void StartBattle()
         {
-
+            print(0);
             if (IsBattleRunning) return;
-
+            print(1);
             if (playerCount <= 0)
             {
                 Debug.LogError("[TurnControlManager] playerCount 0'dan büyük olmalı.", this);
@@ -130,6 +130,7 @@ namespace Runix.TurnControlSystem
             battleOver = false;
             currentPlayer = 0;
 
+            print(2);
             // Dinleyicilerin abone olması için bir frame bekle
             await Awaitable.NextFrameAsync(ct);
             if (startDelay > 0f) await Awaitable.WaitForSecondsAsync(startDelay, ct);

@@ -1331,6 +1331,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Enemy: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
+  Player: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
   DeskCount: 0
 --- !u!114 &325072677
 MonoBehaviour:
@@ -4559,7 +4561,6 @@ MonoBehaviour:
   - {fileID: 1593586638}
   - {fileID: 390689296}
   - {fileID: 2120675610}
-  characterSO: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
 --- !u!1 &1269191511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5659668967813359756, guid: 1cd5c37ace7c77f49a21780caef92370, type: 3}
@@ -6318,7 +6319,6 @@ MonoBehaviour:
   trashDeck: []
   onHandDeck: []
   playerID: 0
-  character: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
   animManager: {fileID: 1946946244}
   Trash: {fileID: 1932994761}
   Pickable: {fileID: 96656481}
@@ -6762,7 +6762,6 @@ MonoBehaviour:
   trashDeck: []
   onHandDeck: []
   playerID: 1
-  character: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
   animManager: {fileID: 2084102784}
   Trash: {fileID: 147730172}
   Pickable: {fileID: 1124860060}
