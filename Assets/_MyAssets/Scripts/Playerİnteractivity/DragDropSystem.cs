@@ -8,6 +8,7 @@ namespace Runix.Interactivity
 {
     public class DragDropSystem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
+        [SerializeField] Canvas canvas;
         Transform _parentToReturnTo;
         private CanvasGroup _canvasGroup;
         [SerializeField] Card.Card card;
@@ -19,15 +20,13 @@ namespace Runix.Interactivity
             {
                 _canvasGroup = gameObject.AddComponent<CanvasGroup>();
             }
+            canvas = GetComponentInParent<Canvas>().rootCanvas;
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
             _parentToReturnTo = transform.parent;
-
-            // Sürüklerken kartýn diðer UI elemanlarýnýn arkasýnda kalmamasý için Canvas seviyesine taþýyoruz
-            transform.SetParent(transform);
-
-            // Farenin arkasýndaki objeleri (slotlarý) raycast ile tespit edebilmek için bloklamayý kapatýyoruz
+            transform.SetParent(canvas.transform); // Canvas'ýn en üstüne taþý
+            transform.SetAsLastSibling();          // diðer her þeyin önünde çizilsin
             _canvasGroup.blocksRaycasts = false;
         }
 
