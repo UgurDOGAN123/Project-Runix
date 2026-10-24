@@ -12,7 +12,17 @@ namespace Runix.UI.Desk
         private void Start()
         {
             TryGetComponent<Image>(out DeskBlokker);
-            if (DeskManager.instance.DeskCount == Column)
+        }
+
+        private void OnEnable()
+        {
+            UIUpdate(DeskManager.instance.DeskCount);
+        }
+
+
+        private void UIUpdate(int obj)
+        {
+            if (obj == Column)
             {
                 DeskBlokker.enabled = false;
             }

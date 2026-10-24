@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Runix.Managers;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Runix.UI.Reward
@@ -14,10 +15,7 @@ namespace Runix.UI.Reward
             foreach (var card in cards)
             {
                 card.GetComponent<Card.Card>().SetCard(characterSO.Decks[Random.Range(0, characterSO.Decks.Count)]);
-                card.onClick.AddListener(() =>
-                {
-                    AddCard(card.GetComponent<Card.Card>());
-                });
+
             }
         }
 
@@ -26,6 +24,12 @@ namespace Runix.UI.Reward
         {
             characterSO.Decks.Add(card.CardSO);
             print(card.CardSO.name + " eklendi");
+
+            // belki anim ardından set deske 
+
+            DeskManager.instance.DeskCount++;
+            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.SetDesk);
+
         }
 
 

@@ -53,11 +53,6 @@ namespace Runix.TurnControlSystem
             }
         }
 
-        void Start()
-        {
-            if (autoStart) StartBattle();
-        }
-
         void OnDestroy()
         {
             if (instance == this) instance = null;
@@ -67,6 +62,10 @@ namespace Runix.TurnControlSystem
             endTurnSignal = null;
             s?.SetCanceled();
         }
+        private void OnEnable()
+        {
+            if (autoStart) StartBattle();
+        }
 
         #endregion
 
@@ -74,6 +73,7 @@ namespace Runix.TurnControlSystem
 
         public async void StartBattle()
         {
+
             if (IsBattleRunning) return;
 
             if (playerCount <= 0)

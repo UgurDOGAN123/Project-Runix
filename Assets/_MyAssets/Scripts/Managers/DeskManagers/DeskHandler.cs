@@ -1,26 +1,40 @@
-using System;
+using Runix.Managers;
 using UnityEngine;
 
 namespace Runix.Map
 {
+
     public class DeskHandler : MonoBehaviour
     {
-        [Serializable]
-        public struct DeskView
+        [System.Serializable]
+        public struct DeskObject
         {
-            public DeskType type;
-            public GameObject viewObject;
+            public GameObject DeskGameObject;
+            public DeskEnum DeskEnum;
         }
 
-        [SerializeField] private DeskView[] deskViews;
+        [SerializeField] DeskObject[] objects;
 
-        public void UpdateViews(DeskType targetType)
+        private void Start()
         {
-            for (int i = 0; i < deskViews.Length; i++)
+            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.SetDesk);
+        }
+
+        public void DeskEnumSet(DeskEnum desk)
+        {
+            foreach (var obj in objects)
             {
-                deskViews[i].viewObject.SetActive(deskViews[i].type == targetType);
+                obj.DeskGameObject.SetActive(obj.DeskEnum == desk);
             }
         }
+
+
     }
+}
+public enum DeskEnum
+{
+    SetDesk,
+    WarEnemy,
+    GiveTreasure
 }
 

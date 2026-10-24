@@ -10,6 +10,8 @@ namespace Runix.Damage
         [SerializeField] Element[] healable;
         [SerializeField] HpSlider hpSlider;
         Dictionary<Element, int> defensValues = new();
+        bool isDead;
+        public event System.Action OnDeath;
 
         public float HpPercent
         {
@@ -24,7 +26,6 @@ namespace Runix.Damage
             AddDefens(defansValue);
             //attack yapılacak
             TakeDamage(attackValue, multiplerValue);
-            print(hp / maxHp);
             hpSlider.ChaneSlider(HpPercent);
 
 
@@ -73,12 +74,13 @@ namespace Runix.Damage
                 float damageValue;
                 defensValues.TryGetValue(item, out int defens);
                 multiplerValue.TryGetValue(item, out int multipler);
-                damageValue = (attackValue[item] * (multipler * multipler)) * (1 - defens / 100);
+                damageValue = (attackValue[item] * (multipler * multipler)) * (1 - defens / 100f);
                 hp -= Mathf.RoundToInt(damageValue);
             }
-            if (hp < 0)
+            if (hp <= 0)
             {
-                Debug.Log(gameObject.name + " öldü");
+                isDead = true;
+                OnDeath?.Invoke();
             }
         }
 

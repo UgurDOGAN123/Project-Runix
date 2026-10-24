@@ -1,4 +1,3 @@
-using Runix.Map;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,8 +19,10 @@ namespace Runix.Managers
             }
         }
 
-        public UnityEvent<DeskType> ChaneDesk;
+        public UnityEvent<DeskEnum> ChaneDesk;
 
         public byte DeskCount;
+
     }
 }
+
