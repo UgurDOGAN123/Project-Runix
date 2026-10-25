@@ -1,3 +1,8 @@
+using System.Collections.Generic;
+using Runix.Card;
+using UnityEngine;
+
+
 namespace Runix.Character
 {
     public abstract class CharacterSO : ScriptableObject
