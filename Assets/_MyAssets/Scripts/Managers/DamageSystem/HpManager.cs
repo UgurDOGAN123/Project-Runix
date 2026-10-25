@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Runix.Managers;
-using Runix.UI;
-using UnityEngine;
-
-namespace Runix.Damage
+﻿namespace Runix.Damage
 {
     public class HpManager : MonoBehaviour
     {
@@ -19,6 +13,11 @@ namespace Runix.Damage
 
         public event System.Action OnDeath;
         Character.CharacterSO Character => DeskManager.instance.GetCharacterSO(playerID);
+
+        Character.CharacterSO Character
+        { get; set; }
+
+
 
         public float HpPercent
         {
