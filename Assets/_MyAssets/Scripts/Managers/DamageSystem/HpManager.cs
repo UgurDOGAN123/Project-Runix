@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runix.Managers;
 using Runix.UI;
 using UnityEngine;
 
@@ -6,20 +7,41 @@ namespace Runix.Damage
 {
     public class HpManager : MonoBehaviour
     {
-        [SerializeField] int hp, maxDefens, maxHp;
-        [SerializeField] Element[] healable;
+
+        [SerializeField] int hp;
         [SerializeField] HpSlider hpSlider;
+        [SerializeField] int playerID;
+
         Dictionary<Element, int> defensValues = new();
-        bool isDead;
+
         public event System.Action OnDeath;
+
+        Character.CharacterSO Character
+        { get; set; }
+
+
 
         public float HpPercent
         {
-            get { return (float)hp / maxHp; }
+            get { return (float)hp / MaxHp; }
         }
 
+        int MaxHp { get => Character.maxHp; }
+        public int MaxDefens { get => Character.maxDefans; }
+
+        private void Awake()
+        {
+            Character = DeskManager.instance.GetCharacterSO(playerID);
+        }
+        private void OnEnable()
+        {
+            hp = MaxHp;
+            hpSlider.ChaneSlider(HpPercent);
+        }
         public void AddData(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue, Dictionary<Element, int> defansValue, Dictionary<Element, int> healValue)
         {
+
+
             //heal yapılacak
             DoHeal(healValue);
             //defens eklenecek
@@ -33,16 +55,17 @@ namespace Runix.Damage
 
         void DoHeal(Dictionary<Element, int> healValue)
         {
-            for (int i = 0; i < healable.Length; i++)
+            for (int i = 0; i < Character.healable.Length; i++)
             {
-                healValue.TryGetValue(healable[i], out int addHp);
+                healValue.TryGetValue(Character.healable[i], out int addHp);
                 hp += addHp;
 
             }
-            if (hp > maxHp)
+            if (hp > MaxHp)
             {
-                hp = maxHp;
+                hp = MaxHp;
             }
+            healValue.Clear();
         }
 
         void AddDefens(Dictionary<Element, int> defansValue)
@@ -54,34 +77,32 @@ namespace Runix.Damage
                 defensValues.TryGetValue(item, out int addDefans);
                 defans += addDefans;
 
-                if (defans > maxDefens)
+                if (defans > MaxDefens)
                 {
-                    defans = maxDefens;
+                    defans = MaxDefens;
                 }
                 defensValusInFonk.Add(item, defans);
             }
 
             defansValue.Clear();
-            defansValue = defensValusInFonk;
+            defensValues = defensValusInFonk;
         }
 
         void TakeDamage(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue)
         {
-
-
             foreach (var item in attackValue.Keys)
             {
                 float damageValue;
                 defensValues.TryGetValue(item, out int defens);
                 multiplerValue.TryGetValue(item, out int multipler);
-                damageValue = (attackValue[item] * (multipler * multipler)) * (1 - defens / 100f);
+                damageValue = attackValue[item] * (multipler * multipler) * (1 - defens / 100f);
                 hp -= Mathf.RoundToInt(damageValue);
             }
             if (hp <= 0)
             {
-                isDead = true;
                 OnDeath?.Invoke();
             }
+            attackValue.Clear();
         }
 
 

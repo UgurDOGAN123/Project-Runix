@@ -6,12 +6,21 @@ namespace Runix.Character
 {
     public abstract class CharacterSO : ScriptableObject
     {
+        [Header("General Info")]
         public string characterName;
         public string description;
+
+        [Header("Deck Limits")]
         public int MaxHandCardCount;
         public int StartCardCount;
         public int EveryTurnAddCardCount;
 
+        [Header("Hp Values")]
+        public int maxHp;
+        public int maxDefans;
+        public Element[] healable;
+
+        [Header("Deck")]
         public List<CardSO> Decks;
 
         public abstract void UseAbility();

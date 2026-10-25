@@ -31,13 +31,9 @@ namespace Runix
 
         void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)
         {
-            fonkValues.TryGetValue(element, out int a);
-            a += value;
+            fonkValues.TryGetValue(element, out int current);
+            fonkValues[element] = current + value;
             AddMultipler(element);
-            if (fonkValues.TryAdd(element, a))
-            {
-                fonkValues[element] += a;
-            }
         }
 
 

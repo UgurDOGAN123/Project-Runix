@@ -26,6 +26,17 @@ namespace Runix.Managers
 
         public byte DeskCount;
 
+
+        public Character.CharacterSO GetCharacterSO(int index)
+        {
+            if (index == 0)
+                return Player;
+            else if (index == 1)
+                return Enemy;
+            else
+                return null;
+        }
+
     }
 }
 

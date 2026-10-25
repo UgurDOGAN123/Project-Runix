@@ -67,14 +67,7 @@ namespace Runix.Managers
 
         void Awake()
         {
-            if (playerID == 0)
-            {
-                Character = DeskManager.instance.Player;
-            }
-            else if (playerID == 1)
-            {
-                Character = DeskManager.instance.Enemy;
-            }
+            Character = DeskManager.instance.GetCharacterSO(playerID);
             if (Character == null)
             {
                 Debug.LogError("Charhter is empty pleas select a character");
