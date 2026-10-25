@@ -11,7 +11,6 @@ public class SlotsManagers : MonoBehaviour
     [SerializeField] TurnDataManager turnData;
     [SerializeField] DeckManagers[] deckManager;
 
-    // Base class'ında OnEnable/OnDisable varsa override edip base'i çağır
     void OnEnable()
     {
         var tm = TurnControlManager.instance;
@@ -37,7 +36,9 @@ public class SlotsManagers : MonoBehaviour
 
             slot.cardSO.UseCard(holder, deckManager[a]);
             await Awaitable.WaitForSecondsAsync(1, ct);
-
         }
+        turnData.SendToDatas();
+        await Awaitable.WaitForSecondsAsync(1, ct);
+
     }
 }

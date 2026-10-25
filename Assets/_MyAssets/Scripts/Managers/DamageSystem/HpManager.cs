@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Runix.Managers;
 using Runix.UI;
 using UnityEngine;
 
@@ -6,20 +8,43 @@ namespace Runix.Damage
 {
     public class HpManager : MonoBehaviour
     {
-        [SerializeField] int hp, maxDefens, maxHp;
-        [SerializeField] Element[] healable;
+
+        [SerializeField] int hp;
         [SerializeField] HpSlider hpSlider;
+        [SerializeField] int playerID;
+        [SerializeField] private bool isDead;
+
         Dictionary<Element, int> defensValues = new();
-        bool isDead;
+        Dictionary<Element, int> pasiveDefensValues = new();
+
         public event System.Action OnDeath;
+        Character.CharacterSO Character => DeskManager.instance.GetCharacterSO(playerID);
 
         public float HpPercent
         {
-            get { return (float)hp / maxHp; }
+            get { return (float)hp / MaxHp; }
         }
 
+        int MaxHp { get => Character.maxHp; }
+        public int MaxDefens { get => Character.maxDefans; }
+
+        private void OnEnable()
+        {
+            if (playerID == 1)
+            {
+                defensValues.Clear();
+                hp = MaxHp;
+            }
+            isDead = false;
+            hpSlider.ChaneSlider(HpPercent);
+            pasiveDefensValues = Character.pasiveDefans
+    .GroupBy(x => x.element)
+    .ToDictionary(g => g.Key, g => g.Sum(x => x.Value));
+        }
         public void AddData(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue, Dictionary<Element, int> defansValue, Dictionary<Element, int> healValue)
         {
+
+
             //heal yapılacak
             DoHeal(healValue);
             //defens eklenecek
@@ -33,55 +58,48 @@ namespace Runix.Damage
 
         void DoHeal(Dictionary<Element, int> healValue)
         {
-            for (int i = 0; i < healable.Length; i++)
+            for (int i = 0; i < Character.healable.Length; i++)
             {
-                healValue.TryGetValue(healable[i], out int addHp);
+                healValue.TryGetValue(Character.healable[i], out int addHp);
                 hp += addHp;
 
             }
-            if (hp > maxHp)
+            if (hp > MaxHp)
             {
-                hp = maxHp;
+                hp = MaxHp;
             }
+            healValue.Clear();
         }
 
         void AddDefens(Dictionary<Element, int> defansValue)
         {
-            Dictionary<Element, int> defensValusInFonk = new();
-            foreach (var item in defansValue.Keys)
+            foreach (var item in defansValue)
             {
-                int defans = defansValue[item];
-                defensValues.TryGetValue(item, out int addDefans);
-                defans += addDefans;
-
-                if (defans > maxDefens)
-                {
-                    defans = maxDefens;
-                }
-                defensValusInFonk.Add(item, defans);
+                defensValues.TryGetValue(item.Key, out int current);
+                defensValues[item.Key] = Mathf.Min(current + item.Value, MaxDefens);
             }
-
             defansValue.Clear();
-            defansValue = defensValusInFonk;
+
         }
 
         void TakeDamage(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue)
         {
-
-
             foreach (var item in attackValue.Keys)
             {
                 float damageValue;
                 defensValues.TryGetValue(item, out int defens);
                 multiplerValue.TryGetValue(item, out int multipler);
-                damageValue = (attackValue[item] * (multipler * multipler)) * (1 - defens / 100f);
+                pasiveDefensValues.TryGetValue(item, out int pasiveDefens);
+                float reduction = Mathf.Clamp01((defens + pasiveDefens) / 100f);
+                damageValue = attackValue[item] * (multipler * multipler) * (1f - reduction);
                 hp -= Mathf.RoundToInt(damageValue);
+                defensValues.Remove(item);
             }
-            if (hp <= 0)
+            if (hp <= 0 && !isDead)
             {
-                isDead = true;
                 OnDeath?.Invoke();
             }
+            attackValue.Clear();
         }
 
 
