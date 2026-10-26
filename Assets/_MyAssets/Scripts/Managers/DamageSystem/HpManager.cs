@@ -44,16 +44,16 @@ namespace Runix.Damage
     .GroupBy(x => x.element)
     .ToDictionary(g => g.Key, g => g.Sum(x => x.Value));
         }
-        public void AddData(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue, Dictionary<Element, int> defansValue, Dictionary<Element, int> healValue)
+        public void AddData(TurnDataHolder Heal_DefData, TurnDataHolder Attack_Mulitpler)
         {
 
 
             //heal yapılacak
-            DoHeal(healValue);
+            DoHeal(Heal_DefData.HealValues);
             //defens eklenecek
-            AddDefens(defansValue);
+            AddDefens(Heal_DefData.DefensValues);
             //attack yapılacak
-            TakeDamage(attackValue, multiplerValue);
+            TakeDamage(Attack_Mulitpler.AttackValues, Attack_Mulitpler.MultiplerValues);
             hpSlider.ChaneSlider(HpPercent);
 
 
@@ -71,7 +71,6 @@ namespace Runix.Damage
             {
                 hp = MaxHp;
             }
-            healValue.Clear();
         }
 
         void AddDefens(Dictionary<Element, int> defansValue)
@@ -81,7 +80,6 @@ namespace Runix.Damage
                 defensValues.TryGetValue(item.Key, out int current);
                 defensValues[item.Key] = Mathf.Min(current + item.Value, MaxDefens);
             }
-            defansValue.Clear();
 
         }
 
@@ -103,7 +101,6 @@ namespace Runix.Damage
                 isDead = true;
                 OnDeath?.Invoke();
             }
-            attackValue.Clear();
         }
 
 

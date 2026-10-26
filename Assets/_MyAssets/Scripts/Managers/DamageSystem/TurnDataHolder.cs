@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Runix
 {
-    [Serializable]
     public class TurnDataHolder
     {
         public Dictionary<Element, int> AttackValues = new();
@@ -24,9 +22,12 @@ namespace Runix
             AddFonk(HealValues, element, healValue);
         }
 
-        public void ClearMulipler()
+        public void AllClear()
         {
             MultiplerValues.Clear();
+            DefensValues.Clear();
+            HealValues.Clear();
+            AttackValues.Clear();
         }
 
         void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)

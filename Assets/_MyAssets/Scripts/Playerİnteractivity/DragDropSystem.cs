@@ -6,14 +6,13 @@ using UnityEngine.EventSystems;
 
 namespace Runix.Interactivity
 {
-    public class DragDropSystem : MonoNewTurnEventConneter, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class DragDropSystem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         [SerializeField] Canvas canvas;
         Transform _parentToReturnTo;
         private CanvasGroup _canvasGroup;
         [SerializeField] Card.Card card;
         [SerializeField] DeckManagers deckManagers;
-        bool isClicking;
 
         private void Awake()
         {
@@ -25,7 +24,6 @@ namespace Runix.Interactivity
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (!isClicking) { return; }
             _parentToReturnTo = transform.parent;
             transform.SetParent(canvas.transform); // Canvas'ýn en üstüne taþý
             transform.SetAsLastSibling();          // diðer her þeyin önünde çizilsin
@@ -34,13 +32,11 @@ namespace Runix.Interactivity
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (!isClicking) { return; }
             transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (!isClicking) { return; }
             _canvasGroup.blocksRaycasts = true;
 
             bool placedSuccessfully = false;
@@ -74,9 +70,5 @@ namespace Runix.Interactivity
             }
         }
 
-        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
-        {
-            isClicking = (arg1 == TurnEnum.PlayTurn && arg2 == 0);
-        }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Runix.Card;
 using Runix.Managers.Anim;
-using Runix.UI;
 using UnityEngine;
 
 namespace Runix.Managers
@@ -13,22 +12,21 @@ namespace Runix.Managers
         [SerializeField] private List<CardSO> onPickableDeck;
         [SerializeField] private List<CardSO> trashDeck;
         [SerializeField] private List<CardSO> onHandDeck;
+        [SerializeField] private List<CardSO> deckClone;
 
-
+        [Header("References")]
+        [SerializeField] DeckAnimManager animManager;
 
         [Header("Veraibles")]
         [SerializeField] byte playerID;
 
-        [Header("References")]
-        public Character.CharacterSO Character
-        {
-            get; set;
-        }
-        [SerializeField] DeckAnimManager animManager;
-        [SerializeField] DeckUI Trash, Pickable;
-
         public event Action<List<CardSO>> UpdateUI;  // Her iþlemden Sonra tetikle
 
+        public Character.CharacterSO Character
+        {
+            get
+            { return DeskManager.instance.GetCharacterSO(playerID); }
+        }
 
         List<CardSO> MainDeck => Character.Decks;
 
@@ -67,12 +65,14 @@ namespace Runix.Managers
 
         void Awake()
         {
-            Character = DeskManager.instance.GetCharacterSO(playerID);
             if (Character == null)
             {
                 Debug.LogError("Charhter is empty pleas select a character");
             }
-
+            foreach (CardSO cardSO in Character.Decks)
+            {
+                Character.CloneDecks.Add(cardSO);
+            }
         }
 
 

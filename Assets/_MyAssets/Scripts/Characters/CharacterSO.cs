@@ -24,6 +24,7 @@ namespace Runix.Character
 
         [Header("Deck")]
         public List<CardSO> Decks;
+        public List<CardSO> CloneDecks;
 
         public abstract void UseAbility();
 
