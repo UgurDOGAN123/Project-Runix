@@ -49,6 +49,8 @@ namespace Runix.Enemy
             await Awaitable.WaitForSecondsAsync(1);
             for (int i = 0; i < cards.Count; i++)
             {
+                if (slots[i] == null)
+                { break; }
                 deckManager.RemoveFormHandDeck(cards[i]);
                 slots[i].SetCardSO(cards[i]);
                 enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);

@@ -17,6 +17,12 @@ MonoBehaviour:
   MaxHandCardCount: 8
   StartCardCount: 6
   EveryTurnAddCardCount: 4
+  maxHp: 1000
+  maxDefans: 80
+  healable: 0100000002000000
+  pasiveDefans:
+  - element: 2
+    Value: 20
   Decks:
   - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
   - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}

@@ -87,6 +87,7 @@ namespace Runix.Managers
                 if (onPickableDeck.Count == 0)
                 {
                     await ReplaceToTrashcan();
+                    if (onPickableDeck.Count < 0) { break; }
                 }
 
                 var card = onPickableDeck[0];

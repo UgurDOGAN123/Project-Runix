@@ -10,6 +10,7 @@ namespace Runix.Enviorment
         [SerializeField] bool islock;
         [SerializeField] DeckManagers deckManagers;
         [SerializeField] SlotUI slotUI;
+        [SerializeField] bool isClicking;
 
         #region // Turn System Event Connect
 
@@ -18,6 +19,7 @@ namespace Runix.Enviorment
             if (arg1 == TurnEnum.PlayTurn)
             {
                 RemoveCardSO();
+                isClicking = arg2 == 0;
             }
         }
         #endregion
@@ -32,7 +34,7 @@ namespace Runix.Enviorment
         }
         private void OnMouseUp()
         {
-            if (cardSO != null && TurnControlSystem.TurnControlManager.instance.CurrentPlayer == 0)
+            if (cardSO != null && isClicking)
             {
                 deckManagers.PickTheHand(cardSO);
                 cardSO = null;
@@ -53,11 +55,8 @@ namespace Runix.Enviorment
 
         public void RemoveCardSO()
         {
-
             cardSO = null;
             slotUI.ChaceImage(null);
-
-
         }
 
 

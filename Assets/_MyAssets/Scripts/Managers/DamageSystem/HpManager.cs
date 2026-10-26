@@ -100,6 +100,7 @@ namespace Runix.Damage
             }
             if (hp <= 0 && !isDead)
             {
+                isDead = true;
                 OnDeath?.Invoke();
             }
             attackValue.Clear();

@@ -16,6 +16,7 @@ namespace Runix.DamageSystem
         {
             playerHp.OnDeath += PlayerDied;
             enemyHp.OnDeath += EnemyDied;
+            finished = false;
         }
 
         void OnDisable()

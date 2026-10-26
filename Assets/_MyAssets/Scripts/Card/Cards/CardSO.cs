@@ -26,12 +26,16 @@ namespace Runix.Card
         public Element element;
         public CardType cardType;
         [SerializeField] int DestroyTime;
+
         public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
         {
             deckManagers.MoveToTrash(this);
             GameObject fireBall = Instantiate(animPrefab);
             fireBall.GetComponent<SpriteRenderer>().sprite = AnimCardSprite;
-            fireBall.GetComponent<Animator>().runtimeAnimatorController = animator;
+            if (animator != null)
+            {
+                fireBall.GetComponent<Animator>().runtimeAnimatorController = animator;
+            }
             Destroy(fireBall, DestroyTime);
         }
     }
