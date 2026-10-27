@@ -4561,6 +4561,7 @@ MonoBehaviour:
   - {fileID: 1593586638}
   - {fileID: 390689296}
   - {fileID: 2120675610}
+  deckManagers: {fileID: 0}
 --- !u!1 &1269191511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5659668967813359756, guid: 1cd5c37ace7c77f49a21780caef92370, type: 3}
@@ -6284,10 +6285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Damage.HpManager
   hp: 1000
-  maxDefens: 85
-  maxHp: 1000
-  healable: 0100000002000000
   hpSlider: {fileID: 2098545981}
+  playerID: 0
+  isDead: 0
 --- !u!4 &1946946242
 Transform:
   m_ObjectHideFlags: 0
@@ -6318,10 +6318,9 @@ MonoBehaviour:
   onPickableDeck: []
   trashDeck: []
   onHandDeck: []
-  playerID: 0
+  deckClone: []
   animManager: {fileID: 1946946244}
-  Trash: {fileID: 1932994761}
-  Pickable: {fileID: 96656481}
+  playerID: 0
 --- !u!114 &1946946244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6727,10 +6726,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Damage.HpManager
   hp: 1000
-  maxDefens: 100
-  maxHp: 1000
-  healable: 02000000
   hpSlider: {fileID: 1028048937}
+  playerID: 0
+  isDead: 0
 --- !u!4 &2084102781
 Transform:
   m_ObjectHideFlags: 0
@@ -6761,10 +6759,9 @@ MonoBehaviour:
   onPickableDeck: []
   trashDeck: []
   onHandDeck: []
-  playerID: 1
+  deckClone: []
   animManager: {fileID: 2084102784}
-  Trash: {fileID: 147730172}
-  Pickable: {fileID: 1124860060}
+  playerID: 1
 --- !u!114 &2084102783
 MonoBehaviour:
   m_ObjectHideFlags: 0

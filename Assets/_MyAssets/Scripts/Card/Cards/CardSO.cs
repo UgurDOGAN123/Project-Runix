@@ -30,13 +30,25 @@ namespace Runix.Card
         public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
         {
             deckManagers.MoveToTrash(this);
-            GameObject fireBall = Instantiate(animPrefab);
-            fireBall.GetComponent<SpriteRenderer>().sprite = AnimCardSprite;
-            if (animator != null)
+            if (animPrefab != null)
             {
-                fireBall.GetComponent<Animator>().runtimeAnimatorController = animator;
+                GameObject fireBall = Instantiate(animPrefab);
+                fireBall.GetComponent<SpriteRenderer>().sprite = AnimCardSprite;
+                if (animator != null)
+                {
+                    fireBall.GetComponent<Animator>().runtimeAnimatorController = animator;
+                }
+                else
+                {
+                    Debug.LogError(cardName + " animator null");
+                }
+                Destroy(fireBall, DestroyTime);
             }
-            Destroy(fireBall, DestroyTime);
+            else
+            {
+                Debug.LogError(cardName + " animPrefab null");
+            }
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Runix.Managers
         [SerializeField] private List<CardSO> onPickableDeck;
         [SerializeField] private List<CardSO> trashDeck;
         [SerializeField] private List<CardSO> onHandDeck;
-        [SerializeField] private List<CardSO> deckClone;
+        public List<CardSO> deckClone;
 
         [Header("References")]
         [SerializeField] DeckAnimManager animManager;
@@ -22,6 +22,7 @@ namespace Runix.Managers
 
         public event Action<List<CardSO>> UpdateUI;  // Her iþlemden Sonra tetikle
 
+        #region // Fields
         public Character.CharacterSO Character
         {
             get
@@ -42,6 +43,16 @@ namespace Runix.Managers
             get => onPickableDeck.Count;
         }
 
+        #endregion
+
+        void Awake()
+        {
+            if (Character == null)
+            {
+                Debug.LogError("Charhter is empty pleas select a character");
+            }
+            deckClone = new(MainDeck);
+        }
 
         #region // Turn System Event Connect
 
@@ -52,7 +63,7 @@ namespace Runix.Managers
                 onPickableDeck.Clear();
                 trashDeck.Clear();
                 OnHandDeck.Clear();
-                OnPickableDeckAddCards(MainDeck);
+                OnPickableDeckAddCards(deckClone);
                 UpdateUI?.Invoke(onHandDeck);
                 await PickTheHand(Character.StartCardCount);
             }
@@ -63,39 +74,20 @@ namespace Runix.Managers
         }
         #endregion
 
-        void Awake()
-        {
-            if (Character == null)
-            {
-                Debug.LogError("Charhter is empty pleas select a character");
-            }
-            foreach (CardSO cardSO in Character.Decks)
-            {
-                Character.CloneDecks.Add(cardSO);
-            }
-        }
-
-
         public async Awaitable PickTheHand(int number)
         {
-
-
             for (int i = 0; i < number; i++)
             {
                 if (onHandDeck.Count >= Character.MaxHandCardCount) break;
 
-                if (onPickableDeck.Count == 0)
-                {
-                    await ReplaceToTrashcan();
-                    if (onPickableDeck.Count < 0) { break; }
-                }
+                if (onPickableDeck.Count == 0 && trashDeck.Count > 0) await ReplaceToTrashcan();
+                if (onPickableDeck.Count == 0) break;
 
                 var card = onPickableDeck[0];
                 onPickableDeck.RemoveAt(0);
                 onHandDeck.Add(card);                       // önce veri
                 await animManager.AnimPlayer("MoveHand", playerID);               // sonra animasyon
                 UpdateUI?.Invoke(onHandDeck);
-
             }
 
         }
@@ -107,6 +99,7 @@ namespace Runix.Managers
             trashDeck.Clear();
             UpdateUI?.Invoke(onHandDeck);
         }
+
         public void PickTheHand(CardSO card)
         {
             if (onHandDeck.Count >= Character.MaxHandCardCount) return;
@@ -128,9 +121,6 @@ namespace Runix.Managers
         {
             onHandDeck.Remove(card);
         }
-
-
-
 
         #region // OnPickableDeck support fonktions
         void OnPickableDeckAddCards(List<CardSO> cards)
@@ -159,7 +149,6 @@ namespace Runix.Managers
             }
         }
         #endregion
-
     }
 
 }

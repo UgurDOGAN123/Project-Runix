@@ -7,20 +7,19 @@ namespace Runix.UI.Reward
     public class RewardUIManager : MonoBehaviour
     {
         [SerializeField] Button[] cards;
-        Character.CharacterSO CharacterSO { get; set; }
+        [SerializeField] DeckManagers deckManagers;
 
         private void OnEnable()
         {
-            CharacterSO = DeskManager.instance.Player;
             foreach (var card in cards)
             {
-                card.GetComponent<Card.Card>().SetCard(CharacterSO.Decks[Random.Range(0, CharacterSO.Decks.Count)]);
+                card.GetComponent<Card.Card>().SetCard(deckManagers.deckClone[Random.Range(0, deckManagers.deckClone.Count)]);
             }
         }
 
         public void AddCard(Card.Card card)
         {
-            CharacterSO.CloneDecks.Add(card.CardSO);
+            deckManagers.deckClone.Add(card.CardSO);
             print(card.CardSO.name + " eklendi");
             DeskManager.instance.DeskCount++;
             DeskManager.instance.ChaneDesk.Invoke(DeskEnum.SetDesk);

@@ -9,6 +9,21 @@ namespace Runix.Enemy
         public int maxPlaySlots = 4; // Bosslar için 5 veya 6 yapılabilir
         [Tooltip("En yüksek candan en düşüğe doğru sıralayın")]
         public List<HealthTierDecision> healthTiers;
+        void OnValidate()
+        {
+            if (healthTiers == null) return;
+
+            for (int i = 1; i < healthTiers.Count; i++)
+            {
+                if (healthTiers[i] == null || healthTiers[i - 1] == null) continue;
+
+                if (healthTiers[i].minHpPercent > healthTiers[i - 1].minHpPercent)
+                {
+                    Debug.LogWarning($"[{name}] healthTiers büyükten küçüğe sıralı olmalı. {i}. satır bir öncekinden büyük.", this);
+                    break;
+                }
+            }
+        }
     }
 
     [System.Serializable]

@@ -18,8 +18,8 @@ namespace Runix.Turn
 
         public void SendToDatas()
         {
-            playerHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
-            enemyHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
+            enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
+            playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
             playerTurnDataHolder.AllClear();
             enemyTurnDataHolder.AllClear();
         }
