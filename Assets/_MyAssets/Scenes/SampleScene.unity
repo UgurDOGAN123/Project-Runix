@@ -6265,6 +6265,7 @@ GameObject:
   - component: {fileID: 1946946241}
   - component: {fileID: 1946946244}
   - component: {fileID: 1946946245}
+  - component: {fileID: 1946946246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6353,6 +6354,21 @@ MonoBehaviour:
   Trash: {fileID: 1932994761}
   Pickable: {fileID: 96656481}
   deckManagers: {fileID: 1946946243}
+--- !u!114 &1946946246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946946240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269e77bcd4a33e04699d64bb6b2b674e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Effect.EffectManager
+  ownerId: 0
+  hp: {fileID: 1946946241}
+  debugLog: 1
 --- !u!1 &1965021374
 GameObject:
   m_ObjectHideFlags: 0
@@ -6704,6 +6720,7 @@ GameObject:
   - component: {fileID: 2084102780}
   - component: {fileID: 2084102782}
   - component: {fileID: 2084102783}
+  - component: {fileID: 2084102786}
   - component: {fileID: 2084102784}
   - component: {fileID: 2084102785}
   m_Layer: 0
@@ -6815,6 +6832,21 @@ MonoBehaviour:
   Trash: {fileID: 147730172}
   Pickable: {fileID: 1124860060}
   deckManagers: {fileID: 2084102782}
+--- !u!114 &2084102786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084102779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269e77bcd4a33e04699d64bb6b2b674e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Effect.EffectManager
+  ownerId: 1
+  hp: {fileID: 2084102780}
+  debugLog: 1
 --- !u!1 &2091131560
 GameObject:
   m_ObjectHideFlags: 0
