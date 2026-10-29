@@ -13,7 +13,7 @@ namespace Runix.Interactivity
         private CanvasGroup _canvasGroup;
         [SerializeField] Card.Card card;
         [SerializeField] DeckManagers deckManagers;
-
+        bool _dragAllowed;
         private void Awake()
         {
             if (!TryGetComponent<CanvasGroup>(out _canvasGroup))
@@ -24,6 +24,9 @@ namespace Runix.Interactivity
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
+            var tm = TurnControlSystem.TurnControlManager.instance;
+            _dragAllowed = tm != null && tm.CurrentStage == TurnEnum.PlayTurn && tm.CurrentPlayer == 0;
+            if (!_dragAllowed) return;
             _parentToReturnTo = transform.parent;
             transform.SetParent(canvas.transform); // Canvas'ýn en üstüne taþý
             transform.SetAsLastSibling();          // diðer her þeyin önünde çizilsin
@@ -32,11 +35,14 @@ namespace Runix.Interactivity
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (!_dragAllowed) return;
             transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (!_dragAllowed) return;
+            _dragAllowed = false;
             _canvasGroup.blocksRaycasts = true;
 
             bool placedSuccessfully = false;

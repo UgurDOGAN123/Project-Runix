@@ -19,7 +19,7 @@ namespace Runix.Enemy
 
         [SerializeField] Slot[] slots;
 
-        List<CardSO> cards = new List<CardSO>();
+        List<CardSO> cards = new();
 
 
         EnemyDecisionResolver enemyDecision = new();
@@ -42,21 +42,40 @@ namespace Runix.Enemy
 
         async void PlayCard()
         {
-            cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
-
-            enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
-
-            await Awaitable.WaitForSecondsAsync(1);
-            for (int i = 0; i < cards.Count; i++)
+            try
             {
-                if (slots[i] == null)
-                { break; }
-                deckManager.RemoveFormHandDeck(cards[i]);
-                slots[i].SetCardSO(cards[i]);
+                var ct = destroyCancellationToken;
+
+                cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
                 enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
-                await Awaitable.WaitForSecondsAsync(0.5f);
+
+                await Awaitable.WaitForSecondsAsync(1, ct);
+                for (int i = 0; i < cards.Count; i++)
+                {
+                    // Önce dizi boyutuna bak, sonra elemanın boş olup olmadığına
+                    if (i >= slots.Length || slots[i] == null)
+                    {
+                        Debug.LogWarning("[EnemyPatternManager] Yeterli slot yok, kalan kartlar oynanmadı.", this);
+                        break;
+                    }
+
+                    deckManager.RemoveFormHandDeck(cards[i]);
+                    slots[i].SetCardSO(cards[i]);
+                    enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
+                    await Awaitable.WaitForSecondsAsync(0.5f, ct);
+                }
             }
-            TurnControlSystem.TurnControlManager.instance.RequestEndTurn(1);
+            catch (System.OperationCanceledException)
+            {
+                return; // nesne yok edildi, turu bitirmeye gerek yok
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e, this); // hata olsa bile aşağıda turu bitir, oyun donmasın
+            }
+
+            var turnManager = TurnControlSystem.TurnControlManager.instance;
+            if (turnManager != null) turnManager.RequestEndTurn(1);
         }
 
 

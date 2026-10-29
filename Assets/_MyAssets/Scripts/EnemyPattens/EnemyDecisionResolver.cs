@@ -29,7 +29,7 @@ namespace Runix.Enemy
         private bool TryMatchPattern(EnemyCardPatternSO pattern, List<CardSO> hand, int maxSlots, out List<CardSO> matchedCards)
         {
             matchedCards = new List<CardSO>();
-            List<CardSO> tempHand = new List<CardSO>(hand);
+            List<CardSO> tempHand = new(hand);
 
             foreach (var req in pattern.cardRequirements)
             {
