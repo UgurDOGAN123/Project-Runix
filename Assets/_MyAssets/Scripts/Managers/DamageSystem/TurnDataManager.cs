@@ -1,4 +1,5 @@
 ﻿using Runix.Damage;
+using Runix.Effect;
 using UnityEngine;
 
 namespace Runix.Turn
@@ -12,6 +13,7 @@ namespace Runix.Turn
     {
         public TurnDataHolder playerTurnDataHolder = new();
         public TurnDataHolder enemyTurnDataHolder = new();
+        [SerializeField] EffectManager playerEffects, enemyEffects;
 
         [SerializeField] HpManager playerHpManager, enemyHpManager;
 
@@ -20,11 +22,13 @@ namespace Runix.Turn
         {
             enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
             playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
+            // Her tarafın uyguladığı etkiler karşı tarafa gider
+            if (enemyEffects != null)
+                foreach (var e in playerTurnDataHolder.PendingEffects) enemyEffects.Add(e);
+            if (playerEffects != null)
+                foreach (var e in enemyTurnDataHolder.PendingEffects) playerEffects.Add(e);
             playerTurnDataHolder.AllClear();
             enemyTurnDataHolder.AllClear();
         }
-
-
-
     }
 }

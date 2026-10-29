@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runix.Effect;
 
 namespace Runix
 {
@@ -8,6 +9,12 @@ namespace Runix
         public Dictionary<Element, int> DefensValues = new();
         public Dictionary<Element, int> HealValues = new();
         public Dictionary<Element, int> MultiplerValues = new();
+        public List<IEffect> PendingEffects = new();
+
+        public void AddEffect(IEffect effect)
+        {
+            if (effect != null) PendingEffects.Add(effect);
+        }
 
         public void AddAttack(Element element, int attackValue)
         {
@@ -28,6 +35,7 @@ namespace Runix
             DefensValues.Clear();
             HealValues.Clear();
             AttackValues.Clear();
+            PendingEffects.Clear();
         }
 
         void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)

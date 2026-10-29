@@ -16,6 +16,18 @@ namespace Runix.Effect
 
         public IReadOnlyList<IEffect> Effects => effects;
 
+        public int BlockedSlotCount
+        {
+            get
+            {
+                int total = 0;
+                foreach (var e in effects)
+                    if (e is StunEffect stun) total += stun.BlockedSlots;
+                return total;
+            }
+        }
+
+
         void Awake()
         {
             ctx = new EffectContext { Hp = hp, OwnerId = ownerId };
@@ -41,6 +53,8 @@ namespace Runix.Effect
             if (stage == TurnEnum.PlayTurn)
             {
                 foreach (var e in effects.ToArray()) e.OnTurnStart(ctx);
+                if (debugLog && BlockedSlotCount > 0)
+                    Debug.Log($"[Effect:{ownerId}] kapalı slot sayısı: {BlockedSlotCount}", this);
             }
             else if (stage == TurnEnum.TurnDamage)
             {
@@ -50,7 +64,6 @@ namespace Runix.Effect
                 if (debugLog && removed > 0) Debug.Log($"[Effect:{ownerId}] {removed} etki bitti", this);
             }
         }
-
 
     }
 }

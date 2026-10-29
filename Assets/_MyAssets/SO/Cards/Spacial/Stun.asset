@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b82f5382cc99f5449d441458ffa8374, type: 3}
+  m_Name: Stun
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Stun
+  cardName: Stun
+  cardDescription: Play and Stun your enemy
+  BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
+  CardImage: {fileID: 0}
+  ElememtImg: {fileID: 21300000, guid: dea64fb7e36412a4fb45ad661ec11c7b, type: 3}
+  CardType: {fileID: 49405101, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
+  CardOnRun: {fileID: 21300000, guid: dea64fb7e36412a4fb45ad661ec11c7b, type: 3}
+  AnimCardSprite: {fileID: 0}
+  animPrefab: {fileID: 0}
+  animator: {fileID: 0}
+  Value: 1
+  element: 0
+  cardType: 3
+  DestroyTime: 2
+  turns: 2

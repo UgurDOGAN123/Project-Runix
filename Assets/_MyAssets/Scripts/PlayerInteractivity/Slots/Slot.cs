@@ -57,6 +57,10 @@ namespace Runix.Enviorment
             slotUI.ChaceImage(null);
         }
 
-
+        public void SetLocked(bool locked)
+        {
+            islock = locked;
+            slotUI.SetLockIcon(locked);
+        }
     }
 }

@@ -34,5 +34,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
   - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
   - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
   element: 2
   turnEnum: 3

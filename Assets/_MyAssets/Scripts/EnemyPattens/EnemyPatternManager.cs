@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Runix.Card;
 using Runix.Damage;
+using Runix.Effect;
 using Runix.Enemy.UI;
 using Runix.Enviorment;
 using Runix.Managers;
@@ -14,6 +15,7 @@ namespace Runix.Enemy
         [SerializeField] HpManager hpManager;
         [SerializeField] DeckManagers deckManager;
         [SerializeField] EnemyHandUI enemyHandUI;
+        [SerializeField] EffectManager enemyEffects;
 
         [SerializeField] Slot[] slots;
 
@@ -40,6 +42,9 @@ namespace Runix.Enemy
 
         async void PlayCard()
         {
+            // Düşman tamamen sersemlediyse oynamaz, turu StunController geçer
+            if (enemyEffects != null && slots.Length > 0 && enemyEffects.BlockedSlotCount >= slots.Length) return;
+
             try
             {
                 var ct = destroyCancellationToken;
@@ -48,28 +53,29 @@ namespace Runix.Enemy
                 enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
 
                 await Awaitable.WaitForSecondsAsync(1, ct);
+
+                int slotIndex = 0;
                 for (int i = 0; i < cards.Count; i++)
                 {
-                    // Önce dizi boyutuna bak, sonra elemanın boş olup olmadığına
-                    if (i >= slots.Length || slots[i] == null)
-                    {
-                        Debug.LogWarning("[EnemyPatternManager] Yeterli slot yok, kalan kartlar oynanmadı.", this);
-                        break;
-                    }
+                    // Kilitli slotları atla
+                    while (slotIndex < slots.Length && (slots[slotIndex] == null || !slots[slotIndex].IsAddable))
+                        slotIndex++;
+                    if (slotIndex >= slots.Length) break; // boş slot kalmadı, kalan kartlar elde kalır
 
                     deckManager.RemoveFormHandDeck(cards[i]);
-                    slots[i].SetCardSO(cards[i]);
+                    slots[slotIndex].SetCardSO(cards[i]);
+                    slotIndex++;
                     enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
                     await Awaitable.WaitForSecondsAsync(0.5f, ct);
                 }
             }
             catch (System.OperationCanceledException)
             {
-                return; // nesne yok edildi, turu bitirmeye gerek yok
+                return; // nesne yok edildi
             }
             catch (System.Exception e)
             {
-                Debug.LogException(e, this); // hata olsa bile aşağıda turu bitir, oyun donmasın
+                Debug.LogException(e, this); // hata olsa bile turu bitir, oyun donmasın
             }
 
             var turnManager = TurnControlSystem.TurnControlManager.instance;
