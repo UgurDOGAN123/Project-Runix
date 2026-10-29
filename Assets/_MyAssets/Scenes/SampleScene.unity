@@ -6777,7 +6777,6 @@ MonoBehaviour:
   patterns: {fileID: 11400000, guid: 31f52031dc9b41a499ca686598b50adb, type: 2}
   hpManager: {fileID: 2084102780}
   deckManager: {fileID: 2084102782}
-  turnData: {fileID: 54472551}
   enemyHandUI: {fileID: 280151052}
   slots:
   - {fileID: 285909678}

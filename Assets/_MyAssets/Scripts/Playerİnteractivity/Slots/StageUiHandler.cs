@@ -10,29 +10,16 @@ namespace Runix.UI
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] SpriteRenderer spriteRenderer2;
 
-
-        protected override void TurnManagerNewTurnStart(Runix.TurnEnum arg1, int arg2)
+        protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
+            bool match = false;
+            for (int i = 0; i < turnEnum.Length && !match; i++)
+                for (int j = 0; j < whichPlayer.Length && !match; j++)
+                    match = arg1 == turnEnum[i] && arg2 == whichPlayer[j];
 
-            for (int i = 0; i < turnEnum.Length; i++)
-            {
-                for (int j = 0; j < whichPlayer.Length; j++)
-                {
-
-                    if (arg1 == turnEnum[i] && arg2 == whichPlayer[j])
-                    {
-                        spriteRenderer.enabled = isShow;
-                        spriteRenderer2.enabled = isShow;
-                        return;
-                    }
-                    else
-                    {
-                        spriteRenderer.enabled = !isShow;
-                        spriteRenderer2.enabled = !isShow;
-                    }
-                }
-            }
-
+            bool visible = match ? isShow : !isShow;
+            spriteRenderer.enabled = visible;
+            spriteRenderer2.enabled = visible;
         }
     }
 }

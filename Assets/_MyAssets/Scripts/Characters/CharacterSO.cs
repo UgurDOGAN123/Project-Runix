@@ -25,10 +25,10 @@ namespace Runix.Character
         [Header("Deck")]
         public List<CardSO> Decks;
 
-        public abstract void UseAbility();
+        public virtual void UseAbility() { }
 
         //CharacterData eklenecek
-        public abstract void SetData();
+        public virtual void SetData() { }
     }
     [System.Serializable]
     public struct PasiveDefans

@@ -9,16 +9,5 @@ namespace Runix.Character
         [Header("Fire Knight Info")]
         public Element element;
         public TurnEnum turnEnum;
-
-
-        public override void SetData()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void UseAbility()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -4,7 +4,6 @@ using Runix.Damage;
 using Runix.Enemy.UI;
 using Runix.Enviorment;
 using Runix.Managers;
-using Runix.Turn;
 using UnityEngine;
 
 namespace Runix.Enemy
@@ -14,7 +13,6 @@ namespace Runix.Enemy
         [SerializeField] AdaptiveEnemyProfileSO patterns;
         [SerializeField] HpManager hpManager;
         [SerializeField] DeckManagers deckManager;
-        [SerializeField] TurnDataManager turnData;
         [SerializeField] EnemyHandUI enemyHandUI;
 
         [SerializeField] Slot[] slots;

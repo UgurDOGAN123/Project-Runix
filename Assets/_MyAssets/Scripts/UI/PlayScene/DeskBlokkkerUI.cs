@@ -9,9 +9,9 @@ namespace Runix.UI.Desk
         [SerializeField] Image DeskBlokker;
         [SerializeField] byte Column;
 
-        private void Start()
+        private void Awake()
         {
-            TryGetComponent<Image>(out DeskBlokker);
+            if (DeskBlokker == null) TryGetComponent(out DeskBlokker);
         }
 
         private void OnEnable()
@@ -19,17 +19,9 @@ namespace Runix.UI.Desk
             UIUpdate(DeskManager.instance.DeskCount);
         }
 
-
         private void UIUpdate(int obj)
         {
-            if (obj == Column)
-            {
-                DeskBlokker.enabled = false;
-            }
-            else
-            {
-                DeskBlokker.enabled = true;
-            }
+            DeskBlokker.enabled = obj != Column;
         }
     }
 }
