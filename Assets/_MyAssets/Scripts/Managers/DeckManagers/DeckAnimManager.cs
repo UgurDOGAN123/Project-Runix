@@ -13,7 +13,7 @@ namespace Runix.Managers.Anim
 
             GameObject _deck = Instantiate(DeckAnimPrefab.gameObject, SetPos(trigger), Quaternion.identity);
             _deck.GetComponent<DeckAnimationController>().PlayAnim(trigger, playerID);
-            await Awaitable.WaitForSecondsAsync(1.0f);
+            await Awaitable.WaitForSecondsAsync(1.0f, destroyCancellationToken);
 
         }
 

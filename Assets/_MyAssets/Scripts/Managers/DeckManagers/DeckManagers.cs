@@ -58,7 +58,16 @@ namespace Runix.Managers
 
         protected override async void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
-            if (arg1 == TurnEnum.BattleStart)
+            // Olay void olmak zorunda: asýl iþ HandleTurnAsync'te, hatalar burada yakalanýr
+            try { await HandleTurnAsync(arg1); }
+            catch (System.OperationCanceledException) { } // nesne yok edildi
+            catch (System.Exception e) { Debug.LogException(e, this); }
+        }
+        #endregion
+
+        async Awaitable HandleTurnAsync(TurnEnum stage)
+        {
+            if (stage == TurnEnum.BattleStart)
             {
                 onPickableDeck.Clear();
                 trashDeck.Clear();
@@ -67,12 +76,13 @@ namespace Runix.Managers
                 UpdateUI?.Invoke(onHandDeck);
                 await PickTheHand(Character.StartCardCount);
             }
-            else if (arg1 == TurnEnum.TurnEnd)
+            else if (stage == TurnEnum.TurnEnd)
             {
                 await PickTheHand(Character.EveryTurnAddCardCount);
             }
         }
-        #endregion
+
+
 
         public async Awaitable PickTheHand(int number)
         {
@@ -108,13 +118,21 @@ namespace Runix.Managers
         }
 
 
-        public async void MoveToTrash(CardSO card)
+        public void MoveToTrash(CardSO card)
         {
+            trashDeck.Add(card);   // veri hemen güncellenir
+            PlayTrashAnimation();  // animasyon arkada oynar, beklenmez
+        }
 
-            trashDeck.Add(card);
-            await animManager.AnimPlayer("MoveTrash", playerID);
-            UpdateUI?.Invoke(onHandDeck);
-
+        async void PlayTrashAnimation()
+        {
+            try
+            {
+                await animManager.AnimPlayer("MoveTrash", playerID);
+                UpdateUI?.Invoke(onHandDeck);
+            }
+            catch (System.OperationCanceledException) { }
+            catch (System.Exception e) { Debug.LogException(e, this); }
         }
 
         public void RemoveFormHandDeck(CardSO card)
