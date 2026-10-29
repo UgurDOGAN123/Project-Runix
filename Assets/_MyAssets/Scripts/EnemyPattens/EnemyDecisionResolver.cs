@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using Runix.Card;
 
@@ -12,7 +12,7 @@ namespace Runix.Enemy
                 return handDeck.Take(profile.maxPlaySlots).ToList();
             HealthTierDecision currentTier = profile.healthTiers.FirstOrDefault(tier => currentHpPercent >= tier.minHpPercent) ?? profile.healthTiers.Last();
 
-            // 2. Öncelik sırasına göre dene (İlk uyan pattern seçilir)
+            // 2. Ã–ncelik sÄ±rasÄ±na gÃ¶re dene (Ä°lk uyan pattern seÃ§ilir)
             foreach (var pattern in currentTier.prioritizedPatterns)
             {
                 if (TryMatchPattern(pattern, handDeck, profile.maxPlaySlots, out List<CardSO> matchedCards))
@@ -33,10 +33,10 @@ namespace Runix.Enemy
 
             foreach (var req in pattern.cardRequirements)
             {
-                // İlgili kart tipinden elde kaç adet var?
+                // Ä°lgili kart tipinden elde kaÃ§ adet var?
                 var availableCards = tempHand.Where(c => c.cardType == req.CardType).Take(req.count).ToList();
 
-                // Eğer istenen sayı kadar yoksa bu pattern elendi
+                // EÄŸer istenen sayÄ± kadar yoksa bu pattern elendi
                 if (availableCards.Count < req.count)
                 {
                     matchedCards.Clear();

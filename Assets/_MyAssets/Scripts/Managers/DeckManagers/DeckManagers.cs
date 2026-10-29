@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using Runix.Card;
 using Runix.Managers.Anim;
@@ -20,7 +20,7 @@ namespace Runix.Managers
         [Header("Veraibles")]
         [SerializeField] byte playerID;
 
-        public event Action<List<CardSO>> UpdateUI;  // Her iþlemden Sonra tetikle
+        public event Action<List<CardSO>> UpdateUI;  // Her iÅŸlemden Sonra tetikle
 
         #region // Fields
         public Character.CharacterSO Character
@@ -58,7 +58,7 @@ namespace Runix.Managers
 
         protected override async void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
-            // Olay void olmak zorunda: asýl iþ HandleTurnAsync'te, hatalar burada yakalanýr
+            // Olay void olmak zorunda: asÄ±l iÅŸ HandleTurnAsync'te, hatalar burada yakalanÄ±r
             try { await HandleTurnAsync(arg1); }
             catch (System.OperationCanceledException) { } // nesne yok edildi
             catch (System.Exception e) { Debug.LogException(e, this); }
@@ -95,7 +95,7 @@ namespace Runix.Managers
 
                 var card = onPickableDeck[0];
                 onPickableDeck.RemoveAt(0);
-                onHandDeck.Add(card);                       // önce veri
+                onHandDeck.Add(card);                       // Ã¶nce veri
                 await animManager.AnimPlayer("MoveHand", playerID);               // sonra animasyon
                 UpdateUI?.Invoke(onHandDeck);
             }
@@ -120,7 +120,7 @@ namespace Runix.Managers
 
         public void MoveToTrash(CardSO card)
         {
-            trashDeck.Add(card);   // veri hemen güncellenir
+            trashDeck.Add(card);   // veri hemen gÃ¼ncellenir
             PlayTrashAnimation();  // animasyon arkada oynar, beklenmez
         }
 
@@ -151,7 +151,7 @@ namespace Runix.Managers
             UpdateUI?.Invoke(null);
         }
 
-        // gerekirse baðlantýyý ters çevir ve o tarafdan dinle
+        // gerekirse baÄŸlantÄ±yÄ± ters Ã§evir ve o tarafdan dinle
 
 
         void ShuffelDeck(List<CardSO> cards)

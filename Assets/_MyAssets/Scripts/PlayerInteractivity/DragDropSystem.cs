@@ -1,4 +1,4 @@
-
+ï»¿
 using Runix.Enviorment;
 using Runix.Managers;
 using UnityEngine;
@@ -28,8 +28,8 @@ namespace Runix.Interactivity
             _dragAllowed = tm != null && tm.CurrentStage == TurnEnum.PlayTurn && tm.CurrentPlayer == PlayerIds.Player;
             if (!_dragAllowed) return;
             _parentToReturnTo = transform.parent;
-            transform.SetParent(canvas.transform); // Canvas'ýn en üstüne taþý
-            transform.SetAsLastSibling();          // diðer her þeyin önünde çizilsin
+            transform.SetParent(canvas.transform); // Canvas'Ä±n en Ã¼stÃ¼ne taÅŸÄ±
+            transform.SetAsLastSibling();          // diÄŸer her ÅŸeyin Ã¶nÃ¼nde Ã§izilsin
             _canvasGroup.blocksRaycasts = false;
         }
 
@@ -47,11 +47,11 @@ namespace Runix.Interactivity
 
             bool placedSuccessfully = false;
 
-            // 1. Farenin ekrandaki pozisyonunu 2D Dünya koordinatýna çevir
+            // 1. Farenin ekrandaki pozisyonunu 2D DÃ¼nya koordinatÄ±na Ã§evir
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(eventData.position);
             Vector2 mouseWorldPos2D = new(mouseWorldPos.x, mouseWorldPos.y);
 
-            // 2. Farenin durduðu noktada 2D bir Collider (Slot) var mý bak
+            // 2. Farenin durduÄŸu noktada 2D bir Collider (Slot) var mÄ± bak
             Collider2D hitCollider = Physics2D.OverlapPoint(mouseWorldPos2D);
 
             if (hitCollider != null)

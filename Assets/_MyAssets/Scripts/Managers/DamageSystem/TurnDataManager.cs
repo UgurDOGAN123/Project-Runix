@@ -1,10 +1,10 @@
-using Runix.Damage;
+ï»¿using Runix.Damage;
 using UnityEngine;
 
 namespace Runix.Turn
 {
     ///<summary>
-    ///Burası sadece verileri alıp uygun yerlere gönderecek 
+    ///BurasÄ± sadece verileri alÄ±p uygun yerlere gÃ¶nderecek 
     /// -Playere verilen hasar enemyde tutuluyor-
     /// -Enemyde verilen hasar playerde tutuluyor- 
     ///</summary>

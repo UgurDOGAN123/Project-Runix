@@ -1,4 +1,4 @@
-using Runix.Card;
+ï»¿using Runix.Card;
 using Runix.Managers;
 using UnityEngine;
 
@@ -42,7 +42,7 @@ namespace Runix.Enviorment
 
         public void SetCardSO(CardSO card)
         {
-            //Önceden bir kart var mı bakılacak ve varsa o desteye dönecek
+            //Ã–nceden bir kart var mÄ± bakÄ±lacak ve varsa o desteye dÃ¶necek
             if (cardSO != null)
             {
                 deckManagers.PickTheHand(cardSO);
