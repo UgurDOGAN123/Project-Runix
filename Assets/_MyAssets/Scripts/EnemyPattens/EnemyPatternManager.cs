@@ -28,7 +28,7 @@ namespace Runix.Enemy
 
         protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
-            if (arg1 == TurnEnum.PlayTurn && arg2 == 1)
+            if (arg1 == TurnEnum.PlayTurn && arg2 == PlayerIds.Enemy)
             {
                 PlayCard();
             }
@@ -73,7 +73,7 @@ namespace Runix.Enemy
             }
 
             var turnManager = TurnControlSystem.TurnControlManager.instance;
-            if (turnManager != null) turnManager.RequestEndTurn(1);
+            if (turnManager != null) turnManager.RequestEndTurn(PlayerIds.Enemy);
         }
 
 

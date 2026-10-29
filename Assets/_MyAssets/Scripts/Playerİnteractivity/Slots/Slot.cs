@@ -17,7 +17,7 @@ namespace Runix.Enviorment
         protected override void TurnManagerNewTurnStart(TurnEnum arg1, int arg2)
         {
 
-            isClicking = arg1 == TurnEnum.PlayTurn && arg2 == 0;
+            isClicking = arg1 == TurnEnum.PlayTurn && arg2 == PlayerIds.Player;
             if (arg1 == TurnEnum.PlayTurn) RemoveCardSO();
         }
         #endregion

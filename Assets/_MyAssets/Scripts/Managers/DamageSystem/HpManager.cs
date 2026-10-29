@@ -33,7 +33,7 @@ namespace Runix.Damage
 
         private void OnEnable()
         {
-            if (playerID == 1)
+            if (playerID == PlayerIds.Enemy)
             {
                 defensValues.Clear();
                 hp = MaxHp;

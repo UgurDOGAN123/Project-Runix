@@ -128,7 +128,7 @@ namespace Runix.TurnControlSystem
         {
             IsBattleRunning = true;
             battleOver = false;
-            currentPlayer = 0;
+            currentPlayer = PlayerIds.Player;
 
             // Dinleyicilerin abone olması için bir frame bekle
             await Awaitable.NextFrameAsync(ct);
@@ -163,7 +163,7 @@ namespace Runix.TurnControlSystem
 
                 if (battleOver) break;
 
-                currentPlayer = 0;
+                currentPlayer = PlayerIds.Player;
                 SetStage(TurnEnum.TurnEnd, 0);
                 await Awaitable.WaitForSecondsAsync(turnEndDelay, ct);
             }

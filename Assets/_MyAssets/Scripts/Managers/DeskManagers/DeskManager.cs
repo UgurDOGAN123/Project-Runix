@@ -29,9 +29,9 @@ namespace Runix.Managers
 
         public Character.CharacterSO GetCharacterSO(int index)
         {
-            if (index == 0)
+            if (index == PlayerIds.Player)
                 return Player;
-            else if (index == 1)
+            else if (index == PlayerIds.Enemy)
                 return Enemy;
             else
                 return null;

@@ -25,7 +25,7 @@ namespace Runix.Interactivity
         public void OnBeginDrag(PointerEventData eventData)
         {
             var tm = TurnControlSystem.TurnControlManager.instance;
-            _dragAllowed = tm != null && tm.CurrentStage == TurnEnum.PlayTurn && tm.CurrentPlayer == 0;
+            _dragAllowed = tm != null && tm.CurrentStage == TurnEnum.PlayTurn && tm.CurrentPlayer == PlayerIds.Player;
             if (!_dragAllowed) return;
             _parentToReturnTo = transform.parent;
             transform.SetParent(canvas.transform); // Canvas'ýn en üstüne taþý

@@ -39,7 +39,7 @@ namespace Runix.Scripts.UI
         public void PlayerTurnEnd()
         {
 
-            TurnControlSystem.TurnControlManager.instance.RequestEndTurn(0);
+            TurnControlSystem.TurnControlManager.instance.RequestEndTurn(PlayerIds.Player);
         }
     }
 }

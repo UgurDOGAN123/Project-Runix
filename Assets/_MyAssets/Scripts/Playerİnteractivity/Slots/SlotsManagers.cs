@@ -24,17 +24,17 @@ public class SlotsManagers : MonoBehaviour
             tm.DamageResolver = null;
     }
 
-    async Awaitable CalculateData(int a)
+    async Awaitable CalculateData(int player)
     {
         var ct = destroyCancellationToken;
-        TurnDataHolder holder = (a == 0) ? turnData.playerTurnDataHolder
+        TurnDataHolder holder = (player == PlayerIds.Player) ? turnData.playerTurnDataHolder
                                          : turnData.enemyTurnDataHolder;
 
         foreach (Slot slot in slots)
         {
             if (slot.cardSO == null) continue;
 
-            slot.cardSO.UseCard(holder, deckManager[a]);
+            slot.cardSO.UseCard(holder, deckManager[player]);
             await Awaitable.WaitForSecondsAsync(1, ct);
         }
         turnData.SendToDatas();
