@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981b87ba58fd3674e9fcc7b868aeef10, type: 3}
+  m_Name: StunBoss
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.StunBoss
+  characterName: Stun Boss
+  description: Stun Boss
+  MaxHandCardCount: 14
+  StartCardCount: 8
+  EveryTurnAddCardCount: 6
+  maxHp: 2000
+  maxDefans: 75
+  healable: 02000000
+  pasiveDefans:
+  - element: 2
+    Value: 25
+  Decks:
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  EnemyType: 1
+  Pattern: {fileID: 11400000, guid: f575a1e19d758cf4da8c670f83970556, type: 2}

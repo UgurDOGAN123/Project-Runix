@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89850ca99ebb2a49bb37be2a6d31005, type: 3}
+  m_Name: FireDemon
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.EnemySO
+  characterName: 'Fire Demon '
+  description: 'Fire Demon '
+  MaxHandCardCount: 10
+  StartCardCount: 4
+  EveryTurnAddCardCount: 2
+  maxHp: 1000
+  maxDefans: 75
+  healable: 02000000
+  pasiveDefans:
+  - element: 2
+    Value: 25
+  Decks:
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
+  EnemyType: 0
+  Pattern: {fileID: 11400000, guid: 31f52031dc9b41a499ca686598b50adb, type: 2}

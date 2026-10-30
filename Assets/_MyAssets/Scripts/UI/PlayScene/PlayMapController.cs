@@ -1,3 +1,4 @@
+using Runix.Enemy;
 using UnityEngine;
 
 namespace Runix.Map
@@ -6,7 +7,7 @@ namespace Runix.Map
     {
         [SerializeField] DeskUIManager NewBattleDeskPrefab;
         [SerializeField]
-        Character.CharacterSO[] Enemies;
+        EnemySO[] Enemies;
         [SerializeField] byte column;
         [SerializeField] byte minDesk, maxDesk;
 

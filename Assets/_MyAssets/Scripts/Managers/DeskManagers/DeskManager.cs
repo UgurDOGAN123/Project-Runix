@@ -21,7 +21,7 @@ namespace Runix.Managers
 
         public UnityEvent<DeskEnum> ChaneDesk;
 
-        public Character.CharacterSO Enemy;
+        public Enemy.EnemySO Enemy;
         public Character.CharacterSO Player;
 
         public byte DeskCount;

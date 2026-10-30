@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.PlayMapController
   NewBattleDeskPrefab: {fileID: -3411040012740941094, guid: a906fca3efca8064db462398669ee1d6, type: 3}
   Enemies:
-  - {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
+  - {fileID: 0}
   column: 3
   minDesk: 1
   maxDesk: 2

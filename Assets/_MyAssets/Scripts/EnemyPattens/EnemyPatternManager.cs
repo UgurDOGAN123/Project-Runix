@@ -11,7 +11,6 @@ namespace Runix.Enemy
 {
     public class EnemyPatternManager : MonoNewTurnEventConneter
     {
-        [SerializeField] AdaptiveEnemyProfileSO patterns;
         [SerializeField] HpManager hpManager;
         [SerializeField] DeckManagers deckManager;
         [SerializeField] EnemyHandUI enemyHandUI;
@@ -24,6 +23,13 @@ namespace Runix.Enemy
 
         EnemyDecisionResolver enemyDecision = new();
 
+        public AdaptiveEnemyProfileSO Patterns
+        {
+            get
+            {
+                return DeskManager.instance.Enemy.Pattern;
+            }
+        }
 
 
         #region // Turn System Event Connect
@@ -49,7 +55,7 @@ namespace Runix.Enemy
             {
                 var ct = destroyCancellationToken;
 
-                cards = enemyDecision.ResolveTurnCards(patterns, hpManager.HpPercent, deckManager.OnHandDeck);
+                cards = enemyDecision.ResolveTurnCards(Patterns, hpManager.HpPercent, deckManager.OnHandDeck);
                 enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);
 
                 await Awaitable.WaitForSecondsAsync(1, ct);

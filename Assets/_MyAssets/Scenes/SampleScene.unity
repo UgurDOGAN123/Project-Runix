@@ -1333,7 +1333,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Enemy: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
+  Enemy: {fileID: 0}
   Player: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
   DeskCount: 0
 --- !u!114 &325072677
@@ -2016,6 +2016,10 @@ PrefabInstance:
       propertyPath: minDesk
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3972032966832128013, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
+      propertyPath: 'Enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad4921cb58574dc429fec27f2ea9327e, type: 2}
     - target: {fileID: 5123423091509932941, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
       propertyPath: m_Name
       value: Column (2)
@@ -2954,6 +2958,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 562735362}
     m_Modifications:
+    - target: {fileID: 3972032966832128013, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
+      propertyPath: 'Enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ba7ed25a477171499ac22c92ed31e06, type: 2}
     - target: {fileID: 5123423091509932941, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
       propertyPath: m_Name
       value: Column (3)
@@ -7031,11 +7039,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7fc09ed3bbd5b846b5d582487f866ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.EnemyPatternManager
-  patterns: {fileID: 11400000, guid: 31f52031dc9b41a499ca686598b50adb, type: 2}
   hpManager: {fileID: 2084102780}
   deckManager: {fileID: 2084102782}
   enemyHandUI: {fileID: 280151052}
-  enemyEffects: {fileID: 0}
+  enemyEffects: {fileID: 2084102786}
   slots:
   - {fileID: 285909678}
   - {fileID: 805871349}
@@ -7694,6 +7701,10 @@ PrefabInstance:
       propertyPath: column
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3972032966832128013, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
+      propertyPath: 'Enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad4921cb58574dc429fec27f2ea9327e, type: 2}
     - target: {fileID: 5123423091509932941, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
       propertyPath: m_Name
       value: Column
@@ -8022,6 +8033,10 @@ PrefabInstance:
       propertyPath: minDesk
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3972032966832128013, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
+      propertyPath: 'Enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad4921cb58574dc429fec27f2ea9327e, type: 2}
     - target: {fileID: 5123423091509932941, guid: e19abe2404041b944a8fd29ce18f0bdc, type: 3}
       propertyPath: m_Name
       value: Column (1)
