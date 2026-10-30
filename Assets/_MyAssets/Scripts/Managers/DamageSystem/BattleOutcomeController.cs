@@ -10,6 +10,8 @@ namespace Runix.DamageSystem
         [SerializeField] HpManager playerHp;
         [SerializeField] HpManager enemyHp;
 
+        [SerializeField] GameObject WinPanel, LosePanel;
+
         bool finished;
 
         void OnEnable()
@@ -31,8 +33,8 @@ namespace Runix.DamageSystem
             finished = true;
 
             TurnControlManager.instance.EndBattle();
+            LosePanel.SetActive(true);
 
-            print("The End");
         }
         void EnemyDied()
         {
@@ -40,10 +42,15 @@ namespace Runix.DamageSystem
             finished = true;
 
             TurnControlManager.instance.EndBattle();
-
-            // Ödül Sahne geçişi
-
+            if (DeskManager.instance.DeskCount >= 3)
+            {
+                WinPanel.SetActive(true);
+                return;
+            }
             DeskManager.instance.ChaneDesk.Invoke(DeskEnum.GiveTreasure);
+
+
+
         }
 
     }

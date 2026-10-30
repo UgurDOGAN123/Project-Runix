@@ -27,8 +27,6 @@ namespace Runix.Map
                 obj.DeskGameObject.SetActive(obj.DeskEnum == desk);
             }
         }
-
-
     }
 }
 public enum DeskEnum
