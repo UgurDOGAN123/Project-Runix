@@ -6490,6 +6490,7 @@ GameObject:
   - component: {fileID: 1946946245}
   - component: {fileID: 1946946246}
   - component: {fileID: 1946946247}
+  - component: {fileID: 1946946248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6615,6 +6616,22 @@ MonoBehaviour:
   playerStunPanel: {fileID: 955969958}
   enemyStunPanel: {fileID: 0}
   messageSeconds: 1.5
+--- !u!114 &1946946248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946946240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523309a0585fa084088884c938a58eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Character.AbilityRunner
+  ownerId: 0
+  ownEffects: {fileID: 1946946246}
+  opponentEffects: {fileID: 2084102786}
+  totalSlots: 4
 --- !u!1 &1965021374
 GameObject:
   m_ObjectHideFlags: 0
@@ -6971,6 +6988,7 @@ GameObject:
   - component: {fileID: 2084102784}
   - component: {fileID: 2084102785}
   - component: {fileID: 2084102787}
+  - component: {fileID: 2084102788}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -7117,6 +7135,22 @@ MonoBehaviour:
   playerStunPanel: {fileID: 955969958}
   enemyStunPanel: {fileID: 0}
   messageSeconds: 1.5
+--- !u!114 &2084102788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084102779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523309a0585fa084088884c938a58eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Character.AbilityRunner
+  ownerId: 1
+  ownEffects: {fileID: 2084102786}
+  opponentEffects: {fileID: 1946946246}
+  totalSlots: 4
 --- !u!1 &2091131560
 GameObject:
   m_ObjectHideFlags: 0

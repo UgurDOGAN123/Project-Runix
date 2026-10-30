@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Runix.Card;
+using Runix.Effect;
 using UnityEngine;
 
 
@@ -25,7 +26,7 @@ namespace Runix.Character
         [Header("Deck")]
         public List<CardSO> Decks;
 
-        public virtual void UseAbility() { }
+        public virtual void UseAbility(AbilityContext abilityContext) { }
 
         //CharacterData eklenecek
         public virtual void SetData() { }
@@ -35,5 +36,13 @@ namespace Runix.Character
     {
         public Element element;
         public int Value;
+    }
+
+    // Karakter yeteneðinin sahneye eriþim yolu
+    public class AbilityContext
+    {
+        public int OwnerId;
+        public EffectManager Own;       // yeteneði kullananýn etkileri
+        public EffectManager Opponent;  // rakibin etkileri
     }
 }
