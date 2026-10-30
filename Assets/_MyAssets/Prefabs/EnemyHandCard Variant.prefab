@@ -112,6 +112,18 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5935335742463265450, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 5935335742463265450, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5935335742463265450, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30980393
+      objectReference: {fileID: 0}
     - target: {fileID: 6005876941071137115, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_Name
       value: EnemyHandCard Variant
@@ -119,6 +131,18 @@ PrefabInstance:
     - target: {fileID: 6005876941071137115, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361371715848770159, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361371715848770159, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361371715848770159, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30980393
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4052092276612932048, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}

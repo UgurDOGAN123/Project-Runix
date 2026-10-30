@@ -38,6 +38,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
   EnemyType: 1
   Pattern: {fileID: 11400000, guid: f575a1e19d758cf4da8c670f83970556, type: 2}
-  stunChance: 0.25
+  stunChance: 1
   stunTurns: 1
   stunBlockedSlots: 4

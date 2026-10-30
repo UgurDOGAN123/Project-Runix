@@ -22,7 +22,7 @@ MonoBehaviour:
   AnimCardSprite: {fileID: 21300000, guid: c6a0da95b654a40439695a7253a1166b, type: 3}
   animPrefab: {fileID: 3605390233840207830, guid: 7b051cfb39785c74ba535a33f1f64ff4, type: 3}
   animator: {fileID: 9100000, guid: 94e1f756de6b34b40bdd9c91ecba7216, type: 2}
-  Value: 5
+  Value: 10
   element: 2
   cardType: 0
   DestroyTime: 2

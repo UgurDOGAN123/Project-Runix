@@ -20,13 +20,13 @@ namespace Runix.Turn
 
         public void SendToDatas()
         {
-            enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
             playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
+            enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
             // Her tarafın uyguladığı etkiler karşı tarafa gider
-            if (enemyEffects != null)
-                foreach (var e in playerTurnDataHolder.PendingEffects) enemyEffects.Add(e);
             if (playerEffects != null)
                 foreach (var e in enemyTurnDataHolder.PendingEffects) playerEffects.Add(e);
+            if (enemyEffects != null)
+                foreach (var e in playerTurnDataHolder.PendingEffects) enemyEffects.Add(e);
             playerTurnDataHolder.AllClear();
             enemyTurnDataHolder.AllClear();
         }
