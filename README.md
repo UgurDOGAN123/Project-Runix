@@ -2,7 +2,7 @@
 
 Unity ile geliştirdiğim, tur tabanlı bir kart savaşı oyunu. Kartları slotlara yerleştirip rakibinle sırayla savaşıyor, her zaferden sonra desteni yeni kartlarla güçlendiriyor ve sonunda bir boss ile karşılaşıyorsun.
 
-> 📸 *Buraya 1-2 ekran görüntüsü ekle:* `![Savaş ekranı](Docs/battle.png)`
+> 📸 *Buraya 1-2 ekran görüntüsü ekle:* `![Savaş ekranı](battle.png)`
 > ▶️ *Build / video bağlantısı:* `[Oynanabilir sürüm](BAGLANTI)` · `[Oynanış videosu](BAGLANTI)`
 
 ## Nasıl oynanır
