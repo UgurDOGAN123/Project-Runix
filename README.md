@@ -2,8 +2,6 @@
 
 Unity ile geliştirdiğim, tur tabanlı bir kart savaşı oyunu. Kartları slotlara yerleştirip rakibinle sırayla savaşıyor, her zaferden sonra desteni yeni kartlarla güçlendiriyor ve sonunda bir boss ile karşılaşıyorsun.
 
-> 📸 *Buraya 1-2 ekran görüntüsü ekle:* `![Savaş ekranı](battle.png)`
-> ▶️ *Build / video bağlantısı:* `[Oynanabilir sürüm](BAGLANTI)` · `[Oynanış videosu](BAGLANTI)`
 
 ## Nasıl oynanır
 1. Elindeki kartlardan istediklerini ekrandaki **4 slota** sürükleyip bırak. Slottaki kartı tıklayarak geri alabilirsin.
@@ -11,7 +9,7 @@ Unity ile geliştirdiğim, tur tabanlı bir kart savaşı oyunu. Kartları slotl
 3. Rakip de aynı slotları kendi sırasında kullanır.
 4. Rakibin canını bitirirsen ödül olarak yeni bir kart seçersin ve haritada sıradaki savaşa geçersin.
 
-**Kart türleri:** Saldırı · Savunma · İyileştirme · Sersemletme (Stun)
+**Kart türleri:** Saldırı · Savunma · İyileştirme · Özel ( Şimdilik Sadece  Sersemletme (Stun) var)
 Aynı elementten art arda oynanan kartlar çarpan kazanır. Sersemletme kartı rakibin sonraki turunda slotlarını kilitler.
 
 ## Öne çıkan teknik özellikler
@@ -41,8 +39,7 @@ Assets/_MyAssets/Scripts
 ## Yapılacaklar
 - [ ] Yanma ve zehir gibi sürekli hasar efektleri
 - [ ] Daha fazla karakter ve boss
-- [ ] Ses ve müzik
-- [ ] Kart animasyonlarının sıraya alınması
+- [ ] Ses ve 
 
 ## Geliştirici
 **Uğur Doğan** · Unity / C# geliştirici
