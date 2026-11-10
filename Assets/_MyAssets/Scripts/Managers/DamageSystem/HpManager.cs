@@ -103,6 +103,23 @@ namespace Runix.Damage
             }
         }
 
+        public void TakeDirectDamage(int attackValue)
+        {
+            foreach (var item in pasiveDefensValues.Keys)
+            {
+                float damageValue;
+                pasiveDefensValues.TryGetValue(item, out int pasiveDefens);
+                float reduction = Mathf.Clamp01((+pasiveDefens) / 100f);
+                damageValue = attackValue * (1f - reduction);
+                hp -= Mathf.RoundToInt(damageValue);
+            }
+            if (hp <= 0 && !isDead)
+            {
+                isDead = true;
+                OnDeath?.Invoke();
+            }
+        }
+
 
     }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7655d5276e94f7d4884397962aead348, type: 3}
+  m_Script: {fileID: 11500000, guid: 7575564ee5e7246418fe18b171120f43, type: 3}
   m_Name: FireAttack
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Attack
-  cardName: Fire Attack
+  cardName: FireAttack
   cardDescription: Attack with fire
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}

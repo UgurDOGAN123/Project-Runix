@@ -24,10 +24,10 @@ MonoBehaviour:
   - element: 2
     Value: 20
   Decks:
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
   - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
   - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
   - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}

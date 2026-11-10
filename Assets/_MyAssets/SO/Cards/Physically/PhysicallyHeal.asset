@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196e616b66542fe4c92f8913cfec1a96, type: 3}
+  m_Name: PhysicallyHeal
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Heal
+  cardName: Physically Heal
+  cardDescription: Self attack with Physically
+  BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
+  CardImage: {fileID: 0}
+  ElememtImg: {fileID: -23420163, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  CardType: {fileID: 1163421063, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
+  CardOnRun: {fileID: -23420163, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  AnimCardSprite: {fileID: 0}
+  animPrefab: {fileID: 3605390233840207830, guid: 7b051cfb39785c74ba535a33f1f64ff4, type: 3}
+  animator: {fileID: 9100000, guid: 94e1f756de6b34b40bdd9c91ecba7216, type: 2}
+  Value: 10
+  element: 1
+  cardType: 2
+  DestroyTime: 2

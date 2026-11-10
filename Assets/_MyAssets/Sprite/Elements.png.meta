@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Elements_0
+      name: Fire Element
       rect:
         serializedVersion: 2
         x: 101
@@ -122,7 +122,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Elements_1
+      name: Lightening Element
       rect:
         serializedVersion: 2
         x: 532
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Elements_2
+      name: Water Element
       rect:
         serializedVersion: 2
         x: 953
@@ -166,7 +166,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Elements_3
+      name: Earth Element
       rect:
         serializedVersion: 2
         x: 1374
@@ -188,7 +188,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Elements_4
+      name: Nature Element
       rect:
         serializedVersion: 2
         x: 1797
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Elements_5
+      name: Physically Element
       rect:
         serializedVersion: 2
         x: 2232
@@ -247,12 +247,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":458.0,"y":1096.0},"gridSpriteOffset":{"x":0.0,"y":440.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Elements_0: -6519106895325619043
-      Elements_1: 171000255
-      Elements_2: -959912754
-      Elements_3: 294692939
-      Elements_4: 570495748
-      Elements_5: -23420163
+      Earth Element: 294692939
+      Fire Element: -6519106895325619043
+      Lightening Element: 171000255
+      Nature Element: 570495748
+      Physically Element: -23420163
+      Water Element: -959912754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

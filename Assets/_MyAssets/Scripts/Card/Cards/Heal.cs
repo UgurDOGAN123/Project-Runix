@@ -6,13 +6,10 @@ namespace Runix.Card
     [CreateAssetMenu(fileName = "Heal", menuName = "SO/Card/Heal")]
     public class Heal : CardSO
     {
-
         public override void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
         {
             base.UseCard(turnDataHolder, deckManagers);
             turnDataHolder.AddHeal(element, Value);
-
         }
-
     }
 }
