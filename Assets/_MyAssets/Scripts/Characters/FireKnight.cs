@@ -20,7 +20,7 @@ namespace Runix.Character
                 return;
             if (Random.value < abilityChance)
             {
-                abilityContext.Opponent.Add(new FireEffect(burnTurn, burnDamage));
+                abilityContext.Opponent.Add(new ElementEffect(burnTurn, burnDamage, element));
             }
         }
     }
