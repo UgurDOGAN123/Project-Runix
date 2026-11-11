@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116a721b5a9397b4a87535abe078d3e3, type: 3}
   m_Name: Defens
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Defens
-  cardName: wind Defens
-  cardDescription: Usa a wind shild
+  cardName: Ice Defens
+  cardDescription: Usa a Ice shild
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
   ElememtImg: {fileID: 0}
@@ -23,6 +23,6 @@ MonoBehaviour:
   animPrefab: {fileID: 3605390233840207830, guid: 7b051cfb39785c74ba535a33f1f64ff4, type: 3}
   animator: {fileID: 9100000, guid: 7a581e4772f02014ea3706e7c238e6ce, type: 2}
   Value: 10
-  element: 4
+  element: 8
   cardType: 1
   DestroyTime: 2

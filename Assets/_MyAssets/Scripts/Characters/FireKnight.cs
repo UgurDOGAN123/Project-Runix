@@ -1,4 +1,5 @@
 ﻿
+using Runix.Effect;
 using UnityEngine;
 
 namespace Runix.Character
@@ -9,5 +10,18 @@ namespace Runix.Character
         [Header("Fire Knight Info")]
         public Element element;
         public TurnEnum turnEnum;
+        [Range(0f, 1f)][SerializeField] float abilityChance = 0.3f;
+        [SerializeField] int burnTurn;
+        [SerializeField] int burnDamage;
+
+        public override void UseAbility(AbilityContext abilityContext)
+        {
+            if (abilityContext.Opponent == null)
+                return;
+            if (Random.value < abilityChance)
+            {
+                abilityContext.Opponent.Add(new FireEffect(burnTurn, burnDamage));
+            }
+        }
     }
 }

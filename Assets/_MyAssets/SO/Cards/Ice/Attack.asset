@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7575564ee5e7246418fe18b171120f43, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Attack
-  cardName: wind Attack
-  cardDescription: Attack with wind
+  cardName: Ice Attack
+  cardDescription: Attack with Ice
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
   ElememtImg: {fileID: 0}
@@ -23,6 +23,6 @@ MonoBehaviour:
   animPrefab: {fileID: 3605390233840207830, guid: 7b051cfb39785c74ba535a33f1f64ff4, type: 3}
   animator: {fileID: 9100000, guid: 20e9e4a181de89946b0c7acc34b3547f, type: 2}
   Value: 10
-  element: 4
+  element: 8
   cardType: 0
   DestroyTime: 2
