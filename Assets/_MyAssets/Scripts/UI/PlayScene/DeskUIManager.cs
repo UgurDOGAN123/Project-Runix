@@ -12,7 +12,7 @@ namespace Runix.Map
         {
             if (Column != DeskManager.instance.DeskCount) return;
             DeskManager.instance.Enemy = Enemy;
-            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.WarEnemy);
+            DeskManager.instance.ChangeDesk.Invoke(DeskEnum.WarEnemy);
         }
 
     }

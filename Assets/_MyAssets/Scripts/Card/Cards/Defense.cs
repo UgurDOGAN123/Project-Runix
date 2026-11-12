@@ -10,7 +10,7 @@ namespace Runix.Card
         public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             base.UseCard(turnDataHolder, deckManagers);
-            turnDataHolder.AddDefens(element, Value);
+            turnDataHolder.AddDefense(element, Value);
 
         }
     }

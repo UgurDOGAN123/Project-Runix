@@ -14,8 +14,8 @@ namespace Runix.Damage
         [SerializeField] int playerID;
         [SerializeField] private bool isDead;
 
-        Dictionary<Element, int> defensValues = new();
-        Dictionary<Element, int> pasiveDefensValues = new();
+        Dictionary<Element, int> defenseValues = new();
+        Dictionary<Element, int> passiveDefenseValues = new();
 
         public event System.Action OnDeath;
         Character.CharacterSO Character => DeskManager.instance.GetCharacterSO(playerID);
@@ -29,18 +29,18 @@ namespace Runix.Damage
         }
 
         int MaxHp { get => Character.maxHp; }
-        public int MaxDefens { get => Character.maxDefans; }
+        public int MaxDefense { get => Character.maxDefense; }
 
         private void OnEnable()
         {
             if (playerID == PlayerIds.Enemy)
             {
-                defensValues.Clear();
+                defenseValues.Clear();
                 hp = MaxHp;
             }
             isDead = false;
-            hpSlider.ChaneSlider(HpPercent);
-            pasiveDefensValues = Character.pasiveDefans
+            hpSlider.ChangeSlider(HpPercent);
+            passiveDefenseValues = Character.passiveDefense
     .GroupBy(x => x.element)
     .ToDictionary(g => g.Key, g => g.Sum(x => x.Value));
         }
@@ -51,10 +51,10 @@ namespace Runix.Damage
             //heal yapılacak
             DoHeal(Heal_DefData.HealValues);
             //defens eklenecek
-            AddDefens(Heal_DefData.DefensValues);
+            AddDefense(Heal_DefData.DefenseValues);
             //attack yapılacak
-            TakeDamage(Attack_Mulitpler.AttackValues, Attack_Mulitpler.MultiplerValues);
-            hpSlider.ChaneSlider(HpPercent);
+            TakeDamage(Attack_Mulitpler.AttackValues, Attack_Mulitpler.MultiplierValues);
+            hpSlider.ChangeSlider(HpPercent);
 
 
         }
@@ -73,12 +73,12 @@ namespace Runix.Damage
             }
         }
 
-        void AddDefens(Dictionary<Element, int> defansValue)
+        void AddDefense(Dictionary<Element, int> defansValue)
         {
             foreach (var item in defansValue)
             {
-                defensValues.TryGetValue(item.Key, out int current);
-                defensValues[item.Key] = Mathf.Min(current + item.Value, MaxDefens);
+                defenseValues.TryGetValue(item.Key, out int current);
+                defenseValues[item.Key] = Mathf.Min(current + item.Value, MaxDefense);
             }
 
         }
@@ -88,13 +88,13 @@ namespace Runix.Damage
             foreach (var item in attackValue.Keys)
             {
                 float damageValue;
-                defensValues.TryGetValue(item, out int defens);
+                defenseValues.TryGetValue(item, out int defens);
                 multiplerValue.TryGetValue(item, out int multipler);
-                pasiveDefensValues.TryGetValue(item, out int pasiveDefens);
+                passiveDefenseValues.TryGetValue(item, out int pasiveDefens);
                 float reduction = Mathf.Clamp01((defens + pasiveDefens) / 100f);
                 damageValue = attackValue[item] * (multipler * multipler) * (1f - reduction);
                 hp -= Mathf.RoundToInt(damageValue);
-                defensValues.Remove(item);
+                defenseValues.Remove(item);
             }
             if (hp <= 0 && !isDead)
             {
@@ -106,7 +106,7 @@ namespace Runix.Damage
         public void TakeDirectDamage(int attackValue, Element element = Element.None)
         {
             float damageValue;
-            pasiveDefensValues.TryGetValue(element, out int pasiveDefens);
+            passiveDefenseValues.TryGetValue(element, out int pasiveDefens);
             float reduction = Mathf.Clamp01((pasiveDefens) / 100f);
             damageValue = attackValue * (1f - reduction);
             hp -= Mathf.RoundToInt(damageValue);

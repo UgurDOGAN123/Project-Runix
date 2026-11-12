@@ -68,7 +68,7 @@ namespace Runix.Enemy
                         slotIndex++;
                     if (slotIndex >= slots.Length) break; // boş slot kalmadı, kalan kartlar elde kalır
 
-                    deckManager.RemoveFormHandDeck(cards[i]);
+                    deckManager.RemoveFromHandDeck(cards[i]);
                     slots[slotIndex].SetCardSO(cards[i]);
                     slotIndex++;
                     enemyHandUI.UpdateUI(deckManager.OnHandDeck.Count);

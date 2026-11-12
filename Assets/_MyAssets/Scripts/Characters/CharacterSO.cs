@@ -19,9 +19,9 @@ namespace Runix.Character
 
         [Header("Hp Values")]
         public int maxHp;
-        public int maxDefans;
+        public int maxDefense;
         public Element[] healable;
-        public PasiveDefans[] pasiveDefans;
+        public PassiveDefense[] passiveDefense;
 
         [Header("Deck")]
         public List<CardSO> Decks;
@@ -32,10 +32,10 @@ namespace Runix.Character
         public virtual void SetData() { }
     }
     [System.Serializable]
-    public struct PasiveDefans
+    public struct PassiveDefense
     {
         public Element element;
-        public int Value;
+        [Range(0, 100)] public int Value;
     }
 
     // Karakter yeteneðinin sahneye eriþim yolu

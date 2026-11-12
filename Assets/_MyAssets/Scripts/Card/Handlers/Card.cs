@@ -17,7 +17,7 @@ namespace Runix.Card
         {
             gameObject.SetActive(true);
             card = cardSO;
-            uIHandler.ChaceImage(card);
+            uIHandler.ChangeImage(card);
         }
 
         public void DistractCard()

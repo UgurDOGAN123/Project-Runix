@@ -37,7 +37,7 @@ public class SlotsManager : MonoBehaviour
             slot.cardSO.UseCard(holder, deckManager[player]);
             await Awaitable.WaitForSecondsAsync(1, ct);
         }
-        turnData.SendToDatas();
+        turnData.SendTurnData();
         await Awaitable.WaitForSecondsAsync(1, ct);
 
     }

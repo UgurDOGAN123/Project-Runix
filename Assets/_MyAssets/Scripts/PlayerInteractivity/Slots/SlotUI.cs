@@ -13,16 +13,16 @@ namespace Runix.Environment
             {
                 if (visible)
                 {
-                    ChaceImage(lockIcon);
+                    ChangeImage(lockIcon);
                 }
                 else
                 {
-                    ChaceImage(null);
+                    ChangeImage(null);
                 }
             }
         }
 
-        public void ChaceImage(Sprite sprite)
+        public void ChangeImage(Sprite sprite)
         {
             image.sprite = sprite;
         }

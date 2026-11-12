@@ -19,7 +19,7 @@ namespace Runix.Managers
             }
         }
 
-        public UnityEvent<DeskEnum> ChaneDesk;
+        public UnityEvent<DeskEnum> ChangeDesk;
 
         public Enemy.EnemySO Enemy;
         public Character.CharacterSO Player;

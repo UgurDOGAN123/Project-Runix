@@ -592,7 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.CardUIHandler
   BackGroundImg: {fileID: 5935335742463265450}
   CardImage: {fileID: 2148293150813762785}
-  ElememtImg: {fileID: 5973442721697395031}
+  ElementImg: {fileID: 5973442721697395031}
   CardType: {fileID: 4312472049574782389}
   ValueText: {fileID: 4877558177011356067}
 --- !u!114 &-4052092276612932048
@@ -607,5 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342c726ba47cb854baf72011fb5754a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Interactivity.DragDropSystem
+  canvas: {fileID: 0}
   card: {fileID: 355355564829542436}
   deckManagers: {fileID: 0}

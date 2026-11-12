@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9570c75a5796d2543b2a7e40226dccfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Managers.DeskManager
-  ChaneDesk:
+  ChangeDesk:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 325072677}

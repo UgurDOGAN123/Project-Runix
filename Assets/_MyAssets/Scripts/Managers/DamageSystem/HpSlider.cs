@@ -7,7 +7,7 @@ namespace Runix.UI
     {
         [SerializeField] Slider slider;
 
-        public void ChaneSlider(float hp)
+        public void ChangeSlider(float hp)
         {
             slider.value = hp;
         }
