@@ -40,3 +40,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
   element: 2
   turnEnum: 3
+  abilityChance: 1
+  burnTurn: 1
+  burnDamage: 30
