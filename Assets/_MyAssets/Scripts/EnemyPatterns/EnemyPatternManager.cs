@@ -3,7 +3,7 @@ using Runix.Card;
 using Runix.Damage;
 using Runix.Effect;
 using Runix.Enemy.UI;
-using Runix.Enviorment;
+using Runix.Environment;
 using Runix.Managers;
 using UnityEngine;
 

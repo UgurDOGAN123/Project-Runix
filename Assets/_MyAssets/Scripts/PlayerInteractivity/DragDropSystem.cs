@@ -1,5 +1,5 @@
 ﻿
-using Runix.Enviorment;
+using Runix.Environment;
 using Runix.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;

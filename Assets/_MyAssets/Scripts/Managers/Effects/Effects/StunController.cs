@@ -1,5 +1,5 @@
 using Runix.Effect;
-using Runix.Enviorment;
+using Runix.Environment;
 using UnityEngine;
 
 namespace Runix.Effects

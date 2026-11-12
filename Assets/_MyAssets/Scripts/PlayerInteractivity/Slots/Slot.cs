@@ -2,7 +2,7 @@
 using Runix.Managers;
 using UnityEngine;
 
-namespace Runix.Enviorment
+namespace Runix.Environment
 {
     public class Slot : MonoNewTurnEventConneter
     {
