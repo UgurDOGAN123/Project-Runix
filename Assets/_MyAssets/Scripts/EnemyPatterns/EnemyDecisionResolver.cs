@@ -9,8 +9,14 @@ namespace Runix.Enemy
         public List<CardSO> ResolveTurnCards(AdaptiveEnemyProfileSO profile, float currentHpPercent, List<CardSO> handDeck)
         {
             if (profile.healthTiers == null || profile.healthTiers.Count == 0)
+            {
                 return handDeck.Take(profile.maxPlaySlots).ToList();
+            }
             HealthTierDecision currentTier = profile.healthTiers.FirstOrDefault(tier => currentHpPercent >= tier.minHpPercent) ?? profile.healthTiers.Last();
+            if (currentTier == null)
+            {
+                return handDeck.Take(profile.maxPlaySlots).ToList();
+            }
 
             // 2. Öncelik sırasına göre dene (İlk uyan pattern seçilir)
             foreach (var pattern in currentTier.prioritizedPatterns)
