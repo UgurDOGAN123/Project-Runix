@@ -17,7 +17,7 @@ namespace Runix.Managers
         [Header("References")]
         [SerializeField] DeckAnimManager animManager;
 
-        [Header("Veraibles")]
+        [Header("Variables")]
         [SerializeField] byte playerID;
 
         public event Action<List<CardSO>> UpdateUI;  // Her işlemden Sonra tetikle

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Runix.Card
 {
-    [CreateAssetMenu(fileName = "Defens", menuName = "SO/Card/Defense")]
+    [CreateAssetMenu(fileName = "Defense", menuName = "SO/Card/Defense")]
     public class Defense : CardSO
     {
 

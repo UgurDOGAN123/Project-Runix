@@ -20,9 +20,9 @@ namespace Runix
         {
             AddElementValue(AttackValues, element, attackValue);
         }
-        public void AddDefense(Element element, int defensvalue)
+        public void AddDefense(Element element, int defenseValue)
         {
-            AddElementValue(DefenseValues, element, defensvalue);
+            AddElementValue(DefenseValues, element, defenseValue);
         }
         public void AddHeal(Element element, int healValue)
         {
@@ -38,10 +38,10 @@ namespace Runix
             PendingEffects.Clear();
         }
 
-        void AddElementValue(Dictionary<Element, int> fonkValues, Element element, int value)
+        void AddElementValue(Dictionary<Element, int> elementValues, Element element, int value)
         {
-            fonkValues.TryGetValue(element, out int current);
-            fonkValues[element] = current + value;
+            elementValues.TryGetValue(element, out int current);
+            elementValues[element] = current + value;
             AddMultiplier(element);
         }
 
