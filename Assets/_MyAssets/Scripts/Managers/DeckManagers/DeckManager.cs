@@ -110,7 +110,7 @@ namespace Runix.Managers
             UpdateUI?.Invoke(onHandDeck);
         }
 
-        public void PickTheHand(CardSO card)
+        public void ReturnToHand(CardSO card)
         {
             if (onHandDeck.Count >= Character.MaxHandCardCount) return;
             onHandDeck.Add(card);
@@ -135,7 +135,7 @@ namespace Runix.Managers
             catch (System.Exception e) { Debug.LogException(e, this); }
         }
 
-        public void RemoveFormHandDeck(CardSO card)
+        public void RemoveFromHandDeck(CardSO card)
         {
             onHandDeck.Remove(card);
         }
@@ -147,14 +147,14 @@ namespace Runix.Managers
             {
                 onPickableDeck.Add(cards[i]);
             }
-            ShuffelDeck(onPickableDeck);
+            ShuffleDeck(onPickableDeck);
             UpdateUI?.Invoke(null);
         }
 
         // gerekirse bağlantıyı ters çevir ve o tarafdan dinle
 
 
-        void ShuffelDeck(List<CardSO> cards)
+        void ShuffleDeck(List<CardSO> cards)
         {
             int randomNumber;
             CardSO temp;

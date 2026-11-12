@@ -3,19 +3,19 @@
     public enum Element
     {
         None,
-        Physically,
+        Physical,
         Fire,
         Water,
         Wind,
         Earth,
         Nature,
-        Lightening,
+        Lightning,
         Ice,
     }
     public enum CardType
     {
         Attack,
-        Defans,
+        Defense,
         Heal,
         Special,
     }

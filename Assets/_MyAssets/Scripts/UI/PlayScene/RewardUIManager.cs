@@ -22,7 +22,7 @@ namespace Runix.UI.Reward
             deckManagers.deckClone.Add(card.CardSO);
             print(card.CardSO.name + " eklendi");
             DeskManager.instance.DeskCount++;
-            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.SetDesk);
+            DeskManager.instance.ChangeDesk.Invoke(DeskEnum.SetDesk);
 
         }
 

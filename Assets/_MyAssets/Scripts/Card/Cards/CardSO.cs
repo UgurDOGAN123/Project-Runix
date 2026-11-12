@@ -12,11 +12,11 @@ namespace Runix.Card
         [Header("Images")]
         public Sprite BackgroundImg;
         public Sprite CardImage;
-        public Sprite ElememtImg;
+        public Sprite ElementImg;
         public Sprite CardType;
         public Sprite CardOnRun;
 
-        [Header("Referanses")]
+        [Header("References")]
         [SerializeField] Sprite AnimCardSprite;
         [SerializeField] GameObject animPrefab;
         [SerializeField] RuntimeAnimatorController animator;

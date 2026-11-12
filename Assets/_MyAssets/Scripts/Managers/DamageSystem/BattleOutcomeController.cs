@@ -47,7 +47,7 @@ namespace Runix.DamageSystem
                 WinPanel.SetActive(true);
                 return;
             }
-            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.GiveTreasure);
+            DeskManager.instance.ChangeDesk.Invoke(DeskEnum.GiveTreasure);
 
 
 

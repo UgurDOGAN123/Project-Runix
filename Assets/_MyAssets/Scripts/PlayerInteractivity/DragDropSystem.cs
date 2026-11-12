@@ -62,7 +62,7 @@ namespace Runix.Interactivity
                     {
 
                         slot.SetCardSO(card.CardSO);
-                        deckManagers.RemoveFormHandDeck(card.CardSO);
+                        deckManagers.RemoveFromHandDeck(card.CardSO);
                         placedSuccessfully = true;
                     }
                 }

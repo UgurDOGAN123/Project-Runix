@@ -7,7 +7,7 @@ namespace Runix.Environment
     public class Slot : MonoNewTurnEventConnector
     {
         public CardSO cardSO;
-        [SerializeField] bool islock;
+        [SerializeField] bool isLocked;
         [SerializeField] DeckManager deckManagers;
         [SerializeField] SlotUI slotUI;
         [SerializeField] bool isClicking;
@@ -27,16 +27,16 @@ namespace Runix.Environment
         {
             get
             {
-                return false == islock;
+                return false == isLocked;
             }
         }
         private void OnMouseUp()
         {
             if (cardSO != null && isClicking)
             {
-                deckManagers.PickTheHand(cardSO);
+                deckManagers.ReturnToHand(cardSO);
                 cardSO = null;
-                slotUI.ChaceImage(null);
+                slotUI.ChangeImage(null);
             }
         }
 
@@ -45,21 +45,21 @@ namespace Runix.Environment
             //Önceden bir kart var mı bakılacak ve varsa o desteye dönecek
             if (cardSO != null)
             {
-                deckManagers.PickTheHand(cardSO);
+                deckManagers.ReturnToHand(cardSO);
             }
             cardSO = card;
-            slotUI.ChaceImage(card.CardOnRun);
+            slotUI.ChangeImage(card.CardOnRun);
         }
 
         public void RemoveCardSO()
         {
             cardSO = null;
-            slotUI.ChaceImage(null);
+            slotUI.ChangeImage(null);
         }
 
         public void SetLocked(bool locked)
         {
-            islock = locked;
+            isLocked = locked;
             slotUI.SetLockIcon(locked);
         }
     }

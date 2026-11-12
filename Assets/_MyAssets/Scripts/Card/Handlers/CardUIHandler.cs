@@ -6,14 +6,14 @@ namespace Runix.UI
 {
     public class CardUIHandler : MonoBehaviour
     {
-        [SerializeField] Image BackGroundImg, CardImage, ElememtImg, CardType;
+        [SerializeField] Image BackGroundImg, CardImage, ElementImg, CardType;
         [SerializeField] TMPro.TMP_Text ValueText;
 
-        public void ChaceImage(CardSO cardSO)
+        public void ChangeImage(CardSO cardSO)
         {
             BackGroundImg.sprite = cardSO.BackgroundImg;
             CardImage.sprite = cardSO.CardImage;
-            ElememtImg.sprite = cardSO.ElememtImg;
+            ElementImg.sprite = cardSO.ElementImg;
             CardType.sprite = cardSO.CardType;
             ValueText.text = cardSO.Value.ToString();
         }

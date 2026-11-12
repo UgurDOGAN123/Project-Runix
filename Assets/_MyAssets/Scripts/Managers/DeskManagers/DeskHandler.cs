@@ -17,7 +17,7 @@ namespace Runix.Map
 
         private void Start()
         {
-            DeskManager.instance.ChaneDesk.Invoke(DeskEnum.SetDesk);
+            DeskManager.instance.ChangeDesk.Invoke(DeskEnum.SetDesk);
         }
 
         public void DeskEnumSet(DeskEnum desk)

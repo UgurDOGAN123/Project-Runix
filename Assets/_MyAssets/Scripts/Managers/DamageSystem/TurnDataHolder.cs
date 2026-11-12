@@ -6,9 +6,9 @@ namespace Runix
     public class TurnDataHolder
     {
         public Dictionary<Element, int> AttackValues = new();
-        public Dictionary<Element, int> DefensValues = new();
+        public Dictionary<Element, int> DefenseValues = new();
         public Dictionary<Element, int> HealValues = new();
-        public Dictionary<Element, int> MultiplerValues = new();
+        public Dictionary<Element, int> MultiplierValues = new();
         public List<IEffect> PendingEffects = new();
 
         public void AddEffect(IEffect effect)
@@ -18,39 +18,39 @@ namespace Runix
 
         public void AddAttack(Element element, int attackValue)
         {
-            AddFonk(AttackValues, element, attackValue);
+            AddElementValue(AttackValues, element, attackValue);
         }
-        public void AddDefens(Element element, int defensvalue)
+        public void AddDefense(Element element, int defensvalue)
         {
-            AddFonk(DefensValues, element, defensvalue);
+            AddElementValue(DefenseValues, element, defensvalue);
         }
         public void AddHeal(Element element, int healValue)
         {
-            AddFonk(HealValues, element, healValue);
+            AddElementValue(HealValues, element, healValue);
         }
 
         public void AllClear()
         {
-            MultiplerValues.Clear();
-            DefensValues.Clear();
+            MultiplierValues.Clear();
+            DefenseValues.Clear();
             HealValues.Clear();
             AttackValues.Clear();
             PendingEffects.Clear();
         }
 
-        void AddFonk(Dictionary<Element, int> fonkValues, Element element, int value)
+        void AddElementValue(Dictionary<Element, int> fonkValues, Element element, int value)
         {
             fonkValues.TryGetValue(element, out int current);
             fonkValues[element] = current + value;
-            AddMultipler(element);
+            AddMultiplier(element);
         }
 
 
-        void AddMultipler(Element element)
+        void AddMultiplier(Element element)
         {
-            MultiplerValues.TryGetValue(element, out int a);
+            MultiplierValues.TryGetValue(element, out int a);
             a += 1;
-            MultiplerValues[element] = a;
+            MultiplierValues[element] = a;
         }
     }
 }

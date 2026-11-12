@@ -18,7 +18,7 @@ namespace Runix.Turn
         [SerializeField] HpManager playerHpManager, enemyHpManager;
 
 
-        public void SendToDatas()
+        public void SendTurnData()
         {
             playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
             enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
