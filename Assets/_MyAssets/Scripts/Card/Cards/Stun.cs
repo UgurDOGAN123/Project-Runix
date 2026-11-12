@@ -12,7 +12,7 @@ namespace Runix.Card
 
         // Kartýn üzerinde görünen 'Value' = kapatýlacak slot sayýsý
 
-        public override void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
+        public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             base.UseCard(turnDataHolder, deckManagers);
             turnDataHolder.AddEffect(new StunEffect(turns, Value));

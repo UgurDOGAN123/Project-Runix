@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runix.Effect
 {
-    public class EffectManager : MonoNewTurnEventConneter
+    public class EffectManager : MonoNewTurnEventConnector
     {
 
         [SerializeField] int ownerId;       // 0 = oyuncu, 1 = düşman (PlayerIds)

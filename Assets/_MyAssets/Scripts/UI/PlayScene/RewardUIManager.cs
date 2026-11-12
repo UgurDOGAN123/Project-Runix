@@ -7,7 +7,7 @@ namespace Runix.UI.Reward
     public class RewardUIManager : MonoBehaviour
     {
         [SerializeField] Button[] cards;
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
 
         private void OnEnable()
         {

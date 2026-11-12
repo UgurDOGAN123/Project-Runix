@@ -2,7 +2,7 @@
 
 namespace Runix.UI
 {
-    public class StageUiHandler : MonoNewTurnEventConneter
+    public class StageUiHandler : MonoNewTurnEventConnector
     {
         [SerializeField] bool isShow = true;
         [SerializeField] TurnEnum[] turnEnum;

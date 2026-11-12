@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Runix.UI
 {
-    public class DeckUIManger : MonoBehaviour
+    public class DeckUIManager : MonoBehaviour
     {
 
         [SerializeField] DeckUI Trash, Pickable;
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
 
         private void OnEnable()
         {

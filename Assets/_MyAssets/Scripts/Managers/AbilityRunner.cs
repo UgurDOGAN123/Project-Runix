@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runix.Character
 {
-    public class AbilityRunner : MonoNewTurnEventConneter
+    public class AbilityRunner : MonoNewTurnEventConnector
     {
         [SerializeField] int ownerId;              // 0 oyuncu, 1 düşman (PlayerIds)
         [SerializeField] EffectManager ownEffects, opponentEffects;

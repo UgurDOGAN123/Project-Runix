@@ -7,7 +7,7 @@ namespace Runix.Card
     public class OnHandCardManager : MonoBehaviour
     {
         [SerializeField] Card[] cards;
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
 
         private void OnEnable()
         {

@@ -12,7 +12,7 @@ namespace Runix.Interactivity
         Transform _parentToReturnTo;
         private CanvasGroup _canvasGroup;
         [SerializeField] Card.Card card;
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
         bool _dragAllowed;
         private void Awake()
         {

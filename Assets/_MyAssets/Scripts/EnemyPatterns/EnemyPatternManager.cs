@@ -9,10 +9,10 @@ using UnityEngine;
 
 namespace Runix.Enemy
 {
-    public class EnemyPatternManager : MonoNewTurnEventConneter
+    public class EnemyPatternManager : MonoNewTurnEventConnector
     {
         [SerializeField] HpManager hpManager;
-        [SerializeField] DeckManagers deckManager;
+        [SerializeField] DeckManager deckManager;
         [SerializeField] EnemyHandUI enemyHandUI;
         [SerializeField] EffectManager enemyEffects;
 

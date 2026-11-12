@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Runix.Environment
 {
-    public class Slot : MonoNewTurnEventConneter
+    public class Slot : MonoNewTurnEventConnector
     {
         public CardSO cardSO;
         [SerializeField] bool islock;
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
         [SerializeField] SlotUI slotUI;
         [SerializeField] bool isClicking;
 

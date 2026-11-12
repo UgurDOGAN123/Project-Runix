@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Runix.Card
 {
-    [CreateAssetMenu(fileName = "Defens", menuName = "SO/Card/Defens")]
-    public class Defens : CardSO
+    [CreateAssetMenu(fileName = "Defens", menuName = "SO/Card/Defense")]
+    public class Defense : CardSO
     {
 
-        public override void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
+        public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             base.UseCard(turnDataHolder, deckManagers);
             turnDataHolder.AddDefens(element, Value);

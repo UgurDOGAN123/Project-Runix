@@ -7,7 +7,7 @@ namespace Runix.Effects
     // Sahibinin PlayTurn'ünde stun kadar slotu rastgele kilitler.
     // Tüm slotlar kilitliyse paneli gösterir ve turu otomatik geçer.
     // DÝKKAT: Kendi OnEnable/OnDisable yazmayýn (üst sýnýfý gizler).
-    public class StunController : MonoNewTurnEventConneter
+    public class StunController : MonoNewTurnEventConnector
     {
         [SerializeField] Slot[] slots;
         [SerializeField] EffectManager playerEffects, enemyEffects;

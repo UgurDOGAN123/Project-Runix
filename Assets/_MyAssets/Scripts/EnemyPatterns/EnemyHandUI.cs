@@ -9,7 +9,7 @@ namespace Runix.Enemy.UI
     {
         [SerializeField] GameObject[] Cards;
 
-        [SerializeField] DeckManagers deckManagers;
+        [SerializeField] DeckManager deckManagers;
 
         private void OnEnable()
         {

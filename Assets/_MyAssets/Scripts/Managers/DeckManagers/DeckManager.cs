@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Runix.Managers
 {
-    public class DeckManagers : MonoNewTurnEventConneter
+    public class DeckManager : MonoNewTurnEventConnector
     {
         [Header("Decks")]
         [SerializeField] private List<CardSO> onPickableDeck;

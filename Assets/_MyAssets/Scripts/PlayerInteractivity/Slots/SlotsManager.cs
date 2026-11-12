@@ -5,11 +5,11 @@ using Runix.Turn;
 using Runix.TurnControlSystem;
 using UnityEngine;
 
-public class SlotsManagers : MonoBehaviour
+public class SlotsManager : MonoBehaviour
 {
     [SerializeField] Slot[] slots;
     [SerializeField] TurnDataManager turnData;
-    [SerializeField] DeckManagers[] deckManager;
+    [SerializeField] DeckManager[] deckManager;
 
     void OnEnable()
     {

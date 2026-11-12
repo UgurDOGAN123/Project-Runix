@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Runix.Scripts.UI
 {
-    public class EndTurnButtan : MonoNewTurnEventConneter
+    public class EndTurnButton : MonoNewTurnEventConnector
     {
         [SerializeField] Button button;
         [SerializeField] GameObject Text;

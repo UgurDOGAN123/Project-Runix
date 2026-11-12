@@ -2,7 +2,7 @@
 
 namespace Runix
 {
-    public abstract class MonoNewTurnEventConneter : MonoBehaviour
+    public abstract class MonoNewTurnEventConnector : MonoBehaviour
     {
         private void OnEnable()
         {

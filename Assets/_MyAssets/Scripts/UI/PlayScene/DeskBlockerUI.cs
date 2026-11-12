@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Runix.UI.Desk
 {
-    public class DeskBlokkkerUI : MonoBehaviour
+    public class DeskBlockerUI : MonoBehaviour
     {
         [SerializeField] Image DeskBlokker;
         [SerializeField] byte Column;

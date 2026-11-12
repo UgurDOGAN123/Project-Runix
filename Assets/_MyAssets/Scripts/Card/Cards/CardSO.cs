@@ -27,7 +27,7 @@ namespace Runix.Card
         public CardType cardType;
         [SerializeField] int DestroyTime;
 
-        public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManagers deckManagers)
+        public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             deckManagers.MoveToTrash(this);
             if (animPrefab != null)
