@@ -29,7 +29,7 @@ namespace Runix.Card
         [SerializeField] int DestroyTime;
 
         protected virtual CardType ExpectedCardType => cardType;
-
+        /*
         protected virtual void OnValidate()
         {
             if (animPrefab == null)
@@ -45,7 +45,7 @@ namespace Runix.Card
             if (cardType != ExpectedCardType)
                 Debug.LogWarning($"[{name}] Card Type '{cardType}' ama bu kart '{ExpectedCardType}' olmalý.", this);
         }
-
+        */
         public virtual void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             deckManagers.MoveToTrash(this);

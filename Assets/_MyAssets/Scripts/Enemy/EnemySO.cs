@@ -9,13 +9,14 @@ namespace Runix.Enemy
         public EnemyType EnemyType;
         public AdaptiveEnemyProfileSO Pattern;
         public Sprite EnemyIcon;
-
+        /*
         protected override void OnValidate()
         {
             base.OnValidate();
             if (Pattern == null) Debug.LogWarning($"[{name}] Pattern atanmamýþ, düþman hep ilk kartlarý oynar.", this);
             if (EnemyIcon == null) Debug.LogWarning($"[{name}] Enemy Icon atanmamýþ.", this);
         }
+        */
     }
 
     public enum EnemyType

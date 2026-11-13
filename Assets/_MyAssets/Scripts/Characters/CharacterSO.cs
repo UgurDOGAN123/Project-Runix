@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Runix.Card;
 using Runix.Effect;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace Runix.Character
         public List<CardSO> Decks;
 
         public virtual void UseAbility(AbilityContext abilityContext) { }
-
+        /*
         protected virtual void OnValidate()
         {
             if (maxHp <= 0) Debug.LogWarning($"[{name}] Max Hp 0 ya da negatif.", this);
@@ -40,7 +39,7 @@ namespace Runix.Character
                 Debug.LogWarning($"[{name}] Decks içinde boş (None) eleman var.", this);
             if (StartCardCount > MaxHandCardCount)
                 Debug.LogWarning($"[{name}] Start Card Count, Max Hand Card Count'tan büyük.", this);
-        }
+        }*/
     }
     [System.Serializable]
     public struct PassiveDefense
