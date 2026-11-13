@@ -5,6 +5,7 @@ namespace Runix.Map
 {
     public class DeskUIManager : MonoBehaviour
     {
+
         public byte Column;
         public EnemySO Enemy;
 

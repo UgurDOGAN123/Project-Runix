@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Runix.Desk;
 using Runix.Enemy;
 using Runix.Managers;
+using Runix.UI;
 using UnityEngine;
 
 namespace Runix.Map
@@ -39,7 +40,7 @@ namespace Runix.Map
                 return;
             }
 
-            if (EnemyList.minDesk <= EnemyList.maxDesk)
+            if (EnemyList.minDesk >= EnemyList.maxDesk)
             {
                 Debug.LogError("The minimum number of tables should not be lower than the maximum number of tables. List" + column, this);
                 return;
@@ -51,6 +52,7 @@ namespace Runix.Map
                 var desk = Instantiate(NewBattleDeskPrefab, transform);
                 desk.Column = column;
                 desk.Enemy = Enemies[Random.Range(0, Enemies.Count)];
+                desk.GetComponent<ImageHandler>().ChangeImage(desk.Enemy.EnemyIcon);
             }
         }
 

@@ -7,6 +7,7 @@ namespace Runix.Enemy
     {
         public EnemyType EnemyType;
         public AdaptiveEnemyProfileSO Pattern;
+        public Sprite EnemyIcon;
     }
 
 
