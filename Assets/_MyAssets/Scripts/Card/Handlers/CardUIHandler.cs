@@ -14,7 +14,7 @@ namespace Runix.UI
             BackGroundImg.sprite = cardSO.BackgroundImg;
             CardImage.sprite = cardSO.CardImage;
             ElementImg.sprite = cardSO.ElementImg;
-            CardType.sprite = cardSO.CardType;
+            CardType.sprite = cardSO.CardTypeImg;
             ValueText.text = cardSO.Value.ToString();
         }
     }

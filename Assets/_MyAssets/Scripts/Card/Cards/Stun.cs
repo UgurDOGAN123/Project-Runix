@@ -11,6 +11,7 @@ namespace Runix.Card
         [SerializeField] int turns = 1;
 
         // Kartýn üzerinde görünen 'Value' = kapatýlacak slot sayýsý
+        protected override CardType ExpectedCardType => CardType.Special;
 
         public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
