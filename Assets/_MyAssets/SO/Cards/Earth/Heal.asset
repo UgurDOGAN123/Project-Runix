@@ -16,7 +16,7 @@ MonoBehaviour:
   cardDescription: Self attack with Earth
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
-  ElememtImg: {fileID: 294692939, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  ElementImg: {fileID: 294692939, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   CardType: {fileID: 1163421063, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
   CardOnRun: {fileID: 294692939, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   AnimCardSprite: {fileID: 0}
