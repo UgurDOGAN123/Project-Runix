@@ -17,7 +17,7 @@ MonoBehaviour:
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
   ElementImg: {fileID: 21300000, guid: dea64fb7e36412a4fb45ad661ec11c7b, type: 3}
-  CardType: {fileID: 49405101, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
+  CardTypeImg: {fileID: 49405101, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
   CardOnRun: {fileID: 21300000, guid: dea64fb7e36412a4fb45ad661ec11c7b, type: 3}
   AnimCardSprite: {fileID: 0}
   animPrefab: {fileID: 0}
