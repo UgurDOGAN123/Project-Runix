@@ -1,3 +1,4 @@
+using Runix.Desk;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,7 +21,7 @@ namespace Runix.Managers
         }
 
         public UnityEvent<DeskEnum> ChangeDesk;
-
+        public DeskEnemiesSO deskEnemies;
         public Enemy.EnemySO Enemy;
         public Character.CharacterSO Player;
 
