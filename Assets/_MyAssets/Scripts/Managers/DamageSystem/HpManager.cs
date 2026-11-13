@@ -105,11 +105,13 @@ namespace Runix.Damage
 
         public void TakeDirectDamage(int attackValue, Element element = Element.None)
         {
+            if (isDead) return;
             float damageValue;
             passiveDefenseValues.TryGetValue(element, out int pasiveDefens);
             float reduction = Mathf.Clamp01((pasiveDefens) / 100f);
             damageValue = attackValue * (1f - reduction);
             hp -= Mathf.RoundToInt(damageValue);
+            hpSlider.ChangeSlider(HpPercent);
             if (hp <= 0 && !isDead)
             {
                 isDead = true;
