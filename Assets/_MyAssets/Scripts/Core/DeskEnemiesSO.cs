@@ -49,7 +49,7 @@ namespace Runix.Desk
         public List<EnemySO> Enemies;
         [Tooltip("The maximum number of enemies in a run. Defult = 1 ")]
         public int minDesk = 1;
-        [Tooltip("The maximum number of enemies in a run. Please enter 1 more than the number you actually need.")]
+        [Tooltip("The maximum number of enemies in a run.")]
         public int maxDesk;
     }
 }

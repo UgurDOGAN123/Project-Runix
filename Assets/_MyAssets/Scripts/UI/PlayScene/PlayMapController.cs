@@ -45,7 +45,7 @@ namespace Runix.Map
                 Debug.LogError("The minimum number of tables should not be lower than the maximum number of tables. List" + column, this);
                 return;
             }
-            int randomNumber = Random.Range(EnemyList.minDesk, EnemyList.maxDesk);
+            int randomNumber = Random.Range(EnemyList.minDesk, EnemyList.maxDesk + 1);
 
             for (int i = 0; i < randomNumber; i++)
             {

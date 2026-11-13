@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using Runix.Card;
 using Runix.Effect;
 using UnityEngine;
@@ -38,11 +38,11 @@ namespace Runix.Character
         [Range(0, 100)] public int Value;
     }
 
-    // Karakter yeteneğinin sahneye erişim yolu
+    // Karakter yeteneÄŸinin sahneye eriÅŸim yolu
     public class AbilityContext
     {
         public int OwnerId;
-        public EffectManager Own;       // yeteneği kullananın etkileri
+        public EffectManager Own;       // yeteneÄŸi kullananÄ±n etkileri
         public EffectManager Opponent;  // rakibin etkileri
     }
 }
