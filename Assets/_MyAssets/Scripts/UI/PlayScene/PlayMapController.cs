@@ -27,6 +27,23 @@ namespace Runix.Map
 
         private void Awake()
         {
+            if (EnemyList == null)
+            {
+                Debug.LogError("Enemy list Null", this);
+                return;
+            }
+
+            if (EnemyList.Enemies == null)
+            {
+                Debug.LogError("There is no enemy, Please add enemy", this);
+                return;
+            }
+
+            if (EnemyList.minDesk <= EnemyList.maxDesk)
+            {
+                Debug.LogError("The minimum number of tables should not be lower than the maximum number of tables. List" + column, this);
+                return;
+            }
             int randomNumber = Random.Range(EnemyList.minDesk, EnemyList.maxDesk);
 
             for (int i = 0; i < randomNumber; i++)
