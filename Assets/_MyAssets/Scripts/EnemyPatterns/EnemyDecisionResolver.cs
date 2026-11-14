@@ -21,6 +21,8 @@ namespace Runix.Enemy
             // 2. Öncelik sırasına göre dene (İlk uyan pattern seçilir)
             foreach (var pattern in currentTier.prioritizedPatterns)
             {
+                if (pattern == null)
+                    continue;
                 if (TryMatchPattern(pattern, handDeck, profile.maxPlaySlots, out List<CardSO> matchedCards))
                 {
                     return matchedCards; // El tam uydu, bu kombinasyonu oyna

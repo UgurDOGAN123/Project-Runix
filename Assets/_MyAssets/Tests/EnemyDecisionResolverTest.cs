@@ -178,5 +178,130 @@ namespace Runix.Tests
             Assert.AreEqual(1, CountOf(selected, CardType.Defense));
             Assert.AreEqual(1, CountOf(selected, CardType.Heal));
         }
+
+        // ---------- Ek testler: sýnýr durumlarý ----------
+
+        [Test]
+        public void ResolveTurnCards_CanTamEsikteyken_ByuTierSecilmeli()
+        {
+            // Kodda >= kullanýlýyor: can tam 0.5 ise 0.5'lik tier geçerli
+            AddTier(0.5f, CreatePattern((CardType.Attack, 1)));
+            AddTier(0.0f, CreatePattern((CardType.Defense, 1)));
+
+            var hand = new List<CardSO> { CreateCard<Attack>(CardType.Attack), CreateCard<Defense>(CardType.Defense) };
+
+            var atEdge = _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+            var below = _resolver.ResolveTurnCards(_profile, 0.49f, hand);
+
+            Assert.AreEqual(CardType.Attack, atEdge[0].cardType, "Tam eþikte üst tier seçilmeli.");
+            Assert.AreEqual(CardType.Defense, below[0].cardType, "Eþiðin altýnda alt tier seçilmeli.");
+        }
+
+        [Test]
+        public void ResolveTurnCards_CanTamdaysa_EnYuksekTierSecilmeli()
+        {
+            AddTier(0.7f, CreatePattern((CardType.Attack, 1)));
+            AddTier(0.3f, CreatePattern((CardType.Defense, 1)));
+            AddTier(0.0f, CreatePattern((CardType.Heal, 1)));
+
+            var hand = new List<CardSO>
+            {
+                CreateCard<Attack>(CardType.Attack),
+                CreateCard<Defense>(CardType.Defense),
+                CreateCard<Heal>(CardType.Heal),
+            };
+
+            var selected = _resolver.ResolveTurnCards(_profile, 1.0f, hand);
+
+            Assert.AreEqual(1, selected.Count);
+            Assert.AreEqual(CardType.Attack, selected[0].cardType);
+        }
+
+        [Test]
+        public void ResolveTurnCards_IkiDesenDeUyuyorsa_ListedekiIlkiSecilmeli()
+        {
+            AddTier(0.0f,
+                CreatePattern((CardType.Attack, 1)),
+                CreatePattern((CardType.Defense, 1)));
+
+            var hand = new List<CardSO> { CreateCard<Defense>(CardType.Defense), CreateCard<Attack>(CardType.Attack) };
+
+            var selected = _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+
+            Assert.AreEqual(CardType.Attack, selected[0].cardType, "Öncelik sýrasý el sýrasýndan üstün olmalý.");
+        }
+
+        [Test]
+        public void ResolveTurnCards_ElDesendenKucukse_YedekYolElekiKartlariDonmeli()
+        {
+            AddTier(0.0f, CreatePattern((CardType.Attack, 3)));
+
+            var hand = new List<CardSO> { CreateCard<Attack>(CardType.Attack) };
+
+            var selected = _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+
+            Assert.AreEqual(1, selected.Count);
+        }
+
+        [Test]
+        public void ResolveTurnCards_AyniKartIkiKezSecilmemeli()
+        {
+            // 2 saldýrý + 1 saldýrý isteyen desen, elde 3 saldýrý var
+            AddTier(0.0f, CreatePattern((CardType.Attack, 2), (CardType.Attack, 1)));
+
+            var hand = Enumerable.Range(0, 3)
+                .Select(_ => (CardSO)CreateCard<Attack>(CardType.Attack)).ToList();
+
+            var selected = _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+
+            Assert.AreEqual(3, selected.Count);
+            Assert.AreEqual(selected.Count, selected.Distinct().Count(), "Ayný kart nesnesi iki kez seçilmiþ.");
+        }
+
+        [Test]
+        public void ResolveTurnCards_AyniTurdenElemandaKartlarKorunur_YaniOrijinalElDegismez()
+        {
+            AddTier(0.0f, CreatePattern((CardType.Attack, 1)));
+            var hand = new List<CardSO> { CreateCard<Attack>(CardType.Attack), CreateCard<Defense>(CardType.Defense) };
+
+            _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+
+            Assert.AreEqual(2, hand.Count, "Resolver verilen eli deðiþtirmemeli (kartý elden çýkarmak yöneticinin iþi).");
+        }
+
+        [Test]
+        public void ResolveTurnCards_EldeKartYoksa_BosListeDonmeli()
+        {
+            AddTier(0.0f, CreatePattern((CardType.Attack, 1)));
+
+            List<CardSO> selected = null;
+            Assert.DoesNotThrow(() => selected = _resolver.ResolveTurnCards(_profile, 0.5f, new List<CardSO>()));
+            Assert.IsEmpty(selected);
+        }
+
+        [Test]
+        public void ResolveTurnCards_TierYoksa_IlkKartlarSlotSinirinaKadarDonmeli()
+        {
+            _profile.maxPlaySlots = 2;   // SetUp'ta healthTiers boþ býrakýldý
+
+            var hand = Enumerable.Range(0, 4)
+                .Select(_ => (CardSO)CreateCard<Attack>(CardType.Attack)).ToList();
+
+            var selected = _resolver.ResolveTurnCards(_profile, 0.5f, hand);
+
+            Assert.AreEqual(2, selected.Count);
+        }
+
+        [Test]
+        public void ResolveTurnCards_ListedeBosDesenVarsa_AtlanipSiradakiDenenmeli()
+        {
+            AddTier(0.0f, null, CreatePattern((CardType.Attack, 1)));
+
+            var hand = new List<CardSO> { CreateCard<Attack>(CardType.Attack) };
+
+            List<CardSO> selected = null;
+            Assert.DoesNotThrow(() => selected = _resolver.ResolveTurnCards(_profile, 0.5f, hand));
+            Assert.AreEqual(1, selected.Count);
+        }
     }
 }
