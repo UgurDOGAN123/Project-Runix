@@ -20,6 +20,8 @@ namespace Runix.Managers
         [Header("Variables")]
         [SerializeField] byte playerID;
 
+        DeckModel<CardSO> model;   // deste mantığı (Unity'siz, test edilebilir)
+
         public event Action<List<CardSO>> UpdateUI;  // Her işlemden Sonra tetikle
 
         #region // Fields
@@ -52,6 +54,7 @@ namespace Runix.Managers
                 Debug.LogError("Charhter is empty pleas select a character");
             }
             deckClone = new(MainDeck);
+            model = new DeckModel<CardSO>(onPickableDeck, trashDeck, onHandDeck);
         }
 
         #region // Turn System Event Connect
@@ -69,10 +72,8 @@ namespace Runix.Managers
         {
             if (stage == TurnEnum.BattleStart)
             {
-                onPickableDeck.Clear();
-                trashDeck.Clear();
-                OnHandDeck.Clear();
-                OnPickableDeckAddCards(deckClone);
+                model.StartBattle(deckClone);
+                UpdateUI?.Invoke(null);
                 UpdateUI?.Invoke(onHandDeck);
                 await PickTheHand(Character.StartCardCount);
             }
@@ -88,15 +89,11 @@ namespace Runix.Managers
         {
             for (int i = 0; i < number; i++)
             {
-                if (onHandDeck.Count >= Character.MaxHandCardCount) break;
+                if (model.IsHandFull(Character.MaxHandCardCount)) break;
 
-                if (onPickableDeck.Count == 0 && trashDeck.Count > 0) await ReplaceToTrashcan();
-                if (onPickableDeck.Count == 0) break;
-
-                var card = onPickableDeck[0];
-                onPickableDeck.RemoveAt(0);
-                onHandDeck.Add(card);                       // önce veri
-                await animManager.AnimPlayer("MoveHand", playerID);               // sonra animasyon
+                if (model.NeedsReshuffle) await ReplaceToTrashcan();
+                if (!model.TryDraw(out _)) break;           // önce veri
+                await animManager.AnimPlayer("MoveHand", playerID);   // sonra animasyon
                 UpdateUI?.Invoke(onHandDeck);
             }
 
@@ -104,23 +101,22 @@ namespace Runix.Managers
 
         public async Awaitable ReplaceToTrashcan()
         {
-            OnPickableDeckAddCards(trashDeck);
+            model.Reshuffle();
+            UpdateUI?.Invoke(null);
             await animManager.AnimPlayer("MoveDeck", playerID);
-            trashDeck.Clear();
             UpdateUI?.Invoke(onHandDeck);
         }
 
         public void ReturnToHand(CardSO card)
         {
-            if (onHandDeck.Count >= Character.MaxHandCardCount) return;
-            onHandDeck.Add(card);
+            if (!model.ReturnToHand(card, Character.MaxHandCardCount)) return;
             UpdateUI?.Invoke(onHandDeck);
         }
 
 
         public void MoveToTrash(CardSO card)
         {
-            trashDeck.Add(card);   // veri hemen güncellenir
+            model.Discard(card);   // veri hemen güncellenir
             PlayTrashAnimation();  // animasyon arkada oynar, beklenmez
         }
 
@@ -137,36 +133,9 @@ namespace Runix.Managers
 
         public void RemoveFromHandDeck(CardSO card)
         {
-            onHandDeck.Remove(card);
+            model.RemoveFromHand(card);
         }
 
-        #region // OnPickableDeck support fonktions
-        void OnPickableDeckAddCards(List<CardSO> cards)
-        {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                onPickableDeck.Add(cards[i]);
-            }
-            ShuffleDeck(onPickableDeck);
-            UpdateUI?.Invoke(null);
-        }
-
-        // gerekirse bağlantıyı ters çevir ve o tarafdan dinle
-
-
-        void ShuffleDeck(List<CardSO> cards)
-        {
-            int randomNumber;
-            CardSO temp;
-            for (int i = 0; i < cards.Count; i++)
-            {
-                randomNumber = UnityEngine.Random.Range(i, cards.Count);
-                temp = cards[i];
-                cards[i] = cards[randomNumber];
-                cards[randomNumber] = temp;
-            }
-        }
-        #endregion
     }
 
 }
