@@ -3,6 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using Runix.Card;
 using Runix.Character;
+using Runix.Desk;
 using Runix.Enemy;
 using UnityEditor;
 using UnityEngine;
@@ -84,6 +85,31 @@ namespace Runix.Tests
                 // if (e.EnemyIcon == null) problems.Add($"{e.name}: EnemyIcon boþ");
             }
             AssertNoProblems(problems);
+        }
+
+        [Test]
+        public void DeskObject_ListeSayýsý()
+        {
+            var problems = new List<string>();
+            foreach (var e in LoadAll<DeskEnemiesSO>())
+            {
+                if (e.EnemyLists.Count == 4) problems.Add($"{e} : tam 4 tane liste olmalý");
+                for (int i = 0; i < e.EnemyLists.Count; i++)
+                {
+                    if (e.EnemyLists[i].minDesk > e.EnemyLists[i].maxDesk) problems.Add($"{e} deki {e.EnemyLists[i]} nýn min deðeri makstan fazla ");
+                    if (i == 4)
+                    {
+                        e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Boss);
+                    }
+                    else
+                    {
+                        e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Enemy);
+                    }
+                }
+
+
+            }
+
         }
     }
 }
