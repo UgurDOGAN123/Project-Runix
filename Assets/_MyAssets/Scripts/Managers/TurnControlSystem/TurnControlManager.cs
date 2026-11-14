@@ -35,6 +35,8 @@ namespace Runix.TurnControlSystem
         public int CurrentPlayer => currentPlayer;
         public int PlayerCount => playerCount;
         public bool IsBattleRunning { get; private set; }
+        /// <summary>Sadece oyuncunun (0) kendi PlayTurn aşamasında kart oynamasına izin verir.</summary>
+        public bool IsPlayerInputAllowed => IsBattleRunning && currentStage == TurnEnum.PlayTurn && currentPlayer == PlayerIds.Player;
 
         AwaitableCompletionSource endTurnSignal;
         bool battleOver;
