@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Runix.Ability;
 using Runix.Card;
 using Runix.Desk;
 using Runix.Enemy;
@@ -57,23 +58,46 @@ namespace Runix.Tests
             }
             AssertNoProblems(problems);
         }
-        /*
-                [Test]
-                public void Karakterler_TemelDegerleriGecerliOlmali()
+
+        [Test]
+        public void Deste_DeðerleriKontrol()
+        {
+            var problems = new List<string>();
+            foreach (var deck in LoadAll<DeckSO>())
+            {
+                if (string.IsNullOrWhiteSpace(deck.displayName))
+                    problems.Add($"[{deck.name}] displayName boþ, seçim ekranýnda isim görünmez.");
+
+                if (deck.cards == null || deck.cards.Count == 0)
                 {
-                    var problems = new List<string>();
-                    foreach (var c in LoadAll<CharacterSO>())
-                    {
-                        if (c.maxHp <= 0) problems.Add($"{c.name}: maxHp 0 ya da negatif");
-                        if (c.maxDefense <= 0) problems.Add($"{c.name}: maxDefense 0");
-                        if (c.Decks == null || c.Decks.Count == 0) problems.Add($"{c.name}: Decks boþ");
-                        else if (c.Decks.Any(d => d == null)) problems.Add($"{c.name}: Decks içinde boþ eleman");
-                        if (c.StartCardCount > c.MaxHandCardCount)
-                            problems.Add($"{c.name}: StartCardCount > MaxHandCardCount");
-                    }
-                    AssertNoProblems(problems);
+                    problems.Add($"[{deck.name}] kart listesi boþ.");
                 }
-        */
+
+                if (deck.cards.Contains(null))
+                    problems.Add($"[{deck.name}] kart listesinde boþ (None) eleman var.");
+
+                if (deck.kind == DeckKind.Element && deck.element == Element.None)
+                    problems.Add($"[{deck.name}] Element türünde ama element seçilmemiþ.");
+            }
+
+            AssertNoProblems(problems);
+        }
+
+        [Test]
+        public void Ability_DeðerleriKontrol()
+        {
+            var problems = new List<string>();
+            foreach (var ability in LoadAll<AbilitySO>())
+            {
+                if (ability.displayName.Trim() == "")
+                    problems.Add($"{ability.name} isim yok.");
+                if (ability.description.Trim() == "")
+                    problems.Add($"{ability.name} açýklama yok.");
+            }
+
+            AssertNoProblems(problems);
+        }
+
         [Test]
         public void Dusmanlar_PatternVeIkonAtanmisOlmali()
         {
@@ -81,6 +105,13 @@ namespace Runix.Tests
             foreach (var e in LoadAll<EnemySO>())
             {
                 if (e.Pattern == null) problems.Add($"{e.name}: Pattern boþ");
+                if (e.DeckLimits.StartCardCount == 0) problems.Add($"{e.name}: Start count boþ");
+                if (e.DeckLimits.MaxHandCardCount == 0) problems.Add($"{e.name}: MaxHandCardCount boþ");
+                if (e.DeckLimits.EveryTurnAddCardCount == 0) problems.Add($"{e.name}: EveryTurnAddCardCount boþ");
+                if (e.HpValues.maxDefense == 0) problems.Add($"{e.name}: maxDefense boþ");
+                if (e.HpValues.maxHp == 0) problems.Add($"{e.name}: maxHp boþ");
+                if (e.DeckSO == null) problems.Add($"{e.name}: DeckSO boþ");
+                if (e.Ability == null) problems.Add($"{e.name}: ability boþ");
                 // if (e.EnemyIcon == null) problems.Add($"{e.name}: EnemyIcon boþ");
             }
             AssertNoProblems(problems);

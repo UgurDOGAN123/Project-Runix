@@ -50,14 +50,20 @@ namespace Runix.Enemy
         public HpValues HpValues => hpValues;
 
         public DeckLimits DeckLimits => deckLimits;
-        /*
-    protected override void OnValidate()
-    {
-    base.OnValidate();
-    if (Pattern == null) Debug.LogWarning($"[{name}] Pattern atanmamýþ, düþman hep ilk kartlarý oynar.", this);
-    if (EnemyIcon == null) Debug.LogWarning($"[{name}] Enemy Icon atanmamýþ.", this);
-    }
-    */
+
+        public void OnValidate()
+        {
+            if (Pattern == null) Debug.LogError($"{name}: Pattern boþ");
+            if (DeckLimits.StartCardCount == 0) Debug.LogError($"{name}: Start count boþ");
+            if (DeckLimits.MaxHandCardCount == 0) Debug.LogError($"{name}: MaxHandCardCount boþ");
+            if (DeckLimits.EveryTurnAddCardCount == 0) Debug.LogError($"{name}: EveryTurnAddCardCount boþ");
+            if (HpValues.maxDefense == 0) Debug.LogError($"{name}: maxDefense boþ");
+            if (HpValues.maxHp == 0) Debug.LogError($"{name}: maxHp boþ");
+            if (DeckSO == null) Debug.LogError($"{name}: DeckSO boþ");
+            if (Ability == null) Debug.LogError($"{name}: ability boþ");
+            // if (EnemyIcon == null) Debug.LogError($"{name}: EnemyIcon boþ");
+        }
+
     }
 
     public enum EnemyType

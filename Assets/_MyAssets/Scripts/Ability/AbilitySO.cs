@@ -12,6 +12,14 @@ namespace Runix.Ability
         public Sprite icon;
 
         public abstract void UseAbility(AbilityContext abilityContext);
+        private void OnValidate()
+        {
+            if (displayName.Trim() == "")
+                Debug.LogWarning($"{name} isim yok.", this);
+            if (description.Trim() == "")
+                Debug.LogWarning($"{name} açýklama yok.", this);
+        }
+
     }
 }
 
