@@ -14,30 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.StunBoss
   characterName: Stun Boss
   description: Stun Boss
-  MaxHandCardCount: 14
-  StartCardCount: 8
-  EveryTurnAddCardCount: 6
-  maxHp: 2000
-  maxDefense: 80
-  healable: 02000000
-  passiveDefense:
-  - element: 2
-    Value: 20
-  Decks:
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: b32cc8aa0cc75dd41b853a820ac1cf53, type: 2}
-  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
-  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
-  - {fileID: 11400000, guid: 7eac23535741a5246be548e2605bf474, type: 2}
-  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
-  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
-  - {fileID: 11400000, guid: 7d3f9c86712d7f34ab2123896ab9b8af, type: 2}
-  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
-  - {fileID: 11400000, guid: 6bececd407b77374fa9c1d69eecf53f1, type: 2}
+  deckLimits:
+    MaxHandCardCount: 8
+    StartCardCount: 6
+    EveryTurnAddCardCount: 6
+  hpValues:
+    maxHp: 1000
+    maxDefense: 80
+  elementDeck: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
+  specialDeck: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  ability: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   EnemyType: 1
   Pattern: {fileID: 11400000, guid: f575a1e19d758cf4da8c670f83970556, type: 2}
-  stunChance: 0.25
-  stunTurns: 1
-  stunBlockedSlots: 4
+  EnemyIcon: {fileID: 0}

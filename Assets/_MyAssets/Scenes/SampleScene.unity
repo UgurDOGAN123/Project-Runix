@@ -1748,7 +1748,19 @@ MonoBehaviour:
         m_CallState: 2
   deskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   Enemy: {fileID: 0}
-  Player: {fileID: 11400000, guid: 3c73a78cf9557ac419b8fb3015cecb77, type: 2}
+  Player:
+    _name: 
+    description: 
+    elementDeck: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
+    specialDeck: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+    abilitySO: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
+    hpValues:
+      maxHp: 1000
+      maxDefense: 80
+    deckLimits:
+      MaxHandCardCount: 8
+      StartCardCount: 6
+      EveryTurnAddCardCount: 4
   DeskCount: 0
 --- !u!114 &325072677
 MonoBehaviour:

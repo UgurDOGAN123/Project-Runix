@@ -15,12 +15,12 @@ MonoBehaviour:
   characterName: 'Fire Demon '
   description: 'Fire Demon '
   deckLimits:
-    MaxHandCardCount: 0
-    StartCardCount: 0
-    EveryTurnAddCardCount: 0
+    MaxHandCardCount: 8
+    StartCardCount: 4
+    EveryTurnAddCardCount: 4
   hpValues:
-    maxHp: 0
-    maxDefense: 0
+    maxHp: 1000
+    maxDefense: 80
   elementDeck: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
   specialDeck: {fileID: 0}
   ability: {fileID: 0}

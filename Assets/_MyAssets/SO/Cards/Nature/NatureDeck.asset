@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: NatureDeck
   description: NatureDeck
   icon: {fileID: 0}
-  element: 0
+  element: 6
   kind: 0
   healable: 06000000
   passiveDefense:
