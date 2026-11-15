@@ -1,46 +1,50 @@
 using System.Collections.Generic;
 using Runix.Ability;
 using Runix.Card;
-using Runix.Character;
+using UnityEngine;
 
-public class PlayerLoadout : ICharaterLoadout
+namespace Runix.Character
 {
-    string _name, description;
-    DeckSO elementDeck;
-    DeckSO specialDeck;
-    AbilitySO abilitySO;
-    HpValues hpValues;
-    DeckLimits deckLimits;
-
-    public PlayerLoadout(string name, string description, DeckSO elementDeck, DeckSO specialDeck, AbilitySO abilitySO, HpValues hpValues, DeckLimits deckLimits)
+    [System.Serializable]
+    public class PlayerLoadout : ICharaterLoadout
     {
-        _name = name;
-        this.description = description;
-        this.elementDeck = elementDeck;
-        this.specialDeck = specialDeck;
-        this.abilitySO = abilitySO;
-        this.hpValues = hpValues;
-        this.deckLimits = deckLimits;
-    }
+        [SerializeField] string _name, description;
+        [SerializeField] DeckSO elementDeck;
+        [SerializeField] DeckSO specialDeck;
+        [SerializeField] AbilitySO abilitySO;
+        [SerializeField] HpValues hpValues;
+        [SerializeField] DeckLimits deckLimits;
 
-    public string Name => _name;
-
-    public string Description => description;
-
-    public IReadOnlyList<DeckSO> DeckSO
-    {
-        get
+        public PlayerLoadout(string name, string description, DeckSO elementDeck, DeckSO specialDeck, AbilitySO abilitySO, HpValues hpValues, DeckLimits deckLimits)
         {
-            var list = new List<DeckSO>();
-            if (elementDeck != null) list.Add(elementDeck);
-            if (specialDeck != null) list.Add(specialDeck);
-            return list;
+            _name = name;
+            this.description = description;
+            this.elementDeck = elementDeck;
+            this.specialDeck = specialDeck;
+            this.abilitySO = abilitySO;
+            this.hpValues = hpValues;
+            this.deckLimits = deckLimits;
         }
+
+        public string Name => _name;
+
+        public string Description => description;
+
+        public IReadOnlyList<DeckSO> DeckSO
+        {
+            get
+            {
+                var list = new List<DeckSO>();
+                if (elementDeck != null) list.Add(elementDeck);
+                if (specialDeck != null) list.Add(specialDeck);
+                return list;
+            }
+        }
+
+        public AbilitySO Ability => abilitySO;
+
+        public HpValues HpValues => hpValues;
+
+        public DeckLimits DeckLimits => deckLimits;
     }
-
-    public AbilitySO Ability => abilitySO;
-
-    public HpValues HpValues => hpValues;
-
-    public DeckLimits DeckLimits => deckLimits;
 }

@@ -21,8 +21,8 @@ namespace Runix.Enemy
         [SerializeField] HpValues hpValues;
 
         [Header("Deck")]
-        DeckSO elementDeck;
-        DeckSO specialDeck;
+        [SerializeField] DeckSO elementDeck;
+        [SerializeField] DeckSO specialDeck;
         [SerializeField] AbilitySO ability;
 
         public EnemyType EnemyType;

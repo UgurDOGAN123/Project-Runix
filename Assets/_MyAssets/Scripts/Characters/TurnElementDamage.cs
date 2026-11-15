@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runix.Ability
 {
-    [CreateAssetMenu(fileName = "TurnElementDamage", menuName = "Scriptable Objects/TurnElementDamage")]
+    [CreateAssetMenu(fileName = "TurnElementDamage", menuName = "SO/Ability/TurnElementDamage")]
     public class TurnElementDamage : AbilitySO
     {
         [Range(0f, 1f)][SerializeField] float abilityChance = 0.3f;
