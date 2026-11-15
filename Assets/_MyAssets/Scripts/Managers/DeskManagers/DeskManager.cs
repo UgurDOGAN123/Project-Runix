@@ -19,6 +19,7 @@ namespace Runix.Managers
             {
                 Destroy(gameObject);
             }
+            DontDestroyOnLoad(gameObject);
         }
 
         public UnityEvent<DeskEnum> ChangeDesk;

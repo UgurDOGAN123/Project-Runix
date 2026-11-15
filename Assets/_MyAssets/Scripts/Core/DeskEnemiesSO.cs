@@ -10,6 +10,7 @@ namespace Runix.Desk
     {
         public string DeskName;
         public string Description;
+        public Sprite Icon;
         public List<EnemyList> EnemyLists;
 
         private void OnValidate()
