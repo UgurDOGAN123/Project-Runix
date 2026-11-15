@@ -14,9 +14,9 @@ namespace Runix.Ability
         public abstract void UseAbility(AbilityContext abilityContext);
         private void OnValidate()
         {
-            if (displayName.Trim() == "")
+            if (string.IsNullOrWhiteSpace(displayName))
                 Debug.LogWarning($"{name} isim yok.", this);
-            if (description.Trim() == "")
+            if (string.IsNullOrWhiteSpace(description))
                 Debug.LogWarning($"{name} açýklama yok.", this);
         }
 

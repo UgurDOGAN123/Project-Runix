@@ -11,7 +11,7 @@ namespace Runix.Ability
         [SerializeField] int burnTurn;
         [SerializeField] int burnDamage;
 
-        public Element GetElement(int playerID) => Managers.DeskManager.instance.GetCharacterSO(playerID).DeckSO[0].element;
+        public Element GetElement(int playerID) => Managers.DeskManager.instance.GetCharacterSO(playerID).GetPrimaryElement();
         public override void UseAbility(AbilityContext abilityContext)
         {
             if (abilityContext.Opponent == null)

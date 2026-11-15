@@ -23,7 +23,7 @@ MonoBehaviour:
     maxDefense: 80
   elementDeck: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
   specialDeck: {fileID: 0}
-  ability: {fileID: 0}
+  ability: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
   EnemyType: 0
   Pattern: {fileID: 11400000, guid: 31f52031dc9b41a499ca686598b50adb, type: 2}
   EnemyIcon: {fileID: 0}

@@ -59,7 +59,7 @@ namespace Runix.Enemy
             if (DeckLimits.EveryTurnAddCardCount == 0) Debug.LogError($"{name}: EveryTurnAddCardCount boþ");
             if (HpValues.maxDefense == 0) Debug.LogError($"{name}: maxDefense boþ");
             if (HpValues.maxHp == 0) Debug.LogError($"{name}: maxHp boþ");
-            if (DeckSO == null) Debug.LogError($"{name}: DeckSO boþ");
+            if (DeckSO.Count == 0) Debug.LogError($"{name}: DeckSO boþ");
             if (Ability == null) Debug.LogError($"{name}: ability boþ");
             // if (EnemyIcon == null) Debug.LogError($"{name}: EnemyIcon boþ");
         }

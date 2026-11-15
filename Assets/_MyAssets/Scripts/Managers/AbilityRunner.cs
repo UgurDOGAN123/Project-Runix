@@ -16,7 +16,7 @@ namespace Runix.Character
         {
             get
             {
-                return DeskManager.instance.GetCharacterSO(ownerId).Ability;
+                return DeskManager.instance.GetCharacterSO(ownerId)?.Ability;
             }
         }
 

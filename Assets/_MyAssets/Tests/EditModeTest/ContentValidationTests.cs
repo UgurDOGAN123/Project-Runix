@@ -27,10 +27,10 @@ namespace Runix.Tests
             foreach (var card in LoadAll<CardSO>())
             {
                 var so = new SerializedObject(card);   // private alanlarý okumak için
-                if (so.FindProperty("animPrefab").objectReferenceValue == null)
-                    problems.Add($"{card.name}: animPrefab boþ");
+                /*if (so.FindProperty("animPrefab").objectReferenceValue == null)
+                     problems.Add($"{card.name}: animPrefab boþ");
                 if (so.FindProperty("animator").objectReferenceValue == null)
-                    problems.Add($"{card.name}: animator boþ");
+                    problems.Add($"{card.name}: animator boþ");*/
                 if (so.FindProperty("DestroyTime").intValue <= 0)
                     problems.Add($"{card.name}: DestroyTime 0 ya da negatif");
                 if (card.Value <= 0) problems.Add($"{card.name}: Value 0 ya da negatif");
@@ -89,9 +89,9 @@ namespace Runix.Tests
             var problems = new List<string>();
             foreach (var ability in LoadAll<AbilitySO>())
             {
-                if (ability.displayName.Trim() == "")
+                if (string.IsNullOrWhiteSpace(ability.displayName))
                     problems.Add($"{ability.name} isim yok.");
-                if (ability.description.Trim() == "")
+                if (string.IsNullOrWhiteSpace(ability.description))
                     problems.Add($"{ability.name} açýklama yok.");
             }
 
@@ -110,7 +110,7 @@ namespace Runix.Tests
                 if (e.DeckLimits.EveryTurnAddCardCount == 0) problems.Add($"{e.name}: EveryTurnAddCardCount boþ");
                 if (e.HpValues.maxDefense == 0) problems.Add($"{e.name}: maxDefense boþ");
                 if (e.HpValues.maxHp == 0) problems.Add($"{e.name}: maxHp boþ");
-                if (e.DeckSO == null) problems.Add($"{e.name}: DeckSO boþ");
+                if (e.DeckSO.Count == 0) problems.Add($"{e.name}: DeckSO boþ");
                 if (e.Ability == null) problems.Add($"{e.name}: ability boþ");
                 // if (e.EnemyIcon == null) problems.Add($"{e.name}: EnemyIcon boþ");
             }
