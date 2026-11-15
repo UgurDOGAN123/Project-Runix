@@ -25,13 +25,13 @@ namespace Runix.Managers
         public event Action<List<CardSO>> UpdateUI;  // Her işlemden Sonra tetikle
 
         #region // Fields
-        public Character.CharacterSO Character
+        public ICharaterLoadout Character
         {
             get
             { return DeskManager.instance.GetCharacterSO(playerID); }
         }
 
-        List<CardSO> MainDeck => Character.Decks;
+        List<CardSO> MainDeck => Character.DeckSO.cards;
 
         public List<CardSO> OnHandDeck { get => onHandDeck; private set => onHandDeck = value; }
 
@@ -75,11 +75,11 @@ namespace Runix.Managers
                 model.StartBattle(deckClone);
                 UpdateUI?.Invoke(null);
                 UpdateUI?.Invoke(onHandDeck);
-                await PickTheHand(Character.StartCardCount);
+                await PickTheHand(Character.DeckLimits.StartCardCount);
             }
             else if (stage == TurnEnum.TurnEnd)
             {
-                await PickTheHand(Character.EveryTurnAddCardCount);
+                await PickTheHand(Character.DeckLimits.EveryTurnAddCardCount);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Runix.Managers
         {
             for (int i = 0; i < number; i++)
             {
-                if (model.IsHandFull(Character.MaxHandCardCount)) break;
+                if (model.IsHandFull(Character.DeckLimits.MaxHandCardCount)) break;
 
                 if (model.NeedsReshuffle) await ReplaceToTrashcan();
                 if (!model.TryDraw(out _)) break;           // önce veri
@@ -109,7 +109,7 @@ namespace Runix.Managers
 
         public void ReturnToHand(CardSO card)
         {
-            if (!model.ReturnToHand(card, Character.MaxHandCardCount)) return;
+            if (!model.ReturnToHand(card, Character.DeckLimits.MaxHandCardCount)) return;
             UpdateUI?.Invoke(onHandDeck);
         }
 

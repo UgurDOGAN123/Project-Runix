@@ -1,4 +1,5 @@
-﻿using Runix.Effect;
+﻿using Runix.Ability;
+using Runix.Effect;
 using Runix.Managers;
 using UnityEngine;
 
@@ -11,11 +12,11 @@ namespace Runix.Character
         [SerializeField] int totalSlots = 4;
 
 
-        Character.CharacterSO OwnerChar
+        AbilitySO OwnerChar
         {
             get
             {
-                return DeskManager.instance.GetCharacterSO(ownerId);
+                return DeskManager.instance.GetCharacterSO(ownerId).Ability;
             }
         }
 

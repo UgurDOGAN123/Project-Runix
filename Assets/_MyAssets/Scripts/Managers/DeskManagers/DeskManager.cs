@@ -23,12 +23,12 @@ namespace Runix.Managers
         public UnityEvent<DeskEnum> ChangeDesk;
         public DeskEnemiesSO deskEnemies;
         public Enemy.EnemySO Enemy;
-        public Character.CharacterSO Player;
+        public PlayerLoadout Player;
 
         public byte DeskCount;
 
 
-        public Character.CharacterSO GetCharacterSO(int index)
+        public ICharaterLoadout GetCharacterSO(int index)
         {
             if (index == PlayerIds.Player)
                 return Player;

@@ -18,7 +18,7 @@ namespace Runix.Damage
         Dictionary<Element, int> passiveDefenseValues = new();
 
         public event System.Action OnDeath;
-        Character.CharacterSO Character => DeskManager.instance.GetCharacterSO(playerID);
+        ICharaterLoadout Character => DeskManager.instance.GetCharacterSO(playerID);
 
         DamageCalculator damageCalculator = new DamageCalculator();
 
@@ -29,8 +29,8 @@ namespace Runix.Damage
             get { return (float)hp / MaxHp; }
         }
 
-        int MaxHp { get => Character.maxHp; }
-        public int MaxDefense { get => Character.maxDefense; }
+        int MaxHp { get => Character.HpValues.maxHp; }
+        public int MaxDefense { get => Character.HpValues.maxDefense; }
 
         private void OnEnable()
         {
@@ -41,7 +41,7 @@ namespace Runix.Damage
             }
             isDead = false;
             hpSlider.ChangeSlider(HpPercent);
-            passiveDefenseValues = Character.passiveDefense
+            passiveDefenseValues = Character.DeckSO.passiveDefense
     .GroupBy(x => x.element)
     .ToDictionary(g => g.Key, g => g.Sum(x => x.Value));
         }
@@ -51,7 +51,7 @@ namespace Runix.Damage
 
 
             //heal yapılacak
-            hp = damageCalculator.DoHeal(Heal_DefData.HealValues, hp, MaxHp, Character.healable);
+            hp = damageCalculator.DoHeal(Heal_DefData.HealValues, hp, MaxHp, Character.DeckSO.healable);
             //defens eklenecek
             defenseValues = damageCalculator.AddDefense(defenseValues, Heal_DefData.DefenseValues, MaxDefense);
             //attack yapılacak

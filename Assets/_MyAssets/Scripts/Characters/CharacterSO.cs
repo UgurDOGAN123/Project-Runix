@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Runix.Card;
-using Runix.Effect;
+﻿using Runix.Effect;
 using UnityEngine;
 
 
@@ -9,23 +7,7 @@ namespace Runix.Character
     [HelpURL(DocLinks.Character)]
     public abstract class CharacterSO : ScriptableObject
     {
-        [Header("General Info")]
-        public string characterName;
-        public string description;
 
-        [Header("Deck Limits")]
-        public int MaxHandCardCount;
-        public int StartCardCount;
-        public int EveryTurnAddCardCount;
-
-        [Header("Hp Values")]
-        public int maxHp;
-        public int maxDefense;
-        public Element[] healable;
-        public PassiveDefense[] passiveDefense;
-
-        [Header("Deck")]
-        public List<CardSO> Decks;
 
         public virtual void UseAbility(AbilityContext abilityContext) { }
         /*

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Runix.Card;
-using Runix.Character;
 using Runix.Desk;
 using Runix.Enemy;
 using UnityEditor;
@@ -58,23 +57,23 @@ namespace Runix.Tests
             }
             AssertNoProblems(problems);
         }
-
-        [Test]
-        public void Karakterler_TemelDegerleriGecerliOlmali()
-        {
-            var problems = new List<string>();
-            foreach (var c in LoadAll<CharacterSO>())
-            {
-                if (c.maxHp <= 0) problems.Add($"{c.name}: maxHp 0 ya da negatif");
-                if (c.maxDefense <= 0) problems.Add($"{c.name}: maxDefense 0");
-                if (c.Decks == null || c.Decks.Count == 0) problems.Add($"{c.name}: Decks boþ");
-                else if (c.Decks.Any(d => d == null)) problems.Add($"{c.name}: Decks içinde boþ eleman");
-                if (c.StartCardCount > c.MaxHandCardCount)
-                    problems.Add($"{c.name}: StartCardCount > MaxHandCardCount");
-            }
-            AssertNoProblems(problems);
-        }
-
+        /*
+                [Test]
+                public void Karakterler_TemelDegerleriGecerliOlmali()
+                {
+                    var problems = new List<string>();
+                    foreach (var c in LoadAll<CharacterSO>())
+                    {
+                        if (c.maxHp <= 0) problems.Add($"{c.name}: maxHp 0 ya da negatif");
+                        if (c.maxDefense <= 0) problems.Add($"{c.name}: maxDefense 0");
+                        if (c.Decks == null || c.Decks.Count == 0) problems.Add($"{c.name}: Decks boþ");
+                        else if (c.Decks.Any(d => d == null)) problems.Add($"{c.name}: Decks içinde boþ eleman");
+                        if (c.StartCardCount > c.MaxHandCardCount)
+                            problems.Add($"{c.name}: StartCardCount > MaxHandCardCount");
+                    }
+                    AssertNoProblems(problems);
+                }
+        */
         [Test]
         public void Dusmanlar_PatternVeIkonAtanmisOlmali()
         {

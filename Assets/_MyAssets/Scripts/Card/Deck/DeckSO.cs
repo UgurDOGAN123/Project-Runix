@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Runix.Character;
 using UnityEngine;
 
 namespace Runix.Card
@@ -20,7 +21,8 @@ namespace Runix.Card
 
         public Element element;
         public DeckKind kind;
-
+        public Element[] healable;
+        public PassiveDefense[] passiveDefense;
 
         [Header("Kartlar")]
         public List<CardSO> cards;
