@@ -28,17 +28,17 @@ public class MyEffect : Effect
     }
 }
 ```
-Örnekler: `Effects/ElementEffect.cs` (yanma), `Effects/StunEffect.cs`.
+Örnekler: `Effects/ElementEffect.cs` (yanma, `Ability/TurnElementDamage.cs` üretir), `Effects/StunEffect.cs` (`Ability/StunAbility.cs` ve `Card/Cards/Stun.cs` üretir).
 
-> Efekt sınıfları **normal C# sınıfıdır, ScriptableObject değildir**. Kalan tur çalışma anı verisidir, asset'e yazılmamalıdır. Ayarlar (süre, hasar) kart ya da karakter asset'inden okunur, efekt savaşta `new` ile üretilir.
+> Efekt sınıfları **normal C# sınıfıdır, ScriptableObject değildir**. Kalan tur çalışma anı verisidir, asset'e yazılmamalıdır. Ayarlar (süre, hasar) kart ya da yetenek asset'inden okunur, efekt savaşta `new` ile üretilir.
 
 ## Efekti nasıl uygularsınız?
 | Kaynak | Kod | Kime gider |
 |---|---|---|
 | **Kart** | `turnDataHolder.AddEffect(new MyEffect(...))` (`UseCard` içinde) | **Rakibe**, tur sonunda `TurnDataManager` aktarır |
-| **Karakter yeteneği** | `ctx.Opponent.Add(...)` ya da `ctx.Own.Add(...)` (`UseAbility` içinde) | Rakibe / kendine, hemen |
+| **Yetenek (`AbilitySO`)** | `ctx.Opponent.Add(...)` ya da `ctx.Own.Add(...)` (`UseAbility` içinde) | Rakibe / kendine, hemen |
 
-Kendi kendine efekt veren **kart** için şu an hazır bir yol yok (kart efektleri rakibe gider). Gerekirse `TurnDataHolder`'a ayrı bir "kendine" listesi eklenip `TurnDataManager.SendToDatas` içinde kendi `EffectManager`'ına aktarılabilir. Alternatif: karakter yeteneği kullanın.
+Kendi kendine efekt veren **kart** için şu an hazır bir yol yok (kart efektleri rakibe gider). Gerekirse `TurnDataHolder`'a ayrı bir "kendine" listesi eklenip `TurnDataManager.SendToDatas` içinde kendi `EffectManager`'ına aktarılabilir. Alternatif: bir yetenek (`AbilitySO`) kullanın.
 
 ## Stun efekti (örnek)
 `StunEffect(turns, blockedSlots)`: sahibinin sıradaki turunda `blockedSlots` kadar slotu kilitler (`StunEffect.AllSlots` = hepsi). Kilidi `StunController` uygular. Tüm slotlar kilitliyse "Sersemledin" paneli çıkar ve tur otomatik geçer. Düşman kilitli slotları atlar, tamamen sersemse kart oynamaz.

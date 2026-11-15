@@ -1,10 +1,15 @@
 # Yeni Düşman Eklemek
 
-Düşman (`EnemySO`) bir karakterdir, üstüne şu üç alan ekler: **Enemy Type**, **Pattern** (düşmanın davranış profili), **Enemy Icon** (haritada görünen resim). Ortak karakter alanları için: [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
+Düşman (`EnemySO`) oyuncu gibi bir savaşçıdır (`ICharaterLoadout`): destesi, yeteneği, canı ve el limitleri vardır. Üstüne üç alan ekler: **Enemy Type**, **Pattern** (düşmanın davranış profili), **Enemy Icon** (haritada görünen resim). Deste ve yetenek asset'leri için: [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
 
 ## 1. Düşman asset'ini oluşturun
-`SO/Enemy/<Ad>` klasöründe sağ tık → **Create → SO → Enemy → Enemy** (özel yetenekli boss için **StunBoss** ya da kendi sınıfınız).
-- Karakter alanlarını doldurun (Max Hp, Max Defense, Passive Defense, Healable, **Decks**, el limitleri).
+`SO/Enemy/<Ad>` klasöründe sağ tık → **Create → SO → Enemy → Enemy**. (Boss için de aynı sınıf kullanılır, farkı **Enemy Type** ve yetenektir. `StunBoss` sınıfı ek bir davranış içermez.)
+- **Character Name / Description**
+- **Deck Limits:** `Max Hand Card Count`, `Start Card Count`, `Every Turn Add Card Count`. Üçü de 0'dan büyük olmalı.
+- **Hp Values:** `Max Hp`, `Max Defense`. Hiçbiri 0 olmamalı.
+- **Element Deck:** düşmanın ana destesi (`DeckSO`, Kind = Element). Düşmanın `Healable` ve `Passive Defense` değerleri de bu desteden gelir.
+- **Special Deck:** isteğe bağlı ikinci deste.
+- **Ability:** `AbilitySO` asset'i (örn. boss için `StunAbility`). Boş bırakırsanız Console'da kırmızı hata çıkar ve içerik testi kırılır.
 - **Enemy Type:** normal düşman için `Enemy`, boss için `Boss`.
 - **Enemy Icon:** harita masasında görünen sprite.
 - **Pattern:** 2. adımdaki profil.
@@ -25,7 +30,7 @@ Desen: **Create → SO → Enemy → EnemyReq** (`EnemyCardPatternSO`). Her sat�
 
 Bu yüzden:
 - İstediğiniz deseni listede **önce** koyun. Önündeki desen karşılanırsa o seçilir.
-- Düşmanın destesinde (Decks) desenlerin istediği türden yeterli kart olsun. Aksi halde desen hep elenir.
+- Düşmanın destelerinde desenlerin istediği türden yeterli kart olsun. Aksi halde desen hep elenir.
 - Desenin Card Type'ı kartın Card Type'ı ile eşleşir (kartın sınıfı değil enum değeri).
 
 ## 3. Düşmanı bir masaya ekleyin
@@ -48,11 +53,12 @@ Hızlı test için düşmanı **Liste 0'a tek başına** koyun, Min Desk 1 / Max
 - Boss ise Liste 3'te mi?
 
 ## Boss'a özel yetenek
-`UseAbility` yazın, bkz. [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md) ve `Enemy/StunBoss.cs`.
+Boss'un **Ability** alanına bir yetenek asset'i atayın (örn. `SO/Ability/StunAbility`: her turunda olasılıkla oyuncunun slotlarını kilitler). Yeni davranış için `AbilitySO`'dan türeyen sınıf yazın, bkz. [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
 
 ## Kontrol listesi
-- [ ] Decks dolu ve desenlerin istediği türde kartlar var
+- [ ] Element Deck dolu ve desenlerin istediği türde kartlar var
 - [ ] Pattern atanmış, Health Tiers büyükten küçüğe sıralı
 - [ ] Enemy Type doğru (Boss → Liste 3)
 - [ ] Enemy Icon atanmış (yoksa masada resim boş görünür)
-- [ ] Max Defense 0 değil (savunma birikmesi için)
+- [ ] Hp Values ve Deck Limits 0 değil
+- [ ] Ability atanmış

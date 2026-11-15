@@ -16,13 +16,13 @@
 | Destroy Time | Efekt nesnesinin kaç saniye sonra silineceği. **0 yazmayın**, efekt hiç görünmeden silinir (örnek kartlarda 2) |
 | Turns (sadece Stun) | Stun'ın kaç tur süreceği |
 
-3. **Desteye ekleyin:** Oyuncu için karakter asset'indeki (`SO/Characters/FireKnight`) **Decks** listesine, düşman için düşman asset'indeki **Decks** listesine sürükleyin. Kart ancak bir destede varsa oyunda çıkar.
+3. **Desteye ekleyin:** Kartı ilgili **deste asset'inin** (örn. `SO/Cards/Fire/FireDeck`) **Cards** listesine sürükleyin. Aynı kartı birden fazla kez ekleyebilirsiniz (örn. `StunDeck` 4 Stun kartı içerir). Kart ancak oyuncunun ya da düşmanın seçili destelerinden birinde varsa oyunda çıkar. Yeni deste için: [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
 4. **Test:** Oyunu başlatın. Kart elde görünüyor mu, slota konuyor mu, etkisi uygulanıyor mu, can/savunma barı değişiyor mu?
 
-> **Ödül ekranı:** Şu an ayrı bir ödül havuzu yok. `RewardUIManager`, oyuncunun **mevcut destesinden** (`deckClone`) rastgele kartlar gösterir ve seçileni destenin bir kopyasını daha ekler. Yeni bir kartı ödül olarak göstermek için önce oyuncunun destesinde olması gerekir.
+> **Ödül ekranı:** Şu an ayrı bir ödül havuzu yok. `RewardUIManager`, oyuncunun **mevcut destesinden** (`deckClone`) rastgele kartlar gösterir ve seçileni destenin bir kopyasını daha ekler. Yeni bir kartı ödül olarak göstermek için önce oyuncunun seçili destelerinde olması gerekir.
 
 ### Düşman neden kartı oynamıyor?
-Düşman desenleri kartları **Card Type'a göre** seçer (`EnemyCardPatternSO`). Düşmanın destesinde o türden yeterli kart yoksa desen eşleşmez ve eldeki ilk kartlar oynanır. Ayrıntı: [03-Yeni-Dusman-Eklemek.md](03-Yeni-Dusman-Eklemek.md).
+Düşman desenleri kartları **Card Type'a göre** seçer (`EnemyCardPatternSO`). Düşmanın destelerinde o türden yeterli kart yoksa desen eşleşmez ve eldeki ilk kartlar oynanır. Ayrıntı: [03-Yeni-Dusman-Eklemek.md](03-Yeni-Dusman-Eklemek.md).
 
 ## B) Yeni kart türü (yeni davranış): kod gerekir
 
@@ -45,11 +45,11 @@ public class MyCard : CardSO
 4. Etki üreten kart ise: [04-Yeni-Efekt-Eklemek.md](04-Yeni-Efekt-Eklemek.md).
 
 ## C) Yeni element
-`Core/Enums.cs` → `Element` enum'unun **sonuna** ekleyin. Sonra o element için kart asset'leri oluşturun, gerekirse karakterlerin **Passive Defense** ve **Healable** listelerine ekleyin.
+`Core/Enums.cs` → `Element` enum'unun **sonuna** ekleyin. Sonra o element için kart asset'leri ve bir **Element** türünde deste (`DeckSO`, **Element** alanı doldurulmuş) oluşturun. Elementin iyileşmesi ve pasif savunması destenin **Healable** ve **Passive Defense** alanlarından gelir.
 
 ## Kontrol listesi
 - [ ] Anim Prefab'da SpriteRenderer ve Animator var
 - [ ] Destroy Time 0'dan büyük
 - [ ] Card Type sınıfla uyumlu
-- [ ] Kart bir destede (Decks) var
+- [ ] Kart bir deste asset'inde (`DeckSO.Cards`) var
 - [ ] Console'da `animPrefab null` ya da `animator null` hatası yok

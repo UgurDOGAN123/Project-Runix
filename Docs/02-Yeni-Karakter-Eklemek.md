@@ -1,33 +1,41 @@
-# Yeni Karakter Eklemek
+# Oyuncu Karakteri, Deste ve Yetenek
 
-Karakterler `CharacterSO`'dan türeyen ScriptableObject'lerdir (`Characters/CharacterSO.cs`). Düşmanlar da karakterdir (`EnemySO : CharacterSO`), ortak alanlar aynıdır.
+Bir savaşçı üç şeyden oluşur: **deste(ler)**, **yetenek** ve **sayılar** (can, savunma, el limitleri). Oyuncu için bunlar `PlayerLoadout` içinde (`DeskManager.Player`), düşman için `EnemySO` asset'inde tutulur. İkisi de `ICharaterLoadout` arayüzünü uygular, bu yüzden oyunun geri kalanı onları ayırt etmez. Düşman için: [03-Yeni-Dusman-Eklemek.md](03-Yeni-Dusman-Eklemek.md).
 
-## A) Mevcut türden yeni bir karakter (aynı yetenek, farklı sayılar): kod gerekmez
-1. `SO/Characters` klasöründe sağ tık → **Create → SO → Character → FireKnight**.
+## A) Yeni deste: kod gerekmez
+1. Project penceresinde sağ tık → **Create → SO → DeckSO**.
 2. Alanları doldurun:
 
 | Alan | Açıklama |
 |---|---|
-| Character Name / Description | Ad ve açıklama |
-| Max Hand Card Count | Elde tutulabilecek en fazla kart |
-| Start Card Count | Savaş başında çekilen kart |
-| Every Turn Add Card Count | Her tur sonunda çekilen kart |
-| Max Hp | Azami can |
-| Max Defense | Her elementte birikebilecek azami savunma |
-| Healable | İyileştirmesi geçerli elementler |
-| Passive Defense | Elemente göre sabit hasar azaltma (yüzde, 0-100) |
-| Decks | Karakterin destesi (kart asset'leri). **Boş bırakmayın** |
-| Yeteneğe özel alanlar (FireKnight: Ability Chance, Burn Turn, Burn Damage, Element) | Yetenek ayarları |
+| Display Name / Description / Icon | Seçim ekranında görünecek ad, açıklama ve ikon |
+| **Kind** | `Element`: ana deste (Ateş, Su...). `Special`: yanına eklenen özel deste (örn. Stun kartları) |
+| **Element** | Element destesinde **zorunlu** (`None` olamaz). Yeteneğin kullanacağı element de budur |
+| Healable | Bu deste seçilince iyileştirmesi geçerli olan elementler |
+| Passive Defense | Bu deste seçilince elemente göre sabit hasar azaltma (yüzde, 0-100) |
+| Cards | Destedeki kartlar. **Boş bırakmayın**, aynı kartı birkaç kez ekleyebilirsiniz |
 
-3. **Oyuncu olarak kullanmak için:** Sahnede `DeskManager` nesnesini seçin, **Player** alanına karakteri sürükleyin.
-4. Test: Oyunu başlatın. Deste doğru çekiliyor mu, can ve savunma değerleri beklediğiniz gibi mi?
+3. Eksik alan varsa Console'da sarı uyarı çıkar.
 
-## B) Yeni yetenekli karakter: kod gerekir
-Yetenek `UseAbility` içinde yazılır. `AbilityRunner` (sahnede oyuncu ve düşman için birer tane) bunu sahibinin **her PlayTurn başında** çağırır. Sahibi tamamen sersemlemişse çağrılmaz.
+**Birleşim kuralı:** Oyuncu iki deste seçtiyse (element + özel) kartlar birleşir, `Healable` listeleri birleşir, pasif savunmalar elemente göre **toplanır**.
+
+## B) Yeni yetenek
+### Mevcut türden (kod yok)
+**Create → SO → Ability → TurnElementDamage** (yanma) ya da **StunAbility** (sersemletme):
+
+| Yetenek | Alanlar |
+|---|---|
+| TurnElementDamage | `Ability Chance` (olasılık), `Burn Turn` (tur), `Burn Damage` (tur başına hasar). Yanma elementi, sahibinin **Element Deck**'inin elementidir |
+| StunAbility | `Stun Chance`, `Stun Turns`, `Stun Blocked Slots` (99 = tüm slotlar). Rakip zaten sersemse yeniden uygulanmaz |
+
+Her yetenekte **Display Name** ve **Description** doldurun (boşsa uyarı çıkar, içerik testi kırılır).
+
+### Yeni davranış (kod)
+`Ability/` klasörüne `AbilitySO`'dan türeyen bir sınıf yazın. `AbilityRunner` (sahnede oyuncu ve düşman için birer tane) `UseAbility`'yi sahibinin **her PlayTurn başında** çağırır. Sahibi tamamen sersemlemişse çağrılmaz.
 
 ```csharp
-[CreateAssetMenu(fileName = "MyHero", menuName = "SO/Character/MyHero")]
-public class MyHero : CharacterSO
+[CreateAssetMenu(fileName = "MyAbility", menuName = "SO/Ability/MyAbility")]
+public class MyAbility : AbilitySO
 {
     [Range(0f, 1f)][SerializeField] float chance = 0.3f;
 
@@ -35,15 +43,30 @@ public class MyHero : CharacterSO
     {
         if (ctx.Opponent == null) return;
         if (Random.value < chance)
-            ctx.Opponent.Add(new StunEffect(1));       // rakibe etki
-        // ctx.Own.Add(...)                             // kendine etki
+            ctx.Opponent.Add(new StunEffect(1));      // rakibe etki
+        // ctx.Own.Add(...)                            // kendine etki
     }
 }
 ```
-- `ctx.Own`: yeteneği kullananın `EffectManager`'ı, `ctx.Opponent`: rakibin.
-- Yeni etki türü için: [04-Yeni-Efekt-Eklemek.md](04-Yeni-Efekt-Eklemek.md).
-- Örnekler: `Characters/FireKnight.cs` (yanma), `Enemy/StunBoss.cs` (stun).
+- `ctx.OwnerId`: yeteneği kullanan (`PlayerIds`), `ctx.Own`: onun `EffectManager`'ı, `ctx.Opponent`: rakibin.
+- Sahibinin elementi gerekirse: `Managers.DeskManager.instance.GetCharacterSO(ctx.OwnerId).GetPrimaryElement()`.
+- Yeni etki türü için: [04-Yeni-Efekt-Eklemek.md](04-Yeni-Efekt-Eklemek.md). Örnekler: `Ability/TurnElementDamage.cs`, `Ability/StunAbility.cs`.
+- **Asset'in durumunu yetenek sınıfında tutmayın** (çalışma anı verisi SO'ya yazılmaz).
+
+## C) Oyuncunun kombinasyonunu ayarlamak
+Sahnede `DeskManager` nesnesini seçin, **Player** alanını açın:
+
+| Alan | Açıklama |
+|---|---|
+| Name / Description | Ad ve açıklama |
+| Element Deck | Ana deste (Kind = Element) |
+| Special Deck | Özel deste, boş bırakılabilir |
+| Ability SO | Yetenek |
+| Hp Values | `Max Hp`, `Max Defense` (her elementte birikebilecek azami savunma, 0 olmasın) |
+| Deck Limits | `Max Hand Card Count` (eldeki azami kart), `Start Card Count` (savaş başında çekilen), `Every Turn Add Card Count` (tur sonu çekilen) |
+
+Oyun içi bir seçim ekranı henüz yok, kombinasyon Inspector'dan seçilir. Test: oyunu başlatın, doğru kartlar çekiliyor mu, yetenek tetikleniyor mu, can ve savunma değerleri beklediğiniz gibi mi?
 
 ## Dikkat
-- Karakter SO'larında **çalışma anı verisi tutmayın** (kalan can, deste kopyası...). SO'nun kendisi değişir, Editor'de kalıcı olur.
-- Alan adı değiştirirseniz `[FormerlySerializedAs("eskiAd")]` ekleyin ve tüm karakter asset'lerini kaydedin (File → Save Project).
+- Çalışma anı verisini (kalan can, deste kopyası) **SO'ya yazmayın**. Savaş içi durum `HpManager` ve `DeckManager`'dadır.
+- Serileştirilen alanın adını değiştirirseniz `[FormerlySerializedAs("eskiAd")]` ekleyin ve asset'leri kaydedin (File → Save Project). Alanı bir `struct` içine taşırsanız (örn. `HpValues`) eski değer **otomatik taşınmaz**, elle yeniden girin.
