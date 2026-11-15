@@ -1,3 +1,4 @@
+using Runix.Character;
 using Runix.Desk;
 using UnityEngine;
 using UnityEngine.Events;

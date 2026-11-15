@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Runix.Ability;
 using Runix.Card;
 using Runix.Character;
@@ -20,7 +21,8 @@ namespace Runix.Enemy
         [SerializeField] HpValues hpValues;
 
         [Header("Deck")]
-        [SerializeField] DeckSO Decks;
+        DeckSO elementDeck;
+        DeckSO specialDeck;
         [SerializeField] AbilitySO ability;
 
         public EnemyType EnemyType;
@@ -31,7 +33,17 @@ namespace Runix.Enemy
 
         public string Description => description;
 
-        public DeckSO DeckSO => Decks;
+        public IReadOnlyList<DeckSO> DeckSO
+        {
+            get
+            {
+                var list = new List<DeckSO>();
+                if (elementDeck != null) list.Add(elementDeck);
+                if (specialDeck != null) list.Add(specialDeck);
+                return list;
+            }
+        }
+
 
         public AbilitySO Ability => ability;
 
@@ -54,3 +66,4 @@ namespace Runix.Enemy
         Boss
     }
 }
+

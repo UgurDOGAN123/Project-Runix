@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Runix.Ability;
 using Runix.Card;
 using Runix.Character;
@@ -5,16 +6,18 @@ using Runix.Character;
 public class PlayerLoadout : ICharaterLoadout
 {
     string _name, description;
-    DeckSO deckSO;
+    DeckSO elementDeck;
+    DeckSO specialDeck;
     AbilitySO abilitySO;
     HpValues hpValues;
     DeckLimits deckLimits;
 
-    public PlayerLoadout(string name, string description, DeckSO deckSO, AbilitySO abilitySO, HpValues hpValues, DeckLimits deckLimits)
+    public PlayerLoadout(string name, string description, DeckSO elementDeck, DeckSO specialDeck, AbilitySO abilitySO, HpValues hpValues, DeckLimits deckLimits)
     {
         _name = name;
         this.description = description;
-        this.deckSO = deckSO;
+        this.elementDeck = elementDeck;
+        this.specialDeck = specialDeck;
         this.abilitySO = abilitySO;
         this.hpValues = hpValues;
         this.deckLimits = deckLimits;
@@ -24,7 +27,16 @@ public class PlayerLoadout : ICharaterLoadout
 
     public string Description => description;
 
-    public DeckSO DeckSO => deckSO;
+    public IReadOnlyList<DeckSO> DeckSO
+    {
+        get
+        {
+            var list = new List<DeckSO>();
+            if (elementDeck != null) list.Add(elementDeck);
+            if (specialDeck != null) list.Add(specialDeck);
+            return list;
+        }
+    }
 
     public AbilitySO Ability => abilitySO;
 
