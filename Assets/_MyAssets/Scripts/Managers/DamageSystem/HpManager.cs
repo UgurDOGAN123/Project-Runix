@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Runix.Character;
 using Runix.Managers;
 using Runix.UI;
 using UnityEngine;
@@ -41,9 +41,8 @@ namespace Runix.Damage
             }
             isDead = false;
             hpSlider.ChangeSlider(HpPercent);
-            passiveDefenseValues = Character.DeckSO.passiveDefense
-    .GroupBy(x => x.element)
-    .ToDictionary(g => g.Key, g => g.Sum(x => x.Value));
+            passiveDefenseValues = Character.GetPassiveDefense()
+
         }
 
         public void AddData(TurnDataHolder Heal_DefData, TurnDataHolder Attack_Mulitpler)
@@ -51,7 +50,7 @@ namespace Runix.Damage
 
 
             //heal yapılacak
-            hp = damageCalculator.DoHeal(Heal_DefData.HealValues, hp, MaxHp, Character.DeckSO.healable);
+            hp = damageCalculator.DoHeal(Heal_DefData.HealValues, hp, MaxHp, Character.GetHealable());
             //defens eklenecek
             defenseValues = damageCalculator.AddDefense(defenseValues, Heal_DefData.DefenseValues, MaxDefense);
             //attack yapılacak

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Runix.Card;
+using Runix.Character;
 using Runix.Managers.Anim;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ namespace Runix.Managers
             { return DeskManager.instance.GetCharacterSO(playerID); }
         }
 
-        List<CardSO> MainDeck => Character.DeckSO.cards;
+        List<CardSO> MainDeck => Character.BuildCards();
 
         public List<CardSO> OnHandDeck { get => onHandDeck; private set => onHandDeck = value; }
 
