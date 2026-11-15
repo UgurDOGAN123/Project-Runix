@@ -1,9 +1,8 @@
 using Runix.Ability;
 using Runix.Card;
 using Runix.Character;
-using UnityEngine;
 
-public class PlayerLoadout : MonoBehaviour, ICharaterLoadout
+public class PlayerLoadout : ICharaterLoadout
 {
     string _name, description;
     DeckSO deckSO;

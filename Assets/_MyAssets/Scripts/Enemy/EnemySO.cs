@@ -31,13 +31,13 @@ namespace Runix.Enemy
 
         public string Description => description;
 
-        public DeckSO DeckSO => DeckSO;
+        public DeckSO DeckSO => Decks;
 
         public AbilitySO Ability => ability;
 
         public HpValues HpValues => hpValues;
 
-        public DeckLimits DeckLimits => throw new System.NotImplementedException();
+        public DeckLimits DeckLimits => deckLimits;
         /*
     protected override void OnValidate()
     {

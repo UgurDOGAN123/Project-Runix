@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Runix.Ability
 {
-    public abstract class AbilitySO : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Ability", menuName = "SO/Ability")]
+    public abstract class AbilitySO : ScriptableObject
     {
         [Header("Görünüm (seçim ekraný için)")]
         public string displayName;
