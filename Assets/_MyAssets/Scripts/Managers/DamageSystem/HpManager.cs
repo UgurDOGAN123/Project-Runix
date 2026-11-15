@@ -1,4 +1,11 @@
-﻿namespace Runix.Damage
+﻿using System.Collections.Generic;
+using Runix.Character;
+using Runix.Managers;
+using Runix.UI;
+using UnityEngine;
+
+
+namespace Runix.Damage
 {
     public class HpManager : MonoBehaviour
     {
