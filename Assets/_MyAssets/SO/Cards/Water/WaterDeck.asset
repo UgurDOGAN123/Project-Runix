@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
+  m_Name: WaterDeck
+  m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
+  displayName: WaterDeck
+  description: WaterDeck
+  icon: {fileID: 0}
+  element: 3
+  kind: 0
+  healable: 03000000
+  passiveDefense:
+  - element: 3
+    Value: 20
+  cards:
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 7991458ad9363a04abb58e91152a5d68, type: 2}
+  - {fileID: 11400000, guid: 5e4f0eef42219df478120de1e6e80966, type: 2}
+  - {fileID: 11400000, guid: 5e4f0eef42219df478120de1e6e80966, type: 2}
+  - {fileID: 11400000, guid: 5e4f0eef42219df478120de1e6e80966, type: 2}
+  - {fileID: 11400000, guid: 40bf18f79d2322d479ce3e31ccabdaf0, type: 2}
+  - {fileID: 11400000, guid: 40bf18f79d2322d479ce3e31ccabdaf0, type: 2}
+  - {fileID: 11400000, guid: 40bf18f79d2322d479ce3e31ccabdaf0, type: 2}

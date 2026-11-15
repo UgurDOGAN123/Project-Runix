@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
+  m_Name: LigtheningDeck
+  m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
+  displayName: LigtheningDeck
+  description: Ligthening Deck
+  icon: {fileID: 0}
+  element: 7
+  kind: 0
+  healable: 07000000
+  passiveDefense:
+  - element: 7
+    Value: 20
+  cards:
+  - {fileID: 11400000, guid: 4a76a8511129cd548ad2f9836d5295aa, type: 2}
+  - {fileID: 11400000, guid: 4a76a8511129cd548ad2f9836d5295aa, type: 2}
+  - {fileID: 11400000, guid: 4a76a8511129cd548ad2f9836d5295aa, type: 2}
+  - {fileID: 11400000, guid: 4a76a8511129cd548ad2f9836d5295aa, type: 2}
+  - {fileID: 11400000, guid: efecb51cce7ce7b4ab56dd19059cba3a, type: 2}
+  - {fileID: 11400000, guid: efecb51cce7ce7b4ab56dd19059cba3a, type: 2}
+  - {fileID: 11400000, guid: efecb51cce7ce7b4ab56dd19059cba3a, type: 2}
+  - {fileID: 11400000, guid: b7ce002c92959be4da24d2ca5c9326d3, type: 2}
+  - {fileID: 11400000, guid: b7ce002c92959be4da24d2ca5c9326d3, type: 2}
+  - {fileID: 11400000, guid: b7ce002c92959be4da24d2ca5c9326d3, type: 2}
