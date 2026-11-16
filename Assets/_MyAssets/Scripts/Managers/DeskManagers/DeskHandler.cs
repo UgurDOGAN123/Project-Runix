@@ -17,8 +17,15 @@ namespace Runix.Map
 
         private void Start()
         {
+            DeskManager.instance.ChangeDesk.AddListener(DeskEnumSet);
             DeskManager.instance.ChangeDesk.Invoke(DeskEnum.SetDesk);
         }
+        private void OnDestroy()
+        {
+            if (DeskManager.instance != null)
+                DeskManager.instance.ChangeDesk.RemoveListener(DeskEnumSet);
+        }
+
 
         public void DeskEnumSet(DeskEnum desk)
         {

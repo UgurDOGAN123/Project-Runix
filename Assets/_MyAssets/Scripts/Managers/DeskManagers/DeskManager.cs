@@ -18,9 +18,11 @@ namespace Runix.Managers
             else
             {
                 Destroy(gameObject);
+                return;
             }
             DontDestroyOnLoad(gameObject);
         }
+        void OnDestroy() { if (instance == this) instance = null; }
 
         public UnityEvent<DeskEnum> ChangeDesk;
         public DeskEnemiesSO deskEnemies;
@@ -29,6 +31,11 @@ namespace Runix.Managers
 
         public byte DeskCount;
 
+        public void ResetRun()
+        {
+            DeskCount = 0;
+            Enemy = null;
+        }
 
         public ICharaterLoadout GetCharacterSO(int index)
         {
