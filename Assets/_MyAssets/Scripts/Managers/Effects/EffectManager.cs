@@ -48,6 +48,7 @@ namespace Runix.Effect
         {
             if (stage == TurnEnum.BattleStart || stage == TurnEnum.BattleEnd)
             {
+                foreach (var e in effects) if (e.image != null) Destroy(e.image);
                 effects.Clear();
                 return;
             }
@@ -66,7 +67,7 @@ namespace Runix.Effect
                 List<EffectObject> removed = effects.Where(e => e.effect.RemainingTurns <= 0).ToList();
                 foreach (var a in removed)
                 {
-                    Destroy(a.image);
+                    if (a.image != null) Destroy(a.image);
                     effects.Remove(a);
                     if (debugLog) Debug.Log($"[Effect:{ownerId}] {a} etki bitti", this);
                 }
