@@ -1,11 +1,13 @@
-using Runix.UI;
 using UnityEngine;
 
-public class SelectImage : MonoBehaviour
+namespace Runix.UI.CharacterBuild
 {
-    public Sprite Sprite { get; set; }
-    public void ChanceImage(ImageHandler imageHandler)
+    public class SelectImage : MonoBehaviour
     {
-        imageHandler.ChangeImage(Sprite);
+        public Sprite Sprite { get; set; }
+        public void ChanceImage(ImageHandler imageHandler)
+        {
+            imageHandler.ChangeImage(Sprite);
+        }
     }
 }

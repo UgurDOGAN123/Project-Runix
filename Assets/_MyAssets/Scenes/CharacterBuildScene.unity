@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 115042014}
   - component: {fileID: 115042013}
   - component: {fileID: 115042017}
+  - component: {fileID: 115042018}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -862,7 +863,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.48235294}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -876,7 +877,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 115042015}
   m_OnClick:
     m_PersistentCalls:
@@ -948,13 +949,29 @@ MonoBehaviour:
   abilitySO: {fileID: 0}
   deskEnemiesSO: {fileID: 0}
   HpValues:
-    maxHp: 0
-    maxDefense: 0
+    maxHp: 1000
+    maxDefense: 80
   deckLimits:
-    MaxHandCardCount: 0
-    StartCardCount: 0
-    EveryTurnAddCardCount: 0
-  ElemetHandler: {fileID: 0}
+    MaxHandCardCount: 8
+    StartCardCount: 6
+    EveryTurnAddCardCount: 4
+--- !u!111 &115042018
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115042011}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 1147cb23a4bccf847b6cda17000e7700, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1147cb23a4bccf847b6cda17000e7700, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &116833194
 GameObject:
   m_ObjectHideFlags: 0

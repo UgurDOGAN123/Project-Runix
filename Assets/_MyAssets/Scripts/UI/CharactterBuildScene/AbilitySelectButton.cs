@@ -1,28 +1,30 @@
 using Runix.Ability;
-using Runix.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AbilitySelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Runix.UI.CharacterBuild
 {
-    [SerializeField] TMP_Text target;
-    [SerializeField] AbilitySO abilitySO;
-    [SerializeField] string normaltext = "";
-
-    private void Start()
+    public class AbilitySelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        GetComponent<ImageHandler>().ChangeImage(abilitySO.icon);
-        GetComponent<SelectImage>().Sprite = abilitySO.icon;
-    }
+        [SerializeField] TMP_Text target;
+        [SerializeField] AbilitySO abilitySO;
+        [SerializeField] string normaltext = "";
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (target != null) target.text = abilitySO.description;
-    }
+        private void Start()
+        {
+            GetComponent<ImageHandler>().ChangeImage(abilitySO.icon);
+            GetComponent<SelectImage>().Sprite = abilitySO.icon;
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (target != null) target.text = normaltext;
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (target != null) target.text = abilitySO.description;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (target != null) target.text = normaltext;
+        }
     }
 }
