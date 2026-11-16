@@ -10,6 +10,7 @@ namespace Runix.Ability
         public string displayName;
         [TextArea] public string description;
         public Sprite icon;
+        [SerializeField] protected AnimationClip animationClip;
 
         public abstract void UseAbility(AbilityContext abilityContext);
         private void OnValidate()

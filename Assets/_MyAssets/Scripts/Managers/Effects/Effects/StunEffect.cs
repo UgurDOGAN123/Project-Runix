@@ -1,4 +1,6 @@
-﻿namespace Runix.Effect
+﻿using UnityEngine;
+
+namespace Runix.Effect
 {
     public class StunEffect : Effect
     {
@@ -6,7 +8,7 @@
 
         public int BlockedSlots { get; }
 
-        public StunEffect(int turns, int blockedSlots = AllSlots) : base(turns)
+        public StunEffect(int turns, Sprite icon, int blockedSlots = AllSlots) : base(turns, icon)
         {
             BlockedSlots = blockedSlots;
         }

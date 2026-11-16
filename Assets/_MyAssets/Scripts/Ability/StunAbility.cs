@@ -16,6 +16,6 @@ public class StunAbility : AbilitySO
         if (ctx.Opponent.BlockedSlotCount > 0) return; // zaten sersemse üst üste bindirme
 
         if (Random.value < stunChance)
-            ctx.Opponent.Add(new StunEffect(stunTurns, stunBlockedSlots));
+            ctx.Opponent.Add(new StunEffect(stunTurns, icon, stunBlockedSlots));
     }
 }

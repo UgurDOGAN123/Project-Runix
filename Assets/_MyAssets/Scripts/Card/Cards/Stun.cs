@@ -16,7 +16,7 @@ namespace Runix.Card
         public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
             base.UseCard(turnDataHolder, deckManagers);
-            turnDataHolder.AddEffect(new StunEffect(turns, Value));
+            turnDataHolder.AddEffect(new StunEffect(turns, ElementImg, Value));
         }
     }
 }

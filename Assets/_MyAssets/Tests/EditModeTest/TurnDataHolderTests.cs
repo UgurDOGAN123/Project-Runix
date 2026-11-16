@@ -48,7 +48,7 @@ namespace Runix.Tests
             _holder.AddAttack(Element.Ice, 20);
             _holder.AddDefense(Element.Water, 10);
             _holder.AddHeal(Element.Nature, 15);
-            _holder.AddEffect(new StunEffect(1, 2));
+            _holder.AddEffect(new StunEffect(1, null, 2));
 
             _holder.AllClear();
 

@@ -18,7 +18,7 @@ namespace Runix.Ability
                 return;
             if (Random.value < abilityChance)
             {
-                abilityContext.Opponent.Add(new ElementEffect(burnTurn, burnDamage, GetElement(abilityContext.OwnerId)));
+                abilityContext.Opponent.Add(new ElementEffect(burnTurn, burnDamage, GetElement(abilityContext.OwnerId), icon));
             }
         }
     }

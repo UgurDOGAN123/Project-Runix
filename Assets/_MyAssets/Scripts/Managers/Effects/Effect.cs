@@ -1,10 +1,15 @@
-﻿namespace Runix.Effect
+﻿using UnityEngine;
+
+namespace Runix.Effect
 {
     public class Effect : IEffect
     {
         public int RemainingTurns { get; protected set; }
 
-        protected Effect(int turns) { RemainingTurns = turns; }
+        public Sprite Icon
+        { get; }
+
+        protected Effect(int turns, Sprite icon) { RemainingTurns = turns; Icon = icon; }
 
         public virtual void OnTurnStart(EffectContext ctx) { }
 
