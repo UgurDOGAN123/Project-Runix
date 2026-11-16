@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
   displayName: WaterDeck
   description: WaterDeck
-  icon: {fileID: 0}
+  icon: {fileID: -959912754, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   element: 3
   kind: 0
   healable: 03000000

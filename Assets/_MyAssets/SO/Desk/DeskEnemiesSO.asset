@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: main::Runix.Desk.DeskEnemiesSO
   DeskName: 
   Description: 
+  Icon: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
   EnemyLists:
   - Enemies:
     - {fileID: 11400000, guid: ad4921cb58574dc429fec27f2ea9327e, type: 2}

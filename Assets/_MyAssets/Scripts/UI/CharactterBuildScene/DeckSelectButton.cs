@@ -13,7 +13,9 @@ public class DeckSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Start()
     {
         GetComponent<ImageHandler>().ChangeImage(deckSO.icon);
+        GetComponent<SelectImage>().Sprite = deckSO.icon;
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {

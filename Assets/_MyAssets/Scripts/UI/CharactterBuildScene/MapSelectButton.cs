@@ -13,6 +13,7 @@ public class MapSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void Start()
     {
         GetComponent<ImageHandler>().ChangeImage(DeskEnemies.Icon);
+        GetComponent<SelectImage>().Sprite = DeskEnemies.Icon;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

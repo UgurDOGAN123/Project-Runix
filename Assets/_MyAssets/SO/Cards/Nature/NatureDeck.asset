@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
   displayName: NatureDeck
   description: NatureDeck
-  icon: {fileID: 0}
+  icon: {fileID: 570495748, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   element: 6
   kind: 0
   healable: 06000000

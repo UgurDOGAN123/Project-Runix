@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 38378540}
   - component: {fileID: 38378539}
   - component: {fileID: 38378538}
+  - component: {fileID: 38378541}
   - component: {fileID: 38378537}
   - component: {fileID: 38378536}
   m_Layer: 5
@@ -256,6 +257,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 38378541}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &38378539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +307,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38378534}
   m_CullTransparentMesh: 1
+--- !u!114 &38378541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38378534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &46230809
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +954,7 @@ MonoBehaviour:
     MaxHandCardCount: 0
     StartCardCount: 0
     EveryTurnAddCardCount: 0
+  ElemetHandler: {fileID: 0}
 --- !u!1 &116833194
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +967,7 @@ GameObject:
   - component: {fileID: 116833198}
   - component: {fileID: 116833197}
   - component: {fileID: 116833196}
+  - component: {fileID: 116833201}
   - component: {fileID: 116833199}
   - component: {fileID: 116833200}
   m_Layer: 5
@@ -1038,6 +1065,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 116833201}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116833197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1143,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 1527269750}
+--- !u!114 &116833201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116833194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &206228494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1242,7 @@ GameObject:
   - component: {fileID: 243655153}
   - component: {fileID: 243655152}
   - component: {fileID: 243655151}
+  - component: {fileID: 243655154}
   - component: {fileID: 243655150}
   - component: {fileID: 243655149}
   m_Layer: 5
@@ -1316,6 +1368,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 243655154}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &243655152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,6 +1418,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243655147}
   m_CullTransparentMesh: 1
+--- !u!114 &243655154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243655147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &301552558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1442,7 @@ GameObject:
   - component: {fileID: 301552564}
   - component: {fileID: 301552563}
   - component: {fileID: 301552562}
+  - component: {fileID: 301552565}
   - component: {fileID: 301552561}
   - component: {fileID: 301552560}
   m_Layer: 5
@@ -1491,6 +1568,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 301552565}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &301552563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,6 +1618,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301552558}
   m_CullTransparentMesh: 1
+--- !u!114 &301552565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301552558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &311197071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1901,7 @@ GameObject:
   - component: {fileID: 344412737}
   - component: {fileID: 344412736}
   - component: {fileID: 344412735}
+  - component: {fileID: 344412738}
   - component: {fileID: 344412734}
   - component: {fileID: 344412733}
   m_Layer: 5
@@ -1925,6 +2027,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 344412738}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &344412736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1963,6 +2077,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344412731}
   m_CullTransparentMesh: 1
+--- !u!114 &344412738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344412731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &364018951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2101,7 @@ GameObject:
   - component: {fileID: 364018957}
   - component: {fileID: 364018956}
   - component: {fileID: 364018955}
+  - component: {fileID: 364018958}
   - component: {fileID: 364018954}
   - component: {fileID: 364018953}
   m_Layer: 5
@@ -2100,6 +2227,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 364018958}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &364018956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,6 +2277,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364018951}
   m_CullTransparentMesh: 1
+--- !u!114 &364018958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364018951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &382388116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2301,7 @@ GameObject:
   - component: {fileID: 382388122}
   - component: {fileID: 382388121}
   - component: {fileID: 382388120}
+  - component: {fileID: 382388123}
   - component: {fileID: 382388119}
   - component: {fileID: 382388118}
   m_Layer: 5
@@ -2275,6 +2427,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 382388123}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &382388121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,6 +2477,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382388116}
   m_CullTransparentMesh: 1
+--- !u!114 &382388123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382388116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &413549082
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,6 +2925,7 @@ GameObject:
   - component: {fileID: 476406458}
   - component: {fileID: 476406457}
   - component: {fileID: 476406456}
+  - component: {fileID: 476406459}
   - component: {fileID: 476406455}
   - component: {fileID: 476406454}
   m_Layer: 5
@@ -2874,6 +3051,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 476406459}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &476406457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2912,6 +3101,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476406452}
   m_CullTransparentMesh: 1
+--- !u!114 &476406459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476406452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &524954544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,6 +3125,7 @@ GameObject:
   - component: {fileID: 524954550}
   - component: {fileID: 524954549}
   - component: {fileID: 524954548}
+  - component: {fileID: 524954551}
   - component: {fileID: 524954547}
   - component: {fileID: 524954546}
   m_Layer: 5
@@ -3049,6 +3251,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 524954551}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &524954549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3087,6 +3301,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524954544}
   m_CullTransparentMesh: 1
+--- !u!114 &524954551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524954544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &641656095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3400,7 @@ GameObject:
   - component: {fileID: 656279963}
   - component: {fileID: 656279962}
   - component: {fileID: 656279961}
+  - component: {fileID: 656279966}
   - component: {fileID: 656279964}
   - component: {fileID: 656279965}
   m_Layer: 5
@@ -3271,6 +3498,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 656279966}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &656279962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,6 +3576,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 80279316}
+--- !u!114 &656279966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656279959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1001 &679768769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3551,6 +3802,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9174296177402889049, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
   m_PrefabInstance: {fileID: 679768769}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &679768771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2566700796687421586, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 679768769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9589796fc2dfc4045aee592f4f462981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
 --- !u!1 &735478783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,6 +3975,7 @@ GameObject:
   - component: {fileID: 817455434}
   - component: {fileID: 817455433}
   - component: {fileID: 817455432}
+  - component: {fileID: 817455436}
   - component: {fileID: 817455435}
   - component: {fileID: 817455430}
   m_Layer: 5
@@ -3823,6 +4086,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 817455436}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &817455433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3876,6 +4151,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &817455436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817455428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &828946744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,6 +4175,7 @@ GameObject:
   - component: {fileID: 828946750}
   - component: {fileID: 828946749}
   - component: {fileID: 828946748}
+  - component: {fileID: 828946751}
   - component: {fileID: 828946747}
   - component: {fileID: 828946746}
   m_Layer: 5
@@ -4013,6 +4301,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 828946751}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &828946749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,6 +4351,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828946744}
   m_CullTransparentMesh: 1
+--- !u!114 &828946751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828946744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &833531469
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4375,7 @@ GameObject:
   - component: {fileID: 833531475}
   - component: {fileID: 833531474}
   - component: {fileID: 833531473}
+  - component: {fileID: 833531476}
   - component: {fileID: 833531472}
   - component: {fileID: 833531471}
   m_Layer: 5
@@ -4188,6 +4501,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 833531476}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &833531474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4226,6 +4551,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833531469}
   m_CullTransparentMesh: 1
+--- !u!114 &833531476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833531469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &846942530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,6 +4849,7 @@ GameObject:
   - component: {fileID: 869136331}
   - component: {fileID: 869136330}
   - component: {fileID: 869136329}
+  - component: {fileID: 869136334}
   - component: {fileID: 869136332}
   - component: {fileID: 869136333}
   m_Layer: 5
@@ -4609,6 +4947,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 869136334}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &869136330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4675,6 +5025,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 416189072}
+--- !u!114 &869136334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869136327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &874909232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4687,6 +5049,7 @@ GameObject:
   - component: {fileID: 874909238}
   - component: {fileID: 874909237}
   - component: {fileID: 874909236}
+  - component: {fileID: 874909239}
   - component: {fileID: 874909235}
   - component: {fileID: 874909234}
   m_Layer: 5
@@ -4812,6 +5175,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 874909239}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &874909237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4850,6 +5225,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874909232}
   m_CullTransparentMesh: 1
+--- !u!114 &874909239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874909232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1001 &885647805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5068,6 +5455,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9174296177402889049, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
   m_PrefabInstance: {fileID: 885647805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &885647807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2566700796687421586, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 885647805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9589796fc2dfc4045aee592f4f462981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
 --- !u!1 &903933138
 GameObject:
   m_ObjectHideFlags: 0
@@ -5230,6 +5628,7 @@ GameObject:
   - component: {fileID: 991364295}
   - component: {fileID: 991364294}
   - component: {fileID: 991364293}
+  - component: {fileID: 991364297}
   - component: {fileID: 991364296}
   - component: {fileID: 991364291}
   m_Layer: 5
@@ -5340,6 +5739,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 991364297}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &991364294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5393,6 +5804,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &991364297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991364289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1019627743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5762,6 +6185,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9174296177402889049, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
   m_PrefabInstance: {fileID: 1036979784}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1036979786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2566700796687421586, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 1036979784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9589796fc2dfc4045aee592f4f462981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
 --- !u!1 &1077526147
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,6 +6508,7 @@ GameObject:
   - component: {fileID: 1130805540}
   - component: {fileID: 1130805539}
   - component: {fileID: 1130805538}
+  - component: {fileID: 1130805541}
   - component: {fileID: 1130805537}
   - component: {fileID: 1130805536}
   m_Layer: 5
@@ -6199,6 +6634,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1130805541}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1130805539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6237,6 +6684,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130805534}
   m_CullTransparentMesh: 1
+--- !u!114 &1130805541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130805534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1133040954
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,6 +6950,7 @@ GameObject:
   - component: {fileID: 1146033933}
   - component: {fileID: 1146033932}
   - component: {fileID: 1146033931}
+  - component: {fileID: 1146033935}
   - component: {fileID: 1146033934}
   - component: {fileID: 1146033929}
   m_Layer: 5
@@ -6601,6 +7061,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1146033935}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1146033932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6654,6 +7126,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &1146033935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146033927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1148548275
 GameObject:
   m_ObjectHideFlags: 0
@@ -7107,6 +7591,7 @@ GameObject:
   - component: {fileID: 1194051911}
   - component: {fileID: 1194051910}
   - component: {fileID: 1194051909}
+  - component: {fileID: 1194051912}
   - component: {fileID: 1194051908}
   - component: {fileID: 1194051907}
   m_Layer: 5
@@ -7232,6 +7717,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1194051912}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1194051910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7270,6 +7767,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194051905}
   m_CullTransparentMesh: 1
+--- !u!114 &1194051912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194051905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1199383077
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,6 +7866,7 @@ GameObject:
   - component: {fileID: 1209824922}
   - component: {fileID: 1209824921}
   - component: {fileID: 1209824920}
+  - component: {fileID: 1209824925}
   - component: {fileID: 1209824923}
   - component: {fileID: 1209824924}
   m_Layer: 5
@@ -7454,6 +7964,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1209824925}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1209824921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7520,6 +8042,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 1183993389}
+--- !u!114 &1209824925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209824918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1241508700
 GameObject:
   m_ObjectHideFlags: 0
@@ -7532,6 +8066,7 @@ GameObject:
   - component: {fileID: 1241508706}
   - component: {fileID: 1241508705}
   - component: {fileID: 1241508704}
+  - component: {fileID: 1241508708}
   - component: {fileID: 1241508707}
   - component: {fileID: 1241508702}
   m_Layer: 5
@@ -7642,6 +8177,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1241508708}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1241508705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7695,6 +8242,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &1241508708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241508700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1267933466
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,6 +8374,7 @@ GameObject:
   - component: {fileID: 1291417136}
   - component: {fileID: 1291417135}
   - component: {fileID: 1291417134}
+  - component: {fileID: 1291417139}
   - component: {fileID: 1291417137}
   - component: {fileID: 1291417138}
   m_Layer: 5
@@ -7912,6 +8472,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1291417139}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1291417135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7978,6 +8550,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 1397865621}
+--- !u!114 &1291417139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291417132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1324885369
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,6 +8879,7 @@ GameObject:
   - component: {fileID: 1489303696}
   - component: {fileID: 1489303695}
   - component: {fileID: 1489303694}
+  - component: {fileID: 1489303697}
   - component: {fileID: 1489303693}
   - component: {fileID: 1489303692}
   m_Layer: 5
@@ -8420,6 +9005,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1489303697}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1489303695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8458,6 +9055,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489303690}
   m_CullTransparentMesh: 1
+--- !u!114 &1489303697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489303690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1492105761
 GameObject:
   m_ObjectHideFlags: 0
@@ -8470,6 +9079,7 @@ GameObject:
   - component: {fileID: 1492105767}
   - component: {fileID: 1492105766}
   - component: {fileID: 1492105765}
+  - component: {fileID: 1492105769}
   - component: {fileID: 1492105768}
   - component: {fileID: 1492105763}
   m_Layer: 5
@@ -8580,6 +9190,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1492105769}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1492105766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8633,6 +9255,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &1492105769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492105761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1496782971
 GameObject:
   m_ObjectHideFlags: 0
@@ -8795,6 +9429,7 @@ GameObject:
   - component: {fileID: 1521545833}
   - component: {fileID: 1521545832}
   - component: {fileID: 1521545831}
+  - component: {fileID: 1521545836}
   - component: {fileID: 1521545834}
   - component: {fileID: 1521545835}
   m_Layer: 5
@@ -8892,6 +9527,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1521545836}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521545832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8958,6 +9605,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 111103680}
+--- !u!114 &1521545836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521545829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1527269748
 GameObject:
   m_ObjectHideFlags: 0
@@ -9064,19 +9723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Managers.DeskManager
   ChangeDesk:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Runix.Map.DeskHandler, Assembly-CSharp
-        m_MethodName: DeskEnumSet
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   Enemy: {fileID: 0}
   Player:
@@ -9195,6 +9842,7 @@ GameObject:
   - component: {fileID: 1644180659}
   - component: {fileID: 1644180658}
   - component: {fileID: 1644180657}
+  - component: {fileID: 1644180660}
   - component: {fileID: 1644180656}
   - component: {fileID: 1644180655}
   m_Layer: 5
@@ -9320,6 +9968,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1644180660}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 885647807}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1644180658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9358,6 +10018,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644180653}
   m_CullTransparentMesh: 1
+--- !u!114 &1644180660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644180653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1696737815
 GameObject:
   m_ObjectHideFlags: 0
@@ -9370,6 +10042,7 @@ GameObject:
   - component: {fileID: 1696737821}
   - component: {fileID: 1696737820}
   - component: {fileID: 1696737819}
+  - component: {fileID: 1696737823}
   - component: {fileID: 1696737822}
   - component: {fileID: 1696737817}
   m_Layer: 5
@@ -9480,6 +10153,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1696737823}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1696737820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9533,6 +10218,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &1696737823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696737815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1756162662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9622,6 +10319,7 @@ GameObject:
   - component: {fileID: 1793667995}
   - component: {fileID: 1793667994}
   - component: {fileID: 1793667993}
+  - component: {fileID: 1793667998}
   - component: {fileID: 1793667996}
   - component: {fileID: 1793667997}
   m_Layer: 5
@@ -9719,6 +10417,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1793667998}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1793667994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9785,6 +10495,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 1831231499}
+--- !u!114 &1793667998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793667991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1821275954
 GameObject:
   m_ObjectHideFlags: 0
@@ -9797,6 +10519,7 @@ GameObject:
   - component: {fileID: 1821275958}
   - component: {fileID: 1821275957}
   - component: {fileID: 1821275956}
+  - component: {fileID: 1821275961}
   - component: {fileID: 1821275959}
   - component: {fileID: 1821275960}
   m_Layer: 5
@@ -9894,6 +10617,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1821275961}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3174681676901612397}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1821275957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9960,6 +10695,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
   image: {fileID: 1874758933}
+--- !u!114 &1821275961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821275954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1831231497
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,6 +11205,7 @@ GameObject:
   - component: {fileID: 1925659295}
   - component: {fileID: 1925659294}
   - component: {fileID: 1925659293}
+  - component: {fileID: 1925659296}
   - component: {fileID: 1925659292}
   - component: {fileID: 1925659291}
   m_Layer: 5
@@ -10583,6 +11331,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1925659296}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036979786}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1925659294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10621,6 +11381,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925659289}
   m_CullTransparentMesh: 1
+--- !u!114 &1925659296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925659289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &1949879891
 GameObject:
   m_ObjectHideFlags: 0
@@ -10633,6 +11405,7 @@ GameObject:
   - component: {fileID: 1949879897}
   - component: {fileID: 1949879896}
   - component: {fileID: 1949879895}
+  - component: {fileID: 1949879899}
   - component: {fileID: 1949879898}
   - component: {fileID: 1949879893}
   m_Layer: 5
@@ -10743,6 +11516,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1949879899}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1949879896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10796,6 +11581,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
+--- !u!114 &1949879899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949879891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &2007309436
 GameObject:
   m_ObjectHideFlags: 0
@@ -10883,6 +11680,7 @@ GameObject:
   - component: {fileID: 2028704503}
   - component: {fileID: 2028704502}
   - component: {fileID: 2028704501}
+  - component: {fileID: 2028704505}
   - component: {fileID: 2028704504}
   - component: {fileID: 2028704499}
   m_Layer: 5
@@ -10993,6 +11791,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2028704505}
+        m_TargetAssemblyTypeName: SelectImage, Runix.Scripts
+        m_MethodName: ChanceImage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 679768771}
+          m_ObjectArgumentAssemblyTypeName: Runix.UI.ImageHandler, Runix.Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2028704502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11046,6 +11856,18 @@ MonoBehaviour:
   target: {fileID: 1145047709}
   abilitySO: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
   normaltext: 
+--- !u!114 &2028704505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028704497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::SelectImage
 --- !u!1 &2036833807
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,6 +12065,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 314591135}
@@ -11259,6 +12085,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 67500780}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 3174681676901612397}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -11272,6 +12102,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
@@ -11291,6 +12125,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: ChangeImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -11305,6 +12143,10 @@ PrefabInstance:
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: Runix.UI.ImageHandler, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -11333,6 +12175,10 @@ PrefabInstance:
     - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569771433641669082, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Sprite, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8381683577068692190, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_Name
@@ -11423,6 +12269,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+--- !u!114 &3174681676901612397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2566700796687421586, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 3174681676901612396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9589796fc2dfc4045aee592f4f462981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.ImageHandler
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

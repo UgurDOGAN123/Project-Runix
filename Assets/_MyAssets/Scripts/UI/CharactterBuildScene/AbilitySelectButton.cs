@@ -13,6 +13,7 @@ public class AbilitySelectButton : MonoBehaviour, IPointerEnterHandler, IPointer
     private void Start()
     {
         GetComponent<ImageHandler>().ChangeImage(abilitySO.icon);
+        GetComponent<SelectImage>().Sprite = abilitySO.icon;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
