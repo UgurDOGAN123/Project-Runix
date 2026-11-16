@@ -69,7 +69,7 @@ namespace Runix.Effect
                 {
                     if (a.image != null) Destroy(a.image);
                     effects.Remove(a);
-                    if (debugLog) Debug.Log($"[Effect:{ownerId}] {a} etki bitti", this);
+                    if (debugLog) Debug.Log($"[Effect:{ownerId}] {a.effect.GetType().Name} etki bitti", this);
                 }
             }
         }

@@ -21,7 +21,9 @@ namespace Runix.Damage
         public event System.Action OnDeath;
         ICharaterLoadout Character => DeskManager.instance.GetCharacterSO(playerID);
 
-        DamageCalculator damageCalculator = new DamageCalculator();
+        readonly DamageCalculator damageCalculator = new();
+
+
 
 
 
@@ -32,6 +34,11 @@ namespace Runix.Damage
 
         int MaxHp { get => Character.HpValues.maxHp; }
         public int MaxDefense { get => Character.HpValues.maxDefense; }
+
+        private void Awake()
+        {
+            if (playerID == PlayerIds.Player) hp = MaxHp;   // run başında bir kez
+        }
 
         private void OnEnable()
         {

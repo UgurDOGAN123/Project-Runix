@@ -1,6 +1,6 @@
 ﻿namespace Runix.Core
 {
-    public struct SceneNameStruct
+    public static class SceneNameStruct
     {
         public const string PlayScene = "SampleScene";
         public const string MainMenu = "MainMenu";
