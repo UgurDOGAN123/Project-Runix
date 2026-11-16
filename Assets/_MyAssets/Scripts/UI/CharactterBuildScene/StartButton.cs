@@ -1,9 +1,11 @@
 using Runix.Ability;
 using Runix.Card;
 using Runix.Character;
+using Runix.Core;
 using Runix.Desk;
 using Runix.Managers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class StartButton : MonoBehaviour
     [SerializeField] DeskEnemiesSO deskEnemiesSO;
     [SerializeField] HpValues HpValues;
     [SerializeField] DeckLimits deckLimits;
+
     public void GetElementSO(DeckSO elementSO)
     {
         elementDeck = elementSO;
@@ -45,7 +48,10 @@ public class StartButton : MonoBehaviour
         DeskManager.instance.Player = new(name: "player", description: "player", elementDeck: elementDeck, specialDeck: spacialDeck, abilitySO: abilitySO, hpValues: HpValues, deckLimits: deckLimits);
         DeskManager.instance.deskEnemies = deskEnemiesSO;
 
-        // burada scene geçiþi olacak
+        DeskManager.instance.ResetRun();
+
+        SceneManager.LoadScene(SceneNameStruct.PlayScene);
+        // burada Sahne geçiþi async olaiblir belki bakýlacak
 
     }
 }
