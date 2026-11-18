@@ -4,7 +4,7 @@ namespace Runix.Effect
 {
     public class EffectContext
     {
-        public HpManager Hp;
+        public IDirectDamageable Hp;
         public int OwnerId;
     }
 }

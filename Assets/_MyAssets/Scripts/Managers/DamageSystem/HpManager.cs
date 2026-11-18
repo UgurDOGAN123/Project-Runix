@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Runix.Damage
 {
-    public class HpManager : MonoBehaviour
+    public class HpManager : MonoBehaviour, IDirectDamageable
     {
 
         [SerializeField] int hp;
