@@ -5,30 +5,56 @@ namespace Runix.Tests.Effects
 {
     public class StunEffectTest
     {
-        StunEffect stunEffect;
-        readonly EffectContext effectContext = new();
-
+        readonly EffectContext ctx = new();   // Stun HP'ye dokunmaz, boþ baðlam yeter
 
         [Test]
-        public void StunEffect_BlokedSlotsCountTest()
+        public void BlockedSlots_VerilenDegerdir()
         {
-            stunEffect = new(2, null, 2);
+            var stun = new StunEffect(2, null, 2);
 
-            Assert.AreEqual(stunEffect.BlockedSlots, 2, "stun effect blocked slots count wrong coming");
+            Assert.AreEqual(2, stun.BlockedSlots);
         }
-
-
 
         [Test]
-        public void StunEffect_TurnCountTest()
+        public void BlockedSlots_VarsayilanTumSlotlar()
         {
-            stunEffect = new(2, null, 2);
+            var stun = new StunEffect(1, null);
 
-            stunEffect.OnTurnStart(effectContext);
-            stunEffect.OnTurnEnd(effectContext);
-
-
-            Assert.AreEqual(stunEffect.RemainingTurns, 1, "stun effect blocked slots count wrong coming");
+            Assert.AreEqual(StunEffect.AllSlots, stun.BlockedSlots);
         }
+
+        [Test]
+        public void OnTurnStart_SureyiAzaltmaz()
+        {
+            var stun = new StunEffect(2, null, 2);
+
+            stun.OnTurnStart(ctx);
+
+            Assert.AreEqual(2, stun.RemainingTurns);
+        }
+
+        [Test]
+        public void OnTurnEnd_SureyiBirAzaltir()
+        {
+            var stun = new StunEffect(2, null, 2);
+
+            stun.OnTurnStart(ctx);
+            stun.OnTurnEnd(ctx);
+
+            Assert.AreEqual(1, stun.RemainingTurns);
+        }
+
+        [Test]
+        public void NTurSonra_SureBitmisOlur()
+        {
+            var stun = new StunEffect(2, null, 2);
+
+            stun.OnTurnEnd(ctx);
+            Assert.Greater(stun.RemainingTurns, 0, "1. turdan sonra hâlâ aktif olmalý");
+
+            stun.OnTurnEnd(ctx);
+            Assert.LessOrEqual(stun.RemainingTurns, 0, "2. turdan sonra bitmiþ olmalý (EffectManager bunu siler)");
+        }
+
     }
 }
