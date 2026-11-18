@@ -1,3 +1,4 @@
+using Runix.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ namespace Runix
     {
         public void PlayAgain()
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(SceneNameStruct.CharacterBuild);
         }
 
         public void Exit()

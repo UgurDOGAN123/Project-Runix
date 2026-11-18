@@ -127,19 +127,19 @@ namespace Runix.Tests
                 for (int i = 0; i < e.EnemyLists.Count; i++)
                 {
                     if (e.EnemyLists[i].minDesk > e.EnemyLists[i].maxDesk) problems.Add($"{e} deki {e.EnemyLists[i]} nýn min deðeri makstan fazla ");
-                    if (i == 4)
+                    if (i == 3)
                     {
-                        e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Boss);
+                        if (e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Boss))
+                            problems.Add($"{e.EnemyLists[i].Enemies.Where(a => a.EnemyType != EnemyType.Boss)} : Boss deðil");
                     }
                     else
                     {
-                        e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Enemy);
+                        if (e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Enemy))
+                            problems.Add($"{e.EnemyLists[i].Enemies.Where(a => a.EnemyType != EnemyType.Enemy)} : Boss deðil");
                     }
                 }
-
-
             }
-
+            AssertNoProblems(problems);
         }
     }
 }
