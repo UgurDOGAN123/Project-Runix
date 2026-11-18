@@ -40,7 +40,7 @@ namespace Runix.Effect
         {
             if (effect == null) return;
 
-            effects.Add(new EffectObject(effect, effectUI.AddNewEffect(effect.Icon)));
+            effects.Add(new EffectObject(effect, effectUI?.AddNewEffect(effect.Icon)));
             if (debugLog) Debug.Log($"[Effect:{ownerId}] eklendi {effect.GetType().Name} ({effect.RemainingTurns} tur)", this);
         }
 
