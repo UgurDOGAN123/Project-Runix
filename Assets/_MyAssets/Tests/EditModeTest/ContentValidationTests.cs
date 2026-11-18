@@ -118,25 +118,31 @@ namespace Runix.Tests
         }
 
         [Test]
-        public void DeskObject_ListeSayýsý()
+        public void DeskObject_ListeSays()
         {
             var problems = new List<string>();
             foreach (var e in LoadAll<DeskEnemiesSO>())
             {
-                if (e.EnemyLists.Count == 4) problems.Add($"{e} : tam 4 tane liste olmalý");
+                if (e.EnemyLists == null || e.EnemyLists.Count != 4)
+                {
+                    problems.Add($"{e.name}: tam 4 liste olmalý (þu an {e.EnemyLists?.Count ?? 0})");
+                    continue;
+                }
+
                 for (int i = 0; i < e.EnemyLists.Count; i++)
                 {
-                    if (e.EnemyLists[i].minDesk > e.EnemyLists[i].maxDesk) problems.Add($"{e} deki {e.EnemyLists[i]} nýn min deðeri makstan fazla ");
-                    if (i == 3)
+                    var list = e.EnemyLists[i];
+                    if (list.minDesk >= list.maxDesk)
+                        problems.Add($"{e.name} liste {i}: minDesk ({list.minDesk}) maxDesk'ten ({list.maxDesk}) küçük olmalý");
+
+                    var expected = i == 3 ? EnemyType.Boss : EnemyType.Enemy;
+                    if (list.Enemies == null || list.Enemies.Count == 0)
                     {
-                        if (e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Boss))
-                            problems.Add($"{e.EnemyLists[i].Enemies.Where(a => a.EnemyType != EnemyType.Boss)} : Boss deðil");
+                        problems.Add($"{e.name} liste {i}: düþman listesi boþ");
+                        continue;
                     }
-                    else
-                    {
-                        if (e.EnemyLists[i].Enemies.Any(a => a.EnemyType == EnemyType.Enemy))
-                            problems.Add($"{e.EnemyLists[i].Enemies.Where(a => a.EnemyType != EnemyType.Enemy)} : Boss deðil");
-                    }
+                    foreach (var enemy in list.Enemies.Where(a => a == null || a.EnemyType != expected))
+                        problems.Add($"{e.name} liste {i}: {(enemy == null ? "boþ eleman" : enemy.name)} türü {expected} olmalý");
                 }
             }
             AssertNoProblems(problems);
