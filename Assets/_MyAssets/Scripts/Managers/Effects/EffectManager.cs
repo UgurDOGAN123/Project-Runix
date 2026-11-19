@@ -15,7 +15,7 @@ namespace Runix.Effect
 
 
         readonly List<EffectObject> effects = new();
-        Runix.Effect.EffectContext ctx;
+        EffectContext ctx;
 
         public IReadOnlyList<IEffect> Effects => effects.Select(e => e.effect).ToList();
 
@@ -43,8 +43,11 @@ namespace Runix.Effect
             effects.Add(new EffectObject(effect, effectUI?.AddNewEffect(effect.Icon)));
             if (debugLog) Debug.Log($"[Effect:{ownerId}] eklendi {effect.GetType().Name} ({effect.RemainingTurns} tur)", this);
         }
-
         protected override void TurnManagerNewTurnStart(TurnEnum stage, int player)
+        {
+            TurnCalculator(stage, player, ctx);
+        }
+        protected void TurnCalculator(TurnEnum stage, int player, EffectContext context)
         {
             if (stage == TurnEnum.BattleStart || stage == TurnEnum.BattleEnd)
             {
@@ -57,13 +60,13 @@ namespace Runix.Effect
 
             if (stage == TurnEnum.PlayTurn)
             {
-                foreach (var e in effects.ToArray()) e.effect.OnTurnStart(ctx);
+                foreach (var e in effects.ToArray()) e.effect.OnTurnStart(context);
                 if (debugLog && BlockedSlotCount > 0)
                     Debug.Log($"[Effect:{ownerId}] kapalı slot sayısı: {BlockedSlotCount}", this);
             }
             else if (stage == TurnEnum.TurnDamage)
             {
-                foreach (var e in effects.ToArray()) e.effect.OnTurnEnd(ctx);
+                foreach (var e in effects.ToArray()) e.effect.OnTurnEnd(context);
                 List<EffectObject> removed = effects.Where(e => e.effect.RemainingTurns <= 0).ToList();
                 foreach (var a in removed)
                 {
