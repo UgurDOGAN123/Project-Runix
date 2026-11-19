@@ -12,7 +12,7 @@ namespace Runix.Tests.PlayMode
     {
         GameObject go;
         TestEffectmanager effectManager;
-        readonly FakeHpManager hpManager = new();
+        FakeHpManager hpManager;
         EffectContext effectContext;
 
         class TestEffectmanager : EffectManager
@@ -35,6 +35,10 @@ namespace Runix.Tests.PlayMode
         [SetUp]
         public void SetUp()
         {
+            hpManager = new FakeHpManager
+            {
+                hp = 100
+            };
             effectContext = new EffectContext
             {
                 OwnerId = 0,
@@ -48,6 +52,11 @@ namespace Runix.Tests.PlayMode
             SetField("ctx", effectContext);
             go.SetActive(true);
 
+        }
+        [TearDown]
+        public void TearDown()
+        {
+            if (go != null) Object.DestroyImmediate(go);   // OnDestroy singleton'ý temizler
         }
 
         void SetField(string name, object value) =>
