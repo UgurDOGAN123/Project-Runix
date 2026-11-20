@@ -25,39 +25,34 @@ namespace Runix.UI.CharacterBuild
         public void GetElementSO(DeckSO elementSO)
         {
             elementDeck = elementSO;
-            DontSelect(ElementDontSelected, false);
+            SetWarning(ElementDontSelected, false);
             AnimPlay();
         }
         public void GetSpacialSO(DeckSO spacialDeck)
         {
             this.spacialDeck = spacialDeck;
-            DontSelect(SpacialDontSelected, false);
+            SetWarning(SpacialDontSelected, false);
             AnimPlay();
         }
         public void GetAbilitySO(AbilitySO abilitySO)
         {
             this.abilitySO = abilitySO;
-            DontSelect(AbilityDontSelected, false);
+            SetWarning(AbilityDontSelected, false);
             AnimPlay();
         }
         public void GetDeskEnemiesSO(DeskEnemiesSO deskEnemiesSO)
         {
             this.deskEnemiesSO = deskEnemiesSO;
-            DontSelect(DeskDontSelected, false);
+            SetWarning(DeskDontSelected, false);
             AnimPlay();
         }
         public void StartGame()
         {
-            if (elementDeck == null) { DontSelect(ElementDontSelected, true); return; }
-            if (spacialDeck == null) { DontSelect(SpacialDontSelected, true); return; }
-            if (abilitySO == null) { DontSelect(AbilityDontSelected, true); return; }
-            if (deskEnemiesSO == null) { DontSelect(DeskDontSelected, true); return; }
-            if (HpValues.maxDefense <= 0) { return; }
-            if (HpValues.maxHp <= 0) { return; }
-            if (deckLimits.StartCardCount <= 0) { return; }
-            if (deckLimits.MaxHandCardCount <= 0) { return; }
-            if (deckLimits.EveryTurnAddCardCount <= 0) { return; }
 
+            if (!ValueCheck())
+            {
+                return;
+            }
 
             DeskManager.instance.Player = new(name: "player", description: "player", elementDeck: elementDeck, specialDeck: spacialDeck, abilitySO: abilitySO, hpValues: HpValues, deckLimits: deckLimits);
             DeskManager.instance.deskEnemies = deskEnemiesSO;
@@ -68,8 +63,30 @@ namespace Runix.UI.CharacterBuild
             // burada Sahne geçiþi async olaiblir belki bakýlacak
         }
 
-        void DontSelect(GameObject gameObject, bool isActive)
+        bool ValueCheck()
         {
+            bool isRight = true;
+            if (elementDeck == null) { SetWarning(ElementDontSelected, true); isRight = false; }
+            if (spacialDeck == null) { SetWarning(SpacialDontSelected, true); isRight = false; }
+            if (abilitySO == null) { SetWarning(AbilityDontSelected, true); isRight = false; }
+            if (deskEnemiesSO == null) { SetWarning(DeskDontSelected, true); isRight = false; }
+            if (HpValues.maxDefense <= 0) { isRight = false; }
+            if (HpValues.maxHp <= 0) { isRight = false; }
+            if (deckLimits.StartCardCount <= 0) { isRight = false; }
+            if (deckLimits.MaxHandCardCount <= 0) { isRight = false; }
+            if (deckLimits.EveryTurnAddCardCount <= 0) { isRight = false; }
+
+
+            return isRight;
+        }
+
+        void SetWarning(GameObject gameObject, bool isActive)
+        {
+            if (gameObject == null)
+            {
+                Debug.LogError($"{gameObject} null", this);
+                return;
+            }
             gameObject.SetActive(isActive);
         }
         void AnimPlay()
