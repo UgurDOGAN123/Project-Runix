@@ -877,7 +877,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 115042015}
   m_OnClick:
     m_PersistentCalls:
@@ -948,6 +948,10 @@ MonoBehaviour:
   spacialDeck: {fileID: 0}
   abilitySO: {fileID: 0}
   deskEnemiesSO: {fileID: 0}
+  ElementDontSelected: {fileID: 1900083023}
+  SpacialDontSelected: {fileID: 628158120}
+  AbilityDontSelected: {fileID: 1085230399}
+  DeskDontSelected: {fileID: 1412014229}
   HpValues:
     maxHp: 1000
     maxDefense: 80
@@ -3330,6 +3334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8509251154dc14a9fa877ec566e11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::SelectImage
+--- !u!1 &628158120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3951694520263667874, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 1036979784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641656095
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,6 +6297,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077526147}
   m_CullTransparentMesh: 1
+--- !u!1 &1085230399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3951694520263667874, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 679768769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088417503
 GameObject:
   m_ObjectHideFlags: 0
@@ -8805,6 +8819,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397865619}
   m_CullTransparentMesh: 1
+--- !u!1 &1412014229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3951694520263667874, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 885647805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1465632933
 GameObject:
   m_ObjectHideFlags: 0
@@ -11027,6 +11046,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875594883}
   m_CullTransparentMesh: 1
+--- !u!1 &1900083023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3951694520263667874, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
+  m_PrefabInstance: {fileID: 3174681676901612396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903843302
 GameObject:
   m_ObjectHideFlags: 0

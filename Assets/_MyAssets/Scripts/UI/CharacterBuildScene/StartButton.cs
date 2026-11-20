@@ -6,7 +6,6 @@ using Runix.Desk;
 using Runix.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Runix.UI.CharacterBuild
 {
@@ -16,35 +15,43 @@ namespace Runix.UI.CharacterBuild
         [SerializeField] DeckSO spacialDeck;
         [SerializeField] AbilitySO abilitySO;
         [SerializeField] DeskEnemiesSO deskEnemiesSO;
+        [SerializeField] GameObject ElementDontSelected;
+        [SerializeField] GameObject SpacialDontSelected;
+        [SerializeField] GameObject AbilityDontSelected;
+        [SerializeField] GameObject DeskDontSelected;
         [SerializeField] HpValues HpValues;
         [SerializeField] DeckLimits deckLimits;
 
         public void GetElementSO(DeckSO elementSO)
         {
             elementDeck = elementSO;
+            DontSelect(ElementDontSelected, false);
             AnimPlay();
         }
         public void GetSpacialSO(DeckSO spacialDeck)
         {
             this.spacialDeck = spacialDeck;
+            DontSelect(SpacialDontSelected, false);
             AnimPlay();
         }
         public void GetAbilitySO(AbilitySO abilitySO)
         {
             this.abilitySO = abilitySO;
+            DontSelect(AbilityDontSelected, false);
             AnimPlay();
         }
         public void GetDeskEnemiesSO(DeskEnemiesSO deskEnemiesSO)
         {
             this.deskEnemiesSO = deskEnemiesSO;
+            DontSelect(DeskDontSelected, false);
             AnimPlay();
         }
         public void StartGame()
         {
-            if (elementDeck == null) { return; }
-            if (spacialDeck == null) { return; }
-            if (abilitySO == null) { return; }
-            if (deskEnemiesSO == null) { return; }
+            if (elementDeck == null) { DontSelect(ElementDontSelected, true); return; }
+            if (spacialDeck == null) { DontSelect(SpacialDontSelected, true); return; }
+            if (abilitySO == null) { DontSelect(AbilityDontSelected, true); return; }
+            if (deskEnemiesSO == null) { DontSelect(DeskDontSelected, true); return; }
             if (HpValues.maxDefense <= 0) { return; }
             if (HpValues.maxHp <= 0) { return; }
             if (deckLimits.StartCardCount <= 0) { return; }
@@ -59,7 +66,11 @@ namespace Runix.UI.CharacterBuild
 
             SceneManager.LoadScene(SceneNameStruct.PlayScene);
             // burada Sahne geçiþi async olaiblir belki bakýlacak
+        }
 
+        void DontSelect(GameObject gameObject, bool isActive)
+        {
+            gameObject.SetActive(isActive);
         }
         void AnimPlay()
         {
@@ -68,7 +79,6 @@ namespace Runix.UI.CharacterBuild
             if (abilitySO == null) { return; }
             if (deskEnemiesSO == null) { return; }
 
-            GetComponent<Button>().interactable = true;
             GetComponent<UnityEngine.Animation>().Play();
         }
     }
