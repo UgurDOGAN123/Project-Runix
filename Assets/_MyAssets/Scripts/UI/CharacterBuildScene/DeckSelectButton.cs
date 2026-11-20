@@ -1,31 +1,11 @@
 using Runix.Card;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Runix.UI.CharacterBuild
 {
-    public class DeckSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class DeckSelectButton : SelectButtonBase<DeckSO>
     {
-        [SerializeField] TMP_Text target;
-        [SerializeField] DeckSO deckSO;
-        [SerializeField] string normaltext = "";
-
-        private void Start()
-        {
-            GetComponent<ImageHandler>().ChangeImage(deckSO.icon);
-            GetComponent<SelectImage>().Sprite = deckSO.icon;
-        }
-
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (target != null) target.text = deckSO.description;
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            if (target != null) target.text = normaltext;
-        }
+        protected override Sprite GetIcon(DeckSO d) => d.icon;
+        protected override string GetDescription(DeckSO d) => d.description;
     }
 }

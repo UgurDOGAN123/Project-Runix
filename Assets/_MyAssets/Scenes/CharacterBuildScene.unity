@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &38378538
 MonoBehaviour:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
+  data: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
   normaltext: 
 --- !u!114 &116833200
 MonoBehaviour:
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &243655151
 MonoBehaviour:
@@ -1515,7 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &301552562
 MonoBehaviour:
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &344412735
 MonoBehaviour:
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &364018955
 MonoBehaviour:
@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &382388120
 MonoBehaviour:
@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &476406456
 MonoBehaviour:
@@ -3198,7 +3198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &524954548
 MonoBehaviour:
@@ -3578,7 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 00ed8c91d2ab75a43ac75735593fe793, type: 2}
+  data: {fileID: 11400000, guid: 00ed8c91d2ab75a43ac75735593fe793, type: 2}
   normaltext: 
 --- !u!114 &656279965
 MonoBehaviour:
@@ -4166,7 +4166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &817455436
 MonoBehaviour:
@@ -4248,7 +4248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &828946748
 MonoBehaviour:
@@ -4448,7 +4448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &833531473
 MonoBehaviour:
@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: edd1f4923e93ae149bfb5b57436add15, type: 2}
+  data: {fileID: 11400000, guid: edd1f4923e93ae149bfb5b57436add15, type: 2}
   normaltext: 
 --- !u!114 &869136333
 MonoBehaviour:
@@ -5122,7 +5122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &874909236
 MonoBehaviour:
@@ -5819,7 +5819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &991364297
 MonoBehaviour:
@@ -6581,7 +6581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &1130805538
 MonoBehaviour:
@@ -7141,7 +7141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &1146033935
 MonoBehaviour:
@@ -7664,7 +7664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &1194051909
 MonoBehaviour:
@@ -8044,7 +8044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 5ebc00f45130ca64abef563d804af550, type: 2}
+  data: {fileID: 11400000, guid: 5ebc00f45130ca64abef563d804af550, type: 2}
   normaltext: 
 --- !u!114 &1209824924
 MonoBehaviour:
@@ -8257,7 +8257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &1241508708
 MonoBehaviour:
@@ -8552,7 +8552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 386804251a8ab2a4083f3480bd31d249, type: 2}
+  data: {fileID: 11400000, guid: 386804251a8ab2a4083f3480bd31d249, type: 2}
   normaltext: 
 --- !u!114 &1291417138
 MonoBehaviour:
@@ -8952,7 +8952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &1489303694
 MonoBehaviour:
@@ -9270,7 +9270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &1492105769
 MonoBehaviour:
@@ -9607,7 +9607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 084da81b394ab5b4081334ffde56bd5b, type: 2}
+  data: {fileID: 11400000, guid: 084da81b394ab5b4081334ffde56bd5b, type: 2}
   normaltext: 
 --- !u!114 &1521545835
 MonoBehaviour:
@@ -9915,7 +9915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::MapSelectButton
   target: {fileID: 846942532}
-  DeskEnemies: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
+  data: {fileID: 11400000, guid: 62824350913634b4daaebd53c8157e00, type: 2}
   normaltext: 
 --- !u!114 &1644180657
 MonoBehaviour:
@@ -10233,7 +10233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &1696737823
 MonoBehaviour:
@@ -10497,7 +10497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 73a55a5360e6e7949b6f19cf255be961, type: 2}
+  data: {fileID: 11400000, guid: 73a55a5360e6e7949b6f19cf255be961, type: 2}
   normaltext: 
 --- !u!114 &1793667997
 MonoBehaviour:
@@ -10697,7 +10697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 413549084}
-  deckSO: {fileID: 11400000, guid: 7f90c63ca87bffd49a47cf802bb28169, type: 2}
+  data: {fileID: 11400000, guid: 7f90c63ca87bffd49a47cf802bb28169, type: 2}
   normaltext: 
 --- !u!114 &1821275960
 MonoBehaviour:
@@ -11278,7 +11278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  deckSO: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
   normaltext: 
 --- !u!114 &1925659293
 MonoBehaviour:
@@ -11596,7 +11596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
   normaltext: 
 --- !u!114 &1949879899
 MonoBehaviour:
@@ -11871,7 +11871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  abilitySO: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
+  data: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
   normaltext: 
 --- !u!114 &2028704505
 MonoBehaviour:
