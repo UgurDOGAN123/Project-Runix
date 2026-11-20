@@ -84,7 +84,7 @@ namespace Runix.UI.CharacterBuild
         {
             if (gameObject == null)
             {
-                Debug.LogError($"{gameObject} null", this);
+                Debug.LogError($"StartButton: uyarý objesi atanmamýþ", this);
                 return;
             }
             gameObject.SetActive(isActive);
