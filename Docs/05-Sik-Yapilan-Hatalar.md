@@ -19,10 +19,12 @@
 | Console'da `EnemySO` kırmızı hataları | Deck Limits, Hp Values, Pattern, deste ya da yetenek eksik | Hata satırı hangi alanı söylüyorsa doldurun |
 | Yeni etki tur sonunda silinmiyor | `OnTurnEnd`'i override edip süreyi azaltmayı unuttunuz | `base.OnTurnEnd(ctx)` çağırın |
 | Efekt hiç çalışmıyor | `EffectManager`'da `Hp` ya da `Owner Id` boş/yanlış | Sahnede doldurun |
+| Başlat'a basınca hiçbir şey olmuyor | Eksik seçim (uyarı görünür) ya da `StartButton`'daki Hp Values / Deck Limits 0 | Uyarıdaki seçimi yapın, sahnede `StartButton` değerlerini doldurun |
+| `MissingReferenceException ... Image has been destroyed` (Inspector çağrı zinciriyle) | Inspector, test ya da sahne geçişinde yok edilen bir objeyi gösteriyor | Zararsız editör gürültüsü: Inspector'ı kapatıp açın, Play/test öncesi bir şey seçili bırakmayın |
 | Kodlama bozuk (Türkçe harfler `?`) | Dosya UTF-8 değil | Visual Studio: Save with Encoding → UTF-8 |
 | Editor'de çalışan şey build'de bozuk | ScriptableObject'e çalışma anı verisi yazılmış | Veriyi SO'dan çıkarın |
 
 ## Değişiklik yaparken
 - Önce `git pull`, sonra çalış, küçük ve tek konulu commit'ler.
 - Yeniden adlandırmaları (alan, sınıf, klasör) ayrı bir commit'te yapın ve Unity **içinden** (`.meta` dosyaları birlikte taşınsın).
-- Commit'ten önce Test Runner'ı çalıştırın.
+- Commit'ten önce Test Runner'ı (EditMode ve PlayMode) çalıştırın.

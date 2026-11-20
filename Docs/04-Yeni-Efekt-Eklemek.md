@@ -44,7 +44,9 @@ Kendi kendine efekt veren **kart** için şu an hazır bir yol yok (kart efektle
 `StunEffect(turns, blockedSlots)`: sahibinin sıradaki turunda `blockedSlots` kadar slotu kilitler (`StunEffect.AllSlots` = hepsi). Kilidi `StunController` uygular. Tüm slotlar kilitliyse "Sersemledin" paneli çıkar ve tur otomatik geçer. Düşman kilitli slotları atlar, tamamen sersemse kart oynamaz.
 
 ## Test
-Efekti ekledikten sonra Console'da `EffectManager`'ın debug loglarına bakın (`[Effect:0] eklendi ...`). Süre bitince `... etki bitti` yazar.
+**Otomatik:** `Tests/Playmode/EffectManagerTest.cs` efektlerin tur akışını (ekleme, süre, silinme, `BattleStart/End` temizliği) test eder. Yeni efekti `EffectManagerTest`'e benzer bir senaryoyla ekleyin. Efektin kendi mantığı için EditMode'da `StunEffectTest` / `ElementEffectTest` örneklerine bakın. Hasar veren efektlerde `IDirectDamageable` taklidi kullanılır. Ayrıntı: [06-Testler.md](06-Testler.md).
+
+**Elle:** Efekti ekledikten sonra Console'da `EffectManager`'ın debug loglarına bakın (`[Effect:0] eklendi ...`). Süre bitince `... etki bitti` yazar.
 
 ## Kontrol listesi
 - [ ] `EffectManager`'ların `Owner Id` (oyuncu 0, düşman 1) ve `Hp` alanları dolu

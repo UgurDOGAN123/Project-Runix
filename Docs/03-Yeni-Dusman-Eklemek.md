@@ -1,6 +1,6 @@
 # Yeni Düşman Eklemek
 
-Düşman (`EnemySO`) oyuncu gibi bir savaşçıdır (`ICharaterLoadout`): destesi, yeteneği, canı ve el limitleri vardır. Üstüne üç alan ekler: **Enemy Type**, **Pattern** (düşmanın davranış profili), **Enemy Icon** (haritada görünen resim). Deste ve yetenek asset'leri için: [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
+Düşman (`EnemySO`) oyuncu gibi bir savaşçıdır (`ICharacterLoadout`): destesi, yeteneği, canı ve el limitleri vardır. Üstüne üç alan ekler: **Enemy Type**, **Pattern** (düşmanın davranış profili), **Enemy Icon** (haritada görünen resim). Deste ve yetenek asset'leri için: [02-Yeni-Karakter-Eklemek.md](02-Yeni-Karakter-Eklemek.md).
 
 ## 1. Düşman asset'ini oluşturun
 `SO/Enemy/<Ad>` klasöründe sağ tık → **Create → SO → Enemy → Enemy**. (Boss için de aynı sınıf kullanılır, farkı **Enemy Type** ve yetenektir. `StunBoss` sınıfı ek bir davranış içermez.)

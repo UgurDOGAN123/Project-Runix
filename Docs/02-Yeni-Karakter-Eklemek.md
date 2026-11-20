@@ -1,6 +1,6 @@
 # Oyuncu Karakteri, Deste ve Yetenek
 
-Bir savaşçı üç şeyden oluşur: **deste(ler)**, **yetenek** ve **sayılar** (can, savunma, el limitleri). Oyuncu için bunlar `PlayerLoadout` içinde (`DeskManager.Player`), düşman için `EnemySO` asset'inde tutulur. İkisi de `ICharaterLoadout` arayüzünü uygular, bu yüzden oyunun geri kalanı onları ayırt etmez. Düşman için: [03-Yeni-Dusman-Eklemek.md](03-Yeni-Dusman-Eklemek.md).
+Bir savaşçı üç şeyden oluşur: **deste(ler)**, **yetenek** ve **sayılar** (can, savunma, el limitleri). Oyuncu için bunlar `PlayerLoadout` içinde (`DeskManager.Player`), düşman için `EnemySO` asset'inde tutulur. İkisi de `ICharacterLoadout` arayüzünü uygular, bu yüzden oyunun geri kalanı onları ayırt etmez. Düşman için: [03-Yeni-Dusman-Eklemek.md](03-Yeni-Dusman-Eklemek.md).
 
 ## A) Yeni deste: kod gerekmez
 1. Project penceresinde sağ tık → **Create → SO → DeckSO**.
@@ -53,19 +53,19 @@ public class MyAbility : AbilitySO
 - Yeni etki türü için: [04-Yeni-Efekt-Eklemek.md](04-Yeni-Efekt-Eklemek.md). Örnekler: `Ability/TurnElementDamage.cs`, `Ability/StunAbility.cs`.
 - **Asset'in durumunu yetenek sınıfında tutmayın** (çalışma anı verisi SO'ya yazılmaz).
 
-## C) Oyuncunun kombinasyonunu ayarlamak
-Sahnede `DeskManager` nesnesini seçin, **Player** alanını açın:
+## C) Oyuncunun kombinasyonu: karakter seçim ekranı
+Oyuncu kombinasyonunu `CharacterBuildScene`'de seçer. **Başlat** (`StartButton`) seçimlerden `PlayerLoadout` oluşturup `DeskManager.Player`'a yazar. Yani `DeskManager`'daki Player alanını Inspector'dan doldurmanız gerekmez, her yeni oyunda üzerine yazılır.
+
+**Seçim ekranına yeni deste, yetenek ya da harita eklemek:** Mevcut bir seçim butonunu (örn. `Element Button` prefab'ı) kopyalayın ve butonun üzerindeki `DeckSelectButton` / `AbilitySelectButton` / `MapSelectButton` bileşeninde **Data** alanına yeni asset'i atayın. Buton ikonu ve açıklamayı asset'ten okur, üstüne gelince açıklamayı gösterir. Kopyalanan butonun `OnClick` bağlantısı (`StartButton.GetElementSO` vb.) kopyayla birlikte gelir.
+
+Can ve el limitleri `CharacterBuildScene`'deki **StartButton** üzerindedir:
 
 | Alan | Açıklama |
 |---|---|
-| Name / Description | Ad ve açıklama |
-| Element Deck | Ana deste (Kind = Element) |
-| Special Deck | Özel deste, boş bırakılabilir |
-| Ability SO | Yetenek |
 | Hp Values | `Max Hp`, `Max Defense` (her elementte birikebilecek azami savunma, 0 olmasın) |
 | Deck Limits | `Max Hand Card Count` (eldeki azami kart), `Start Card Count` (savaş başında çekilen), `Every Turn Add Card Count` (tur sonu çekilen) |
 
-Oyun içi bir seçim ekranı henüz yok, kombinasyon Inspector'dan seçilir. Test: oyunu başlatın, doğru kartlar çekiliyor mu, yetenek tetikleniyor mu, can ve savunma değerleri beklediğiniz gibi mi?
+Bu değerlerden biri 0 ya da altındaysa **Başlat çalışmaz** (şimdilik hata mesajı vermez). Test: oyunu başlatın, doğru kartlar çekiliyor mu, yetenek tetikleniyor mu, can ve savunma değerleri beklediğiniz gibi mi?
 
 ## Dikkat
 - Çalışma anı verisini (kalan can, deste kopyası) **SO'ya yazmayın**. Savaş içi durum `HpManager` ve `DeckManager`'dadır.

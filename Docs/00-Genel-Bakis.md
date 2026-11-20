@@ -26,7 +26,7 @@ Oluşturma menüsü: Project penceresinde sağ tık → **Create → SO → ...*
 | SO/DeskEnemiesSO | Masalara (haritadaki savaş sütunlarına) göre düşman listeleri |
 
 ## Savaşçı modeli: deste + yetenek + sayılar
-Oyuncu da düşman da aynı arayüzü (`ICharaterLoadout`) uygular, bu yüzden deste, can ve yetenek sistemleri kimin olduğunu bilmez, hepsi aynı yoldan okur:
+Oyuncu da düşman da aynı arayüzü (`ICharacterLoadout`) uygular, bu yüzden deste, can ve yetenek sistemleri kimin olduğunu bilmez, hepsi aynı yoldan okur:
 
 | | Oyuncu | Düşman |
 |---|---|---|
@@ -47,11 +47,13 @@ Oyuncu (`PlayerIds.Player = 0`) ve düşman (`PlayerIds.Enemy = 1`) sırayla oyn
 Kart `UseCard` ile değer üretir → `TurnDataHolder` (element bazında toplar, aynı elementten kart sayısı çarpan olur) → `TurnDataManager` karşı tarafa dağıtır → `HpManager` savunma, pasif savunma ve çarpanla uygular.
 
 ## Harita ve run akışı
-`DeskManager` (sahnede tek, singleton) çalışan oyun durumunu tutar: `Player` (`PlayerLoadout`), `Enemy` (seçili düşman), `DeskCount`, `deskEnemies`. Diğer sistemler oyuncuya ya da düşmana `GetCharacterSO(id)` ile ulaşır.
+Oyun `CharacterBuildScene`'de başlar. Oyuncu deste, yetenek ve haritayı seçip **Başlat**'a basınca `StartButton` seçimleri kontrol eder (eksik varsa "seçilmedi" uyarısı), `DeskManager.Player`'ı ve `deskEnemies`'i doldurur, `ResetRun()` çağırır ve `SampleScene`'i yükler. `DeskManager` sahneler arasında yaşar (`DontDestroyOnLoad`).
+
+`DeskManager` (tek, singleton) çalışan oyun durumunu tutar: `Player` (`PlayerLoadout`), `Enemy` (seçili düşman), `DeskCount`, `deskEnemies`. Diğer sistemler oyuncuya ya da düşmana `GetCharacterSO(id)` ile ulaşır.
 `PlayMapController` her sütunda `DeskEnemiesSO.EnemyLists[sütun]` listesinden rastgele düşman masaları üretir. Oyuncu masayı seçince `DeskManager.Enemy` o düşmana ayarlanır.
 
 ## Önemli kurallar
 - **Enum'lara yeni değer eklerken en sona ekleyin** (`Element`, `CardType`, `TurnEnum`). Asset'ler enum'ları sayı olarak saklar, araya eklerseniz mevcut kartlar ve desenler kayar.
 - **Serileştirilen alanı yeniden adlandırırken** `[FormerlySerializedAs("eskiAd")]` ekleyin, yoksa asset'lerdeki değerler sıfırlanır.
 - **Çalışma anı verisini SO'ya yazmayın** (asset'in kendisi değişir, Editor'de kalıcı olur).
-- Yeni özellikten sonra Test Runner'daki testleri çalıştırın (Window → General → Test Runner → EditMode).
+- Yeni özellikten sonra Test Runner'daki testleri çalıştırın (Window → General → Test Runner → **EditMode ve PlayMode**). Ayrıntı: [06-Testler.md](06-Testler.md).
