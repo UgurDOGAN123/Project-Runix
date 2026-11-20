@@ -8,7 +8,7 @@ namespace Runix.Enemy
 {
     [HelpURL(DocLinks.Enemy)]
     [CreateAssetMenu(fileName = "NewEnemy", menuName = "SO/Enemy/Enemy")]
-    public class EnemySO : ScriptableObject, ICharaterLoadout
+    public class EnemySO : ScriptableObject, ICharacterLoadout
     {
         [Header("General Info")]
         [SerializeField] string characterName;

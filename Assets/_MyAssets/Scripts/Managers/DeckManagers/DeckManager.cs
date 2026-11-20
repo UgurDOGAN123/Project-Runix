@@ -26,7 +26,7 @@ namespace Runix.Managers
         public event Action<List<CardSO>> UpdateUI;  // Her işlemden Sonra tetikle
 
         #region // Fields
-        public ICharaterLoadout Character
+        public ICharacterLoadout Character
         {
             get
             { return DeskManager.instance.GetCharacterSO(playerID); }

@@ -5,7 +5,7 @@ using Runix.Card;
 
 namespace Runix.Character
 {
-    public interface ICharaterLoadout
+    public interface ICharacterLoadout
     {
         public string Name { get; }
         public string Description { get; }
@@ -16,21 +16,21 @@ namespace Runix.Character
     }
     public static class LoadoutExtensions
     {
-        static IEnumerable<DeckSO> ValidDecks(ICharaterLoadout l) =>
+        static IEnumerable<DeckSO> ValidDecks(ICharacterLoadout l) =>
             l?.DeckSO == null ? Enumerable.Empty<DeckSO>() : l.DeckSO.Where(d => d != null);
 
-        public static List<CardSO> BuildCards(this ICharaterLoadout l) =>
+        public static List<CardSO> BuildCards(this ICharacterLoadout l) =>
             ValidDecks(l).Where(d => d.cards != null).SelectMany(d => d.cards).Where(c => c != null).ToList();
 
-        public static Element[] GetHealable(this ICharaterLoadout l) =>
+        public static Element[] GetHealable(this ICharacterLoadout l) =>
             ValidDecks(l).Where(d => d.healable != null).SelectMany(d => d.healable).Distinct().ToArray();
 
-        public static Dictionary<Element, int> GetPassiveDefense(this ICharaterLoadout l) =>
+        public static Dictionary<Element, int> GetPassiveDefense(this ICharacterLoadout l) =>
             ValidDecks(l).Where(d => d.passiveDefense != null).SelectMany(d => d.passiveDefense)
                 .GroupBy(p => p.element).ToDictionary(g => g.Key, g => g.Sum(p => p.Value));
 
         /// <summary>Yeteneðin kullanacaðý ana element: ilk Element türündeki destenin elementi.</summary>
-        public static Element GetPrimaryElement(this ICharaterLoadout l) =>
+        public static Element GetPrimaryElement(this ICharacterLoadout l) =>
             ValidDecks(l).FirstOrDefault(d => d.kind == DeckKind.Element)?.element ?? Element.None;
     }
 

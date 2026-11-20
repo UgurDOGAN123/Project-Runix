@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Runix.Character
 {
     [System.Serializable]
-    public class PlayerLoadout : ICharaterLoadout
+    public class PlayerLoadout : ICharacterLoadout
     {
         [SerializeField] string _name, description;
         [SerializeField] DeckSO elementDeck;

@@ -19,7 +19,7 @@ namespace Runix.Damage
         Dictionary<Element, int> passiveDefenseValues = new();
 
         public event System.Action OnDeath;
-        ICharaterLoadout Character => DeskManager.instance.GetCharacterSO(playerID);
+        ICharacterLoadout Character => DeskManager.instance.GetCharacterSO(playerID);
 
         readonly DamageCalculator damageCalculator = new();
 

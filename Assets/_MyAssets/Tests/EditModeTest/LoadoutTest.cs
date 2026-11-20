@@ -41,7 +41,7 @@ namespace Runix.Tests
             new PlayerLoadout("test", "test", element, special, null, default, default);
 
         // Sıralamayı biz belirlemek için (PlayerLoadout hep element → özel sıralar)
-        class FakeLoadout : ICharaterLoadout
+        class FakeLoadout : ICharacterLoadout
         {
             public string Name => "fake";
             public string Description => "fake";
@@ -120,7 +120,7 @@ namespace Runix.Tests
         [Test]
         public void Uzantilar_NullLoadoutIcinHataVermez()
         {
-            ICharaterLoadout none = null;
+            ICharacterLoadout none = null;
 
             Assert.IsEmpty(none.BuildCards());
             Assert.IsEmpty(none.GetHealable());

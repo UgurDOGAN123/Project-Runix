@@ -37,7 +37,7 @@ namespace Runix.Managers
             Enemy = null;
         }
 
-        public ICharaterLoadout GetCharacterSO(int index)
+        public ICharacterLoadout GetCharacterSO(int index)
         {
             if (index == PlayerIds.Player)
                 return Player;

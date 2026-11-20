@@ -3,19 +3,22 @@ using Runix.Character;
 using Runix.Effect;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StunAbility", menuName = "SO/Ability/StunAbility")]
-public class StunAbility : AbilitySO
+namespace Runix.Effects
 {
-    [Range(0f, 1f)] public float stunChance = 0.25f;
-    public int stunTurns = 1;
-    public int stunBlockedSlots = StunEffect.AllSlots;
-
-    public override void UseAbility(AbilityContext ctx)
+    [CreateAssetMenu(fileName = "StunAbility", menuName = "SO/Ability/StunAbility")]
+    public class StunAbility : AbilitySO
     {
-        if (ctx.Opponent == null) return;
-        if (ctx.Opponent.BlockedSlotCount > 0) return; // zaten sersemse üst üste bindirme
+        [Range(0f, 1f)] public float stunChance = 0.25f;
+        public int stunTurns = 1;
+        public int stunBlockedSlots = StunEffect.AllSlots;
 
-        if (Random.value < stunChance)
-            ctx.Opponent.Add(new StunEffect(stunTurns, icon, stunBlockedSlots));
+        public override void UseAbility(AbilityContext ctx)
+        {
+            if (ctx.Opponent == null) return;
+            if (ctx.Opponent.BlockedSlotCount > 0) return; // zaten sersemse üst üste bindirme
+
+            if (Random.value < stunChance)
+                ctx.Opponent.Add(new StunEffect(stunTurns, icon, stunBlockedSlots));
+        }
     }
 }
