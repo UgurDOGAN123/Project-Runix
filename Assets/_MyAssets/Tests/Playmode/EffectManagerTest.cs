@@ -1,25 +1,27 @@
-using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
 using Runix.Damage;
 using Runix.Effect;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Runix.Tests.PlayMode
 {
     public class EffectManagerTest
     {
+        const int Me = 0;
+        const int Enemy = 1;
+
         GameObject go;
-        TestEffectmanager effectManager;
+        TestEffectManager effectManager;
         FakeHpManager hpManager;
         EffectContext effectContext;
 
-        class TestEffectmanager : EffectManager
+        // TurnCalculator protected oldugu icin testten erismek icin alt sinif
+        class TestEffectManager : EffectManager
         {
-            public void TurnManagerNewTurn(TurnEnum stage, int player, EffectContext context)
+            public void Advance(TurnEnum stage, int player, EffectContext context)
             {
-                base.TurnCalculator(stage, player, context);
+                TurnCalculator(stage, player, context);
             }
         }
 
@@ -35,213 +37,251 @@ namespace Runix.Tests.PlayMode
         [SetUp]
         public void SetUp()
         {
-            hpManager = new FakeHpManager
-            {
-                hp = 100
-            };
-            effectContext = new EffectContext
-            {
-                OwnerId = 0,
-                Hp = hpManager
-            };
-            go = new GameObject("TestObject");
-            go.SetActive(false);
-            effectManager = go.AddComponent<TestEffectmanager>();
-            SetField("ownerId", 0);
-            SetField("debugLog", false);
-            SetField("ctx", effectContext);
-            go.SetActive(true);
+            hpManager = new FakeHpManager { hp = 100 };
+            effectContext = new EffectContext { OwnerId = Me, Hp = hpManager };
 
+            go = new GameObject("TestObject");
+            go.SetActive(false);                       // Awake, alanlar ayarlanana kadar calismasin
+            effectManager = go.AddComponent<TestEffectManager>();
+            SetField("ownerId", Me);
+            SetField("debugLog", false);
+            go.SetActive(true);
         }
+
         [TearDown]
         public void TearDown()
         {
-            if (go != null) Object.DestroyImmediate(go);   // OnDestroy singleton'ý temizler
+            if (go != null) Object.DestroyImmediate(go);
         }
 
         void SetField(string name, object value) =>
-           typeof(EffectManager)
-               .GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)
-               .SetValue(effectManager, value);
+            typeof(EffectManager)
+                .GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)
+                .SetValue(effectManager, value);
 
-        void SetTest(TurnEnum stage, int player, int EffectCount, int RemainingTurns)
+        // Sadece turu ilerletir; kontrolleri her test kendisi yazar
+        void Advance(TurnEnum stage, int player = Me) =>
+            effectManager.Advance(stage, player, effectContext);
+
+        void AssertState(string step, int count, int hp, int blockedSlots)
         {
-            effectManager.TurnManagerNewTurn(stage, player, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, EffectCount, $"More Effect Added effect count: {effectManager.Effects.Count}");
-            for (int i = 0; i < effectManager.Effects.Count; i++)
-            {
-                Assert.AreEqual(effectManager.Effects[i].RemainingTurns, RemainingTurns, $"Coming more turn {effectManager.Effects[i]}");
-            }
-
+            Assert.AreEqual(count, effectManager.Effects.Count, $"{step}: efekt sayisi");
+            Assert.AreEqual(hp, hpManager.hp, $"{step}: hp");
+            Assert.AreEqual(blockedSlots, effectManager.BlockedSlotCount, $"{step}: kilitli slot");
         }
 
+        // ---------------- Ekleme ----------------
 
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
-        [UnityTest]
-        public IEnumerator AddEffect_ANewStunEffectAdd()
+        [Test]
+        public void Add_Null_EfektEklenmez()
         {
-            effectManager.TurnManagerNewTurn(TurnEnum.BattleStart, 0, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, 0, "More Effect Added");
+            effectManager.Add(null);
+            Assert.AreEqual(0, effectManager.Effects.Count);
+        }
 
-            yield return null;
+        [Test]
+        public void Add_NullIkonla_HataVermez()
+        {
+            Assert.DoesNotThrow(() => effectManager.Add(new StunEffect(1, null, 2)));
+            Assert.AreEqual(1, effectManager.Effects.Count);
+        }
 
+        // ---------------- Sersemletme ----------------
+
+        [Test]
+        public void Stun_IkiTur_SlotlariTamSureKilitler()
+        {
             effectManager.Add(new StunEffect(2, null, 4));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("1. PlayTurn", 1, 100, 4);
+            Assert.AreEqual(2, effectManager.Effects[0].RemainingTurns, "1. PlayTurn: PlayTurn sureyi azaltmamali");
 
-            SetTest(TurnEnum.PlayTurn, 0, 1, 2);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("1. TurnDamage", 1, 100, 4);
+            Assert.AreEqual(1, effectManager.Effects[0].RemainingTurns, "1. TurnDamage: sure 1'e dusmeli");
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("2. PlayTurn", 1, 100, 4);
 
-            SetTest(TurnEnum.TurnDamage, 0, 1, 1);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
-
-            yield return null;
-
-            SetTest(TurnEnum.PlayTurn, 0, 1, 1);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
-
-            yield return null;
-
-            SetTest(TurnEnum.TurnDamage, 0, 0, 0);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 0, "Wrong Slot Blokked");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("2. TurnDamage", 0, 100, 0);
         }
 
-        [UnityTest]
-        public IEnumerator AddEffect_TwoNewStunEffectAdd()
+        [Test]
+        public void Stun_TekTur_IlkTurnDamagedeSilinir()
         {
-            effectManager.TurnManagerNewTurn(TurnEnum.BattleStart, 0, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, 0, "More Effect Added");
+            effectManager.Add(new StunEffect(1, null, 3));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("PlayTurn", 1, 100, 3);
 
+            Advance(TurnEnum.TurnDamage);
+            AssertState("TurnDamage", 0, 100, 0);
+        }
+
+        [Test]
+        public void Stun_IkiFarkliSure_KilitliSlotKademeliAzalir()
+        {
             effectManager.Add(new StunEffect(2, null, 2));
-            effectManager.Add(new StunEffect(2, null, 2));
+            effectManager.Add(new StunEffect(1, null, 2));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("1. PlayTurn", 2, 100, 4);
+            Assert.AreEqual(2, effectManager.Effects[0].RemainingTurns, "1. PlayTurn: ilk efekt suresi");
+            Assert.AreEqual(1, effectManager.Effects[1].RemainingTurns, "1. PlayTurn: ikinci efekt suresi");
 
-            SetTest(TurnEnum.PlayTurn, 0, 2, 2);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("1. TurnDamage", 1, 100, 2);
+            Assert.AreEqual(1, effectManager.Effects[0].RemainingTurns, "1. TurnDamage: kalan efekt suresi");
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("2. PlayTurn", 1, 100, 2);
 
-            SetTest(TurnEnum.TurnDamage, 0, 2, 1);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
-
-            yield return null;
-
-            SetTest(TurnEnum.PlayTurn, 0, 2, 1);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
-
-            yield return null;
-
-            SetTest(TurnEnum.TurnDamage, 0, 0, 0);
-            Assert.AreEqual(effectManager.BlockedSlotCount, 0, "Wrong Slot Blokked");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("2. TurnDamage", 0, 100, 0);
         }
 
-        [UnityTest]
-        public IEnumerator AddEffect_ANewElementEffectAdd()
+        // ---------------- Element (yanma) ----------------
+
+        [Test]
+        public void Element_HasariPlayTurndeVurur_SureTurnDamagedeAzalir()
         {
-            effectManager.TurnManagerNewTurn(TurnEnum.BattleStart, 0, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, 0, "More Effect Added");
-
-            yield return null;
-
             effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("1. PlayTurn", 1, 95, 0);
 
-            SetTest(TurnEnum.PlayTurn, 0, 1, 2);
-            Assert.AreEqual(hpManager.hp, 95, $"More attacked this turn : TurnEnum.PlayTurn, 0, 1, 2");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("1. TurnDamage", 1, 95, 0);
+            Assert.AreEqual(1, effectManager.Effects[0].RemainingTurns, "1. TurnDamage: sure");
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("2. PlayTurn", 1, 90, 0);
 
-            SetTest(TurnEnum.TurnDamage, 0, 1, 1);
-            Assert.AreEqual(hpManager.hp, 95, $"More attacked this turn: TurnEnum.TurnDamage, 0, 1, 1");
-
-            yield return null;
-
-            SetTest(TurnEnum.PlayTurn, 0, 1, 1);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn: TurnEnum.PlayTurn, 0, 1, 1");
-
-            yield return null;
-
-            SetTest(TurnEnum.TurnDamage, 0, 0, 0);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn: TurnEnum.TurnDamage, 0, 0, 0");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("2. TurnDamage", 0, 90, 0);
         }
 
-        [UnityTest]
-        public IEnumerator AddEffect_TwoNewElementEffectAdd()
+        [Test]
+        public void Element_IkiEfekt_HasarlarToplanir()
         {
-            effectManager.TurnManagerNewTurn(TurnEnum.BattleStart, 0, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, 0, "More Effect Added");
-
-            yield return null;
-
             effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
             effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("1. PlayTurn", 2, 90, 0);
 
-            SetTest(TurnEnum.PlayTurn, 0, 2, 2);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn : TurnEnum.PlayTurn, 0, 2, 2");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("1. TurnDamage", 2, 90, 0);
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("2. PlayTurn", 2, 80, 0);
 
-            SetTest(TurnEnum.TurnDamage, 0, 2, 1);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn: TurnEnum.TurnDamage, 0, 2, 1");
-
-            yield return null;
-
-            SetTest(TurnEnum.PlayTurn, 0, 2, 1);
-            Assert.AreEqual(hpManager.hp, 80, $"More attacked this turn: TurnEnum.PlayTurn, 0, 2, 1");
-
-            yield return null;
-
-            SetTest(TurnEnum.TurnDamage, 0, 0, 0);
-            Assert.AreEqual(hpManager.hp, 80, $"More attacked this turn: TurnEnum.TurnDamage, 0, 0, 0");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("2. TurnDamage", 0, 80, 0);
         }
 
-        [UnityTest]
-        public IEnumerator AddEffect_ANewElementEffectAddAndAStunEffectAdd()
+        [Test]
+        public void Element_TekTur_BirKereVurupSilinir()
         {
-            effectManager.TurnManagerNewTurn(TurnEnum.BattleStart, 0, effectContext);
-            Assert.AreEqual(effectManager.Effects.Count, 0, "More Effect Added");
+            effectManager.Add(new ElementEffect(1, 5, Element.Fire, null));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            Advance(TurnEnum.TurnDamage);
 
+            AssertState("1 turluk efekt sonrasi", 0, 95, 0);
+        }
+
+        [Test]
+        public void ElementVeStun_BirlikteBagimsizCalisir()
+        {
             effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
             effectManager.Add(new StunEffect(2, null, 4));
 
-            yield return null;
+            Advance(TurnEnum.PlayTurn);
+            AssertState("1. PlayTurn", 2, 95, 4);
 
-            SetTest(TurnEnum.PlayTurn, 0, 2, 2);
-            Assert.AreEqual(hpManager.hp, 95, $"More attacked this turn : TurnEnum.PlayTurn, 0, 2, 2");
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
+            Advance(TurnEnum.TurnDamage);
+            AssertState("1. TurnDamage", 2, 95, 4);
 
+            Advance(TurnEnum.PlayTurn);
+            AssertState("2. PlayTurn", 2, 90, 4);
 
-            yield return null;
+            Advance(TurnEnum.TurnDamage);
+            AssertState("2. TurnDamage", 0, 90, 0);
+        }
 
-            SetTest(TurnEnum.TurnDamage, 0, 2, 1);
-            Assert.AreEqual(hpManager.hp, 95, $"More attacked this turn: TurnEnum.TurnDamage, 0, 2, 1");
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
+        // ---------------- Tur sahibi kontrolu ----------------
 
-            yield return null;
+        [Test]
+        public void RakipPlayTurn_EfektTetiklenmez()
+        {
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
 
-            SetTest(TurnEnum.PlayTurn, 0, 2, 1);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn: TurnEnum.PlayTurn, 0, 2, 1");
-            Assert.AreEqual(effectManager.BlockedSlotCount, 4, "Wrong Slot Blokked");
+            Advance(TurnEnum.PlayTurn, Enemy);
 
-            yield return null;
+            AssertState("rakip PlayTurn", 1, 100, 0);
+        }
 
-            SetTest(TurnEnum.TurnDamage, 0, 0, 0);
-            Assert.AreEqual(hpManager.hp, 90, $"More attacked this turn: TurnEnum.TurnDamage, 0, 0, 0");
-            Assert.AreEqual(effectManager.BlockedSlotCount, 0, "Wrong Slot Blokked");
+        [Test]
+        public void RakipTurnDamage_SureAzalmaz()
+        {
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
 
+            Advance(TurnEnum.PlayTurn, Enemy);
+            Advance(TurnEnum.TurnDamage, Enemy);
+
+            AssertState("rakip turu", 1, 100, 0);
+            Assert.AreEqual(2, effectManager.Effects[0].RemainingTurns, "rakip turu sureyi azaltmamali");
+        }
+
+        // ---------------- Arada eklenen efekt ----------------
+
+        [Test]
+        public void PlayTurnIleTurnDamageArasindaEklenen_AyniTurdaHasarVurmaz_SureAzalir()
+        {
+            Advance(TurnEnum.PlayTurn);
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
+
+            Advance(TurnEnum.TurnDamage);
+
+            AssertState("arada eklenen", 1, 100, 0);
+            Assert.AreEqual(1, effectManager.Effects[0].RemainingTurns, "arada eklenen efektin suresi");
+        }
+
+        // ---------------- Savas basi / sonu ----------------
+
+        [Test]
+        public void BattleStart_EfektleriVeKilidiTemizler()
+        {
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
+            effectManager.Add(new StunEffect(2, null, 4));
+
+            Advance(TurnEnum.BattleStart);
+
+            AssertState("BattleStart", 0, 100, 0);
+        }
+
+        [Test]
+        public void BattleEnd_EfektleriVeKilidiTemizler()
+        {
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
+            effectManager.Add(new StunEffect(2, null, 4));
+
+            Advance(TurnEnum.BattleEnd);
+
+            AssertState("BattleEnd", 0, 100, 0);
+        }
+
+        [Test]
+        public void BattleStart_RakipIcinDeTemizler()
+        {
+            effectManager.Add(new StunEffect(2, null, 4));
+
+            Advance(TurnEnum.BattleStart, Enemy);
+
+            AssertState("rakip BattleStart", 0, 100, 0);
         }
     }
 }
-
-
