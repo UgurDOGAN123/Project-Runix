@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
@@ -40,6 +41,29 @@ namespace Runix.TurnControlSystem
 
         AwaitableCompletionSource endTurnSignal;
         bool battleOver;
+
+
+        // "Şu an meşgulüm" diyen sistemler (kart çekme animasyonu gibi). Hepsi bitmeden tur ilerlemez.
+        readonly List<Func<bool>> busyChecks = new();
+
+        public void RegisterBusyCheck(Func<bool> isBusy)
+        {
+            if (isBusy != null && !busyChecks.Contains(isBusy)) busyChecks.Add(isBusy);
+        }
+
+        public void UnregisterBusyCheck(Func<bool> isBusy) => busyChecks.Remove(isBusy);
+
+        bool IsAnyBusy()
+        {
+            for (int i = 0; i < busyChecks.Count; i++)
+                if (busyChecks[i]()) return true;
+            return false;
+        }
+
+        async Awaitable WaitUntilIdle(CancellationToken ct)
+        {
+            while (IsAnyBusy()) await Awaitable.NextFrameAsync(ct);
+        }
 
         #region Unity
 
@@ -137,6 +161,7 @@ namespace Runix.TurnControlSystem
             if (startDelay > 0f) await Awaitable.WaitForSecondsAsync(startDelay, ct);
 
             SetStage(TurnEnum.BattleStart, 0);
+            await WaitUntilIdle(ct);
 
             while (!battleOver)
             {
@@ -167,6 +192,7 @@ namespace Runix.TurnControlSystem
 
                 currentPlayer = PlayerIds.Player;
                 SetStage(TurnEnum.TurnEnd, 0);
+                await WaitUntilIdle(ct);
                 await Awaitable.WaitForSecondsAsync(turnEndDelay, ct);
             }
 

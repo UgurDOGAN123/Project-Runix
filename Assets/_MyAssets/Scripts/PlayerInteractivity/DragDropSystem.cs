@@ -24,8 +24,12 @@ namespace Runix.Interactivity
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
+
             var tm = TurnControlSystem.TurnControlManager.instance;
-            _dragAllowed = tm != null && tm.CurrentStage == TurnEnum.PlayTurn && tm.CurrentPlayer == PlayerIds.Player;
+            _dragAllowed = tm != null
+                && tm.CurrentStage == TurnEnum.PlayTurn
+                && tm.CurrentPlayer == PlayerIds.Player
+                && !deckManagers.IsDrawing;
             if (!_dragAllowed) return;
             _parentToReturnTo = transform.parent;
             transform.SetParent(canvas.transform); // Canvas'ın en üstüne taşı
@@ -60,10 +64,11 @@ namespace Runix.Interactivity
                 {
                     if (slot.IsAddable)
                     {
-
-                        slot.SetCardSO(card.CardSO);
-                        deckManagers.RemoveFromHandDeck(card.CardSO);
-                        placedSuccessfully = true;
+                        if (slot.SetCardSO(card.CardSO))
+                        {
+                            deckManagers.RemoveFromHandDeck(card.CardSO);
+                            placedSuccessfully = true;
+                        }
                     }
                 }
             }

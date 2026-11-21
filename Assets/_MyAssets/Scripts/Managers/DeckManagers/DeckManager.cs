@@ -23,7 +23,12 @@ namespace Runix.Managers
 
         DeckModel<CardSO> model;   // deste mantığı (Unity'siz, test edilebilir)
 
+        Func<bool> busyCheck;
+
         public event Action<List<CardSO>> UpdateUI;  // Her işlemden Sonra tetikle
+
+        int drawingCount;                           // devam eden çekme işlemi sayısı
+        public bool IsDrawing => drawingCount > 0;  // animasyon sürüyor mu?
 
         #region // Fields
         public ICharacterLoadout Character
@@ -57,6 +62,16 @@ namespace Runix.Managers
             deckClone = new(MainDeck);
             model = new DeckModel<CardSO>(onPickableDeck, trashDeck, onHandDeck);
         }
+        void Start()
+        {
+            busyCheck = () => IsDrawing;
+            TurnControlSystem.TurnControlManager.instance?.RegisterBusyCheck(busyCheck);
+        }
+
+        void OnDestroy()
+        {
+            TurnControlSystem.TurnControlManager.instance?.UnregisterBusyCheck(busyCheck);
+        }
 
         #region // Turn System Event Connect
 
@@ -88,16 +103,23 @@ namespace Runix.Managers
 
         public async Awaitable PickTheHand(int number)
         {
-            for (int i = 0; i < number; i++)
+            drawingCount++;
+            try
             {
-                if (model.IsHandFull(Character.DeckLimits.MaxHandCardCount)) break;
+                for (int i = 0; i < number; i++)
+                {
+                    if (model.IsHandFull(Character.DeckLimits.MaxHandCardCount)) break;
 
-                if (model.NeedsReshuffle) await ReplaceToTrashcan();
-                if (!model.TryDraw(out _)) break;           // önce veri
-                await animManager.AnimPlayer("MoveHand", playerID);   // sonra animasyon
-                UpdateUI?.Invoke(onHandDeck);
+                    if (model.NeedsReshuffle) await ReplaceToTrashcan();
+                    if (!model.TryDraw(out _)) break;                     // önce veri
+                    await animManager.AnimPlayer("MoveHand", playerID);   // sonra animasyon
+                    UpdateUI?.Invoke(onHandDeck);
+                }
             }
-
+            finally
+            {
+                drawingCount--;   // hata ya da iptal olsa bile sayaç düşer
+            }
         }
 
         public async Awaitable ReplaceToTrashcan()
@@ -108,10 +130,11 @@ namespace Runix.Managers
             UpdateUI?.Invoke(onHandDeck);
         }
 
-        public void ReturnToHand(CardSO card)
+        public bool ReturnToHand(CardSO card)
         {
-            if (!model.ReturnToHand(card, Character.DeckLimits.MaxHandCardCount)) return;
+            if (!model.ReturnToHand(card, Character.DeckLimits.MaxHandCardCount)) return false;
             UpdateUI?.Invoke(onHandDeck);
+            return true;
         }
 
 

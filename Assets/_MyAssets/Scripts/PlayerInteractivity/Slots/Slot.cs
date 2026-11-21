@@ -32,23 +32,28 @@ namespace Runix.Environment
         }
         private void OnMouseUp()
         {
-            if (cardSO != null && isClicking)
+            if (cardSO != null && isClicking && !deckManagers.IsDrawing)
             {
-                deckManagers.ReturnToHand(cardSO);
-                cardSO = null;
-                slotUI.ChangeImage(null);
+                if (deckManagers.ReturnToHand(cardSO))
+                {
+                    cardSO = null;
+                    slotUI.ChangeImage(null);
+                }
             }
         }
 
-        public void SetCardSO(CardSO card)
+        public bool SetCardSO(CardSO card)
         {
             //Önceden bir kart var mı bakılacak ve varsa o desteye dönecek
+
             if (cardSO != null)
             {
-                deckManagers.ReturnToHand(cardSO);
+                if (!deckManagers.ReturnToHand(cardSO))
+                    return false;
             }
             cardSO = card;
             slotUI.ChangeImage(card.CardOnRun);
+            return true;
         }
 
         public void RemoveCardSO()

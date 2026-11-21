@@ -1751,7 +1751,7 @@ MonoBehaviour:
     _name: 
     description: 
     elementDeck: {fileID: 11400000, guid: bc54ba0c67c4ca44e86697c63ff5605a, type: 2}
-    specialDeck: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+    specialDeck: {fileID: 0}
     abilitySO: {fileID: 11400000, guid: a8912f85e9e9b944e8b56207404a285b, type: 2}
     hpValues:
       maxHp: 1000
@@ -2462,7 +2462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runix.UI.Reward.RewardUIManager, Assembly-CSharp
+      value: Runix.UI.Reward.RewardUIManager, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -2470,7 +2470,7 @@ PrefabInstance:
       objectReference: {fileID: 1622797544}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runix.Card.Card, Assembly-CSharp
+      value: Runix.Card.Card, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 4877558177011356067, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_fontSize
@@ -6913,15 +6913,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runix.UI.Reward.RewardUIManager, Assembly-CSharp
+      value: Runix.UI.Reward.RewardUIManager, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1622797544}
+      objectReference: {fileID: 1593586639}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runix.Card.Card, Assembly-CSharp
+      value: Runix.Card.Card, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 6005876941071137115, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_Name
@@ -6953,6 +6953,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1593586639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 355355564829542436, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+  m_PrefabInstance: {fileID: 1593586636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404cdcb5ed0200242a056c18a9bf1ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Card
 --- !u!1 &1598455426
 GameObject:
   m_ObjectHideFlags: 0
@@ -9564,15 +9575,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runix.UI.Reward.RewardUIManager, Assembly-CSharp
+      value: Runix.UI.Reward.RewardUIManager, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1622797544}
+      objectReference: {fileID: 2120675611}
     - target: {fileID: 3826102325223717576, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runix.Card.Card, Assembly-CSharp
+      value: Runix.Card.Card, Runix.Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 4877558177011356067, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
       propertyPath: m_fontSize
@@ -9620,6 +9631,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &2120675611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 355355564829542436, guid: 520ba1e45a2c718488f3f7be0470e8d6, type: 3}
+  m_PrefabInstance: {fileID: 2120675608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404cdcb5ed0200242a056c18a9bf1ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Runix.Card.Card
 --- !u!1 &2132702581
 GameObject:
   m_ObjectHideFlags: 0
