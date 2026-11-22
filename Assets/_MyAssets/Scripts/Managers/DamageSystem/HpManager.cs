@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Runix.Damage
 {
-    public class HpManager : MonoBehaviour, IDirectDamageable, IHealable
+    public class HpManager : MonoBehaviour, IDirectDamageable, IHealable, IDefendable
     {
 
         [SerializeField] int hp;
@@ -90,6 +90,11 @@ namespace Runix.Damage
             };
             hp = damageCalculator.DoHeal(heal, hp, MaxHp, Character.GetHealable());
             hpSlider.ChangeSlider(HpPercent);
+        }
+        public void AddDefense(Element element, int amount)
+        {
+            if (isDead || amount <= 0) return;
+            defenseValues = damageCalculator.AddDefense(defenseValues, new Dictionary<Element, int> { { element, amount } }, MaxDefense);
         }
 
         void Dead()

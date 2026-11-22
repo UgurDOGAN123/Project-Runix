@@ -4105,7 +4105,7 @@ MonoBehaviour:
         m_MethodName: GetAbilitySO
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: f59793ad77500764190a837ee2de5cc4, type: 2}
           m_ObjectArgumentAssemblyTypeName: Runix.Ability.AbilitySO, Runix.Scripts
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4175,7 +4175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::AbilitySelectButton
   target: {fileID: 1145047709}
-  data: {fileID: 11400000, guid: 1453117fbfe688747a24a1196c28a6c5, type: 2}
+  data: {fileID: 11400000, guid: f59793ad77500764190a837ee2de5cc4, type: 2}
   normaltext: 
 --- !u!114 &817455436
 MonoBehaviour:

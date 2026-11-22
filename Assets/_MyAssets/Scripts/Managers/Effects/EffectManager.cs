@@ -13,6 +13,8 @@ namespace Runix.Effect
         [SerializeField] bool debugLog = true;
         [SerializeField] EffectUI effectUI;
         public IHealable Healer => hp;
+        public IDirectDamageable DamageTarget => hp;
+        public IDefendable Defender => hp;
 
         readonly List<EffectObject> effects = new();
         EffectContext ctx;
@@ -36,6 +38,12 @@ namespace Runix.Effect
             ctx = new EffectContext { Hp = hp, OwnerId = ownerId };
         }
 
+        public void ClearAll()
+        {
+            foreach (var e in effects) if (e.image != null) Destroy(e.image);
+            effects.Clear();
+        }
+
         public void Add(IEffect effect)
         {
             if (effect == null) return;
@@ -51,8 +59,7 @@ namespace Runix.Effect
         {
             if (stage == TurnEnum.BattleStart || stage == TurnEnum.BattleEnd)
             {
-                foreach (var e in effects) if (e.image != null) Destroy(e.image);
-                effects.Clear();
+                ClearAll();
                 return;
             }
 
