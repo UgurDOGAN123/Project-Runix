@@ -12,7 +12,7 @@ namespace Runix.Effect
         [SerializeField] HpManager hp;
         [SerializeField] bool debugLog = true;
         [SerializeField] EffectUI effectUI;
-
+        public IHealable Healer => hp;
 
         readonly List<EffectObject> effects = new();
         EffectContext ctx;
@@ -33,7 +33,7 @@ namespace Runix.Effect
 
         void Awake()
         {
-            ctx = new Runix.Effect.EffectContext { Hp = hp, OwnerId = ownerId };
+            ctx = new EffectContext { Hp = hp, OwnerId = ownerId };
         }
 
         public void Add(IEffect effect)
