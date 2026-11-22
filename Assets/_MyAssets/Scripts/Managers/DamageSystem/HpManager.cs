@@ -81,10 +81,14 @@ namespace Runix.Damage
             hpSlider.ChangeSlider(HpPercent);
             Dead();
         }
-        public void Heal(int amount)
+        public void Heal(Element element, int amount)
         {
             if (isDead || amount <= 0) return;
-            hp = Mathf.Min(hp + amount, MaxHp);
+            Dictionary<Element, int> heal = new()
+            {
+                { element, amount }
+            };
+            hp = damageCalculator.DoHeal(heal, hp, MaxHp, Character.GetHealable());
             hpSlider.ChangeSlider(HpPercent);
         }
 

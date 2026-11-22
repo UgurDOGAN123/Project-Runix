@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bde835ec02ecac4a9a98c3001e6b19d, type: 3}
   m_Name: VampireAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.VampireAbility
-  displayName: 
-  description: 
+  displayName: VampireAbility
+  description: VampireAbility
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.3
   turns: 2
-  damage: 5
+  damage: 10
   healRatio: 1

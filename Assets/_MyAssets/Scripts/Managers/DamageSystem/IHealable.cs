@@ -2,6 +2,6 @@ namespace Runix.Damage
 {
     public interface IHealable
     {
-        void Heal(int amount);
+        void Heal(Element element, int amount);
     }
 }
