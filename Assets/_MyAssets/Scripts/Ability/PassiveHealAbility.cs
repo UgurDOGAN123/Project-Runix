@@ -4,13 +4,13 @@ using UnityEngine;
 namespace Runix.Ability
 {
     [CreateAssetMenu(fileName = "PassiveHealAbiity", menuName = "SO/Ability/PassiveHealAbiity")]
-    public class PassiveHealAbiity : AbilitySO
+    public class PassiveHealAbility : AbilitySO
     {
         [Range(0f, 1f)][SerializeField] float abilityChance = 0.7f;
         [SerializeField] int hp = 25;
         public override void UseAbility(AbilityContext abilityContext)
         {
-            if (abilityContext.Opponent == null || abilityContext.Own == null) return;
+            if (abilityContext.Own == null) return;
             if (Random.value >= abilityChance) return;
 
             var element = Managers.DeskManager.instance.GetCharacterSO(abilityContext.OwnerId).GetPrimaryElement();

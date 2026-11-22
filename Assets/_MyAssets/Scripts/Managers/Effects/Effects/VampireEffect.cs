@@ -1,4 +1,3 @@
-using Runix.Character;
 using Runix.Damage;
 using UnityEngine;
 
@@ -23,7 +22,7 @@ namespace Runix.Effect
         public override void OnTurnStart(EffectContext ctx)
         {
             ctx.Hp.TakeDirectDamage(damage, element);                // sahibine (rakibe) hasar
-            source?.Heal(Managers.DeskManager.instance.GetCharacterSO(ctx.OwnerId).GetPrimaryElement(), Mathf.RoundToInt(damage * healRatio));      // kaynaðý iyileþtir
+            source?.Heal(element, Mathf.RoundToInt(damage * healRatio));      // kaynaðý iyileþtir
         }
     }
 }
