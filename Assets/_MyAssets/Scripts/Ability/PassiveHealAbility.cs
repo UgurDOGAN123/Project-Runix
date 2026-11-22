@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Runix.Ability
 {
-    [CreateAssetMenu(fileName = "PassiveHealAbiity", menuName = "SO/Ability/PassiveHealAbiity")]
+    [CreateAssetMenu(fileName = "PassiveHealAbility", menuName = "SO/Ability/PassiveHealAbility")]
     public class PassiveHealAbility : AbilitySO
     {
         [Range(0f, 1f)][SerializeField] float abilityChance = 0.7f;
