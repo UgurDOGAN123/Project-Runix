@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bde835ec02ecac4a9a98c3001e6b19d, type: 3}
   m_Name: VampireAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.VampireAbility
-  displayName: VampireAbility
-  description: VampireAbility
+  displayName: Vampirism
+  description: Has a chance to drain the enemy. Each turn the effect lasts, you steal
+    health from the enemy and heal yourself.
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.3

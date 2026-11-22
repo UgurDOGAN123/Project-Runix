@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc8eaa63d16c484690bafbd4327253b, type: 3}
   m_Name: ShieldAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.ShieldAbility
-  displayName: ShieldAbility
-  description: ShieldAbility
+  displayName: Shield
+  description: Has a chance to give you defense against every element. The defense
+    is used up when you take a hit.
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.4

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d531a2f3f7b19ed4c9635e233d4f9d9c, type: 3}
   m_Name: SuddenStrikeAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.SuddenStrikeAbility
-  displayName: SuddenStrikeAbility
-  description: SuddenStrikeAbility
+  displayName: Sudden Strike
+  description: Has a chance to deal instant damage to the enemy.
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.3

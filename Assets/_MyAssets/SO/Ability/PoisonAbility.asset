@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9f28eca86d0404295a0fae35399576, type: 3}
   m_Name: PoisonAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.PoisonAbility
-  displayName: PoisonAbility
-  description: PoisonAbility
+  displayName: Poison
+  description: Has a chance to poison the enemy. A poisoned enemy takes damage each
+    turn, and the damage grows every turn.
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.3

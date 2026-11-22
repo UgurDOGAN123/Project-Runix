@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75496bf78cbbaf140a203d4d247c1b06, type: 3}
-  m_Name: PassiveHealAbiity
+  m_Name: PassiveHealAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.PassiveHealAbiity
-  displayName: PassiveHealAbiity
-  description: PassiveHealAbiity
+  displayName: Regeneration
+  description: Has a chance to restore your health at the start of each turn.
   icon: {fileID: 0}
   animationClip: {fileID: 0}
   abilityChance: 0.7
-  hp: 25
+  hp: 50

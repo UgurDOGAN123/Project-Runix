@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ba2afabcd8e1c459a7a94569112740, type: 3}
   m_Name: TurnElementDamage
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.TurnElementDamage
-  displayName: TurnElementDamage
-  description: TurnElementDamage
+  displayName: Elemental Curse
+  description: Has a chance to curse the enemy with your element. The cursed enemy
+    takes damage of your element at the start of each turn for a few turns.
   icon: {fileID: 294692939, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
+  animationClip: {fileID: 0}
   abilityChance: 0.3
   burnTurn: 2
   burnDamage: 20
