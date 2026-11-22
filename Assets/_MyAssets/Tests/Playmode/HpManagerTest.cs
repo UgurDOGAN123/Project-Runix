@@ -129,6 +129,27 @@ namespace Runix.Tests.PlayMode
 
             Assert.AreEqual(1f, hpManager.HpPercent, 0.001f);
         }
+        [Test]
+        public void AddDefense_SaldiriyiAzaltir()
+        {
+            CreateHpManager(PlayerIds.Player);
+            hpManager.AddDefense(Element.Fire, 50);
+
+            hpManager.AddData(new TurnDataHolder(), Attack(Element.Fire, 20));
+
+            Assert.AreEqual(90, CurrentHp);   // 20 saldiri %50 savunmayla 10
+        }
+
+        [Test]
+        public void AddDefense_MaxDefenseiAsmaz()
+        {
+            CreateHpManager(PlayerIds.Player);
+            hpManager.AddDefense(Element.Fire, 80);   // tavan 50
+
+            hpManager.AddData(new TurnDataHolder(), Attack(Element.Fire, 20));
+
+            Assert.AreEqual(90, CurrentHp, "80 verilse de savunma 50'de kalmali");
+        }
 
         // ---------------- Dogrudan hasar ----------------
 

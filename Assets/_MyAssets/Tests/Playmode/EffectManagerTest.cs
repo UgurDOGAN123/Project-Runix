@@ -253,6 +253,17 @@ namespace Runix.Tests.PlayMode
         // ---------------- Savas basi / sonu ----------------
 
         [Test]
+        public void ClearAll_EfektleriVeKilidiTemizler()
+        {
+            effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
+            effectManager.Add(new StunEffect(2, null, 4));
+
+            effectManager.ClearAll();
+
+            AssertState("ClearAll", 0, 100, 0);
+        }
+
+        [Test]
         public void BattleStart_EfektleriVeKilidiTemizler()
         {
             effectManager.Add(new ElementEffect(2, 5, Element.Fire, null));
