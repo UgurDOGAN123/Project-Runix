@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
   m_Name: StunDeck
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
-  displayName: StunDeck
-  description: StunDeck
+  displayName: Stun Deck
+  description: Adds cards that can stun the enemy.
   icon: {fileID: 21300000, guid: dea64fb7e36412a4fb45ad661ec11c7b, type: 3}
   element: 0
   kind: 1
