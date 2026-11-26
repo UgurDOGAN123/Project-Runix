@@ -16,6 +16,6 @@ MonoBehaviour:
   description: Gives you defense against every element. The defense is used up when
     you take a hit.
   icon: {fileID: 21300000, guid: d97889d4750f0d84d9d0a07d209ac182, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 4c509f0b5f636934dbc3393d151719af, type: 2}
   cooldownTurns: 3
   defenseAmount: 15

@@ -8875,6 +8875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1946946242}
   - component: {fileID: 1946946243}
+  - component: {fileID: 1946946250}
   - component: {fileID: 1946946241}
   - component: {fileID: 1946946244}
   - component: {fileID: 1946946245}
@@ -9038,6 +9039,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Effect.EffectUI
   effectImagePanel: {fileID: 1309030919}
   effectImagePrefab: {fileID: 5529228214837676293, guid: 1aa3e93406e3a3e48bcefdfb1bec5763, type: 3}
+--- !u!114 &1946946250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946946240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593e50835009d2b44946d8ce3c26bd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.AbilityAnimPlayer
+  abilityRunner: {fileID: 1946946248}
+  AbilityAnimObject: {fileID: 2769413825619792813, guid: 6a1cbd94edd516d49bcdb786f8edf1c6, type: 3}
 --- !u!1 &1965021374
 GameObject:
   m_ObjectHideFlags: 0
@@ -9680,6 +9695,7 @@ GameObject:
   - component: {fileID: 2084102781}
   - component: {fileID: 2084102780}
   - component: {fileID: 2084102782}
+  - component: {fileID: 2084102790}
   - component: {fileID: 2084102783}
   - component: {fileID: 2084102786}
   - component: {fileID: 2084102784}
@@ -9864,6 +9880,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Effect.EffectUI
   effectImagePanel: {fileID: 979511836}
   effectImagePrefab: {fileID: 5529228214837676293, guid: 1aa3e93406e3a3e48bcefdfb1bec5763, type: 3}
+--- !u!114 &2084102790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084102779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593e50835009d2b44946d8ce3c26bd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runix.Scripts::Runix.UI.AbilityAnimPlayer
+  abilityRunner: {fileID: 2084102788}
+  AbilityAnimObject: {fileID: 2769413825619792813, guid: 6a1cbd94edd516d49bcdb786f8edf1c6, type: 3}
 --- !u!1 &2091131560
 GameObject:
   m_ObjectHideFlags: 0

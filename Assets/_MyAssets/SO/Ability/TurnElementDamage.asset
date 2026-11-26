@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Curses the enemy with your element. The enemy takes damage of your
     element at the start of each turn for a few turns.
   icon: {fileID: 21300000, guid: 6d16d93459477ba438cf72fb134a72ca, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 4c509f0b5f636934dbc3393d151719af, type: 2}
   cooldownTurns: 3
   burnTurn: 2
   burnDamage: 50

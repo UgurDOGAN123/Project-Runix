@@ -10,7 +10,7 @@ namespace Runix.Ability
         public string displayName;
         [TextArea] public string description;
         public Sprite icon;
-        [SerializeField] protected AnimationClip animationClip;
+        public AnimationClip animationClip;
 
         [Header("Kullanım")]
         [SerializeField, Min(0)] int cooldownTurns = 3;   // kullanıldıktan kaç tur sonra tekrar kullanılabilir (3: her 3. turda)

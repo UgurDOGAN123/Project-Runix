@@ -19,7 +19,8 @@ namespace Runix.Character
 
         readonly AbilityCooldown cooldown = new();
 
-        public event Action Changed;               // UI'ın kendini yenilemesi için
+        public event Action Changed;
+        public event Action<AbilitySO> Used;// UI'ın kendini yenilemesi için
 
         bool AutoUse => ownerId == PlayerIds.Enemy;
 
@@ -28,7 +29,7 @@ namespace Runix.Character
 
         public int CooldownRemaining => cooldown.Remaining;
 
-        AbilityContext Context => new AbilityContext
+        AbilityContext Context => new()
         {
             OwnerId = ownerId,
             Own = ownEffects,
@@ -57,7 +58,9 @@ namespace Runix.Character
             if (!CanUseNow) return false;
 
             var ability = Ability;
+            // animasyon
             ability.UseAbility(Context);
+            Used.Invoke(ability);
             cooldown.Trigger(ability.CooldownTurns);
             Changed?.Invoke();
             return true;

@@ -15,6 +15,6 @@ MonoBehaviour:
   displayName: Regeneration
   description: Instantly heals you with your element.
   icon: {fileID: 21300000, guid: 98651931bb6f75744878ce2c6ebf01f8, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 4c509f0b5f636934dbc3393d151719af, type: 2}
   cooldownTurns: 3
   hp: 100
