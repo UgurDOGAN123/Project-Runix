@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
   m_Name: WindDeck
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
-  displayName: WindDeck
-  description: WindDeck
+  displayName: Wind Deck
+  description: Wind cards. Takes 20% less Wind damage.
   icon: {fileID: 0}
   element: 4
   kind: 0

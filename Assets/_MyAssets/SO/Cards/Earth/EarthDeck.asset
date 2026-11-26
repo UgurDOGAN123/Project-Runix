@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
   m_Name: EarthDeck
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
-  displayName: EarthDeck
-  description: EarthDeck
+  displayName: Earth Deck
+  description: Earth cards. Takes 20% less Earth damage.
   icon: {fileID: 294692939, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   element: 5
   kind: 0

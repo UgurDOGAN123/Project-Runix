@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daec9a26d69e28d4ab8c88ddb03615af, type: 3}
-  m_Name: DeskEnemiesSO
+  m_Name: Demon Path
   m_EditorClassIdentifier: main::Runix.Desk.DeskEnemiesSO
   DeskName: 
   Description: 
