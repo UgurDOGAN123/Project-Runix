@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Shield
   description: Has a chance to give you defense against every element. The defense
     is used up when you take a hit.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d97889d4750f0d84d9d0a07d209ac182, type: 3}
   animationClip: {fileID: 0}
   abilityChance: 0.4
   defenseAmount: 15

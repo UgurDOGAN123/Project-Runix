@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
   displayName: Wind Deck
   description: Wind cards. Takes 20% less Wind damage.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c41d264b01ae8224a8ff4da023637d0a, type: 3}
   element: 4
   kind: 0
   healable: 04000000

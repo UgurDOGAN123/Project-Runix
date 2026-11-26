@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daec9a26d69e28d4ab8c88ddb03615af, type: 3}
   m_Name: Demon Path
   m_EditorClassIdentifier: main::Runix.Desk.DeskEnemiesSO
-  DeskName: 
-  Description: 
-  Icon: {fileID: 8334651344603559088, guid: 2339e17525a6e8e43b1bf01d6b67b0f9, type: 3}
+  DeskName: Demon Path
+  Description: Fight through the Fire Demons and defeat the Stun Boss.
+  Icon: {fileID: -6519106895325619043, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   EnemyLists:
   - Enemies:
     - {fileID: 11400000, guid: ad4921cb58574dc429fec27f2ea9327e, type: 2}

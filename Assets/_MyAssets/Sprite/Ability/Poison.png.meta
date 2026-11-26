@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2339e17525a6e8e43b1bf01d6b67b0f9
+guid: dd132ce44c66d044c9587fc3dd9f7de7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8334651344603559088
-    second: fire_0
+      213: -4347532159779508366
+    second: Poison_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fire_0
+      name: Poison_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 5
-        width: 332
-        height: 502
+        x: 204
+        y: 200
+        width: 620
+        height: 622
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b4b3d13d31aaa370800000000000000
-      internalID: 8334651344603559088
+      spriteID: 27f61cee8867aa3c0800000000000000
+      internalID: -4347532159779508366
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fire_0: 8334651344603559088
+      Poison_0: -4347532159779508366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

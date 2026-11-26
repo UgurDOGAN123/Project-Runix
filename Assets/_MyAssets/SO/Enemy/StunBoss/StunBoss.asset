@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunBoss
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.StunBoss
   characterName: Stun Boss
-  description: Stun Boss
+  description: "\tUses Fire cards and Stun cards. Can stun you and block your slots."
   deckLimits:
     MaxHandCardCount: 8
     StartCardCount: 6

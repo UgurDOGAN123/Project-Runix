@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireDemon
   m_EditorClassIdentifier: Assembly-CSharp::Runix.Enemy.EnemySO
   characterName: 'Fire Demon '
-  description: 'Fire Demon '
+  description: Fights with Fire cards and curses you with fire.
   deckLimits:
     MaxHandCardCount: 8
     StartCardCount: 4
