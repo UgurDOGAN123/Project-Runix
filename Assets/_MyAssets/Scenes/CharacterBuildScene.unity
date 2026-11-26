@@ -6115,7 +6115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249358234072374854, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_text
-      value: Spacial Deck
+      value: Special Deck
       objectReference: {fileID: 0}
     - target: {fileID: 8381683577068692190, guid: 34030b22b9c70404282723b0d00fb484, type: 3}
       propertyPath: m_Name

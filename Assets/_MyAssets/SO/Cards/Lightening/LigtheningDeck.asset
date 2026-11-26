@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
   m_Name: LigtheningDeck
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
-  displayName: Ligthening Deck
+  displayName: Lightning Deck
   description: Lightning cards. Takes 20% less Lightning damage.
   icon: {fileID: 171000255, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   element: 7
