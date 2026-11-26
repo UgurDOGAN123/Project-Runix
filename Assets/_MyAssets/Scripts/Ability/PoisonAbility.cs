@@ -7,7 +7,6 @@ namespace Runix.Ability
     [CreateAssetMenu(fileName = "PoisonAbility", menuName = "SO/Ability/PoisonAbility")]
     public class PoisonAbility : AbilitySO
     {
-        [Range(0f, 1f)][SerializeField] float abilityChance = 0.3f;
         [SerializeField] int turns = 3;
         [SerializeField] int startDamage = 2;
         [SerializeField] int increasePerTick = 1;
@@ -16,7 +15,6 @@ namespace Runix.Ability
         public override void UseAbility(AbilityContext ctx)
         {
             if (ctx.Opponent == null) return;
-            if (Random.value >= abilityChance) return;
 
             ctx.Opponent.Add(new PoisonEffect(turns, startDamage, increasePerTick, poisonElement, icon));
         }

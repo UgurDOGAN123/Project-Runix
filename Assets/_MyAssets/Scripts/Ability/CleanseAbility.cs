@@ -3,16 +3,17 @@ using UnityEngine;
 
 namespace Runix.Ability
 {
-    /// <summary>Arınma: olasılıkla üzerindeki tüm efektleri (zehir, yanma, sersemletme...) temizler.</summary>
+    /// <summary>Arınma: üzerindeki tüm efektleri (zehir, yanma, sersemletme...) temizler.</summary>
     [CreateAssetMenu(fileName = "CleanseAbility", menuName = "SO/Ability/CleanseAbility")]
     public class CleanseAbility : AbilitySO
     {
-        [Range(0f, 1f)][SerializeField] float abilityChance = 0.5f;
+
+        public override bool CanUse(AbilityContext ctx) =>
+            ctx.Own != null && ctx.Own.Effects.Count > 0;   // temizlenecek bir şey yoksa kullanılamaz
 
         public override void UseAbility(AbilityContext ctx)
         {
-            if (ctx.Own == null || ctx.Own.Effects.Count == 0) return;   // temizlenecek bir şey yok
-            if (Random.value >= abilityChance) return;
+            if (ctx.Own == null) return;
 
             ctx.Own.ClearAll();
         }
