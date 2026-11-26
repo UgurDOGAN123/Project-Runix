@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: CleanseAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.CleanseAbility
   displayName: Cleanse
-  description: Has a chance to remove all negative effects from you (elemental curse,
-    poison, stun etc).
+  description: Removes all negative effects from you (elemental curse, poison, stun).
   icon: {fileID: 21300000, guid: 961472d490077a64ea4939f267ae6cd2, type: 3}
   animationClip: {fileID: 0}
-  abilityChance: 0.5
+  cooldownTurns: 3

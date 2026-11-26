@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PassiveHealAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.PassiveHealAbiity
   displayName: Regeneration
-  description: Has a chance to restore your health at the start of each turn.
+  description: Instantly heals you with your element.
   icon: {fileID: 21300000, guid: 98651931bb6f75744878ce2c6ebf01f8, type: 3}
   animationClip: {fileID: 0}
-  abilityChance: 0.7
-  hp: 50
+  cooldownTurns: 3
+  hp: 100

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SuddenStrikeAbility
   m_EditorClassIdentifier: Runix.Scripts::Runix.Ability.SuddenStrikeAbility
   displayName: Sudden Strike
-  description: Has a chance to deal instant damage to the enemy.
+  description: Deals instant damage of your element to the enemy.
   icon: {fileID: 21300000, guid: a57781c8a69bbf04fa03f6c5fe8b3785, type: 3}
   animationClip: {fileID: 0}
-  abilityChance: 0.3
+  cooldownTurns: 3
   damage: 100

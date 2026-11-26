@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: -6519106895325619043, guid: 515ff05c129c09d478846d2f601c8f3d, type: 3}
   element: 2
   kind: 0
-  healable: 01000000
+  healable: 02000000
   passiveDefense:
   - element: 2
     Value: 20
