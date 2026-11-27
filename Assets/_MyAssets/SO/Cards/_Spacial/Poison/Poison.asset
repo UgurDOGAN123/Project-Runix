@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poison
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.Poison
   cardName: Poison
-  cardDescription: 
+  cardDescription: Poisons the enemy for 2 turns. Damage grows each turn.
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
   ElementImg: {fileID: 21300000, guid: dd132ce44c66d044c9587fc3dd9f7de7, type: 3}

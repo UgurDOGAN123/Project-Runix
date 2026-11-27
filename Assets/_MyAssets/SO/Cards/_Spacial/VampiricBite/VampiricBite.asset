@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VampiricBite
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.VampiricBite
   cardName: Vampiric Bite
-  cardDescription: VampiricBite
+  cardDescription: Drains the enemy for 2 turns and heals you
   BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
   CardImage: {fileID: 0}
   ElementImg: {fileID: 21300000, guid: d46cb11e1aa02d9458efe9b42c89ba8d, type: 3}

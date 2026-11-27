@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0ebac49e12b14dacfc4dc6130266e, type: 3}
   m_Name: VampiricBiteDeckSO
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
-  displayName: VampiricBiteDeckSO
-  description: VampiricBiteDeckSO
+  displayName: Vampiric Bite Deck
+  description: Drains the enemy and heals you every turn.
   icon: {fileID: 21300000, guid: d46cb11e1aa02d9458efe9b42c89ba8d, type: 3}
   element: 0
   kind: 1
