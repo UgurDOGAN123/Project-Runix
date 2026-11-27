@@ -14,6 +14,7 @@ namespace Runix.Card
 
         public override void UseCard(TurnDataHolder turnDataHolder, DeckManager deckManagers)
         {
+            base.UseCard(turnDataHolder, deckManagers);
             var element = deckManagers.Character.GetPrimaryElement();
             turnDataHolder.AddEffect(new VampireEffect(turns, Value, element, deckManagers.GetComponent<HpManager>(), healRatio, ElementImg));
         }
