@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf45ef3dbc3f04aaf402937af6e2a8, type: 3}
+  m_Name: Poison
+  m_EditorClassIdentifier: Runix.Scripts::Runix.Card.Poison
+  cardName: Poison
+  cardDescription: 
+  BackgroundImg: {fileID: 6888576493121341014, guid: df716b53b03a8fc4ea886bb4edec8387, type: 3}
+  CardImage: {fileID: 0}
+  ElementImg: {fileID: 21300000, guid: dd132ce44c66d044c9587fc3dd9f7de7, type: 3}
+  CardTypeImg: {fileID: 49405101, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
+  CardOnRun: {fileID: 21300000, guid: dd132ce44c66d044c9587fc3dd9f7de7, type: 3}
+  AnimCardSprite: {fileID: 21300000, guid: dd132ce44c66d044c9587fc3dd9f7de7, type: 3}
+  animPrefab: {fileID: 2769413825619792813, guid: 6a1cbd94edd516d49bcdb786f8edf1c6, type: 3}
+  animator: {fileID: 0}
+  Value: 2
+  element: 0
+  cardType: 3
+  DestroyTime: 1
+  turns: 2
+  increasePerTick: 1
+  poisonElement: 6

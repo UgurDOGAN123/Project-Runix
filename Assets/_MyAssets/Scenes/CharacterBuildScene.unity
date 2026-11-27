@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Runix.Scripts::DeckSelectButton
   target: {fileID: 442320170}
-  data: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+  data: {fileID: 11400000, guid: 293fec64190d0b74788224cc2e06c9fc, type: 2}
   normaltext: 
 --- !u!114 &344412735
 MonoBehaviour:
@@ -2041,7 +2041,7 @@ MonoBehaviour:
         m_MethodName: GetSpacialSO
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a83e907bc0c48fb4e9bdf748414b7a36, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 293fec64190d0b74788224cc2e06c9fc, type: 2}
           m_ObjectArgumentAssemblyTypeName: Runix.Card.DeckSO, Runix.Scripts
           m_IntArgument: 0
           m_FloatArgument: 0
