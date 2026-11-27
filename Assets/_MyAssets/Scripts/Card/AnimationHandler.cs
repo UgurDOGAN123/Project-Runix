@@ -8,7 +8,8 @@ namespace Runix.Animation
 
         void Start()
         {
-            animator.SetInteger("Player", (TurnControlSystem.TurnControlManager.instance.CurrentPlayer));
+            if (animator.parameterCount != 0)
+                animator.SetInteger("Player", (TurnControlSystem.TurnControlManager.instance.CurrentPlayer));
         }
     }
 }

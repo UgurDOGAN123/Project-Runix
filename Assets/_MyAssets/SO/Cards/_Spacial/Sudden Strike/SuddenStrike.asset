@@ -19,9 +19,9 @@ MonoBehaviour:
   ElementImg: {fileID: 21300000, guid: a57781c8a69bbf04fa03f6c5fe8b3785, type: 3}
   CardTypeImg: {fileID: 49405101, guid: 29ebddc01bb92cf42abda227a96b0e50, type: 3}
   CardOnRun: {fileID: 21300000, guid: a57781c8a69bbf04fa03f6c5fe8b3785, type: 3}
-  AnimCardSprite: {fileID: 0}
-  animPrefab: {fileID: 0}
-  animator: {fileID: 0}
+  AnimCardSprite: {fileID: 21300000, guid: a57781c8a69bbf04fa03f6c5fe8b3785, type: 3}
+  animPrefab: {fileID: 3605390233840207830, guid: 7b051cfb39785c74ba535a33f1f64ff4, type: 3}
+  animator: {fileID: 9100000, guid: 20f45ce1fff383c4cbad946f4f1a11d4, type: 2}
   Value: 60
   element: 0
   cardType: 3
