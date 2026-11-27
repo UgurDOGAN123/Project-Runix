@@ -23,11 +23,13 @@ namespace Runix.Turn
             if (playerEffects != null) playerTurnDataHolder.ScaleAttack(1f - playerEffects.AttackReduction);
             if (enemyEffects != null) enemyTurnDataHolder.ScaleAttack(1f - enemyEffects.AttackReduction);
 
-            Reflect(playerHpManager, playerEffects, enemyHpManager);
-            Reflect(enemyHpManager, enemyEffects, playerHpManager);
+
 
             playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
             enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
+
+            Reflect(playerHpManager, playerEffects, enemyHpManager);
+            Reflect(enemyHpManager, enemyEffects, playerHpManager);
 
             // Her tarafın uyguladığı etkiler karşı tarafa gider
             if (playerEffects != null)

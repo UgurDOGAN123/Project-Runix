@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Runix.Scripts::Runix.Card.DeckSO
   displayName: Sudden Strike Deck
   description: Adds Sudden Strike cards that deal direct damage.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a57781c8a69bbf04fa03f6c5fe8b3785, type: 3}
   element: 0
   kind: 1
   healable: 
