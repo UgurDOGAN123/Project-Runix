@@ -45,6 +45,18 @@ namespace Runix.Effect
             }
         }
 
+        /// <summary>Aktif yansımaların toplam oranı (0..1).</summary>
+        public float ReflectRatio
+        {
+            get
+            {
+                float r = 0f;
+                foreach (var e in effects)
+                    if (e.effect is MirrorEffect m) r += m.Ratio;
+                return Mathf.Clamp01(r);
+            }
+        }
+
         void Awake()
         {
             ctx = new EffectContext { Hp = hp, OwnerId = ownerId };

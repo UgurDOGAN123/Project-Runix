@@ -24,7 +24,7 @@ namespace Runix.Damage
         readonly DamageCalculator damageCalculator = new();
 
 
-
+        public int LastDamageTaken { get; private set; }
 
 
         public float HpPercent
@@ -55,8 +55,7 @@ namespace Runix.Damage
 
         public void AddData(TurnDataHolder Heal_DefData, TurnDataHolder Attack_Mulitpler)
         {
-
-
+            LastDamageTaken = 0;
             //heal yapılacak
             hp = damageCalculator.DoHeal(Heal_DefData.HealValues, hp, MaxHp, Character.GetHealable());
             //defens eklenecek
@@ -64,13 +63,13 @@ namespace Runix.Damage
             //attack yapılacak
             TakeDamage(Attack_Mulitpler.AttackValues, Attack_Mulitpler.MultiplierValues);
             hpSlider.ChangeSlider(HpPercent);
-
-
         }
 
         void TakeDamage(Dictionary<Element, int> attackValue, Dictionary<Element, int> multiplerValue)
         {
+            int before = hp;
             hp = damageCalculator.TakeDamage(attackValue, multiplerValue, defenseValues, passiveDefenseValues, hp);
+            LastDamageTaken = Mathf.Max(0, before - hp);
             Dead();
         }
 
