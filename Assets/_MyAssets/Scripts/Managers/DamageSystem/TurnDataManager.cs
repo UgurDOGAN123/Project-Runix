@@ -20,6 +20,8 @@ namespace Runix.Turn
 
         public void SendTurnData()
         {
+            if (playerEffects != null) playerTurnDataHolder.ScaleAttack(1f - playerEffects.AttackReduction);
+            if (enemyEffects != null) enemyTurnDataHolder.ScaleAttack(1f - enemyEffects.AttackReduction);
             playerHpManager.AddData(playerTurnDataHolder, enemyTurnDataHolder);
             enemyHpManager.AddData(enemyTurnDataHolder, playerTurnDataHolder);
             // Her tarafın uyguladığı etkiler karşı tarafa gider

@@ -11,6 +11,14 @@ namespace Runix
         public Dictionary<Element, int> MultiplierValues = new();
         public List<IEffect> PendingEffects = new();
 
+
+        /// <summary>Tüm saldırı değerlerini factor ile çarpar (0..1). Savunma/iyileşmeye dokunmaz.</summary>
+        public void ScaleAttack(float factor)
+        {
+            foreach (var key in new List<Element>(AttackValues.Keys))
+                AttackValues[key] = UnityEngine.Mathf.RoundToInt(AttackValues[key] * factor);
+        }
+
         public void AddEffect(IEffect effect)
         {
             if (effect != null) PendingEffects.Add(effect);

@@ -33,6 +33,18 @@ namespace Runix.Effect
         }
 
 
+        /// <summary>Aktif zayıflatmaların toplam azaltması (0..1). Birden fazla varsa çarpılarak birleşir.</summary>
+        public float AttackReduction
+        {
+            get
+            {
+                float scale = 1f;
+                foreach (var e in effects)
+                    if (e.effect is WeakenEffect w) scale *= 1f - w.Reduction;
+                return 1f - scale;
+            }
+        }
+
         void Awake()
         {
             ctx = new EffectContext { Hp = hp, OwnerId = ownerId };
@@ -68,13 +80,19 @@ namespace Runix.Effect
             if (stage == TurnEnum.PlayTurn)
             {
                 foreach (var e in effects.ToArray()) e.effect.OnTurnStart(context);
+                RemoveExpired();
                 if (debugLog && BlockedSlotCount > 0)
                     Debug.Log($"[Effect:{ownerId}] kapalı slot sayısı: {BlockedSlotCount}", this);
             }
             else if (stage == TurnEnum.TurnDamage)
             {
                 foreach (var e in effects.ToArray()) e.effect.OnTurnEnd(context);
-                List<EffectObject> removed = effects.Where(e => e.effect.RemainingTurns <= 0).ToList();
+                RemoveExpired();
+            }
+
+            void RemoveExpired()
+            {
+                var removed = effects.Where(e => e.effect.RemainingTurns <= 0).ToList();
                 foreach (var a in removed)
                 {
                     if (a.image != null) Destroy(a.image);
@@ -82,6 +100,7 @@ namespace Runix.Effect
                     if (debugLog) Debug.Log($"[Effect:{ownerId}] {a.effect.GetType().Name} etki bitti", this);
                 }
             }
+
         }
         class EffectObject
         {
